@@ -528,6 +528,15 @@ MOD.core = (function () {
 
 		/**
 		 * Update styles on a DOM element
+		 *
+		 * 	var css = {
+		 * 		'color' : '#444',
+		 * 		'background-color' : '#f7f7f7'
+		 * 	};
+		 *
+		 * 	MOD.core.dom.style( el, css );
+		 *
+		 *
 		 * @param  {object} el  the element to style
 		 * @param  {object} css the key/value object of css properties
 		 * @return {none}
@@ -572,7 +581,7 @@ MOD.core = (function () {
 				++i;
 			}
 
-			el.className = root.core.util.trim( className );
+			el.className = root.util.trim( className );
 		},
 
 		/**
@@ -599,7 +608,7 @@ MOD.core = (function () {
 				++i;
 			}
 
-			el.className = self.trim( className );
+			el.className = root.util.trim( className );
 		},
 
 		/**
