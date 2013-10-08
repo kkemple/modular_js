@@ -1,3 +1,3 @@
-PIX.app.run();
+MOD.app.run();
 
 

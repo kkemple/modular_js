@@ -13,7 +13,7 @@
  * @param  {object} sb a copy of the sandbox to interact with the core
  * @return {none}
  */
-PIX.core.create_module( 'instagram-search', function( sb ) {
+MOD.core.create_module( 'instagram-search', function( sb ) {
 	var btn, input, loader, cache = {}, interval;
 
 	return {
@@ -39,7 +39,7 @@ PIX.core.create_module( 'instagram-search', function( sb ) {
 		search : function ( e ) {
 
 			//get our vars, set a default for the search term
-			var term = sb.get_value( input ) || 'pixafy',
+			var term = sb.get_value( input ) || 'MODafy',
 				instagramURL;
 				access_token = '22033045.ea9028a.eec94286a2e049429fe51c3fbc95db20';
 
@@ -101,7 +101,7 @@ PIX.core.create_module( 'instagram-search', function( sb ) {
  * @param  {object} sb a copy of the sandbox to interact with the core
  * @return {none}
  */
-PIX.core.create_module( 'instagram-feed', function( sb ) {
+MOD.core.create_module( 'instagram-feed', function( sb ) {
 	var container, template, loader, root = this;
 
 	return {

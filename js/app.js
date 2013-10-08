@@ -1,17 +1,17 @@
 /**
  * ## The Application Engine
- * - This layer is responsible for handling starting all the modules according to the application configuration set in {root}/pixafy/pixjs.json
+ * - This layer is responsible for handling starting all the modules according to the application configuration set in {root}/MODafy/MODjs.json
  * - The return object of this class has only one method, the run method which you call to start the app
- * - **This layer depends on the PIXJS_CONFIG global application configuration object**
+ * - **This layer depends on the MODJS_CONFIG global application configuration object**
  *
- * **For app return object documentation see the PIX.app.return class API**
+ * **For app return object documentation see the MOD.app.return class API**
  *
  * @class  app
- * @namespace PIX
+ * @namespace MOD
  * @static
  */
 
-PIX.app = (function() {
+MOD.app = (function() {
 
 	/**
 	 * Responsible for starting all modules in the config assigned to start on document ready state
@@ -24,7 +24,7 @@ PIX.app = (function() {
 		var len = modules.length, i = 0;
 
 		for ( ; i < len; ) {
-			PIX.core.start( modules[ i ] );
+			MOD.core.start( modules[ i ] );
 			++i;
 		}
 	},
@@ -40,7 +40,7 @@ PIX.app = (function() {
 		var len = modules.length, i = 0;
 
 		for ( ; i < len; ) {
-			PIX.core.start( modules[ i ] );
+			MOD.core.start( modules[ i ] );
 			++i;
 		}
 	}
@@ -49,14 +49,14 @@ PIX.app = (function() {
 	 * This is the return object of the app object, it contains only the run method used to start the application
 	 *
 	 * @class  return
-	 * @namespace PIX.app
+	 * @namespace MOD.app
 	 */
 	return {
 
 		/**
-		 * The method responsible for starting the application, makes an ajax call to the pixjs.json config file and processes the response
+		 * The method responsible for starting the application, makes an ajax call to the MODjs.json config file and processes the response
 		 *
-		 * 	PIX.app.run();
+		 * 	MOD.app.run();
 		 *
 		 *
 		 * @return {none}
@@ -66,17 +66,17 @@ PIX.app = (function() {
 		run : function () {
 
 			// set out debug status
-			PIX.core.util.debug = ( PIX.config.debug ) ? PIX.config.debug : true;
+			MOD.core.util.debug = ( MOD.config.debug ) ? MOD.config.debug : true;
 
-			if ( PIX.config.onready ) {
-				PIX.core.dom.onready(function () {
-					start_on_ready( PIX.config.onready.modules );
+			if ( MOD.config.onready ) {
+				MOD.core.dom.onready(function () {
+					start_on_ready( MOD.config.onready.modules );
 				});
 			}
 
-			if ( PIX.config.onload ) {
-				PIX.core.dom.onload(function () {
-					start_on_load( PIX.config.onload.modules );
+			if ( MOD.config.onload ) {
+				MOD.core.dom.onload(function () {
+					start_on_load( MOD.config.onload.modules );
 				});
 			}
 		}

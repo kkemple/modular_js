@@ -1,9 +1,9 @@
 
 /**
  * The application namespace.
- * @module PIX
+ * @module MOD
  */
-var PIX = {};
+var MOD = {};
 
 /**
  * ## The Application Framework Core
@@ -12,25 +12,25 @@ var PIX = {};
  * - This layer is responsible for communication with the Base layer
  * - All business logic is executed here
  * - Returns an object with the necessary functions for handling modules
- * >For docs on the return object see the PIX.core.return class docs
+ * >For docs on the return object see the MOD.core.return class docs
  *
- * ##### No core method should ever be called from a module, core methods should only be called from the PIX.app object for initialization and the PIX.sandbox object for business logic
+ * ##### No core method should ever be called from a module, core methods should only be called from the MOD.app object for initialization and the MOD.sandbox object for business logic
  *
  *
  * @class core
- * @namespace  PIX
+ * @namespace  MOD
  * @static
  */
-PIX.core = (function () {
+MOD.core = (function () {
 
 	// module_data will be our storage for all information pertaining to our modules
 	var module_data = {},
 		root = this;
 
 	/**
-	 * The PIX.core.util object handles all logic operations and helps with application-wide common tasks, this would be mapping arrays, making ajax requests, etc... These functions should only be accessed by the sandbox, **never in the module!!**
+	 * The MOD.core.util object handles all logic operations and helps with application-wide common tasks, this would be mapping arrays, making ajax requests, etc... These functions should only be accessed by the sandbox, **never in the module!!**
 	 * @class util
-	 * @namespace PIX.core
+	 * @namespace MOD.core
 	 */
 	this.util = {
 
@@ -39,7 +39,7 @@ PIX.core = (function () {
 		/**
 		 * this function handles all custom logging, supports debug mode which logs to console, or non-debug which allows you to send logs to the server
 		 *
-		 * 	PIX.core.util.log( 1, 'LOG : ERROR: "There was an error"' );
+		 * 	MOD.core.util.log( 1, 'LOG : ERROR: "There was an error"' );
 		 *
 		 *
 		 * @param  {int} severity the level of severity
@@ -62,7 +62,7 @@ PIX.core = (function () {
 		/**
 		 * Converts anything to a string
 		 *
-		 * 	PIX.core.util.to_sting( some_unknown_value );
+		 * 	MOD.core.util.to_sting( some_unknown_value );
 		 *
 		 *
 		 * @param  {anything} anything can literally pass in anything
@@ -79,7 +79,7 @@ PIX.core = (function () {
 		 *
 		 * 	var str = "   This is a messy string.   ";
 		 *
-		 * 	str = PIX.core.util.trim( str );
+		 * 	str = MOD.core.util.trim( str );
 		 *
 		 * 	// Returns: "This is a messy string."
 		 *
@@ -124,7 +124,7 @@ PIX.core = (function () {
 		/**
 		 * Checks for the type of whatever is passed in, if it is an object returns true
 		 *
-		 * 	PIX.core.util.is_object( some_unknown_value );
+		 * 	MOD.core.util.is_object( some_unknown_value );
 		 *
 		 *
 		 * @param  {unknown}  anything the var to check for type of object
@@ -139,7 +139,7 @@ PIX.core = (function () {
 		/**
 		 * Checks for the type of whatever is passed in, if it is an array returns true
 		 *
-		 * 	PIX.core.util.is_array( some_unknown_value );
+		 * 	MOD.core.util.is_array( some_unknown_value );
 		 *
 		 *
 		 * @param  {unknown}  anything the var to check for type of array
@@ -187,7 +187,7 @@ PIX.core = (function () {
 		 *
 		 * 	var arr = sb.find( '.some-paragraphs' );
 		 *
-		 *	var textArr = PIX.core.util.map( arr, getText );
+		 *	var textArr = MOD.core.util.map( arr, getText );
 		 *
 		 *
 		 * @param  {array}   arr the array to map over
@@ -222,7 +222,7 @@ PIX.core = (function () {
 		 * Handles all ajax requests for the application
 		 *
 		 * 	var config = {
-		 *  		url : 'http://pixafy.com/get/the/awesome/json',
+		 *  		url : 'http://MODafy.com/get/the/awesome/json',
 		 *  		type : 'GET',
 		 *  		dataType : 'JSON',
 		 *  		data : {
@@ -239,7 +239,7 @@ PIX.core = (function () {
 		 * 		scope : this   // set the scope for the callback functions
 		 * 	}
 		 *
-		 * 	PIX.core.util.ajax( config );
+		 * 	MOD.core.util.ajax( config );
 		 *
 		 *
 		 * @param  {object} config the configuration for the ajax request including callbacks
@@ -283,7 +283,7 @@ PIX.core = (function () {
 		/**
 		 * Check to see if browser is specified version of IE or lower
 		 *
-		 * 	if ( PIX.core.util.isIE( 8 ) ) {
+		 * 	if ( MOD.core.util.isIE( 8 ) ) {
 		 * 		// Do something because browser is IE8 or lower
 		 * 	}
 		 *
@@ -323,16 +323,16 @@ PIX.core = (function () {
 	};
 
 	/**
-	 * The PIX.core.dom object handles all DOM interaction, if it affects the page it should happen here. These functions should only be accessed by the sandbox, **never in the module!!**
+	 * The MOD.core.dom object handles all DOM interaction, if it affects the page it should happen here. These functions should only be accessed by the sandbox, **never in the module!!**
 	 * @class dom
-	 * @namespace PIX.core
+	 * @namespace MOD.core
 	 */
 	this.dom = {
 
 		/**
 		 * The main query function, ties in to base to find elements. This function is the base for all DOM searching
 		 *
-		 * 	var CONTAINER = PIX.dom.query( '#' + moduleID );
+		 * 	var CONTAINER = MOD.dom.query( '#' + moduleID );
 		 *
 		 *
 		 * @param  {string} selector the CSS selector of the requested elements
@@ -370,7 +370,7 @@ PIX.core = (function () {
 		/**
 		 * Attach events to elements within the module such as 'click', 'mouseenter', etc...
 		 *
-		 * 	PIX.core.dom.bind( btn, 'click', someFunction );
+		 * 	MOD.core.dom.bind( btn, 'click', someFunction );
 		 *
 		 *
 		 * @param  {string}   elem the element that we are attaching to
@@ -393,7 +393,7 @@ PIX.core = (function () {
 		/**
 		 * Remove events on elements within the module such as 'click', 'mouseenter', etc...
 		 *
-		 * 	PIX.core.dom.unbind( btn, 'click', someFunction );
+		 * 	MOD.core.dom.unbind( btn, 'click', someFunction );
 		 *
 		 *
 		 * @param  {string}   elem the element that we are removing the event on
@@ -433,7 +433,7 @@ PIX.core = (function () {
 		 * 		]
 		 * 	};
 		 *
-		 * 	var el = PIX.core.dom.create( config );
+		 * 	var el = MOD.core.dom.create( config );
 		 *
 		 *
 		 * @param  {object} config element type to create
@@ -509,11 +509,11 @@ PIX.core = (function () {
 		 * Add attributes to an element like src, href, etc...
 		 *
 		 * 	var attrs = {
-		 * 		'src' : http://pixafy.com/awesome/image.jpg,
+		 * 		'src' : http://MODafy.com/awesome/image.jpg,
 		 * 		'class' : 'awesome-img'
 		 * 	};
 		 *
-		 * 	PIX.core.dom.apply_attrs( img, attrs );
+		 * 	MOD.core.dom.apply_attrs( img, attrs );
 		 *
 		 *
 		 * @param  {object} el    the element to apply the attrs to
@@ -551,7 +551,7 @@ PIX.core = (function () {
 		/**
 		 * Add a class to an elment within the module
 		 *
-		 * 	PIX.core.dom.add_class( el, 'class-to-add' );
+		 * 	MOD.core.dom.add_class( el, 'class-to-add' );
 		 *
 		 *
 		 * @param {object} el           the element to add the class to
@@ -578,7 +578,7 @@ PIX.core = (function () {
 		/**
 		 * Remove a class from an element within the module
 		 *
-		 * 	PIX.core.dom.remove_class( el, 'class-to-remove' );
+		 * 	MOD.core.dom.remove_class( el, 'class-to-remove' );
 		 *
 		 *
 		 * @param  {object} el              the element to remove the class from
@@ -605,9 +605,9 @@ PIX.core = (function () {
 		/**
 		 * Append elements within the scope of the module, accepts DOM elements or html
 		 *
-		 * 	var el = PIX.core.dom.create( config );
+		 * 	var el = MOD.core.dom.create( config );
 		 *
-		 * 	PIX.core.dom.append_elems( el_to_append_to, el );
+		 * 	MOD.core.dom.append_elems( el_to_append_to, el );
 		 *
 		 *
 		 * @param  {object} el    the element to append into
@@ -623,9 +623,9 @@ PIX.core = (function () {
 		/**
 		 * Prepend elements within the scope of the module, accepts DOM elements or html
 		 *
-		 * 	var el = PIX.core.dom.create( config );
+		 * 	var el = MOD.core.dom.create( config );
 		 *
-		 * 	PIX.core.dom.prepend_elems( el_to_append_to, el );
+		 * 	MOD.core.dom.prepend_elems( el_to_append_to, el );
 		 *
 		 *
 		 * @param  {object} el    the element to prepend into
@@ -641,7 +641,7 @@ PIX.core = (function () {
 		/**
 		 * Remove elements from within another element within the module
 		 *
-		 * 	PIX.core.dom.remove_elems( el, 'li.inactive' );
+		 * 	MOD.core.dom.remove_elems( el, 'li.inactive' );
 		 *
 		 *
 		 * @param  {object} el    the element to remove the elements from
@@ -656,9 +656,9 @@ PIX.core = (function () {
 
 		/**
 		 * Handles running any code that needs to be run only after the document has loaded
-		 * > Used by the PIX.app object
+		 * > Used by the MOD.app object
 		 *
-		 * 	PIX.core.dom.onready( function () {
+		 * 	MOD.core.dom.onready( function () {
 		 * 		// do some stuff when the document is loaded
 		 * 	});
 		 *
@@ -676,9 +676,9 @@ PIX.core = (function () {
 
 		/**
 		 * Handles running any code that needs to be run only after the window has loaded
-		 * > Used by the PIX.app object
+		 * > Used by the MOD.app object
 		 *
-		 * 	PIX.core.dom.onload( function () {
+		 * 	MOD.core.dom.onload( function () {
 		 * 		// do some stuff when the window is loaded
 		 * 	});
 		 *
@@ -697,8 +697,8 @@ PIX.core = (function () {
 		/**
 		 * Responsible for handling matching checks on DOM elements
 		 *
-		 * 	if ( PIX.core.dom.is( el, 'checked' ) ) {
-		 * 		var value = PIX.core.dom.form.val( el );
+		 * 	if ( MOD.core.dom.is( el, 'checked' ) ) {
+		 * 		var value = MOD.core.dom.form.val( el );
 		 * 	}
 		 *
 		 *
@@ -727,13 +727,13 @@ PIX.core = (function () {
 		/**
 		 * Handles all interaction with forms in the DOM
 		 * @class  form
-		 * @namespace PIX.core.dom
+		 * @namespace MOD.core.dom
 		 */
 		form : {
 			/**
 			 * Get the value of a form element
 			 *
-			 * 	PIX.core.dom.val( input );
+			 * 	MOD.core.dom.val( input );
 			 *
 			 *
 			 * @param  {object} el the element to get the value from
@@ -758,7 +758,7 @@ PIX.core = (function () {
 			 *
 			 * 	var email = "some@email.com";
 			 *
-			 * 	if ( PIX.core.dom.form.is_valid_email( email ) ) {
+			 * 	if ( MOD.core.dom.form.is_valid_email( email ) ) {
 			 * 		// do something with valid email
 			 * 	}
 			 *
@@ -791,7 +791,7 @@ PIX.core = (function () {
 			 *
 			 * 		var phone = "555-867-5309";
 			 *
-			 * 		if ( PIX.core.dom.form.is_valid_phone_number( phone ) ) {
+			 * 		if ( MOD.core.dom.form.is_valid_phone_number( phone ) ) {
 			 * 			// do something with valid phone number
 			 * 		}
 			 *
@@ -818,7 +818,7 @@ PIX.core = (function () {
 	 *
 	 * @type Object
 	 * @class  return
-	 * @namespace PIX.core
+	 * @namespace MOD.core
 	 */
 	return {
 		util : this.util,
@@ -827,7 +827,7 @@ PIX.core = (function () {
 		/**
 		 * this is a factory function used to create modules for the application
 		 *
-		 * 	PIX.core.create_module( 'my-module', function( sb ) {
+		 * 	MOD.core.create_module( 'my-module', function( sb ) {
 		 *
 		 * 		init : function () {
 		 *
@@ -873,7 +873,7 @@ PIX.core = (function () {
 			if ( typeof moduleID === 'string' && typeof creator === 'function' ) {
 
 				// create a temp instance of our module to ensure it will start correctly when called
-				temp = creator( PIX.sandbox.create( this, moduleID ) );
+				temp = creator( MOD.sandbox.create( this, moduleID ) );
 				if ( temp.init
 						&& temp.destroy
 						&& typeof temp.init === 'function'
@@ -898,7 +898,7 @@ PIX.core = (function () {
 		/**
 		 * starts up an instance of a particular module
 		 *
-		 * 	PIX.core.start( 'my-module' );
+		 * 	MOD.core.start( 'my-module' );
 		 *
 		 *
 		 * @param  {string} moduleID the ID of the module to start
@@ -911,7 +911,7 @@ PIX.core = (function () {
 
 			if ( mod ) {
 
-				mod.instance = mod.create( PIX.sandbox.create( this, moduleID ) );
+				mod.instance = mod.create( MOD.sandbox.create( this, moduleID ) );
 				mod.instance.init();
 			} else {
 
@@ -922,7 +922,7 @@ PIX.core = (function () {
 		/**
 		 * starts up an instance of all modules
 		 *
-		 * 	PIX.core.start_all();
+		 * 	MOD.core.start_all();
 		 *
 		 *
 		 * @return {none}
@@ -944,7 +944,7 @@ PIX.core = (function () {
 		/**
 		 * stops an instance of a running module
 		 *
-		 * 	PIX.core.stop( 'my-module' );
+		 * 	MOD.core.stop( 'my-module' );
 		 *
 		 *
 		 * @param  {string} moduleID the ID of the module to stop
@@ -968,7 +968,7 @@ PIX.core = (function () {
 		/**
 		 * stops all instances of modules
 		 *
-		 * 	PIX.core.stop_all();
+		 * 	MOD.core.stop_all();
 		 *
 		 *
 		 * @return {none}
@@ -1000,7 +1000,7 @@ PIX.core = (function () {
 		 * 		}
 		 * 	};
 		 *
-		 * 	PIX.core.register_events( evts, 'my-module' );
+		 * 	MOD.core.register_events( evts, 'my-module' );
 		 *
 		 *
 		 * @param  {object} evts     the events and other data associated to add to module
@@ -1034,7 +1034,7 @@ PIX.core = (function () {
 		 * 		'some-event' : data
 		 * 	}
 		 *
-		 * 	PIX.core.trigger_event( evt );
+		 * 	MOD.core.trigger_event( evt );
 		 *
 		 *
 		 * @param  {object} evt the event object with type and data
@@ -1068,7 +1068,7 @@ PIX.core = (function () {
 		 *
 		 * 	var evts = [ 'some-event', 'some-other-event' ];
 		 *
-		 * 	PIX.core.remove_events( evts, 'my-module' );
+		 * 	MOD.core.remove_events( evts, 'my-module' );
 		 *
 		 *
 		 * @param  {object} evts     the events to remove from the modules

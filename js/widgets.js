@@ -1,8 +1,8 @@
-PIX.ui = {
-	modal : PixModal,
-	slider : PixSlider,
-	scroll_to_section : PixScrollToSection,
-	accordian : PixAccordian,
-	columns : PixColumns,
-	tabs : PixTabs
+MOD.ui = {
+	modal : Modal,
+	slider : Slider,
+	scroll_to_section : ScrollToSection,
+	accordian : Accordian,
+	columns : Columns,
+	tabs : Tabs
 };

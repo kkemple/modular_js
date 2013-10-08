@@ -3,21 +3,21 @@
  * - This layer is responsible for interacting with the core layer
  * - This layer acts as an API between the module and core layers
  *
- * **For API documentation see the PIX.sandbox.return class API**
+ * **For API documentation see the MOD.sandbox.return class API**
  *
  * @class  sandbox
- * @namespace PIX
+ * @namespace MOD
  * @static
  */
 
-PIX.sandbox = {
+MOD.sandbox = {
 
 	/**
 	 * Responsible for the creatation of a sandbox instance, it returns an object with the Sanbox API so that the module instance can communicate with the core. This function is only used in the core to create instances in the create_module function for testing and in the start function for starting up an instance of the actual module
 	 *
-	 * 	PIX.sandbox.create( PIX.core, 'my-module' ); // this function is called in the core and should not be called anywhere
+	 * 	MOD.sandbox.create( MOD.core, 'my-module' ); // this function is called in the core and should not be called anywhere
 	 *
-	 * @param  {Object} core     the PIX.core object, this is how the instance of the sandbox can access the core
+	 * @param  {Object} core     the MOD.core object, this is how the instance of the sandbox can access the core
 	 * @param  {string} moduleID the ID of the module being created, this ID needs to correspond to an ID on a DOM element, this element will be the top level element of the module and all functionality will be restricted to within this parent element
 	 * @return {Object}          the Sandbox instance (API) for the module instance to use
 	 * @method  create
@@ -37,7 +37,7 @@ PIX.sandbox = {
 		 * ##### All method examples will demonstrate how to use the Sandbox from the modules
 		 *
 		 * @class  return
-		 * @namespace PIX.sandbox
+		 * @namespace MOD.sandbox
 		 */
 		return {
 
@@ -261,7 +261,7 @@ PIX.sandbox = {
 			 * Used for all ajax requests
 			 *
 			 * 	var config = {
-			 *  		url : 'http://pixafy.com/get/the/awesome/json',
+			 *  		url : 'http://MODafy.com/get/the/awesome/json',
 			 *  		type : 'GET',
 			 *  		dataType : 'JSON',
 			 *  		data : {

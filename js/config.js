@@ -1,4 +1,4 @@
-PIX.config = {
+MOD.config = {
 	debug : true,
 	onready : {
 		modules : [ 'instagram-search', 'instagram-feed' ]
