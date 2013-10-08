@@ -17,6 +17,7 @@ By decoupling all the layers of the application you can drop in an entire base a
 If you would like to contribute to this project:
 
 - Clone the repo
+- Check out develop branch
 - Create new feature or issue branch with name of task or recommended change
 - Make changes
 - Push new branch to origin
