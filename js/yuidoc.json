@@ -1,0 +1,11 @@
+{
+    "name": "PixJS",
+    "description": "A LSA-JS Framework",
+    "version": "0.1.0",
+    "url": "https://git.herculo.com/pix-js-framework",
+    "logo": "http://www.pixafy.com/wp-content/themes/pixafy/images/pixafy.png",
+    "options": {
+        "outdir": "../docs",
+        "linkNatives": "true"
+    }
+}

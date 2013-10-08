@@ -1,0 +1,1703 @@
+{
+    "project": {
+        "name": "PixJS",
+        "description": "A LSA-JS Framework",
+        "version": "0.1.0",
+        "url": "https://git.herculo.com/pix-js-framework",
+        "logo": "http://www.pixafy.com/wp-content/themes/pixafy/images/pixafy.png"
+    },
+    "files": {
+        "app.js": {
+            "name": "app.js",
+            "modules": {},
+            "classes": {
+                "PIX.app": 1,
+                "PIX.app.return": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "PIX": 1,
+                "PIX.app": 1
+            }
+        },
+        "core.js": {
+            "name": "core.js",
+            "modules": {
+                "PIX": 1
+            },
+            "classes": {
+                "PIX.core": 1,
+                "PIX.core.util": 1,
+                "PIX.core.dom": 1,
+                "PIX.core.dom.form": 1,
+                "PIX.core.return": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "PIX": 1,
+                "PIX.core": 1,
+                "PIX.core.dom": 1
+            }
+        },
+        "modules.js": {
+            "name": "modules.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "sandbox.js": {
+            "name": "sandbox.js",
+            "modules": {},
+            "classes": {
+                "PIX.sandbox": 1,
+                "PIX.sandbox.return": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "PIX": 1,
+                "PIX.sandbox": 1
+            }
+        }
+    },
+    "modules": {
+        "PIX": {
+            "name": "PIX",
+            "submodules": {},
+            "classes": {
+                "PIX.app": 1,
+                "PIX.app.return": 1,
+                "PIX.core": 1,
+                "PIX.core.util": 1,
+                "PIX.core.dom": 1,
+                "PIX.core.dom.form": 1,
+                "PIX.core.return": 1,
+                "PIX.sandbox": 1,
+                "PIX.sandbox.return": 1
+            },
+            "fors": {},
+            "namespaces": {
+                "PIX": 1,
+                "PIX.core": 1,
+                "PIX.core.dom": 1,
+                "PIX.sandbox": 1
+            },
+            "tag": "module",
+            "file": "sandbox.js",
+            "line": 35,
+            "description": "The application namespace."
+        }
+    },
+    "classes": {
+        "PIX.app": {
+            "name": "PIX.app",
+            "shortname": "PIX.app",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "PIX",
+            "namespace": "PIX",
+            "file": "app.js",
+            "line": 1,
+            "description": "## The Application Engine\n- This layer is responsible for handling starting all the modules according to the application configuration set in {root}/pixafy/pixjs.json\n- The return object of this class has only one method, the run method which you call to start the app\n- **This layer depends on the PIXJS_CONFIG global application configuration object**\n\n**For app return object documentation see the PIX.app.return class API**",
+            "static": 1
+        },
+        "PIX.app.return": {
+            "name": "PIX.app.return",
+            "shortname": "PIX.app.return",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "PIX",
+            "namespace": "PIX.app",
+            "file": "app.js",
+            "line": 48,
+            "description": "This is the return object of the app object, it contains only the run method used to start the application"
+        },
+        "PIX.core": {
+            "name": "PIX.core",
+            "shortname": "PIX.core",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "PIX",
+            "namespace": "PIX",
+            "file": "core.js",
+            "line": 8,
+            "description": "## The Application Framework Core\nThis layer is the actual core of the framework. It contains all utitity functions such as dom functions, and assistive functions such as array checks, mapping, and any other functions that are used to assist in faster development of JS. It is the only layer that can communicate with the Base layer, and it is only accessed by the Sandbox layer.\n\n- This layer is responsible for communication with the Base layer\n- All business logic is executed here\n- Returns an object with the necessary functions for handling modules\n>For docs on the return object see the PIX.core.return class docs\n\n##### No core method should ever be called from a module, core methods should only be called from the PIX.app object for initialization and the PIX.sandbox object for business logic",
+            "static": 1
+        },
+        "PIX.core.util": {
+            "name": "PIX.core.util",
+            "shortname": "PIX.core.util",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "PIX",
+            "namespace": "PIX.core",
+            "file": "core.js",
+            "line": 30,
+            "description": "The PIX.core.util object handles all logic operations and helps with application-wide common tasks, this would be mapping arrays, making ajax requests, etc... These functions should only be accessed by the sandbox, **never in the module!!**"
+        },
+        "PIX.core.dom": {
+            "name": "PIX.core.dom",
+            "shortname": "PIX.core.dom",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "PIX",
+            "namespace": "PIX.core",
+            "file": "core.js",
+            "line": 325,
+            "description": "The PIX.core.dom object handles all DOM interaction, if it affects the page it should happen here. These functions should only be accessed by the sandbox, **never in the module!!**"
+        },
+        "PIX.core.dom.form": {
+            "name": "PIX.core.dom.form",
+            "shortname": "PIX.core.dom.form",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "PIX",
+            "namespace": "PIX.core.dom",
+            "file": "core.js",
+            "line": 727,
+            "description": "Handles all interaction with forms in the DOM"
+        },
+        "PIX.core.return": {
+            "name": "PIX.core.return",
+            "shortname": "PIX.core.return",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "PIX",
+            "namespace": "PIX.core",
+            "file": "core.js",
+            "line": 816,
+            "description": "This is the return object of the core, it is passed in to the sandbox when a module is created. This allows the sandbox to have access to core functions, but prevents the modules from knowing about the core, keeping the code loosely coupled",
+            "type": "Object"
+        },
+        "PIX.sandbox": {
+            "name": "PIX.sandbox",
+            "shortname": "PIX.sandbox",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "PIX",
+            "namespace": "PIX",
+            "file": "sandbox.js",
+            "line": 1,
+            "description": "## The Application Framework API\n- This layer is responsible for interacting with the core layer\n- This layer acts as an API between the module and core layers\n\n**For API documentation see the PIX.sandbox.return class API**",
+            "static": 1
+        },
+        "PIX.sandbox.return": {
+            "name": "PIX.sandbox.return",
+            "shortname": "PIX.sandbox.return",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "PIX",
+            "namespace": "PIX.sandbox",
+            "file": "sandbox.js",
+            "line": 35,
+            "description": "Our return object containing all the functionality a module will need to communicate with core and other modules.\n##### All method examples will demonstrate how to use the Sandbox from the modules"
+        }
+    },
+    "classitems": [
+        {
+            "file": "app.js",
+            "line": 16,
+            "description": "Responsible for starting all modules in the config assigned to start on document ready state",
+            "params": [
+                {
+                    "name": "modules",
+                    "description": "the list of modules to start",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "None"
+            },
+            "itemtype": "method",
+            "name": "start_on_ready",
+            "access": "private",
+            "tagname": "",
+            "class": "PIX.app",
+            "namespace": "PIX"
+        },
+        {
+            "file": "app.js",
+            "line": 32,
+            "description": "Responsible for starting all modules in the config assigned to start on window load state",
+            "params": [
+                {
+                    "name": "modules",
+                    "description": "the list of modules to start",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "None"
+            },
+            "itemtype": "method",
+            "name": "start_on_load",
+            "access": "private",
+            "tagname": "",
+            "class": "PIX.app",
+            "namespace": "PIX"
+        },
+        {
+            "file": "app.js",
+            "line": 56,
+            "description": "The method responsible for starting the application, makes an ajax call to the pixjs.json config file and processes the response\n\n\tPIX.app.run();",
+            "return": {
+                "description": "",
+                "type": "None"
+            },
+            "itemtype": "method",
+            "name": "run",
+            "access": "public",
+            "tagname": "",
+            "class": "PIX.app.return",
+            "namespace": "PIX.app"
+        },
+        {
+            "file": "core.js",
+            "line": 39,
+            "description": "this function handles all custom logging, supports debug mode which logs to console, or non-debug which allows you to send logs to the server\n\n\tPIX.core.util.log( 1, 'LOG : ERROR: \"There was an error\"' );",
+            "params": [
+                {
+                    "name": "severity",
+                    "description": "the level of severity",
+                    "type": "Int"
+                },
+                {
+                    "name": "message",
+                    "description": "the message to log",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "None"
+            },
+            "itemtype": "method",
+            "name": "log",
+            "access": "private",
+            "tagname": "",
+            "class": "PIX.core.util",
+            "module": "PIX",
+            "namespace": "PIX.core"
+        },
+        {
+            "file": "core.js",
+            "line": 62,
+            "description": "Converts anything to a string\n\n\tPIX.core.util.to_sting( some_unknown_value );",
+            "params": [
+                {
+                    "name": "anything",
+                    "description": "can literally pass in anything",
+                    "type": "Anything"
+                }
+            ],
+            "return": {
+                "description": "string version of passed in parameter",
+                "type": "String"
+            },
+            "itemtype": "method",
+            "name": "to_string",
+            "access": "private",
+            "tagname": "",
+            "class": "PIX.core.util",
+            "module": "PIX",
+            "namespace": "PIX.core"
+        },
+        {
+            "file": "core.js",
+            "line": 77,
+            "description": "Trim starting and trailing whitespace from an object\n\n\tvar str = \"   This is a messy string.   \";\n\n\tstr = PIX.core.util.trim( str );\n\n\t// Returns: \"This is a messy string.\"",
+            "params": [
+                {
+                    "name": "str",
+                    "description": "the string to trim whitespace from",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "cleaned up string",
+                "type": "String"
+            },
+            "itemtype": "method",
+            "name": "trim",
+            "access": "private",
+            "tagname": "",
+            "class": "PIX.core.util",
+            "module": "PIX",
+            "namespace": "PIX.core"
+        },
+        {
+            "file": "core.js",
+            "line": 96,
+            "description": "Converts dash-seperated words to camelCase, see what I did there =]",
+            "params": [
+                {
+                    "name": "str",
+                    "description": "the string to camel case",
+                    "type": "String"
+                },
+                {
+                    "name": "splitter",
+                    "description": "either space or dash",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "camel cased string",
+                "type": "String"
+            },
+            "itemtype": "method",
+            "name": "to_camel_case",
+            "access": "private",
+            "tagname": "",
+            "class": "PIX.core.util",
+            "module": "PIX",
+            "namespace": "PIX.core"
+        },
+        {
+            "file": "core.js",
+            "line": 124,
+            "description": "Checks for the type of whatever is passed in, if it is an object returns true\n\n\tPIX.core.util.is_object( some_unknown_value );",
+            "params": [
+                {
+                    "name": "anything",
+                    "description": "the var to check for type of object",
+                    "type": "Unknown"
+                }
+            ],
+            "return": {
+                "description": "true if object, else false",
+                "type": "Boolean"
+            },
+            "itemtype": "method",
+            "name": "is_object",
+            "access": "private",
+            "tagname": "",
+            "class": "PIX.core.util",
+            "module": "PIX",
+            "namespace": "PIX.core"
+        },
+        {
+            "file": "core.js",
+            "line": 139,
+            "description": "Checks for the type of whatever is passed in, if it is an array returns true\n\n\tPIX.core.util.is_array( some_unknown_value );",
+            "params": [
+                {
+                    "name": "anything",
+                    "description": "the var to check for type of array",
+                    "type": "Unknown"
+                }
+            ],
+            "return": {
+                "description": "true if array, else false",
+                "type": "Boolean"
+            },
+            "itemtype": "method",
+            "name": "is_array",
+            "access": "private",
+            "tagname": "",
+            "class": "PIX.core.util",
+            "module": "PIX",
+            "namespace": "PIX.core"
+        },
+        {
+            "file": "core.js",
+            "line": 154,
+            "description": "Checks an array for a given value",
+            "params": [
+                {
+                    "name": "arr",
+                    "description": "the array to search through",
+                    "type": "Array"
+                },
+                {
+                    "name": "value",
+                    "description": "the value to look for",
+                    "type": "Anything"
+                }
+            ],
+            "return": {
+                "description": "true if array contains value, else false",
+                "type": "Boolean"
+            },
+            "itemtype": "method",
+            "name": "array_contains",
+            "access": "private",
+            "tagname": "",
+            "class": "PIX.core.util",
+            "module": "PIX",
+            "namespace": "PIX.core"
+        },
+        {
+            "file": "core.js",
+            "line": 181,
+            "description": "Performs a function on each member of an array\n\n\tfunction getText ( item ) {\n\t\treturn item.text;\n\t}\n\n\tvar arr = sb.find( '.some-paragraphs' );\n\n\tvar textArr = PIX.core.util.map( arr, getText );",
+            "params": [
+                {
+                    "name": "arr",
+                    "description": "the array to map over",
+                    "type": "Array"
+                },
+                {
+                    "name": "fn",
+                    "description": "the callback to execute for each array item",
+                    "type": "Function"
+                },
+                {
+                    "name": "scope",
+                    "description": "the scope of the callback function to run",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "the results of the mapping if anything is returned in the callback function",
+                "type": "Array"
+            },
+            "itemtype": "method",
+            "name": "map",
+            "access": "private",
+            "tagname": "",
+            "class": "PIX.core.util",
+            "module": "PIX",
+            "namespace": "PIX.core"
+        },
+        {
+            "file": "core.js",
+            "line": 221,
+            "description": "Handles all ajax requests for the application\n\n\tvar config = {\n \t\turl : 'http://pixafy.com/get/the/awesome/json',\n \t\ttype : 'GET',\n \t\tdataType : 'JSON',\n \t\tdata : {\n \t\t\tsome : 'data',\n \t\t\tmore : 'data'\n \t\t},\n \t\tdone : function( response ) {\n   \t\t\t// do something with successful results\n\t\t},\n\t\tfail : function( error ) {\n\t\t\t// do something with unseccessful ajax request\n\t\t\talert( error.message );\n\t\t},\n\t\tscope : this   // set the scope for the callback functions\n\t}\n\n\tPIX.core.util.ajax( config );",
+            "params": [
+                {
+                    "name": "config",
+                    "description": "the configuration for the ajax request including callbacks",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "None"
+            },
+            "itemtype": "method",
+            "name": "ajax",
+            "access": "private",
+            "tagname": "",
+            "class": "PIX.core.util",
+            "module": "PIX",
+            "namespace": "PIX.core"
+        },
+        {
+            "file": "core.js",
+            "line": 283,
+            "description": "Check to see if browser is specified version of IE or lower\n\n\tif ( PIX.core.util.isIE( 8 ) ) {\n\t\t// Do something because browser is IE8 or lower\n\t}",
+            "params": [
+                {
+                    "name": "version",
+                    "description": "the highest version of Internet Explorer to test for",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "true/false",
+                "type": "Boolean"
+            },
+            "itemtype": "method",
+            "name": "isIE",
+            "access": "private",
+            "tagname": "",
+            "class": "PIX.core.util",
+            "module": "PIX",
+            "namespace": "PIX.core"
+        },
+        {
+            "file": "core.js",
+            "line": 332,
+            "description": "The main query function, ties in to base to find elements. This function is the base for all DOM searching\n\n\tvar CONTAINER = PIX.dom.query( '#' + moduleID );",
+            "params": [
+                {
+                    "name": "selector",
+                    "description": "the CSS selector of the requested elements",
+                    "type": "String"
+                },
+                {
+                    "name": "context",
+                    "description": "the object to look within for the selected items",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "jQuery like object of the DOM elements, just with less power",
+                "type": "Object"
+            },
+            "itemtype": "method",
+            "name": "query",
+            "access": "private",
+            "tagname": "",
+            "class": "PIX.core.dom",
+            "module": "PIX",
+            "namespace": "PIX.core"
+        },
+        {
+            "file": "core.js",
+            "line": 370,
+            "description": "Attach events to elements within the module such as 'click', 'mouseenter', etc...\n\n\tPIX.core.dom.bind( btn, 'click', someFunction );",
+            "params": [
+                {
+                    "name": "elem",
+                    "description": "the element that we are attaching to",
+                    "type": "String"
+                },
+                {
+                    "name": "evt",
+                    "description": "the event type we want to attach",
+                    "type": "String"
+                },
+                {
+                    "name": "fn",
+                    "description": "the function we want to execute",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "None"
+            },
+            "itemtype": "method",
+            "name": "bind",
+            "access": "private",
+            "tagname": "",
+            "class": "PIX.core.dom",
+            "module": "PIX",
+            "namespace": "PIX.core"
+        },
+        {
+            "file": "core.js",
+            "line": 393,
+            "description": "Remove events on elements within the module such as 'click', 'mouseenter', etc...\n\n\tPIX.core.dom.unbind( btn, 'click', someFunction );",
+            "params": [
+                {
+                    "name": "elem",
+                    "description": "the element that we are removing the event on",
+                    "type": "String"
+                },
+                {
+                    "name": "evt",
+                    "description": "the event type we want to remove",
+                    "type": "String"
+                },
+                {
+                    "name": "fn",
+                    "description": "the function we want to remove",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "None"
+            },
+            "itemtype": "method",
+            "name": "unbind",
+            "access": "private",
+            "tagname": "",
+            "class": "PIX.core.dom",
+            "module": "PIX",
+            "namespace": "PIX.core"
+        },
+        {
+            "file": "core.js",
+            "line": 416,
+            "description": "Create a new DOM element and apply any attributes or create any child elements\n\n\tvar config = {\n\t\tel : 'div',\n\t\tattrs : {\n\t\t\t'id' : 'awesome',\n\t\t\t'class' : 'framework'\n\t\t},\n\t\tchildren : [\n\t\t\t{\n\t\t\t\tel : 'p',\n\t\t\t\ttext : 'This framework is awesome!!',\n\t\t\t\tattrs : {\n\t\t\t\t\t'class' : 'shout-it-out'\n\t\t\t\t}\n\t\t\t}\n\t\t]\n\t};\n\n\tvar el = PIX.core.dom.create( config );",
+            "params": [
+                {
+                    "name": "config",
+                    "description": "element type to create",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "DOM object that was created",
+                "type": "Object"
+            },
+            "itemtype": "method",
+            "name": "create",
+            "access": "private",
+            "tagname": "",
+            "class": "PIX.core.dom",
+            "module": "PIX",
+            "namespace": "PIX.core"
+        },
+        {
+            "file": "core.js",
+            "line": 508,
+            "description": "Add attributes to an element like src, href, etc...\n\n\tvar attrs = {\n\t\t'src' : http://pixafy.com/awesome/image.jpg,\n\t\t'class' : 'awesome-img'\n\t};\n\n\tPIX.core.dom.apply_attrs( img, attrs );",
+            "params": [
+                {
+                    "name": "el",
+                    "description": "the element to apply the attrs to",
+                    "type": "Object"
+                },
+                {
+                    "name": "attrs",
+                    "description": "the attrs to apply",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "None"
+            },
+            "itemtype": "method",
+            "name": "apply_attrs",
+            "access": "private",
+            "tagname": "",
+            "class": "PIX.core.dom",
+            "module": "PIX",
+            "namespace": "PIX.core"
+        },
+        {
+            "file": "core.js",
+            "line": 529,
+            "description": "Update styles on a DOM element",
+            "params": [
+                {
+                    "name": "el",
+                    "description": "the element to style",
+                    "type": "Object"
+                },
+                {
+                    "name": "css",
+                    "description": "the key/value object of css properties",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "None"
+            },
+            "itemtype": "method",
+            "name": "style",
+            "access": "private",
+            "tagname": "",
+            "class": "PIX.core.dom",
+            "module": "PIX",
+            "namespace": "PIX.core"
+        },
+        {
+            "file": "core.js",
+            "line": 551,
+            "description": "Add a class to an elment within the module\n\n\tPIX.core.dom.add_class( el, 'class-to-add' );",
+            "params": [
+                {
+                    "name": "el",
+                    "description": "the element to add the class to",
+                    "type": "Object"
+                },
+                {
+                    "name": "class_to_add",
+                    "description": "the class to add",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "None"
+            },
+            "itemtype": "method",
+            "name": "add_class",
+            "access": "private",
+            "tagname": "",
+            "class": "PIX.core.dom",
+            "module": "PIX",
+            "namespace": "PIX.core"
+        },
+        {
+            "file": "core.js",
+            "line": 578,
+            "description": "Remove a class from an element within the module\n\n\tPIX.core.dom.remove_class( el, 'class-to-remove' );",
+            "params": [
+                {
+                    "name": "el",
+                    "description": "the element to remove the class from",
+                    "type": "Object"
+                },
+                {
+                    "name": "class_to_remove",
+                    "description": "the class to remove",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "None"
+            },
+            "itemtype": "method",
+            "name": "remove_class",
+            "access": "private",
+            "tagname": "",
+            "class": "PIX.core.dom",
+            "module": "PIX",
+            "namespace": "PIX.core"
+        },
+        {
+            "file": "core.js",
+            "line": 605,
+            "description": "Append elements within the scope of the module, accepts DOM elements or html\n\n\tvar el = PIX.core.dom.create( config );\n\n\tPIX.core.dom.append_elems( el_to_append_to, el );",
+            "params": [
+                {
+                    "name": "el",
+                    "description": "the element to append into",
+                    "type": "Object"
+                },
+                {
+                    "name": "elems",
+                    "description": "the elements to append",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "None"
+            },
+            "itemtype": "method",
+            "name": "append_elems",
+            "access": "private",
+            "tagname": "",
+            "class": "PIX.core.dom",
+            "module": "PIX",
+            "namespace": "PIX.core"
+        },
+        {
+            "file": "core.js",
+            "line": 623,
+            "description": "Prepend elements within the scope of the module, accepts DOM elements or html\n\n\tvar el = PIX.core.dom.create( config );\n\n\tPIX.core.dom.prepend_elems( el_to_append_to, el );",
+            "params": [
+                {
+                    "name": "el",
+                    "description": "the element to prepend into",
+                    "type": "Object"
+                },
+                {
+                    "name": "elems",
+                    "description": "the elements to prepend",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "None"
+            },
+            "itemtype": "method",
+            "name": "prepend_elems",
+            "access": "private",
+            "tagname": "",
+            "class": "PIX.core.dom",
+            "module": "PIX",
+            "namespace": "PIX.core"
+        },
+        {
+            "file": "core.js",
+            "line": 641,
+            "description": "Remove elements from within another element within the module\n\n\tPIX.core.dom.remove_elems( el, 'li.inactive' );",
+            "params": [
+                {
+                    "name": "el",
+                    "description": "the element to remove the elements from",
+                    "type": "Object"
+                },
+                {
+                    "name": "elems",
+                    "description": "the elements to remove",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "None"
+            },
+            "itemtype": "method",
+            "name": "remove_elems",
+            "access": "private",
+            "tagname": "",
+            "class": "PIX.core.dom",
+            "module": "PIX",
+            "namespace": "PIX.core"
+        },
+        {
+            "file": "core.js",
+            "line": 657,
+            "description": "Handles running any code that needs to be run only after the document has loaded\n> Used by the PIX.app object\n\n\tPIX.core.dom.onready( function () {\n\t\t// do some stuff when the document is loaded\n\t});",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "the function(s) to run",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "None"
+            },
+            "itemtype": "method",
+            "name": "onready",
+            "access": "private",
+            "tagname": "",
+            "class": "PIX.core.dom",
+            "module": "PIX",
+            "namespace": "PIX.core"
+        },
+        {
+            "file": "core.js",
+            "line": 677,
+            "description": "Handles running any code that needs to be run only after the window has loaded\n> Used by the PIX.app object\n\n\tPIX.core.dom.onload( function () {\n\t\t// do some stuff when the window is loaded\n\t});",
+            "params": [
+                {
+                    "name": "fn",
+                    "description": "the function(s) to run",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "None"
+            },
+            "itemtype": "method",
+            "name": "onload",
+            "access": "private",
+            "tagname": "",
+            "class": "PIX.core.dom",
+            "module": "PIX",
+            "namespace": "PIX.core"
+        },
+        {
+            "file": "core.js",
+            "line": 697,
+            "description": "Responsible for handling matching checks on DOM elements\n\n\tif ( PIX.core.dom.is( el, 'checked' ) ) {\n\t\tvar value = PIX.core.dom.form.val( el );\n\t}",
+            "params": [
+                {
+                    "name": "el",
+                    "description": "the element to check against",
+                    "type": "Object"
+                },
+                {
+                    "name": "check",
+                    "description": "the property to match",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "true if it matches, else false",
+                "type": "Boolean"
+            },
+            "itemtype": "method",
+            "name": "is",
+            "access": "private",
+            "tagname": "",
+            "class": "PIX.core.dom",
+            "module": "PIX",
+            "namespace": "PIX.core"
+        },
+        {
+            "file": "core.js",
+            "line": 733,
+            "description": "Get the value of a form element\n\n\tPIX.core.dom.val( input );",
+            "params": [
+                {
+                    "name": "el",
+                    "description": "the element to get the value from",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "the value of the element",
+                "type": "String"
+            },
+            "itemtype": "method",
+            "name": "val",
+            "access": "private",
+            "tagname": "",
+            "class": "PIX.core.dom.form",
+            "module": "PIX",
+            "namespace": "PIX.core.dom"
+        },
+        {
+            "file": "core.js",
+            "line": 756,
+            "description": "Checks to see if a string is a valid email address\n\n\tvar email = \"some@email.com\";\n\n\tif ( PIX.core.dom.form.is_valid_email( email ) ) {\n\t\t// do something with valid email\n\t}",
+            "params": [
+                {
+                    "name": "str",
+                    "description": "",
+                    "type": "Str"
+                }
+            ],
+            "return": {
+                "description": "true/false",
+                "type": "Boolean"
+            },
+            "itemtype": "method",
+            "name": "is_valid_email",
+            "access": "private",
+            "tagname": "",
+            "class": "PIX.core.dom.form",
+            "module": "PIX",
+            "namespace": "PIX.core.dom"
+        },
+        {
+            "file": "core.js",
+            "line": 780,
+            "description": "Checks to see if a string is a valid phone number\nMatches:\n\n- 5558675309\n- 555 867 5309\n- 555-867-5309\n- 555.867.5309\n- (555) 867 5309\n- (555)-867-5309\n- (555).867.5309\n\n\tvar phone = \"555-867-5309\";\n\n\tif ( PIX.core.dom.form.is_valid_phone_number( phone ) ) {\n\t\t// do something with valid phone number\n\t}",
+            "params": [
+                {
+                    "name": "str",
+                    "description": "",
+                    "type": "Str"
+                }
+            ],
+            "return": {
+                "description": "true/false",
+                "type": "Boolean"
+            },
+            "itemtype": "method",
+            "name": "is_valid_phone_number",
+            "access": "private",
+            "tagname": "",
+            "class": "PIX.core.dom.form",
+            "module": "PIX",
+            "namespace": "PIX.core.dom"
+        },
+        {
+            "file": "core.js",
+            "line": 827,
+            "description": "this is a factory function used to create modules for the application\n\n\tPIX.core.create_module( 'my-module', function( sb ) {\n\n\t\tinit : function () {\n\n\t\t\t// handle the creation of the module\n\t\t\tvar btn, input, term;\n\n\t\t\tbtn = sb.find( '.my-btn' )[0]   // get the element from the return object\n\t\t\tinput = sb.find( '.my-input' )[0]   // same for the input\n\n\t\t\tsb.add_event( btn, 'click', this.doSomething );\n\t\t},\n\n\t\tdestroy : function () {\n\n\t\t\t// handle breaking the module down\n\t\t\tsb.remove_event( btn, 'click', this.doSomething );\n\t\t\tbtn = input = term = null;\n\t\t},\n\n\t\tdoSomething : function () {\n\n\t\t\t// all functionality goes in to functions that are isolated to the module\n\t\t\tterm = sb.val( input );\n\n\t\t\tsb.notify({\n\t\t\t\ttype : 'search-initiated',\n\t\t\t\tdata : term\n\t\t\t});\n\t\t}\n\t});",
+            "params": [
+                {
+                    "name": "moduleID",
+                    "description": "the reference ID of the module",
+                    "type": "String"
+                },
+                {
+                    "name": "creator",
+                    "description": "the function ran to create the instance of the module",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "None"
+            },
+            "itemtype": "method",
+            "name": "create_module",
+            "access": "public",
+            "tagname": "",
+            "class": "PIX.core.return",
+            "module": "PIX",
+            "namespace": "PIX.core"
+        },
+        {
+            "file": "core.js",
+            "line": 898,
+            "description": "starts up an instance of a particular module\n\n\tPIX.core.start( 'my-module' );",
+            "params": [
+                {
+                    "name": "moduleID",
+                    "description": "the ID of the module to start",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "None"
+            },
+            "itemtype": "method",
+            "name": "start",
+            "access": "private",
+            "tagname": "",
+            "class": "PIX.core.return",
+            "module": "PIX",
+            "namespace": "PIX.core"
+        },
+        {
+            "file": "core.js",
+            "line": 922,
+            "description": "starts up an instance of all modules\n\n\tPIX.core.start_all();",
+            "return": {
+                "description": "",
+                "type": "None"
+            },
+            "itemtype": "method",
+            "name": "start_all",
+            "access": "private",
+            "tagname": "",
+            "class": "PIX.core.return",
+            "module": "PIX",
+            "namespace": "PIX.core"
+        },
+        {
+            "file": "core.js",
+            "line": 944,
+            "description": "stops an instance of a running module\n\n\tPIX.core.stop( 'my-module' );",
+            "params": [
+                {
+                    "name": "moduleID",
+                    "description": "the ID of the module to stop",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "None"
+            },
+            "itemtype": "method",
+            "name": "stop",
+            "access": "private",
+            "tagname": "",
+            "class": "PIX.core.return",
+            "module": "PIX",
+            "namespace": "PIX.core"
+        },
+        {
+            "file": "core.js",
+            "line": 968,
+            "description": "stops all instances of modules\n\n\tPIX.core.stop_all();",
+            "return": {
+                "description": "",
+                "type": "None"
+            },
+            "itemtype": "method",
+            "name": "stop_all",
+            "access": "private",
+            "tagname": "",
+            "class": "PIX.core.return",
+            "module": "PIX",
+            "namespace": "PIX.core"
+        },
+        {
+            "file": "core.js",
+            "line": 990,
+            "description": "add events to our module, events allow for cross module communication\n\n\tvar evts = {\n\t\t'some-event' : function ( data ) {\n\t\t\t// do something with passed in event data\n\t\t},\n\n\t\t'some-other-event' : function ( data ) {\n\t\t\t// handle a different event\n\t\t}\n\t};\n\n\tPIX.core.register_events( evts, 'my-module' );",
+            "params": [
+                {
+                    "name": "evts",
+                    "description": "the events and other data associated to add to module",
+                    "type": "Object"
+                },
+                {
+                    "name": "moduleID",
+                    "description": "the ID of the module to add them to",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "None"
+            },
+            "itemtype": "method",
+            "name": "register_events",
+            "access": "private",
+            "tagname": "",
+            "class": "PIX.core.return",
+            "module": "PIX",
+            "namespace": "PIX.core"
+        },
+        {
+            "file": "core.js",
+            "line": 1030,
+            "description": "responsible for checking modules this event and then executing it if it is found\n\n\tvar evt = {\n\t\t'some-event' : data\n\t}\n\n\tPIX.core.trigger_event( evt );",
+            "params": [
+                {
+                    "name": "evt",
+                    "description": "the event object with type and data",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "None"
+            },
+            "itemtype": "method",
+            "name": "trigger_event",
+            "access": "private",
+            "tagname": "",
+            "class": "PIX.core.return",
+            "module": "PIX",
+            "namespace": "PIX.core"
+        },
+        {
+            "file": "core.js",
+            "line": 1066,
+            "description": "removes events from a specified module\n\n\tvar evts = [ 'some-event', 'some-other-event' ];\n\n\tPIX.core.remove_events( evts, 'my-module' );",
+            "params": [
+                {
+                    "name": "evts",
+                    "description": "the events to remove from the modules",
+                    "type": "Object"
+                },
+                {
+                    "name": "moduleID",
+                    "description": "the ID of the module to remove the events from",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "None"
+            },
+            "itemtype": "method",
+            "name": "remove_events",
+            "access": "private",
+            "tagname": "",
+            "class": "PIX.core.return",
+            "module": "PIX",
+            "namespace": "PIX.core"
+        },
+        {
+            "file": "modules.js",
+            "line": 2,
+            "description": "All modules for the application are stored in this file\nA module is a small piece of the application that is responsible for a minute\namount of tasks",
+            "class": "PIX.sandbox",
+            "module": "PIX",
+            "namespace": "PIX.core"
+        },
+        {
+            "file": "modules.js",
+            "line": 9,
+            "description": "instagram-search-settings\nresponsible for sending notifications when a search is requested",
+            "params": [
+                {
+                    "name": "sb",
+                    "description": "a copy of the sandbox to interact with the core",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "None"
+            },
+            "class": "PIX.sandbox",
+            "module": "PIX",
+            "namespace": "PIX.core"
+        },
+        {
+            "file": "modules.js",
+            "line": 97,
+            "description": "instagram feed\nresponsible for building the feed when a search is requested",
+            "params": [
+                {
+                    "name": "sb",
+                    "description": "a copy of the sandbox to interact with the core",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "None"
+            },
+            "class": "PIX.sandbox",
+            "module": "PIX",
+            "namespace": "PIX.core"
+        },
+        {
+            "file": "sandbox.js",
+            "line": 15,
+            "description": "Responsible for the creatation of a sandbox instance, it returns an object with the Sanbox API so that the module instance can communicate with the core. This function is only used in the core to create instances in the create_module function for testing and in the start function for starting up an instance of the actual module\n\n\tPIX.sandbox.create( PIX.core, 'my-module' ); // this function is called in the core and should not be called anywhere",
+            "params": [
+                {
+                    "name": "core",
+                    "description": "the PIX.core object, this is how the instance of the sandbox can access the core",
+                    "type": "Object"
+                },
+                {
+                    "name": "moduleID",
+                    "description": "the ID of the module being created, this ID needs to correspond to an ID on a DOM element, this element will be the top level element of the module and all functionality will be restricted to within this parent element",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "the Sandbox instance (API) for the module instance to use",
+                "type": "Object"
+            },
+            "itemtype": "method",
+            "name": "create",
+            "access": "private",
+            "tagname": "",
+            "class": "PIX.sandbox",
+            "module": "PIX",
+            "namespace": "PIX"
+        },
+        {
+            "file": "sandbox.js",
+            "line": 28,
+            "description": "the top level DOM element of the module, this is actually a property of the create method",
+            "itemtype": "property",
+            "name": "CONTAINER",
+            "type": "Object",
+            "access": "private",
+            "tagname": "",
+            "class": "PIX.sandbox",
+            "module": "PIX",
+            "namespace": "PIX"
+        },
+        {
+            "file": "sandbox.js",
+            "line": 44,
+            "description": "Query function for getting elements within our module. This returns a jQuery like object that contains the following properties:\n\n- length: for looping\n- query : function for looking within the returned element for more elements\n\n\n\tvar elems = sb.find( '.my-class' );\n\n\tvar len = elems.length,\n\tvar innerEls = elems.query( '.inner-elems' );\n\n\t// you can loop the returned object to access individual elements\n\tfor ( var i = 0, i < len; i++ ) {\n\t\tdoSomething( elems[ i ] );\n\t}\n\n\t// you can also access directly\n\tvar singleEl = elems[0];",
+            "params": [
+                {
+                    "name": "selector",
+                    "description": "the CSS selector of the element(s) to find",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "a jQuery like object with the requested elements",
+                "type": "Object"
+            },
+            "itemtype": "method",
+            "name": "find",
+            "access": "public",
+            "tagname": "",
+            "class": "PIX.sandbox.return",
+            "module": "PIX",
+            "namespace": "PIX.sandbox"
+        },
+        {
+            "file": "sandbox.js",
+            "line": 74,
+            "description": "Used to add events to elements within our module, such as click, mousenter, etc..\n\n\n\tvar btn = sb.find( '.search-btn' )[0];\n\n\tsb.add_event( btn, 'click', this.search );",
+            "params": [
+                {
+                    "name": "el",
+                    "description": "the DOM element to add the evt to",
+                    "type": "Object"
+                },
+                {
+                    "name": "evt",
+                    "description": "the type of event to add",
+                    "type": "String"
+                },
+                {
+                    "name": "fn",
+                    "description": "the function to execute when event is triggered",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "None"
+            },
+            "itemtype": "method",
+            "name": "add_event",
+            "access": "public",
+            "tagname": "",
+            "class": "PIX.sandbox.return",
+            "module": "PIX",
+            "namespace": "PIX.sandbox"
+        },
+        {
+            "file": "sandbox.js",
+            "line": 94,
+            "description": "Used to remove events from elements within our module\n\n\tsb.add_event( btn, 'click', this.search );",
+            "params": [
+                {
+                    "name": "el",
+                    "description": "the DOM element to remove the event from",
+                    "type": "Object"
+                },
+                {
+                    "name": "evt",
+                    "description": "the event to remove",
+                    "type": "String"
+                },
+                {
+                    "name": "fn",
+                    "description": "the function to remove",
+                    "type": "Function"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "None"
+            },
+            "itemtype": "method",
+            "name": "remove_event",
+            "access": "public",
+            "tagname": "",
+            "class": "PIX.sandbox.return",
+            "module": "PIX",
+            "namespace": "PIX.sandbox"
+        },
+        {
+            "file": "sandbox.js",
+            "line": 111,
+            "description": "The custom method for broadcasting custom events\n\n\tvar evt = {\n\t\ttype : 'search-results-returned',\n\t\tdata : sb.get_value( btn )\n\t}\n\n\tsb.notify( evt );",
+            "params": [
+                {
+                    "name": "evt",
+                    "description": "the event object containing the event name and the data to send with it",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "None"
+            },
+            "itemtype": "method",
+            "name": "notify",
+            "access": "public",
+            "tagname": "",
+            "class": "PIX.sandbox.return",
+            "module": "PIX",
+            "namespace": "PIX.sandbox"
+        },
+        {
+            "file": "sandbox.js",
+            "line": 131,
+            "description": "The custom method for responding to custom events. The object you pass to the listen method is set up with properties with the name of the events to listen to, and the value of those properties is the function to run when the event is fired\n\n\tsb.listen({\n\t\t'search-results-returned' : function ( data ) {\n\n\t\t\t// do something with data passed with event notification\n\t\t\talert( data.message );\n\t\t},\n\t\t'another-event-to-listen-to' : function ( data ) {\n\t\t\t// do something with data from other event\n\t\t}\n\t});",
+            "params": [
+                {
+                    "name": "evts",
+                    "description": "the event(s) to listen for",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "None"
+            },
+            "itemtype": "method",
+            "name": "listen",
+            "access": "public",
+            "tagname": "",
+            "class": "PIX.sandbox.return",
+            "module": "PIX",
+            "namespace": "PIX.sandbox"
+        },
+        {
+            "file": "sandbox.js",
+            "line": 155,
+            "description": "The custom method for removing custom listeners\n\n\tvar evts = [ 'search-results-returned', 'another-event-to=listen-to' ];\n\n\tsb.ignore( evts, 'my-module' );",
+            "params": [
+                {
+                    "name": "evts",
+                    "description": "the events to unregister",
+                    "type": "Array"
+                },
+                {
+                    "name": "moduleID",
+                    "description": "the ID of the module to remove listeners from",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "None"
+            },
+            "itemtype": "method",
+            "name": "ignore",
+            "access": "public",
+            "tagname": "",
+            "class": "PIX.sandbox.return",
+            "module": "PIX",
+            "namespace": "PIX.sandbox"
+        },
+        {
+            "file": "sandbox.js",
+            "line": 173,
+            "description": "Used to create an element including children elements and apply attrs to those elements\n\n\tvar config = {\n\t\tel : 'div',\n\t\tattrs : {\n\t\t\t'id' : 'awesome',\n\t\t\t'class' : 'framework'\n\t\t},\n\t\tchildren : [\n\t\t\t{\n\t\t\t\tel : 'p',\n\t\t\t\ttext : 'This framework is awesome!!',\n\t\t\t\tattrs : {\n\t\t\t\t\t'class' : 'shout-it-out'\n\t\t\t\t}\n\t\t\t}\n\t\t]\n\t};\n\n\tsb.create_element( config );",
+            "params": [
+                {
+                    "name": "config",
+                    "description": "the settings of the element including attrs and children",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "the element that was created",
+                "type": "Object"
+            },
+            "itemtype": "method",
+            "name": "create_element",
+            "access": "public",
+            "tagname": "",
+            "class": "PIX.sandbox.return",
+            "module": "PIX",
+            "namespace": "PIX.sandbox"
+        },
+        {
+            "file": "sandbox.js",
+            "line": 204,
+            "description": "Append elements to an element within the module\n\n\tvar parent = sb.find( '#parent' )[0];\n\tvar el = sb.create_element( config );\n\n\tsb.append( parent, el );",
+            "params": [
+                {
+                    "name": "el",
+                    "description": "the element to append to",
+                    "type": "Object"
+                },
+                {
+                    "name": "elems",
+                    "description": "the elements to append",
+                    "type": "Array, object, string"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "None"
+            },
+            "itemtype": "method",
+            "name": "append",
+            "access": "public",
+            "tagname": "",
+            "class": "PIX.sandbox.return",
+            "module": "PIX",
+            "namespace": "PIX.sandbox"
+        },
+        {
+            "file": "sandbox.js",
+            "line": 223,
+            "description": "Prepend elements to an element within the module\n\n\tvar parent = sb.find( '#parent' )[0];\n\tvar el = sb.create_element( config );\n\n\tsb.prepend( parent, el );",
+            "params": [
+                {
+                    "name": "el",
+                    "description": "the element to prepend to",
+                    "type": "Object"
+                },
+                {
+                    "name": "elems",
+                    "description": "the elements to prepend",
+                    "type": "Array, object, string"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "None"
+            },
+            "itemtype": "method",
+            "name": "prepend",
+            "access": "public",
+            "tagname": "",
+            "class": "PIX.sandbox.return",
+            "module": "PIX",
+            "namespace": "PIX.sandbox"
+        },
+        {
+            "file": "sandbox.js",
+            "line": 242,
+            "description": "Handles the removal of elements from within another element\n\n\tvar parent = sb.find( '#parent' );\n\n\tsb.remove( parent, 'li.inactive' );",
+            "params": [
+                {
+                    "name": "el",
+                    "description": "the element you want to remove elements from",
+                    "type": "Object"
+                },
+                {
+                    "name": "elems",
+                    "description": "a selector for the elements you want to remove",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "None"
+            },
+            "itemtype": "method",
+            "name": "remove",
+            "access": "public",
+            "tagname": "",
+            "class": "PIX.sandbox.return",
+            "module": "PIX",
+            "namespace": "PIX.sandbox"
+        },
+        {
+            "file": "sandbox.js",
+            "line": 260,
+            "description": "Used for all ajax requests\n\n\tvar config = {\n \t\turl : 'http://pixafy.com/get/the/awesome/json',\n \t\ttype : 'GET',\n \t\tdataType : 'JSON',\n \t\tdata : {\n \t\t\tsome : 'data',\n \t\t\tmore : 'data'\n \t\t},\n \t\tdone : function( response ) {\n   \t\t\t// do something with successful results\n\t\t},\n\t\tfail : function( error ) {\n\t\t\t// do something with unseccessful ajax request\n\t\t\talert( error.message );\n\t\t},\n\t\tscope : this   // set the scope for the callback functions\n\t}\n\n\tsb.request( config );",
+            "params": [
+                {
+                    "name": "config",
+                    "description": "the configuration including url, data, and done and fail functions",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "None"
+            },
+            "itemtype": "method",
+            "name": "request",
+            "access": "public",
+            "tagname": "",
+            "class": "PIX.sandbox.return",
+            "module": "PIX",
+            "namespace": "PIX.sandbox"
+        },
+        {
+            "file": "sandbox.js",
+            "line": 293,
+            "description": "This function is responsible for handling all modifications to an element\n\n**Available actions are:**\n\n- 'add-class' - takes a string value\n- 'remove-class' - takes a string value\n- 'styles' - takes an object of values ( like jQuery .css() method )\n- 'attr' - takes an object of values ( like jQuery .attr() method )\n\n\n\t// add-class action\n\tvar el = sb.find( '.element' )[0];\n\tsb.modify( el, 'add-class', 'new-class' );\n\n\n\t// remove-class action\n\tvar el = sb.find( '.element' )[0];\n\tsb.modify( el, 'remove-class', 'new-class' );\n\n\n\t// styles action\n\tvar el = sb.find( '.element' )[0];\n\tvar css = {\n\t\t'color' : '#444',\n\t\t'background' : '#f7f7f7',\n\t\t'padding' : '20px'\n\t};\n\tsb.modify( el, 'styles', css );\n\n\n\t// attr action\n\tvar el = sb.find( '.element' )[0];\n\tvar attrs = {\n\t\t'id' : 'profile-thumbnail',\n\t\t'src' : 'http://someurl.to/the/thumbnail',\n\t\t'width' : '45',\n\t\t'height' : '45',\n\t\t'data-hover' : 'true'\n\t};\n\tsb.modify( el, 'styles', css );",
+            "params": [
+                {
+                    "name": "el",
+                    "description": "the element to modify",
+                    "type": "Object"
+                },
+                {
+                    "name": "action",
+                    "description": "the action to perform",
+                    "type": "String"
+                },
+                {
+                    "name": "value",
+                    "description": "the value(s) to apply, could be a string or object",
+                    "type": "String, object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "None"
+            },
+            "itemtype": "method",
+            "name": "modify",
+            "access": "public",
+            "tagname": "",
+            "class": "PIX.sandbox.return",
+            "module": "PIX",
+            "namespace": "PIX.sandbox"
+        },
+        {
+            "file": "sandbox.js",
+            "line": 360,
+            "description": "Handles all animations of DOM elements\n\n\tvar el = sb.find( '#dialog' );\n\n\tvar props = {\n\t\topacity : 0.6,\n\t\ttop : 30\n\t};\n\n\tsb.animate( el, props, 600, someFunction, this );",
+            "params": [
+                {
+                    "name": "el",
+                    "description": "the element(s) to animate",
+                    "type": "Object"
+                },
+                {
+                    "name": "value",
+                    "description": "the object of css properties to animate",
+                    "type": "Object"
+                },
+                {
+                    "name": "duration",
+                    "description": "the amount of the time that should pass until animation is complete ( in ms )",
+                    "type": "Integer"
+                },
+                {
+                    "name": "callback",
+                    "description": "the callback if any to call when animation is complete",
+                    "type": "Function"
+                },
+                {
+                    "name": "scope",
+                    "description": "the scope of the callback method",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "None"
+            },
+            "itemtype": "method",
+            "name": "animate",
+            "access": "public",
+            "tagname": "",
+            "class": "PIX.sandbox.return",
+            "module": "PIX",
+            "namespace": "PIX.sandbox"
+        },
+        {
+            "file": "sandbox.js",
+            "line": 386,
+            "description": "Gets the value of a form element\n\nvar input = sb.find( 'input.search-box' )[0];\n\nvar val = sb.get_value( input );",
+            "params": [
+                {
+                    "name": "el",
+                    "description": "the element to get the value from",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "the value of the element",
+                "type": "String"
+            },
+            "access": "public",
+            "tagname": "",
+            "class": "PIX.sandbox.return",
+            "module": "PIX",
+            "namespace": "PIX.sandbox"
+        },
+        {
+            "file": "sandbox.js",
+            "line": 402,
+            "description": "Check function for determining if elements match a certain criteria\n\nAvailable checks are:\n\n- selected\n- checked\n- first-child\n- last-child\n- DOM element tags such as 'form', 'li', 'a', etc...\n\n\tvar elems = sb.find( '#city option' );\n\tvar el, selected, value;\n\n\tfor ( el in elems ) {\n\t\tif ( elems.hasOwnProperty( el ) ) {\n\t\t\tif ( sb.is( el, 'selected' ) ) {\n\t\t\t\tselected = el;\n\t\t\t}\n\t\t}\n\t}\n\n\tvalue = sb.get_value( selected );",
+            "params": [
+                {
+                    "name": "el",
+                    "description": "the element to check against",
+                    "type": "Object"
+                },
+                {
+                    "name": "check",
+                    "description": "the property to check for",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "true if an element has the requested property",
+                "type": "Boolean"
+            },
+            "itemtype": "method",
+            "name": "is",
+            "access": "public",
+            "tagname": "",
+            "class": "PIX.sandbox.return",
+            "module": "PIX",
+            "namespace": "PIX.sandbox"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "Missing item type\nAll modules for the application are stored in this file\nA module is a small piece of the application that is responsible for a minute\namount of tasks",
+            "line": " modules.js:2"
+        },
+        {
+            "message": "Missing item type\ninstagram-search-settings\nresponsible for sending notifications when a search is requested",
+            "line": " modules.js:9"
+        },
+        {
+            "message": "Missing item type\ninstagram feed\nresponsible for building the feed when a search is requested",
+            "line": " modules.js:97"
+        },
+        {
+            "message": "Missing item type\nGets the value of a form element\n\nvar input = sb.find( 'input.search-box' )[0];\n\nvar val = sb.get_value( input );",
+            "line": " sandbox.js:386"
+        }
+    ]
+}

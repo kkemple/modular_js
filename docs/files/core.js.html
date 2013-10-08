@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>core.js - PixJS</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="http://www.pixafy.com/wp-content/themes/pixafy/images/pixafy.png" title="PixJS"></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 0.1.0</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/PIX.app.html">PIX.app</a></li>
+            
+                <li><a href="../classes/PIX.app.return.html">PIX.app.return</a></li>
+            
+                <li><a href="../classes/PIX.core.html">PIX.core</a></li>
+            
+                <li><a href="../classes/PIX.core.dom.html">PIX.core.dom</a></li>
+            
+                <li><a href="../classes/PIX.core.dom.form.html">PIX.core.dom.form</a></li>
+            
+                <li><a href="../classes/PIX.core.return.html">PIX.core.return</a></li>
+            
+                <li><a href="../classes/PIX.core.util.html">PIX.core.util</a></li>
+            
+                <li><a href="../classes/PIX.sandbox.html">PIX.sandbox</a></li>
+            
+                <li><a href="../classes/PIX.sandbox.return.html">PIX.sandbox.return</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+                <li><a href="../modules/PIX.html">PIX</a></li>
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: core.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+
+/**
+ * The application namespace.
+ * @module PIX
+ */
+var PIX = {};
+
+/**
+ * ## The Application Framework Core
+ * This layer is the actual core of the framework. It contains all utitity functions such as dom functions, and assistive functions such as array checks, mapping, and any other functions that are used to assist in faster development of JS. It is the only layer that can communicate with the Base layer, and it is only accessed by the Sandbox layer.
+ *
+ * - This layer is responsible for communication with the Base layer
+ * - All business logic is executed here
+ * - Returns an object with the necessary functions for handling modules
+ * &gt;For docs on the return object see the PIX.core.return class docs
+ *
+ * ##### No core method should ever be called from a module, core methods should only be called from the PIX.app object for initialization and the PIX.sandbox object for business logic
+ *
+ *
+ * @class core
+ * @namespace  PIX
+ * @static
+ */
+PIX.core = (function () {
+
+	// module_data will be our storage for all information pertaining to our modules
+	var module_data = {},
+		root = this;
+
+	/**
+	 * The PIX.core.util object handles all logic operations and helps with application-wide common tasks, this would be mapping arrays, making ajax requests, etc... These functions should only be accessed by the sandbox, **never in the module!!**
+	 * @class util
+	 * @namespace PIX.core
+	 */
+	this.util = {
+
+		debug : true,
+
+		/**
+		 * this function handles all custom logging, supports debug mode which logs to console, or non-debug which allows you to send logs to the server
+		 *
+		 * 	PIX.core.util.log( 1, &#x27;LOG : ERROR: &quot;There was an error&quot;&#x27; );
+		 *
+		 *
+		 * @param  {int} severity the level of severity
+		 * @param  {string} message  the message to log
+		 * @return {none}
+		 * @method  log
+		 * @private
+		 */
+		log : function ( severity, message ) {
+
+			if ( this.debug ) {
+
+				console[ ( severity === 1 ) ? &#x27;log&#x27; : ( severity === 2 ) ? &#x27;warn&#x27; : &#x27;error&#x27; ]( message );
+			} else {
+
+				// add code for sending errors to server...need to discuss how to implement
+			}
+		},
+
+		/**
+		 * Converts anything to a string
+		 *
+		 * 	PIX.core.util.to_sting( some_unknown_value );
+		 *
+		 *
+		 * @param  {anything} anything can literally pass in anything
+		 * @return {string}          string version of passed in parameter
+		 * @method  to_string
+		 * @private
+		 */
+		to_string : function ( anything ) {
+			return Object.toString.call( anything );
+		},
+
+		/**
+		 * Trim starting and trailing whitespace from an object
+		 *
+		 * 	var str = &quot;   This is a messy string.   &quot;;
+		 *
+		 * 	str = PIX.core.util.trim( str );
+		 *
+		 * 	// Returns: &quot;This is a messy string.&quot;
+		 *
+		 *
+		 * @param  {String} str the string to trim whitespace from
+		 * @return {String} cleaned up string
+		 * @method  trim
+		 * @private
+		 */
+		trim: function ( str ) {
+			return str.replace( /^\s+/, &#x27;&#x27; ).replace( /\s+$/, &#x27;&#x27; );
+		},
+
+		/**
+		 * Converts dash-seperated words to camelCase, see what I did there =]
+		 * @param  {String} str the string to camel case
+		 * @param  {String} splitter either space or dash
+		 * @return {String} camel cased string
+		 * @method  to_camel_case
+		 * @private
+		 */
+		to_camel_case: function( str, splitter ) {
+			var regex;
+
+			switch ( splitter ) {
+				case &#x27; &#x27;:
+					splitter = &#x27;\\s&#x27;;
+				break;
+				default:
+					splitter = &#x27;-&#x27;;
+				break;
+			}
+
+			regex = new RegExp( splitter + &#x27;([a-z])&#x27;, &#x27;gi&#x27; );
+
+			return str.replace( regex, function( all, letter ) {
+
+				return letter.toUpperCase();
+			});
+		},
+
+		/**
+		 * Checks for the type of whatever is passed in, if it is an object returns true
+		 *
+		 * 	PIX.core.util.is_object( some_unknown_value );
+		 *
+		 *
+		 * @param  {unknown}  anything the var to check for type of object
+		 * @return {Boolean}          true if object, else false
+		 * @method  is_object
+		 * @private
+		 */
+		is_object : function ( anything ) {
+			return ( typeof anything === &#x27;object&#x27; &amp;&amp; ( Object.prototype.toString.call( anything ) === &#x27;[object Object]&#x27; ) ) ? true : false;
+		},
+
+		/**
+		 * Checks for the type of whatever is passed in, if it is an array returns true
+		 *
+		 * 	PIX.core.util.is_array( some_unknown_value );
+		 *
+		 *
+		 * @param  {unknown}  anything the var to check for type of array
+		 * @return {Boolean}          true if array, else false
+		 * @method  is_array
+		 * @private
+		 */
+		is_array : function ( anything ) {
+			return ( typeof anything === &#x27;object&#x27; &amp;&amp; ( Object.prototype.toString.call( anything ) === &#x27;[object Array]&#x27; ) ) ? true : false;
+		},
+
+		/**
+		 * Checks an array for a given value
+		 * @param  {array} arr   the array to search through
+		 * @param  {anything} value the value to look for
+		 * @return {boolean}       true if array contains value, else false
+		 * @method  array_contains
+		 * @private
+		 */
+		array_contains : function ( arr, value ) {
+			var i = 0, len = arr.length;
+
+			if ( typeof arr !== &#x27;object&#x27; &amp;&amp; Object.prototype.toString.call( arr ) !== &#x27;[object Array]&#x27; ) {
+
+				root.util.log( &#x27;ARRAY : CONTAINS : FAILED : &quot;Array argument is of wrong type&quot;&#x27; );
+			}
+
+			for( ; i &lt; len; ) {
+
+				if( arr[ i ] === value ) {
+
+					return true;
+				}
+				++i;
+			}
+			return false;
+		},
+
+		/**
+		 * Performs a function on each member of an array
+		 *
+		 * 	function getText ( item ) {
+		 * 		return item.text;
+		 * 	}
+		 *
+		 * 	var arr = sb.find( &#x27;.some-paragraphs&#x27; );
+		 *
+		 *	var textArr = PIX.core.util.map( arr, getText );
+		 *
+		 *
+		 * @param  {array}   arr the array to map over
+		 * @param  {Function} fn  the callback to execute for each array item
+		 * @param  {object} scope  the scope of the callback function to run
+		 * @return {array}       the results of the mapping if anything is returned in the callback function
+		 * @method map
+		 * @private
+		 */
+		map : function( arr, fn, scope ) {
+			var ret = [], i =0;
+
+			// set the scope for the callback
+			( scope ) ? scope : null;
+
+			if ( root.util.is_array( arr ) &amp;&amp; typeof fn === &#x27;function&#x27; ) {
+
+				while ( arr[ i ] ) {
+
+					ret.push( fn.call( scope, arr[ i ] ) );
+					++i;
+				}
+
+				return ret;
+			} else {
+
+				this.log( 1, &#x27;UTIL : MAP : FAILED : &quot;One or more arguements are of wrong type&quot;&#x27; );
+			}
+		},
+
+		/**
+		 * Handles all ajax requests for the application
+		 *
+		 * 	var config = {
+		 *  		url : &#x27;http://pixafy.com/get/the/awesome/json&#x27;,
+		 *  		type : &#x27;GET&#x27;,
+		 *  		dataType : &#x27;JSON&#x27;,
+		 *  		data : {
+		 *  			some : &#x27;data&#x27;,
+		 *  			more : &#x27;data&#x27;
+		 *  		},
+		 *  		done : function( response ) {
+		 *    			// do something with successful results
+		 * 		},
+		 * 		fail : function( error ) {
+		 * 			// do something with unseccessful ajax request
+		 * 			alert( error.message );
+		 * 		},
+		 * 		scope : this   // set the scope for the callback functions
+		 * 	}
+		 *
+		 * 	PIX.core.util.ajax( config );
+		 *
+		 *
+		 * @param  {object} config the configuration for the ajax request including callbacks
+		 * @return {none}
+		 * @method ajax
+		 * @private
+		 */
+		ajax : function ( config ) {
+			if ( config &amp;&amp; config.url
+					&amp;&amp; config.scope
+					&amp;&amp; config.done
+					&amp;&amp; config.fail ) {
+
+				var request = jQuery.ajax({
+					url : config.url,
+					data : config.data,
+					type : ( config.type ) ? config.type : &#x27;GET&#x27;,
+					dataType : ( config.dataType ) ? config.dataType : &#x27;JSON&#x27;
+				});
+
+				// handle a successful ajax request
+				request.done( function ( response ) {
+					config.done.call( config.scope, response );
+				});
+
+				// handle a failed ajax request
+				request.fail( function ( jqXHR, textStatus ) {
+					var error = {
+						message : textStatus,
+						XHR : jqXHR
+					};
+
+					config.fail.call( config.scope, error );
+				});
+			} else {
+
+				this.log( 1, &#x27;AJAX : FAILED : &quot;Incomplete config for request, see docs for full config example&quot;&#x27; );
+			}
+		},
+
+		/**
+		 * Check to see if browser is specified version of IE or lower
+		 *
+		 * 	if ( PIX.core.util.isIE( 8 ) ) {
+		 * 		// Do something because browser is IE8 or lower
+		 * 	}
+		 *
+		 *
+		 * @param  {Number}  version the highest version of Internet Explorer to test for
+		 * @return {Boolean} true/false
+		 * @method  isIE
+		 * @private
+		 */
+		isIE: function ( version ) {
+
+			function getInternetExplorerVersion () {
+				var rv = -1;   // Return value assumes failure.
+
+				if ( navigator.appName == &#x27;Microsoft Internet Explorer&#x27; ) {
+					var ua = navigator.userAgent;
+					var re  = new RegExp( /MSIE ([0-9]{1,}[\.0-9]{0,})/ );
+
+					if ( re.exec( ua ) !== null ) {
+						rv = parseFloat( RegExp.$1 );
+					}
+				}
+
+				return rv;
+			}
+
+			var ie = false,
+				ver = getInternetExplorerVersion();
+
+			if ( ver &gt; -1 &amp;&amp; ( (ver_or_less &amp;&amp; ver &lt;= ver_or_less) || !ver_or_less ) ) {
+
+				ie = true;
+			}
+
+			return ie;
+		}
+	};
+
+	/**
+	 * The PIX.core.dom object handles all DOM interaction, if it affects the page it should happen here. These functions should only be accessed by the sandbox, **never in the module!!**
+	 * @class dom
+	 * @namespace PIX.core
+	 */
+	this.dom = {
+
+		/**
+		 * The main query function, ties in to base to find elements. This function is the base for all DOM searching
+		 *
+		 * 	var CONTAINER = PIX.dom.query( &#x27;#&#x27; + moduleID );
+		 *
+		 *
+		 * @param  {string} selector the CSS selector of the requested elements
+		 * @param  {object} context  the object to look within for the selected items
+		 * @return {object}          jQuery like object of the DOM elements, just with less power
+		 * @method  query
+		 * @private
+		 */
+		query : function ( selector, context ) {
+			var ret = {}, elems;
+
+			// check to see if context is set, if so find elements within context, else find elems in DOM
+			if ( context &amp;&amp; context.find ) {
+
+				elems = context.find( selector );
+			} else {
+
+				elems = jQuery( selector );
+			}
+
+			// set ret to the DOM elements from the elems jQuery object
+			ret = elems.get();
+
+			// add a length property to the object so it can be easily iterated over
+			ret.length = elems.length;
+
+			// return a query function that allows the module to search within itself for child elements
+			ret.query = function ( sel ) {
+				return root.dom.query( sel, elems );
+			};
+
+			return ret;
+		},
+
+		/**
+		 * Attach events to elements within the module such as &#x27;click&#x27;, &#x27;mouseenter&#x27;, etc...
+		 *
+		 * 	PIX.core.dom.bind( btn, &#x27;click&#x27;, someFunction );
+		 *
+		 *
+		 * @param  {string}   elem the element that we are attaching to
+		 * @param  {string}   evt the event type we want to attach
+		 * @param  {Function} fn the function we want to execute
+		 * @return {none}
+		 * @method bind
+		 * @private
+		 */
+		bind : function ( elem, evt, fn ) {
+			if ( elem &amp;&amp; typeof evt === &#x27;string&#x27; ) {
+
+				jQuery( elem ).on( evt, fn );
+			} else {
+
+				root.util.log( 1, &#x27;Event &quot;&#x27; + evt + &#x27;&quot; : Attachment : FAILED : &quot;Event attachment to element: &#x27; + elem + &#x27; failed.&quot;&#x27; );
+			}
+		},
+
+		/**
+		 * Remove events on elements within the module such as &#x27;click&#x27;, &#x27;mouseenter&#x27;, etc...
+		 *
+		 * 	PIX.core.dom.unbind( btn, &#x27;click&#x27;, someFunction );
+		 *
+		 *
+		 * @param  {string}   elem the element that we are removing the event on
+		 * @param  {string}   evt the event type we want to remove
+		 * @param  {Function} fn the function we want to remove
+		 * @return {none}
+		 * @method unbind
+		 * @private
+		 */
+		unbind : function ( elem, evt, fn ) {
+			if ( elem &amp;&amp; typeof evt === &#x27;string&#x27; ) {
+
+				jQuery( elem ).off( evt, fn );
+			} else {
+
+				root.util.log( 1, &#x27;Event &quot;&#x27; + evt + &#x27;&quot; : Removal : FAILED : &quot;Event removal on element: &#x27; + elem + &#x27; failed.&quot;&#x27; );
+			}
+		},
+
+		/**
+		 * Create a new DOM element and apply any attributes or create any child elements
+		 *
+		 * 	var config = {
+		 * 		el : &#x27;div&#x27;,
+		 * 		attrs : {
+		 * 			&#x27;id&#x27; : &#x27;awesome&#x27;,
+		 * 			&#x27;class&#x27; : &#x27;framework&#x27;
+		 * 		},
+		 * 		children : [
+		 * 			{
+		 * 				el : &#x27;p&#x27;,
+		 * 				text : &#x27;This framework is awesome!!&#x27;,
+		 * 				attrs : {
+		 * 					&#x27;class&#x27; : &#x27;shout-it-out&#x27;
+		 * 				}
+		 * 			}
+		 * 		]
+		 * 	};
+		 *
+		 * 	var el = PIX.core.dom.create( config );
+		 *
+		 *
+		 * @param  {object} config element type to create
+		 * @return {object}    DOM object that was created
+		 * @method  create
+		 * @private
+		 */
+		create : function ( config ) {
+			var i, len, el, child;
+
+
+			// check for any config settings
+			if ( config &amp;&amp; config.el ) {
+
+				// create our top level element
+				el = document.createElement( config.el );
+
+				// check to see if our element has any text associated with it
+				if ( config.text ) {
+					el.appendChild( document.createTextNode( config.text ) );
+				}
+
+				// check for an attr property, also do sanity check
+				if ( config.attrs ) {
+					if ( root.util.is_object( config.attrs ) ) {
+
+						root.dom.apply_attrs( el, config.attrs );
+					} else {
+
+						root.log( 1, &#x27;CREATE : ELEMENT : FAILED : &quot;config.attrs is of wrong type&#x27; );
+					}
+				}
+
+				// check for children property, also do sanity check
+				if ( config.children ) {
+
+					if ( root.util.is_array( config.children ) ) {
+
+						i = 0,
+						len = config.children.length;
+
+						// loop over our children array and build them,
+						// also append them to parent element
+						for ( ; i &lt; len; ) {
+
+							child = root.dom.create( config.children[ i ] );
+
+							if ( config.children[ i ].attrs ) {
+								root.dom.apply_attrs( child, config.children[ i ].attrs );
+							}
+
+							el.appendChild( child );
+
+							++i;
+						}
+					} else {
+
+						root.util.log( 1, &#x27;CREATE : ELEMENT : FAILED : &quot;config.children is of wrong type&quot;&#x27; );
+					}
+				}
+			} else {
+
+				root.util.log( 1, &#x27;CREATE : ELEMENT : FAILED : &quot;Incorrect configuration for element creation&quot;&#x27; );
+				return false;
+			}
+
+			delete config;
+
+			return el;
+		},
+
+		/**
+		 * Add attributes to an element like src, href, etc...
+		 *
+		 * 	var attrs = {
+		 * 		&#x27;src&#x27; : http://pixafy.com/awesome/image.jpg,
+		 * 		&#x27;class&#x27; : &#x27;awesome-img&#x27;
+		 * 	};
+		 *
+		 * 	PIX.core.dom.apply_attrs( img, attrs );
+		 *
+		 *
+		 * @param  {object} el    the element to apply the attrs to
+		 * @param  {object} attrs the attrs to apply
+		 * @return {none}
+		 * @method apply_attrs
+		 * @private
+		 */
+		apply_attrs : function ( el, attrs ) {
+			jQuery( el ).attr( attrs );
+		},
+
+		/**
+		 * Update styles on a DOM element
+		 * @param  {object} el  the element to style
+		 * @param  {object} css the key/value object of css properties
+		 * @return {none}
+		 * @method  style
+		 * @private
+		 */
+		style : function ( el, css ) {
+			var ccProp, prop;
+
+			for ( prop in css ) {
+
+				if ( css.hasOwnProperty( prop ) ) {
+
+					ccProp = root.util.to_camel_case( prop );
+
+					el.style[ ccProp ] = css[ prop ];
+				}
+			}
+		},
+
+		/**
+		 * Add a class to an elment within the module
+		 *
+		 * 	PIX.core.dom.add_class( el, &#x27;class-to-add&#x27; );
+		 *
+		 *
+		 * @param {object} el           the element to add the class to
+		 * @param {string} class_to_add the class to add
+		 * @return {none}
+		 * @method  add_class
+		 * @private
+		 */
+		add_class : function ( el, class_to_add ) {
+			var classes = class_to_add.split( /\s+/ ),
+				className = &#x27; &#x27; + el.className + &#x27; &#x27;,
+				len = classes.length,
+				i = 0;
+
+			for ( ; i &lt; len; ) {
+
+				className = className.replace( &#x27; &#x27; + classes[ i ] + &#x27; &#x27;, &#x27; &#x27; );
+				++i;
+			}
+
+			el.className = root.core.util.trim( className );
+		},
+
+		/**
+		 * Remove a class from an element within the module
+		 *
+		 * 	PIX.core.dom.remove_class( el, &#x27;class-to-remove&#x27; );
+		 *
+		 *
+		 * @param  {object} el              the element to remove the class from
+		 * @param  {string} class_to_remove the class to remove
+		 * @return {none}
+		 * @method  remove_class
+		 * @private
+		 */
+		remove_class : function ( el, class_to_remove ) {
+			var classes = class_to_remove.split( /\s+/ ),
+				className = &#x27; &#x27; + el.className + &#x27; &#x27;,
+				len = classes.length,
+				i = 0;
+
+			for ( ; i &lt; len; ) {
+
+				className = className.replace( &#x27; &#x27; + classes[ i ] + &#x27; &#x27;, &#x27; &#x27; );
+				++i;
+			}
+
+			el.className = self.trim( className );
+		},
+
+		/**
+		 * Append elements within the scope of the module, accepts DOM elements or html
+		 *
+		 * 	var el = PIX.core.dom.create( config );
+		 *
+		 * 	PIX.core.dom.append_elems( el_to_append_to, el );
+		 *
+		 *
+		 * @param  {object} el    the element to append into
+		 * @param  {array} elems the elements to append
+		 * @return {none}
+		 * @method append_elems
+		 * @private
+		 */
+		append_elems : function( el, elems ) {
+			jQuery( el ).append( elems );
+		},
+
+		/**
+		 * Prepend elements within the scope of the module, accepts DOM elements or html
+		 *
+		 * 	var el = PIX.core.dom.create( config );
+		 *
+		 * 	PIX.core.dom.prepend_elems( el_to_append_to, el );
+		 *
+		 *
+		 * @param  {object} el    the element to prepend into
+		 * @param  {array} elems the elements to prepend
+		 * @return {none}
+		 * @method  prepend_elems
+		 * @private
+		 */
+		prepend_elems : function( el, elems ) {
+			jQuery( el ).prepend( elems );
+		},
+
+		/**
+		 * Remove elements from within another element within the module
+		 *
+		 * 	PIX.core.dom.remove_elems( el, &#x27;li.inactive&#x27; );
+		 *
+		 *
+		 * @param  {object} el    the element to remove the elements from
+		 * @param  {string} elems the elements to remove
+		 * @return {none}
+		 * @method  remove_elems
+		 * @private
+		 */
+		remove_elems : function( el, elems ) {
+			jQuery( el ).find( elems ).remove();
+		},
+
+		/**
+		 * Handles running any code that needs to be run only after the document has loaded
+		 * &gt; Used by the PIX.app object
+		 *
+		 * 	PIX.core.dom.onready( function () {
+		 * 		// do some stuff when the document is loaded
+		 * 	});
+		 *
+		 *
+		 * @param  {Function} fn the function(s) to run
+		 * @return {none}
+		 * @method  onready
+		 * @private
+		 */
+		onready : function ( fn ) {
+			jQuery( document ).ready( function () {
+				fn.call();
+			});
+		},
+
+		/**
+		 * Handles running any code that needs to be run only after the window has loaded
+		 * &gt; Used by the PIX.app object
+		 *
+		 * 	PIX.core.dom.onload( function () {
+		 * 		// do some stuff when the window is loaded
+		 * 	});
+		 *
+		 *
+		 * @param  {Function} fn the function(s) to run
+		 * @return {none}
+		 * @method  onload
+		 * @private
+		 */
+		onload : function ( fn ) {
+			jQuery( &#x27;window&#x27; ).on( &#x27;load&#x27;, function () {
+				fn.call();
+			});
+		},
+
+		/**
+		 * Responsible for handling matching checks on DOM elements
+		 *
+		 * 	if ( PIX.core.dom.is( el, &#x27;checked&#x27; ) ) {
+		 * 		var value = PIX.core.dom.form.val( el );
+		 * 	}
+		 *
+		 *
+		 * @param  {object}  el    the element to check against
+		 * @param  {string}  check the property to match
+		 * @return {Boolean}       true if it matches, else false
+		 * @method  is
+		 * @private
+		 */
+		is : function ( el, check ) {
+			switch ( check ) {
+				case &#x27;selected&#x27;:
+				case &#x27;checked&#x27;:
+				case &#x27;first-child&#x27;:
+				case &#x27;last-child&#x27;:
+					check = &#x27;:&#x27; + check;
+				break;
+				default:
+					check = check;
+				break;
+			}
+
+			return jQuery( el ).is( check );
+		},
+
+		/**
+		 * Handles all interaction with forms in the DOM
+		 * @class  form
+		 * @namespace PIX.core.dom
+		 */
+		form : {
+			/**
+			 * Get the value of a form element
+			 *
+			 * 	PIX.core.dom.val( input );
+			 *
+			 *
+			 * @param  {object} el the element to get the value from
+			 * @return {string}    the value of the element
+			 * @method  val
+			 * @private
+			 */
+			val : function ( el ) {
+				return jQuery( el ).val();
+			},
+
+			prop : function ( el, prop ) {
+
+			},
+
+			submit : function ( el ) {
+
+			},
+
+			/**
+			 * Checks to see if a string is a valid email address
+			 *
+			 * 	var email = &quot;some@email.com&quot;;
+			 *
+			 * 	if ( PIX.core.dom.form.is_valid_email( email ) ) {
+			 * 		// do something with valid email
+			 * 	}
+			 *
+			 *
+			 * @param  {str} str
+			 * @return {boolean} true/false
+			 * @method  is_valid_email
+			 * @private
+			 */
+			is_valid_email: function( str ) {
+				var arr = str.match( /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/ );
+				if ( arr !== null ) {
+					return true;
+				} else {
+					return false;
+				}
+			},
+
+			/**
+			 * Checks to see if a string is a valid phone number
+			 * Matches:
+			 *
+			 * - 5558675309
+			 * - 555 867 5309
+			 * - 555-867-5309
+			 * - 555.867.5309
+			 * - (555) 867 5309
+			 * - (555)-867-5309
+			 * - (555).867.5309
+			 *
+			 * 	var phone = &quot;555-867-5309&quot;;
+			 *
+			 * 	if ( PIX.core.dom.form.is_valid_phone_number( phone ) ) {
+			 * 		// do something with valid phone number
+			 * 	}
+			 *
+			 *
+			 * @param  {str} str
+			 * @return {boolean} true/false
+			 * @method  is_valid_phone_number
+			 * @private
+			 */
+			is_valid_phone_number: function( str ) {
+				var arr = str.match( /^\(+?[0-9]{3}\)+?\s[0-9]{3}[\s|\.|-][0-9]{4}|^[0-9]{3}[\s|\.|\-][0-9]{3}[\s|\.|-][0-9]{4}|^[0-9]{10}$/ );
+				if ( arr !== null ) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+		}
+	};
+
+
+	/**
+	 * This is the return object of the core, it is passed in to the sandbox when a module is created. This allows the sandbox to have access to core functions, but prevents the modules from knowing about the core, keeping the code loosely coupled
+	 *
+	 * @type Object
+	 * @class  return
+	 * @namespace PIX.core
+	 */
+	return {
+		util : this.util,
+		dom : this.dom,
+
+		/**
+		 * this is a factory function used to create modules for the application
+		 *
+		 * 	PIX.core.create_module( &#x27;my-module&#x27;, function( sb ) {
+		 *
+		 * 		init : function () {
+		 *
+		 * 			// handle the creation of the module
+		 * 			var btn, input, term;
+		 *
+		 * 			btn = sb.find( &#x27;.my-btn&#x27; )[0]   // get the element from the return object
+		 * 			input = sb.find( &#x27;.my-input&#x27; )[0]   // same for the input
+		 *
+		 * 			sb.add_event( btn, &#x27;click&#x27;, this.doSomething );
+		 * 		},
+		 *
+		 * 		destroy : function () {
+		 *
+		 * 			// handle breaking the module down
+		 * 			sb.remove_event( btn, &#x27;click&#x27;, this.doSomething );
+		 * 			btn = input = term = null;
+		 * 		},
+		 *
+		 * 		doSomething : function () {
+		 *
+		 * 			// all functionality goes in to functions that are isolated to the module
+		 * 			term = sb.val( input );
+		 *
+		 * 			sb.notify({
+		 * 				type : &#x27;search-initiated&#x27;,
+		 * 				data : term
+		 * 			});
+		 * 		}
+		 * 	});
+		 *
+		 *
+		 * @param  {string} moduleID the reference ID of the module
+		 * @param  {function} creator  the function ran to create the instance of the module
+		 * @return {none}
+		 * @method  create_module
+		 * @public
+		 */
+		create_module : function( moduleID, creator ) {
+			var temp;
+
+			// sanity check for correct types on our params
+			if ( typeof moduleID === &#x27;string&#x27; &amp;&amp; typeof creator === &#x27;function&#x27; ) {
+
+				// create a temp instance of our module to ensure it will start correctly when called
+				temp = creator( PIX.sandbox.create( this, moduleID ) );
+				if ( temp.init
+						&amp;&amp; temp.destroy
+						&amp;&amp; typeof temp.init === &#x27;function&#x27;
+						&amp;&amp; typeof temp.destroy === &#x27;function&#x27; ) {
+
+					temp = null;
+					module_data[ moduleID ] = {
+						create: creator,
+						instance: null,
+						evts: null
+					};
+				} else {
+
+					root.util.log( 1, &#x27;Module : &quot;&#x27; + moduleID + &#x27;&quot;&quot; : Registration : FAILED : &quot;Instance has either no init or no destroy method&quot;&#x27; );
+				}
+			} else {
+
+				root.util.log( 1, &#x27;Module : &quot;&#x27; + this.util.to_string( moduleID ) + &#x27;&quot;&quot; : Registration : FAILED : &quot;One or more arguments are of wrong type&quot;&#x27; );
+			}
+		},
+
+		/**
+		 * starts up an instance of a particular module
+		 *
+		 * 	PIX.core.start( &#x27;my-module&#x27; );
+		 *
+		 *
+		 * @param  {string} moduleID the ID of the module to start
+		 * @return {none}
+		 * @method start
+		 * @private
+		 */
+		start : function( moduleID ) {
+			var mod = module_data[ moduleID ];
+
+			if ( mod ) {
+
+				mod.instance = mod.create( PIX.sandbox.create( this, moduleID ) );
+				mod.instance.init();
+			} else {
+
+				root.util.log( 1, &#x27;Module : &quot;&#x27; + moduleID + &#x27;&quot;&quot; : Stop : FAILED : &quot;No module by that ID&quot;&#x27; );
+			}
+		},
+
+		/**
+		 * starts up an instance of all modules
+		 *
+		 * 	PIX.core.start_all();
+		 *
+		 *
+		 * @return {none}
+		 * @method  start_all
+		 * @private
+		 */
+		start_all : function() {
+			var moduleID;
+
+			for ( moduleID in module_data ) {
+
+				if ( module_data.hasOwnProperty( moduleID ) ) {
+
+					this.start( moduleID );
+				}
+			}
+		},
+
+		/**
+		 * stops an instance of a running module
+		 *
+		 * 	PIX.core.stop( &#x27;my-module&#x27; );
+		 *
+		 *
+		 * @param  {string} moduleID the ID of the module to stop
+		 * @return {none}
+		 * @method  stop
+		 * @private
+		 */
+		stop : function( moduleID ) {
+			var mod = module_data[ moduleID ];
+
+			if ( mod.instance ) {
+
+				mod.instance.destroy();
+				mod.instance = null;
+			} else {
+
+				root.util.log( 1, &#x27;Module : &quot;&#x27; + moduleID + &#x27;&quot;&quot; : Stop : FAILED : &quot;No module by that ID or no running module by that ID&quot;&#x27; );
+			}
+		},
+
+		/**
+		 * stops all instances of modules
+		 *
+		 * 	PIX.core.stop_all();
+		 *
+		 *
+		 * @return {none}
+		 * @method  stop_all
+		 * @private
+		 */
+		stop_all : function() {
+			var moduleID;
+
+			for ( var moduleID in module_data ) {
+
+				if ( module_data.hasOwnProperty( moduleID ) ) {
+
+					this.stop( moduleID );
+				}
+			}
+		},
+
+		/**
+		 * add events to our module, events allow for cross module communication
+		 *
+		 * 	var evts = {
+		 * 		&#x27;some-event&#x27; : function ( data ) {
+		 * 			// do something with passed in event data
+		 * 		},
+		 *
+		 * 		&#x27;some-other-event&#x27; : function ( data ) {
+		 * 			// handle a different event
+		 * 		}
+		 * 	};
+		 *
+		 * 	PIX.core.register_events( evts, &#x27;my-module&#x27; );
+		 *
+		 *
+		 * @param  {object} evts     the events and other data associated to add to module
+		 * @param  {string} moduleID the ID of the module to add them to
+		 * @return {none}
+		 * @method  register_events
+		 * @private
+		 */
+		register_events : function( evts, moduleID ) {
+			if ( this.util.is_object( evts ) &amp;&amp;  moduleID ) {
+
+				var mod = module_data[ moduleID ];
+
+				if (  mod ) {
+
+					mod.evts = evts;
+				} else {
+
+					root.util.log( 1, &#x27;Module : &quot;&#x27; + moduleID + &#x27;&quot;&quot; : Register Events : FAILED : &quot;No module by that ID&quot;&#x27; );
+				}
+			} else {
+
+				root.util.log( 1, &#x27;Module : &quot;&#x27; + moduleID + &#x27;&quot;&quot; : Register Events : FAILED : &quot;One or more arguments are of wrong type&#x27; );
+			}
+		},
+
+		/**
+		 * responsible for checking modules this event and then executing it if it is found
+		 *
+		 * 	var evt = {
+		 * 		&#x27;some-event&#x27; : data
+		 * 	}
+		 *
+		 * 	PIX.core.trigger_event( evt );
+		 *
+		 *
+		 * @param  {object} evt the event object with type and data
+		 * @return {none}
+		 * @method  trigger_event
+		 * @private
+		 */
+		trigger_event : function( evt ) {
+			var mod;
+
+			if ( this.util.is_object( evt ) &amp;&amp; evt.type ) {
+
+				for ( mod in module_data ) {
+
+					if ( module_data.hasOwnProperty( mod ) ) {
+
+						mod = module_data[ mod ];
+						if ( mod.evts &amp;&amp; mod.evts[ evt.type ] ) {
+
+							mod.evts[ evt.type ]( evt.data );
+						}
+					}
+				}
+			} else {
+				root.util.log( 1, &#x27;Event : &quot;&#x27; + this.util.to_string( evt.type ) + &#x27;&quot;&quot; : Trigger Event : FAILED : &quot;Event object is of wrong type or there is no event type specified&quot;&#x27; );
+			}
+		},
+
+		/**
+		 * removes events from a specified module
+		 *
+		 * 	var evts = [ &#x27;some-event&#x27;, &#x27;some-other-event&#x27; ];
+		 *
+		 * 	PIX.core.remove_events( evts, &#x27;my-module&#x27; );
+		 *
+		 *
+		 * @param  {object} evts     the events to remove from the modules
+		 * @param  {string} moduleID the ID of the module to remove the events from
+		 * @return {none}
+		 * @method  remove_events
+		 * @private
+		 */
+		remove_events : function( evts, moduleID ) {
+			if ( root.util.is_array( evts ) &amp;&amp;  moduleID ) {
+
+				// check for the existance of the specified module
+				var mod = module_data[ moduleID ];
+
+				if ( mod ) {
+
+					// loop over the events and if they exist on the module, delete them
+					var i = 0, len = evts.length;
+
+					while ( evts[ i ] ) {
+
+						if ( mod.evts[ evts[ i ] ] ) {
+
+							delete mod.evts[ evts[ i ] ];
+						}
+						++i;
+					}
+				} else {
+
+					root.util.log( 1, &#x27;Module : &quot;&#x27; + moduleID + &#x27;&quot;&quot; : Remove Events : FAILED : &quot;No module by that ID&quot;&#x27; );
+				}
+			} else {
+
+				root.util.log( 1, &#x27;Module : &quot;&#x27; + moduleID + &#x27;&quot;&quot; : Remove Events : FAILED : &quot;One or more arguments are of wrong type&quot;&#x27; );
+			}
+		}
+	};
+
+}());
+
+
+
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>
