@@ -7,6 +7,9 @@ ModJS is a javascript framework that utilizes the Module, Factory, and Mediator 
 - **Sandbox**: This layer is responsible for all communication between a Module and the Core. It's only job is to pass along data and send out notifications to the rest of the modules and inform the Core layer of any work that needs to be done.
 - **Module**: This layer is responsible for small sections of the application that are independent pieces of functionality. An example would be Twitter. The tweets feed is one module, search is another module, and posting a tweet is another module. All other modules should be independent of each other and the addition or removal of a module should have no affect on any other part of the application (site).
 
+## Documentation
+Every method in the framework is documented and available with examples and whether or not the function should be used publicly. For documentation simple navigate to path/to/project/docs/ in your browser and the full documentation will be available to you. ( Documentation created using YUIdoc )
+
 ## So what does this framework really accomplish?
 The point of ModJS is force developers into creating reusable fully modular code that will allow a higher reusability rate with JS. It will all be written the same way eliminating consistancy issues and it will be fully adaptable to any development environment making it future-proof in regard to back-end framework changes.
 
