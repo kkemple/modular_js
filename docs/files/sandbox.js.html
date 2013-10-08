@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>sandbox.js - PixJS</title>
+    <title>sandbox.js - MODJS</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -15,7 +15,7 @@
     <div id="hd" class="yui3-g header">
         <div class="yui3-u-3-4">
             
-                <h1><img src="http://www.pixafy.com/wp-content/themes/pixafy/images/pixafy.png" title="PixJS"></h1>
+                <h1><img src="../assets/css/logo.png" title="MODJS"></h1>
             
         </div>
         <div class="yui3-u-1-4 version">
@@ -41,29 +41,29 @@
         <div id="api-tabview-panel">
             <ul id="api-classes" class="apis classes">
             
-                <li><a href="../classes/PIX.app.html">PIX.app</a></li>
+                <li><a href="../classes/MOD.app.html">MOD.app</a></li>
             
-                <li><a href="../classes/PIX.app.return.html">PIX.app.return</a></li>
+                <li><a href="../classes/MOD.app.return.html">MOD.app.return</a></li>
             
-                <li><a href="../classes/PIX.core.html">PIX.core</a></li>
+                <li><a href="../classes/MOD.core.html">MOD.core</a></li>
             
-                <li><a href="../classes/PIX.core.dom.html">PIX.core.dom</a></li>
+                <li><a href="../classes/MOD.core.dom.html">MOD.core.dom</a></li>
             
-                <li><a href="../classes/PIX.core.dom.form.html">PIX.core.dom.form</a></li>
+                <li><a href="../classes/MOD.core.dom.form.html">MOD.core.dom.form</a></li>
             
-                <li><a href="../classes/PIX.core.return.html">PIX.core.return</a></li>
+                <li><a href="../classes/MOD.core.return.html">MOD.core.return</a></li>
             
-                <li><a href="../classes/PIX.core.util.html">PIX.core.util</a></li>
+                <li><a href="../classes/MOD.core.util.html">MOD.core.util</a></li>
             
-                <li><a href="../classes/PIX.sandbox.html">PIX.sandbox</a></li>
+                <li><a href="../classes/MOD.sandbox.html">MOD.sandbox</a></li>
             
-                <li><a href="../classes/PIX.sandbox.return.html">PIX.sandbox.return</a></li>
+                <li><a href="../classes/MOD.sandbox.return.html">MOD.sandbox.return</a></li>
             
             </ul>
 
             <ul id="api-modules" class="apis modules">
             
-                <li><a href="../modules/PIX.html">PIX</a></li>
+                <li><a href="../modules/MOD.html">MOD</a></li>
             
             </ul>
         </div>
@@ -109,21 +109,21 @@
  * - This layer is responsible for interacting with the core layer
  * - This layer acts as an API between the module and core layers
  *
- * **For API documentation see the PIX.sandbox.return class API**
+ * **For API documentation see the MOD.sandbox.return class API**
  *
  * @class  sandbox
- * @namespace PIX
+ * @namespace MOD
  * @static
  */
 
-PIX.sandbox = {
+MOD.sandbox = {
 
 	/**
 	 * Responsible for the creatation of a sandbox instance, it returns an object with the Sanbox API so that the module instance can communicate with the core. This function is only used in the core to create instances in the create_module function for testing and in the start function for starting up an instance of the actual module
 	 *
-	 * 	PIX.sandbox.create( PIX.core, &#x27;my-module&#x27; ); // this function is called in the core and should not be called anywhere
+	 * 	MOD.sandbox.create( MOD.core, &#x27;my-module&#x27; ); // this function is called in the core and should not be called anywhere
 	 *
-	 * @param  {Object} core     the PIX.core object, this is how the instance of the sandbox can access the core
+	 * @param  {Object} core     the MOD.core object, this is how the instance of the sandbox can access the core
 	 * @param  {string} moduleID the ID of the module being created, this ID needs to correspond to an ID on a DOM element, this element will be the top level element of the module and all functionality will be restricted to within this parent element
 	 * @return {Object}          the Sandbox instance (API) for the module instance to use
 	 * @method  create
@@ -143,7 +143,7 @@ PIX.sandbox = {
 		 * ##### All method examples will demonstrate how to use the Sandbox from the modules
 		 *
 		 * @class  return
-		 * @namespace PIX.sandbox
+		 * @namespace MOD.sandbox
 		 */
 		return {
 
@@ -367,7 +367,7 @@ PIX.sandbox = {
 			 * Used for all ajax requests
 			 *
 			 * 	var config = {
-			 *  		url : &#x27;http://pixafy.com/get/the/awesome/json&#x27;,
+			 *  		url : &#x27;http://MODafy.com/get/the/awesome/json&#x27;,
 			 *  		type : &#x27;GET&#x27;,
 			 *  		dataType : &#x27;JSON&#x27;,
 			 *  		data : {

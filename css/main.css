@@ -222,8 +222,8 @@ body {
 }
 
 @media print,
-       (-o-min-device-pixel-ratio: 5/4),
-       (-webkit-min-device-pixel-ratio: 1.25),
+       (-o-min-device-MODel-ratio: 5/4),
+       (-webkit-min-device-MODel-ratio: 1.25),
        (min-resolution: 120dpi) {
 
 }

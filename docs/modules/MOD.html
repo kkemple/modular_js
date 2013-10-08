@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>app.js - MODJS</title>
+    <title>MOD - MODJS</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -100,98 +100,98 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: app.js</h1>
+                        <h1>MOD Module</h1>
+<div class="box clearfix meta">
+    
 
-<div class="file">
-    <pre class="code prettyprint linenums">
-/**
- * ## The Application Engine
- * - This layer is responsible for handling starting all the modules according to the application configuration set in {root}/MODafy/MODjs.json
- * - The return object of this class has only one method, the run method which you call to start the app
- * - **This layer depends on the MODJS_CONFIG global application configuration object**
- *
- * **For app return object documentation see the MOD.app.return class API**
- *
- * @class  app
- * @namespace MOD
- * @static
- */
+    
 
-MOD.app = (function() {
+    
+        <div class="foundat">
+            Defined in: <a href="../files/sandbox.js.html#l35"><code>sandbox.js:35</code></a>
+        </div>
+    
 
-	/**
-	 * Responsible for starting all modules in the config assigned to start on document ready state
-	 * @param  {array} modules the list of modules to start
-	 * @return {none}
-	 * @method  start_on_ready
-	 * @private
-	 */
-	start_on_ready = function ( modules ) {
-		var len = modules.length, i = 0;
-
-		for ( ; i &lt; len; ) {
-			MOD.core.start( modules[ i ] );
-			++i;
-		}
-	},
-
-	/**
-	 * Responsible for starting all modules in the config assigned to start on window load state
-	 * @param  {array} modules the list of modules to start
-	 * @return {none}
-	 * @method  start_on_load
-	 * @private
-	 */
-	start_on_load = function ( modules ) {
-		var len = modules.length, i = 0;
-
-		for ( ; i &lt; len; ) {
-			MOD.core.start( modules[ i ] );
-			++i;
-		}
-	}
-
-	/**
-	 * This is the return object of the app object, it contains only the run method used to start the application
-	 *
-	 * @class  return
-	 * @namespace MOD.app
-	 */
-	return {
-
-		/**
-		 * The method responsible for starting the application, makes an ajax call to the MODjs.json config file and processes the response
-		 *
-		 * 	MOD.app.run();
-		 *
-		 *
-		 * @return {none}
-		 * @method  run
-		 * @public
-		 */
-		run : function () {
-
-			// set out debug status
-			MOD.core.util.debug = ( MOD.config.debug ) ? MOD.config.debug : true;
-
-			if ( MOD.config.onready ) {
-				MOD.core.dom.onready(function () {
-					start_on_ready( MOD.config.onready.modules );
-				});
-			}
-
-			if ( MOD.config.onload ) {
-				MOD.core.dom.onload(function () {
-					start_on_load( MOD.config.onload.modules );
-				});
-			}
-		}
-	}
+    
+</div>
 
 
-}());
 
-    </pre>
+<div class="box intro">
+    <p>The application namespace.</p>
+
+</div>
+
+
+
+<div class="yui3-g">
+    <div class="yui3-u-1-2">
+        
+            <p>This module provides the following classes:</p>
+
+            <ul class="module-classes">
+            
+                <li class="module-class">
+                    <a href="../classes/MOD.app.html">
+                        MOD.app
+                    </a>
+                </li>
+            
+                <li class="module-class">
+                    <a href="../classes/MOD.app.return.html">
+                        MOD.app.return
+                    </a>
+                </li>
+            
+                <li class="module-class">
+                    <a href="../classes/MOD.core.html">
+                        MOD.core
+                    </a>
+                </li>
+            
+                <li class="module-class">
+                    <a href="../classes/MOD.core.dom.html">
+                        MOD.core.dom
+                    </a>
+                </li>
+            
+                <li class="module-class">
+                    <a href="../classes/MOD.core.dom.form.html">
+                        MOD.core.dom.form
+                    </a>
+                </li>
+            
+                <li class="module-class">
+                    <a href="../classes/MOD.core.return.html">
+                        MOD.core.return
+                    </a>
+                </li>
+            
+                <li class="module-class">
+                    <a href="../classes/MOD.core.util.html">
+                        MOD.core.util
+                    </a>
+                </li>
+            
+                <li class="module-class">
+                    <a href="../classes/MOD.sandbox.html">
+                        MOD.sandbox
+                    </a>
+                </li>
+            
+                <li class="module-class">
+                    <a href="../classes/MOD.sandbox.return.html">
+                        MOD.sandbox.return
+                    </a>
+                </li>
+            
+            </ul>
+        
+    </div>
+
+    <div class="yui3-u-1-2">
+        
+    </div>
 </div>
 
                     </div>

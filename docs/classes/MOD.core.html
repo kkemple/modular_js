@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>app.js - MODJS</title>
+    <title>MOD.core - MODJS</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -100,98 +100,77 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: app.js</h1>
+                        <h1>MOD.core Class</h1>
+<div class="box meta">
+    
 
-<div class="file">
-    <pre class="code prettyprint linenums">
-/**
- * ## The Application Engine
- * - This layer is responsible for handling starting all the modules according to the application configuration set in {root}/MODafy/MODjs.json
- * - The return object of this class has only one method, the run method which you call to start the app
- * - **This layer depends on the MODJS_CONFIG global application configuration object**
- *
- * **For app return object documentation see the MOD.app.return class API**
- *
- * @class  app
- * @namespace MOD
- * @static
- */
+    
 
-MOD.app = (function() {
+    
+        <div class="foundat">
+            Defined in: <a href="../files/core.js.html#l8"><code>core.js:8</code></a>
+        </div>
+    
 
-	/**
-	 * Responsible for starting all modules in the config assigned to start on document ready state
-	 * @param  {array} modules the list of modules to start
-	 * @return {none}
-	 * @method  start_on_ready
-	 * @private
-	 */
-	start_on_ready = function ( modules ) {
-		var len = modules.length, i = 0;
+    
+        
+            Module: <a href="../modules/MOD.html">MOD</a>
+        
+    
 
-		for ( ; i &lt; len; ) {
-			MOD.core.start( modules[ i ] );
-			++i;
-		}
-	},
-
-	/**
-	 * Responsible for starting all modules in the config assigned to start on window load state
-	 * @param  {array} modules the list of modules to start
-	 * @return {none}
-	 * @method  start_on_load
-	 * @private
-	 */
-	start_on_load = function ( modules ) {
-		var len = modules.length, i = 0;
-
-		for ( ; i &lt; len; ) {
-			MOD.core.start( modules[ i ] );
-			++i;
-		}
-	}
-
-	/**
-	 * This is the return object of the app object, it contains only the run method used to start the application
-	 *
-	 * @class  return
-	 * @namespace MOD.app
-	 */
-	return {
-
-		/**
-		 * The method responsible for starting the application, makes an ajax call to the MODjs.json config file and processes the response
-		 *
-		 * 	MOD.app.run();
-		 *
-		 *
-		 * @return {none}
-		 * @method  run
-		 * @public
-		 */
-		run : function () {
-
-			// set out debug status
-			MOD.core.util.debug = ( MOD.config.debug ) ? MOD.config.debug : true;
-
-			if ( MOD.config.onready ) {
-				MOD.core.dom.onready(function () {
-					start_on_ready( MOD.config.onready.modules );
-				});
-			}
-
-			if ( MOD.config.onload ) {
-				MOD.core.dom.onload(function () {
-					start_on_load( MOD.config.onload.modules );
-				});
-			}
-		}
-	}
+    
+</div>
 
 
-}());
 
-    </pre>
+<div class="box intro">
+    <h2>The Application Framework Core</h2>
+<p>This layer is the actual core of the framework. It contains all utitity functions such as dom functions, and assistive functions such as array checks, mapping, and any other functions that are used to assist in faster development of JS. It is the only layer that can communicate with the Base layer, and it is only accessed by the Sandbox layer.</p>
+<ul>
+<li>This layer is responsible for communication with the Base layer</li>
+<li>All business logic is executed here</li>
+<li>Returns an object with the necessary functions for handling modules<blockquote>
+<p>For docs on the return object see the MOD.core.return class docs</p>
+</blockquote>
+</li>
+</ul>
+<h5>No core method should ever be called from a module, core methods should only be called from the MOD.app object for initialization and the MOD.sandbox object for business logic</h5>
+
+</div>
+
+
+
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
+
+        
+        
+        
+        
+    </ul>
+
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
+
+            
+
+            
+
+            
+
+            
+        </div>
+
+        
+
+        
+
+        
+
+        
+    </div>
 </div>
 
                     </div>

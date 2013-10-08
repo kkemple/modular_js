@@ -1,42 +1,42 @@
 {
     "project": {
-        "name": "PixJS",
+        "name": "MODJS",
         "description": "A LSA-JS Framework",
         "version": "0.1.0",
-        "url": "https://git.herculo.com/pix-js-framework",
-        "logo": "http://www.pixafy.com/wp-content/themes/pixafy/images/pixafy.png"
+        "url": "https://github.com/kkemple/modular_js",
+        "logo": ""
     },
     "files": {
         "app.js": {
             "name": "app.js",
             "modules": {},
             "classes": {
-                "PIX.app": 1,
-                "PIX.app.return": 1
+                "MOD.app": 1,
+                "MOD.app.return": 1
             },
             "fors": {},
             "namespaces": {
-                "PIX": 1,
-                "PIX.app": 1
+                "MOD": 1,
+                "MOD.app": 1
             }
         },
         "core.js": {
             "name": "core.js",
             "modules": {
-                "PIX": 1
+                "MOD": 1
             },
             "classes": {
-                "PIX.core": 1,
-                "PIX.core.util": 1,
-                "PIX.core.dom": 1,
-                "PIX.core.dom.form": 1,
-                "PIX.core.return": 1
+                "MOD.core": 1,
+                "MOD.core.util": 1,
+                "MOD.core.dom": 1,
+                "MOD.core.dom.form": 1,
+                "MOD.core.return": 1
             },
             "fors": {},
             "namespaces": {
-                "PIX": 1,
-                "PIX.core": 1,
-                "PIX.core.dom": 1
+                "MOD": 1,
+                "MOD.core": 1,
+                "MOD.core.dom": 1
             }
         },
         "modules.js": {
@@ -50,37 +50,37 @@
             "name": "sandbox.js",
             "modules": {},
             "classes": {
-                "PIX.sandbox": 1,
-                "PIX.sandbox.return": 1
+                "MOD.sandbox": 1,
+                "MOD.sandbox.return": 1
             },
             "fors": {},
             "namespaces": {
-                "PIX": 1,
-                "PIX.sandbox": 1
+                "MOD": 1,
+                "MOD.sandbox": 1
             }
         }
     },
     "modules": {
-        "PIX": {
-            "name": "PIX",
+        "MOD": {
+            "name": "MOD",
             "submodules": {},
             "classes": {
-                "PIX.app": 1,
-                "PIX.app.return": 1,
-                "PIX.core": 1,
-                "PIX.core.util": 1,
-                "PIX.core.dom": 1,
-                "PIX.core.dom.form": 1,
-                "PIX.core.return": 1,
-                "PIX.sandbox": 1,
-                "PIX.sandbox.return": 1
+                "MOD.app": 1,
+                "MOD.app.return": 1,
+                "MOD.core": 1,
+                "MOD.core.util": 1,
+                "MOD.core.dom": 1,
+                "MOD.core.dom.form": 1,
+                "MOD.core.return": 1,
+                "MOD.sandbox": 1,
+                "MOD.sandbox.return": 1
             },
             "fors": {},
             "namespaces": {
-                "PIX": 1,
-                "PIX.core": 1,
-                "PIX.core.dom": 1,
-                "PIX.sandbox": 1
+                "MOD": 1,
+                "MOD.core": 1,
+                "MOD.core.dom": 1,
+                "MOD.sandbox": 1
             },
             "tag": "module",
             "file": "sandbox.js",
@@ -89,132 +89,132 @@
         }
     },
     "classes": {
-        "PIX.app": {
-            "name": "PIX.app",
-            "shortname": "PIX.app",
+        "MOD.app": {
+            "name": "MOD.app",
+            "shortname": "MOD.app",
             "classitems": [],
             "plugins": [],
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "PIX",
-            "namespace": "PIX",
+            "module": "MOD",
+            "namespace": "MOD",
             "file": "app.js",
             "line": 1,
-            "description": "## The Application Engine\n- This layer is responsible for handling starting all the modules according to the application configuration set in {root}/pixafy/pixjs.json\n- The return object of this class has only one method, the run method which you call to start the app\n- **This layer depends on the PIXJS_CONFIG global application configuration object**\n\n**For app return object documentation see the PIX.app.return class API**",
+            "description": "## The Application Engine\n- This layer is responsible for handling starting all the modules according to the application configuration set in {root}/MODafy/MODjs.json\n- The return object of this class has only one method, the run method which you call to start the app\n- **This layer depends on the MODJS_CONFIG global application configuration object**\n\n**For app return object documentation see the MOD.app.return class API**",
             "static": 1
         },
-        "PIX.app.return": {
-            "name": "PIX.app.return",
-            "shortname": "PIX.app.return",
+        "MOD.app.return": {
+            "name": "MOD.app.return",
+            "shortname": "MOD.app.return",
             "classitems": [],
             "plugins": [],
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "PIX",
-            "namespace": "PIX.app",
+            "module": "MOD",
+            "namespace": "MOD.app",
             "file": "app.js",
             "line": 48,
             "description": "This is the return object of the app object, it contains only the run method used to start the application"
         },
-        "PIX.core": {
-            "name": "PIX.core",
-            "shortname": "PIX.core",
+        "MOD.core": {
+            "name": "MOD.core",
+            "shortname": "MOD.core",
             "classitems": [],
             "plugins": [],
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "PIX",
-            "namespace": "PIX",
+            "module": "MOD",
+            "namespace": "MOD",
             "file": "core.js",
             "line": 8,
-            "description": "## The Application Framework Core\nThis layer is the actual core of the framework. It contains all utitity functions such as dom functions, and assistive functions such as array checks, mapping, and any other functions that are used to assist in faster development of JS. It is the only layer that can communicate with the Base layer, and it is only accessed by the Sandbox layer.\n\n- This layer is responsible for communication with the Base layer\n- All business logic is executed here\n- Returns an object with the necessary functions for handling modules\n>For docs on the return object see the PIX.core.return class docs\n\n##### No core method should ever be called from a module, core methods should only be called from the PIX.app object for initialization and the PIX.sandbox object for business logic",
+            "description": "## The Application Framework Core\nThis layer is the actual core of the framework. It contains all utitity functions such as dom functions, and assistive functions such as array checks, mapping, and any other functions that are used to assist in faster development of JS. It is the only layer that can communicate with the Base layer, and it is only accessed by the Sandbox layer.\n\n- This layer is responsible for communication with the Base layer\n- All business logic is executed here\n- Returns an object with the necessary functions for handling modules\n>For docs on the return object see the MOD.core.return class docs\n\n##### No core method should ever be called from a module, core methods should only be called from the MOD.app object for initialization and the MOD.sandbox object for business logic",
             "static": 1
         },
-        "PIX.core.util": {
-            "name": "PIX.core.util",
-            "shortname": "PIX.core.util",
+        "MOD.core.util": {
+            "name": "MOD.core.util",
+            "shortname": "MOD.core.util",
             "classitems": [],
             "plugins": [],
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "PIX",
-            "namespace": "PIX.core",
+            "module": "MOD",
+            "namespace": "MOD.core",
             "file": "core.js",
             "line": 30,
-            "description": "The PIX.core.util object handles all logic operations and helps with application-wide common tasks, this would be mapping arrays, making ajax requests, etc... These functions should only be accessed by the sandbox, **never in the module!!**"
+            "description": "The MOD.core.util object handles all logic operations and helps with application-wide common tasks, this would be mapping arrays, making ajax requests, etc... These functions should only be accessed by the sandbox, **never in the module!!**"
         },
-        "PIX.core.dom": {
-            "name": "PIX.core.dom",
-            "shortname": "PIX.core.dom",
+        "MOD.core.dom": {
+            "name": "MOD.core.dom",
+            "shortname": "MOD.core.dom",
             "classitems": [],
             "plugins": [],
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "PIX",
-            "namespace": "PIX.core",
+            "module": "MOD",
+            "namespace": "MOD.core",
             "file": "core.js",
             "line": 325,
-            "description": "The PIX.core.dom object handles all DOM interaction, if it affects the page it should happen here. These functions should only be accessed by the sandbox, **never in the module!!**"
+            "description": "The MOD.core.dom object handles all DOM interaction, if it affects the page it should happen here. These functions should only be accessed by the sandbox, **never in the module!!**"
         },
-        "PIX.core.dom.form": {
-            "name": "PIX.core.dom.form",
-            "shortname": "PIX.core.dom.form",
+        "MOD.core.dom.form": {
+            "name": "MOD.core.dom.form",
+            "shortname": "MOD.core.dom.form",
             "classitems": [],
             "plugins": [],
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "PIX",
-            "namespace": "PIX.core.dom",
+            "module": "MOD",
+            "namespace": "MOD.core.dom",
             "file": "core.js",
             "line": 727,
             "description": "Handles all interaction with forms in the DOM"
         },
-        "PIX.core.return": {
-            "name": "PIX.core.return",
-            "shortname": "PIX.core.return",
+        "MOD.core.return": {
+            "name": "MOD.core.return",
+            "shortname": "MOD.core.return",
             "classitems": [],
             "plugins": [],
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "PIX",
-            "namespace": "PIX.core",
+            "module": "MOD",
+            "namespace": "MOD.core",
             "file": "core.js",
             "line": 816,
             "description": "This is the return object of the core, it is passed in to the sandbox when a module is created. This allows the sandbox to have access to core functions, but prevents the modules from knowing about the core, keeping the code loosely coupled",
             "type": "Object"
         },
-        "PIX.sandbox": {
-            "name": "PIX.sandbox",
-            "shortname": "PIX.sandbox",
+        "MOD.sandbox": {
+            "name": "MOD.sandbox",
+            "shortname": "MOD.sandbox",
             "classitems": [],
             "plugins": [],
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "PIX",
-            "namespace": "PIX",
+            "module": "MOD",
+            "namespace": "MOD",
             "file": "sandbox.js",
             "line": 1,
-            "description": "## The Application Framework API\n- This layer is responsible for interacting with the core layer\n- This layer acts as an API between the module and core layers\n\n**For API documentation see the PIX.sandbox.return class API**",
+            "description": "## The Application Framework API\n- This layer is responsible for interacting with the core layer\n- This layer acts as an API between the module and core layers\n\n**For API documentation see the MOD.sandbox.return class API**",
             "static": 1
         },
-        "PIX.sandbox.return": {
-            "name": "PIX.sandbox.return",
-            "shortname": "PIX.sandbox.return",
+        "MOD.sandbox.return": {
+            "name": "MOD.sandbox.return",
+            "shortname": "MOD.sandbox.return",
             "classitems": [],
             "plugins": [],
             "extensions": [],
             "plugin_for": [],
             "extension_for": [],
-            "module": "PIX",
-            "namespace": "PIX.sandbox",
+            "module": "MOD",
+            "namespace": "MOD.sandbox",
             "file": "sandbox.js",
             "line": 35,
             "description": "Our return object containing all the functionality a module will need to communicate with core and other modules.\n##### All method examples will demonstrate how to use the Sandbox from the modules"
@@ -240,8 +240,8 @@
             "name": "start_on_ready",
             "access": "private",
             "tagname": "",
-            "class": "PIX.app",
-            "namespace": "PIX"
+            "class": "MOD.app",
+            "namespace": "MOD"
         },
         {
             "file": "app.js",
@@ -262,13 +262,13 @@
             "name": "start_on_load",
             "access": "private",
             "tagname": "",
-            "class": "PIX.app",
-            "namespace": "PIX"
+            "class": "MOD.app",
+            "namespace": "MOD"
         },
         {
             "file": "app.js",
             "line": 56,
-            "description": "The method responsible for starting the application, makes an ajax call to the pixjs.json config file and processes the response\n\n\tPIX.app.run();",
+            "description": "The method responsible for starting the application, makes an ajax call to the MODjs.json config file and processes the response\n\n\tMOD.app.run();",
             "return": {
                 "description": "",
                 "type": "None"
@@ -277,13 +277,13 @@
             "name": "run",
             "access": "public",
             "tagname": "",
-            "class": "PIX.app.return",
-            "namespace": "PIX.app"
+            "class": "MOD.app.return",
+            "namespace": "MOD.app"
         },
         {
             "file": "core.js",
             "line": 39,
-            "description": "this function handles all custom logging, supports debug mode which logs to console, or non-debug which allows you to send logs to the server\n\n\tPIX.core.util.log( 1, 'LOG : ERROR: \"There was an error\"' );",
+            "description": "this function handles all custom logging, supports debug mode which logs to console, or non-debug which allows you to send logs to the server\n\n\tMOD.core.util.log( 1, 'LOG : ERROR: \"There was an error\"' );",
             "params": [
                 {
                     "name": "severity",
@@ -304,14 +304,14 @@
             "name": "log",
             "access": "private",
             "tagname": "",
-            "class": "PIX.core.util",
-            "module": "PIX",
-            "namespace": "PIX.core"
+            "class": "MOD.core.util",
+            "module": "MOD",
+            "namespace": "MOD.core"
         },
         {
             "file": "core.js",
             "line": 62,
-            "description": "Converts anything to a string\n\n\tPIX.core.util.to_sting( some_unknown_value );",
+            "description": "Converts anything to a string\n\n\tMOD.core.util.to_sting( some_unknown_value );",
             "params": [
                 {
                     "name": "anything",
@@ -327,14 +327,14 @@
             "name": "to_string",
             "access": "private",
             "tagname": "",
-            "class": "PIX.core.util",
-            "module": "PIX",
-            "namespace": "PIX.core"
+            "class": "MOD.core.util",
+            "module": "MOD",
+            "namespace": "MOD.core"
         },
         {
             "file": "core.js",
             "line": 77,
-            "description": "Trim starting and trailing whitespace from an object\n\n\tvar str = \"   This is a messy string.   \";\n\n\tstr = PIX.core.util.trim( str );\n\n\t// Returns: \"This is a messy string.\"",
+            "description": "Trim starting and trailing whitespace from an object\n\n\tvar str = \"   This is a messy string.   \";\n\n\tstr = MOD.core.util.trim( str );\n\n\t// Returns: \"This is a messy string.\"",
             "params": [
                 {
                     "name": "str",
@@ -350,9 +350,9 @@
             "name": "trim",
             "access": "private",
             "tagname": "",
-            "class": "PIX.core.util",
-            "module": "PIX",
-            "namespace": "PIX.core"
+            "class": "MOD.core.util",
+            "module": "MOD",
+            "namespace": "MOD.core"
         },
         {
             "file": "core.js",
@@ -378,14 +378,14 @@
             "name": "to_camel_case",
             "access": "private",
             "tagname": "",
-            "class": "PIX.core.util",
-            "module": "PIX",
-            "namespace": "PIX.core"
+            "class": "MOD.core.util",
+            "module": "MOD",
+            "namespace": "MOD.core"
         },
         {
             "file": "core.js",
             "line": 124,
-            "description": "Checks for the type of whatever is passed in, if it is an object returns true\n\n\tPIX.core.util.is_object( some_unknown_value );",
+            "description": "Checks for the type of whatever is passed in, if it is an object returns true\n\n\tMOD.core.util.is_object( some_unknown_value );",
             "params": [
                 {
                     "name": "anything",
@@ -401,14 +401,14 @@
             "name": "is_object",
             "access": "private",
             "tagname": "",
-            "class": "PIX.core.util",
-            "module": "PIX",
-            "namespace": "PIX.core"
+            "class": "MOD.core.util",
+            "module": "MOD",
+            "namespace": "MOD.core"
         },
         {
             "file": "core.js",
             "line": 139,
-            "description": "Checks for the type of whatever is passed in, if it is an array returns true\n\n\tPIX.core.util.is_array( some_unknown_value );",
+            "description": "Checks for the type of whatever is passed in, if it is an array returns true\n\n\tMOD.core.util.is_array( some_unknown_value );",
             "params": [
                 {
                     "name": "anything",
@@ -424,9 +424,9 @@
             "name": "is_array",
             "access": "private",
             "tagname": "",
-            "class": "PIX.core.util",
-            "module": "PIX",
-            "namespace": "PIX.core"
+            "class": "MOD.core.util",
+            "module": "MOD",
+            "namespace": "MOD.core"
         },
         {
             "file": "core.js",
@@ -452,14 +452,14 @@
             "name": "array_contains",
             "access": "private",
             "tagname": "",
-            "class": "PIX.core.util",
-            "module": "PIX",
-            "namespace": "PIX.core"
+            "class": "MOD.core.util",
+            "module": "MOD",
+            "namespace": "MOD.core"
         },
         {
             "file": "core.js",
             "line": 181,
-            "description": "Performs a function on each member of an array\n\n\tfunction getText ( item ) {\n\t\treturn item.text;\n\t}\n\n\tvar arr = sb.find( '.some-paragraphs' );\n\n\tvar textArr = PIX.core.util.map( arr, getText );",
+            "description": "Performs a function on each member of an array\n\n\tfunction getText ( item ) {\n\t\treturn item.text;\n\t}\n\n\tvar arr = sb.find( '.some-paragraphs' );\n\n\tvar textArr = MOD.core.util.map( arr, getText );",
             "params": [
                 {
                     "name": "arr",
@@ -485,14 +485,14 @@
             "name": "map",
             "access": "private",
             "tagname": "",
-            "class": "PIX.core.util",
-            "module": "PIX",
-            "namespace": "PIX.core"
+            "class": "MOD.core.util",
+            "module": "MOD",
+            "namespace": "MOD.core"
         },
         {
             "file": "core.js",
             "line": 221,
-            "description": "Handles all ajax requests for the application\n\n\tvar config = {\n \t\turl : 'http://pixafy.com/get/the/awesome/json',\n \t\ttype : 'GET',\n \t\tdataType : 'JSON',\n \t\tdata : {\n \t\t\tsome : 'data',\n \t\t\tmore : 'data'\n \t\t},\n \t\tdone : function( response ) {\n   \t\t\t// do something with successful results\n\t\t},\n\t\tfail : function( error ) {\n\t\t\t// do something with unseccessful ajax request\n\t\t\talert( error.message );\n\t\t},\n\t\tscope : this   // set the scope for the callback functions\n\t}\n\n\tPIX.core.util.ajax( config );",
+            "description": "Handles all ajax requests for the application\n\n\tvar config = {\n \t\turl : 'http://MODafy.com/get/the/awesome/json',\n \t\ttype : 'GET',\n \t\tdataType : 'JSON',\n \t\tdata : {\n \t\t\tsome : 'data',\n \t\t\tmore : 'data'\n \t\t},\n \t\tdone : function( response ) {\n   \t\t\t// do something with successful results\n\t\t},\n\t\tfail : function( error ) {\n\t\t\t// do something with unseccessful ajax request\n\t\t\talert( error.message );\n\t\t},\n\t\tscope : this   // set the scope for the callback functions\n\t}\n\n\tMOD.core.util.ajax( config );",
             "params": [
                 {
                     "name": "config",
@@ -508,14 +508,14 @@
             "name": "ajax",
             "access": "private",
             "tagname": "",
-            "class": "PIX.core.util",
-            "module": "PIX",
-            "namespace": "PIX.core"
+            "class": "MOD.core.util",
+            "module": "MOD",
+            "namespace": "MOD.core"
         },
         {
             "file": "core.js",
             "line": 283,
-            "description": "Check to see if browser is specified version of IE or lower\n\n\tif ( PIX.core.util.isIE( 8 ) ) {\n\t\t// Do something because browser is IE8 or lower\n\t}",
+            "description": "Check to see if browser is specified version of IE or lower\n\n\tif ( MOD.core.util.isIE( 8 ) ) {\n\t\t// Do something because browser is IE8 or lower\n\t}",
             "params": [
                 {
                     "name": "version",
@@ -531,14 +531,14 @@
             "name": "isIE",
             "access": "private",
             "tagname": "",
-            "class": "PIX.core.util",
-            "module": "PIX",
-            "namespace": "PIX.core"
+            "class": "MOD.core.util",
+            "module": "MOD",
+            "namespace": "MOD.core"
         },
         {
             "file": "core.js",
             "line": 332,
-            "description": "The main query function, ties in to base to find elements. This function is the base for all DOM searching\n\n\tvar CONTAINER = PIX.dom.query( '#' + moduleID );",
+            "description": "The main query function, ties in to base to find elements. This function is the base for all DOM searching\n\n\tvar CONTAINER = MOD.dom.query( '#' + moduleID );",
             "params": [
                 {
                     "name": "selector",
@@ -559,14 +559,14 @@
             "name": "query",
             "access": "private",
             "tagname": "",
-            "class": "PIX.core.dom",
-            "module": "PIX",
-            "namespace": "PIX.core"
+            "class": "MOD.core.dom",
+            "module": "MOD",
+            "namespace": "MOD.core"
         },
         {
             "file": "core.js",
             "line": 370,
-            "description": "Attach events to elements within the module such as 'click', 'mouseenter', etc...\n\n\tPIX.core.dom.bind( btn, 'click', someFunction );",
+            "description": "Attach events to elements within the module such as 'click', 'mouseenter', etc...\n\n\tMOD.core.dom.bind( btn, 'click', someFunction );",
             "params": [
                 {
                     "name": "elem",
@@ -592,14 +592,14 @@
             "name": "bind",
             "access": "private",
             "tagname": "",
-            "class": "PIX.core.dom",
-            "module": "PIX",
-            "namespace": "PIX.core"
+            "class": "MOD.core.dom",
+            "module": "MOD",
+            "namespace": "MOD.core"
         },
         {
             "file": "core.js",
             "line": 393,
-            "description": "Remove events on elements within the module such as 'click', 'mouseenter', etc...\n\n\tPIX.core.dom.unbind( btn, 'click', someFunction );",
+            "description": "Remove events on elements within the module such as 'click', 'mouseenter', etc...\n\n\tMOD.core.dom.unbind( btn, 'click', someFunction );",
             "params": [
                 {
                     "name": "elem",
@@ -625,14 +625,14 @@
             "name": "unbind",
             "access": "private",
             "tagname": "",
-            "class": "PIX.core.dom",
-            "module": "PIX",
-            "namespace": "PIX.core"
+            "class": "MOD.core.dom",
+            "module": "MOD",
+            "namespace": "MOD.core"
         },
         {
             "file": "core.js",
             "line": 416,
-            "description": "Create a new DOM element and apply any attributes or create any child elements\n\n\tvar config = {\n\t\tel : 'div',\n\t\tattrs : {\n\t\t\t'id' : 'awesome',\n\t\t\t'class' : 'framework'\n\t\t},\n\t\tchildren : [\n\t\t\t{\n\t\t\t\tel : 'p',\n\t\t\t\ttext : 'This framework is awesome!!',\n\t\t\t\tattrs : {\n\t\t\t\t\t'class' : 'shout-it-out'\n\t\t\t\t}\n\t\t\t}\n\t\t]\n\t};\n\n\tvar el = PIX.core.dom.create( config );",
+            "description": "Create a new DOM element and apply any attributes or create any child elements\n\n\tvar config = {\n\t\tel : 'div',\n\t\tattrs : {\n\t\t\t'id' : 'awesome',\n\t\t\t'class' : 'framework'\n\t\t},\n\t\tchildren : [\n\t\t\t{\n\t\t\t\tel : 'p',\n\t\t\t\ttext : 'This framework is awesome!!',\n\t\t\t\tattrs : {\n\t\t\t\t\t'class' : 'shout-it-out'\n\t\t\t\t}\n\t\t\t}\n\t\t]\n\t};\n\n\tvar el = MOD.core.dom.create( config );",
             "params": [
                 {
                     "name": "config",
@@ -648,14 +648,14 @@
             "name": "create",
             "access": "private",
             "tagname": "",
-            "class": "PIX.core.dom",
-            "module": "PIX",
-            "namespace": "PIX.core"
+            "class": "MOD.core.dom",
+            "module": "MOD",
+            "namespace": "MOD.core"
         },
         {
             "file": "core.js",
             "line": 508,
-            "description": "Add attributes to an element like src, href, etc...\n\n\tvar attrs = {\n\t\t'src' : http://pixafy.com/awesome/image.jpg,\n\t\t'class' : 'awesome-img'\n\t};\n\n\tPIX.core.dom.apply_attrs( img, attrs );",
+            "description": "Add attributes to an element like src, href, etc...\n\n\tvar attrs = {\n\t\t'src' : http://MODafy.com/awesome/image.jpg,\n\t\t'class' : 'awesome-img'\n\t};\n\n\tMOD.core.dom.apply_attrs( img, attrs );",
             "params": [
                 {
                     "name": "el",
@@ -676,9 +676,9 @@
             "name": "apply_attrs",
             "access": "private",
             "tagname": "",
-            "class": "PIX.core.dom",
-            "module": "PIX",
-            "namespace": "PIX.core"
+            "class": "MOD.core.dom",
+            "module": "MOD",
+            "namespace": "MOD.core"
         },
         {
             "file": "core.js",
@@ -704,14 +704,14 @@
             "name": "style",
             "access": "private",
             "tagname": "",
-            "class": "PIX.core.dom",
-            "module": "PIX",
-            "namespace": "PIX.core"
+            "class": "MOD.core.dom",
+            "module": "MOD",
+            "namespace": "MOD.core"
         },
         {
             "file": "core.js",
             "line": 551,
-            "description": "Add a class to an elment within the module\n\n\tPIX.core.dom.add_class( el, 'class-to-add' );",
+            "description": "Add a class to an elment within the module\n\n\tMOD.core.dom.add_class( el, 'class-to-add' );",
             "params": [
                 {
                     "name": "el",
@@ -732,14 +732,14 @@
             "name": "add_class",
             "access": "private",
             "tagname": "",
-            "class": "PIX.core.dom",
-            "module": "PIX",
-            "namespace": "PIX.core"
+            "class": "MOD.core.dom",
+            "module": "MOD",
+            "namespace": "MOD.core"
         },
         {
             "file": "core.js",
             "line": 578,
-            "description": "Remove a class from an element within the module\n\n\tPIX.core.dom.remove_class( el, 'class-to-remove' );",
+            "description": "Remove a class from an element within the module\n\n\tMOD.core.dom.remove_class( el, 'class-to-remove' );",
             "params": [
                 {
                     "name": "el",
@@ -760,14 +760,14 @@
             "name": "remove_class",
             "access": "private",
             "tagname": "",
-            "class": "PIX.core.dom",
-            "module": "PIX",
-            "namespace": "PIX.core"
+            "class": "MOD.core.dom",
+            "module": "MOD",
+            "namespace": "MOD.core"
         },
         {
             "file": "core.js",
             "line": 605,
-            "description": "Append elements within the scope of the module, accepts DOM elements or html\n\n\tvar el = PIX.core.dom.create( config );\n\n\tPIX.core.dom.append_elems( el_to_append_to, el );",
+            "description": "Append elements within the scope of the module, accepts DOM elements or html\n\n\tvar el = MOD.core.dom.create( config );\n\n\tMOD.core.dom.append_elems( el_to_append_to, el );",
             "params": [
                 {
                     "name": "el",
@@ -788,14 +788,14 @@
             "name": "append_elems",
             "access": "private",
             "tagname": "",
-            "class": "PIX.core.dom",
-            "module": "PIX",
-            "namespace": "PIX.core"
+            "class": "MOD.core.dom",
+            "module": "MOD",
+            "namespace": "MOD.core"
         },
         {
             "file": "core.js",
             "line": 623,
-            "description": "Prepend elements within the scope of the module, accepts DOM elements or html\n\n\tvar el = PIX.core.dom.create( config );\n\n\tPIX.core.dom.prepend_elems( el_to_append_to, el );",
+            "description": "Prepend elements within the scope of the module, accepts DOM elements or html\n\n\tvar el = MOD.core.dom.create( config );\n\n\tMOD.core.dom.prepend_elems( el_to_append_to, el );",
             "params": [
                 {
                     "name": "el",
@@ -816,14 +816,14 @@
             "name": "prepend_elems",
             "access": "private",
             "tagname": "",
-            "class": "PIX.core.dom",
-            "module": "PIX",
-            "namespace": "PIX.core"
+            "class": "MOD.core.dom",
+            "module": "MOD",
+            "namespace": "MOD.core"
         },
         {
             "file": "core.js",
             "line": 641,
-            "description": "Remove elements from within another element within the module\n\n\tPIX.core.dom.remove_elems( el, 'li.inactive' );",
+            "description": "Remove elements from within another element within the module\n\n\tMOD.core.dom.remove_elems( el, 'li.inactive' );",
             "params": [
                 {
                     "name": "el",
@@ -844,14 +844,14 @@
             "name": "remove_elems",
             "access": "private",
             "tagname": "",
-            "class": "PIX.core.dom",
-            "module": "PIX",
-            "namespace": "PIX.core"
+            "class": "MOD.core.dom",
+            "module": "MOD",
+            "namespace": "MOD.core"
         },
         {
             "file": "core.js",
             "line": 657,
-            "description": "Handles running any code that needs to be run only after the document has loaded\n> Used by the PIX.app object\n\n\tPIX.core.dom.onready( function () {\n\t\t// do some stuff when the document is loaded\n\t});",
+            "description": "Handles running any code that needs to be run only after the document has loaded\n> Used by the MOD.app object\n\n\tMOD.core.dom.onready( function () {\n\t\t// do some stuff when the document is loaded\n\t});",
             "params": [
                 {
                     "name": "fn",
@@ -867,14 +867,14 @@
             "name": "onready",
             "access": "private",
             "tagname": "",
-            "class": "PIX.core.dom",
-            "module": "PIX",
-            "namespace": "PIX.core"
+            "class": "MOD.core.dom",
+            "module": "MOD",
+            "namespace": "MOD.core"
         },
         {
             "file": "core.js",
             "line": 677,
-            "description": "Handles running any code that needs to be run only after the window has loaded\n> Used by the PIX.app object\n\n\tPIX.core.dom.onload( function () {\n\t\t// do some stuff when the window is loaded\n\t});",
+            "description": "Handles running any code that needs to be run only after the window has loaded\n> Used by the MOD.app object\n\n\tMOD.core.dom.onload( function () {\n\t\t// do some stuff when the window is loaded\n\t});",
             "params": [
                 {
                     "name": "fn",
@@ -890,14 +890,14 @@
             "name": "onload",
             "access": "private",
             "tagname": "",
-            "class": "PIX.core.dom",
-            "module": "PIX",
-            "namespace": "PIX.core"
+            "class": "MOD.core.dom",
+            "module": "MOD",
+            "namespace": "MOD.core"
         },
         {
             "file": "core.js",
             "line": 697,
-            "description": "Responsible for handling matching checks on DOM elements\n\n\tif ( PIX.core.dom.is( el, 'checked' ) ) {\n\t\tvar value = PIX.core.dom.form.val( el );\n\t}",
+            "description": "Responsible for handling matching checks on DOM elements\n\n\tif ( MOD.core.dom.is( el, 'checked' ) ) {\n\t\tvar value = MOD.core.dom.form.val( el );\n\t}",
             "params": [
                 {
                     "name": "el",
@@ -918,14 +918,14 @@
             "name": "is",
             "access": "private",
             "tagname": "",
-            "class": "PIX.core.dom",
-            "module": "PIX",
-            "namespace": "PIX.core"
+            "class": "MOD.core.dom",
+            "module": "MOD",
+            "namespace": "MOD.core"
         },
         {
             "file": "core.js",
             "line": 733,
-            "description": "Get the value of a form element\n\n\tPIX.core.dom.val( input );",
+            "description": "Get the value of a form element\n\n\tMOD.core.dom.val( input );",
             "params": [
                 {
                     "name": "el",
@@ -941,14 +941,14 @@
             "name": "val",
             "access": "private",
             "tagname": "",
-            "class": "PIX.core.dom.form",
-            "module": "PIX",
-            "namespace": "PIX.core.dom"
+            "class": "MOD.core.dom.form",
+            "module": "MOD",
+            "namespace": "MOD.core.dom"
         },
         {
             "file": "core.js",
             "line": 756,
-            "description": "Checks to see if a string is a valid email address\n\n\tvar email = \"some@email.com\";\n\n\tif ( PIX.core.dom.form.is_valid_email( email ) ) {\n\t\t// do something with valid email\n\t}",
+            "description": "Checks to see if a string is a valid email address\n\n\tvar email = \"some@email.com\";\n\n\tif ( MOD.core.dom.form.is_valid_email( email ) ) {\n\t\t// do something with valid email\n\t}",
             "params": [
                 {
                     "name": "str",
@@ -964,14 +964,14 @@
             "name": "is_valid_email",
             "access": "private",
             "tagname": "",
-            "class": "PIX.core.dom.form",
-            "module": "PIX",
-            "namespace": "PIX.core.dom"
+            "class": "MOD.core.dom.form",
+            "module": "MOD",
+            "namespace": "MOD.core.dom"
         },
         {
             "file": "core.js",
             "line": 780,
-            "description": "Checks to see if a string is a valid phone number\nMatches:\n\n- 5558675309\n- 555 867 5309\n- 555-867-5309\n- 555.867.5309\n- (555) 867 5309\n- (555)-867-5309\n- (555).867.5309\n\n\tvar phone = \"555-867-5309\";\n\n\tif ( PIX.core.dom.form.is_valid_phone_number( phone ) ) {\n\t\t// do something with valid phone number\n\t}",
+            "description": "Checks to see if a string is a valid phone number. Matches:\n\n- 5558675309\n- 555 867 5309\n- 555-867-5309\n- 555.867.5309\n- (555) 867 5309\n- (555)-867-5309\n- (555).867.5309\n\n\n\t\tvar phone = \"555-867-5309\";\n\n\t\tif ( MOD.core.dom.form.is_valid_phone_number( phone ) ) {\n\t\t\t// do something with valid phone number\n\t\t}",
             "params": [
                 {
                     "name": "str",
@@ -987,14 +987,14 @@
             "name": "is_valid_phone_number",
             "access": "private",
             "tagname": "",
-            "class": "PIX.core.dom.form",
-            "module": "PIX",
-            "namespace": "PIX.core.dom"
+            "class": "MOD.core.dom.form",
+            "module": "MOD",
+            "namespace": "MOD.core.dom"
         },
         {
             "file": "core.js",
             "line": 827,
-            "description": "this is a factory function used to create modules for the application\n\n\tPIX.core.create_module( 'my-module', function( sb ) {\n\n\t\tinit : function () {\n\n\t\t\t// handle the creation of the module\n\t\t\tvar btn, input, term;\n\n\t\t\tbtn = sb.find( '.my-btn' )[0]   // get the element from the return object\n\t\t\tinput = sb.find( '.my-input' )[0]   // same for the input\n\n\t\t\tsb.add_event( btn, 'click', this.doSomething );\n\t\t},\n\n\t\tdestroy : function () {\n\n\t\t\t// handle breaking the module down\n\t\t\tsb.remove_event( btn, 'click', this.doSomething );\n\t\t\tbtn = input = term = null;\n\t\t},\n\n\t\tdoSomething : function () {\n\n\t\t\t// all functionality goes in to functions that are isolated to the module\n\t\t\tterm = sb.val( input );\n\n\t\t\tsb.notify({\n\t\t\t\ttype : 'search-initiated',\n\t\t\t\tdata : term\n\t\t\t});\n\t\t}\n\t});",
+            "description": "this is a factory function used to create modules for the application\n\n\tMOD.core.create_module( 'my-module', function( sb ) {\n\n\t\tinit : function () {\n\n\t\t\t// handle the creation of the module\n\t\t\tvar btn, input, term;\n\n\t\t\tbtn = sb.find( '.my-btn' )[0]   // get the element from the return object\n\t\t\tinput = sb.find( '.my-input' )[0]   // same for the input\n\n\t\t\tsb.add_event( btn, 'click', this.doSomething );\n\t\t},\n\n\t\tdestroy : function () {\n\n\t\t\t// handle breaking the module down\n\t\t\tsb.remove_event( btn, 'click', this.doSomething );\n\t\t\tbtn = input = term = null;\n\t\t},\n\n\t\tdoSomething : function () {\n\n\t\t\t// all functionality goes in to functions that are isolated to the module\n\t\t\tterm = sb.val( input );\n\n\t\t\tsb.notify({\n\t\t\t\ttype : 'search-initiated',\n\t\t\t\tdata : term\n\t\t\t});\n\t\t}\n\t});",
             "params": [
                 {
                     "name": "moduleID",
@@ -1015,14 +1015,14 @@
             "name": "create_module",
             "access": "public",
             "tagname": "",
-            "class": "PIX.core.return",
-            "module": "PIX",
-            "namespace": "PIX.core"
+            "class": "MOD.core.return",
+            "module": "MOD",
+            "namespace": "MOD.core"
         },
         {
             "file": "core.js",
             "line": 898,
-            "description": "starts up an instance of a particular module\n\n\tPIX.core.start( 'my-module' );",
+            "description": "starts up an instance of a particular module\n\n\tMOD.core.start( 'my-module' );",
             "params": [
                 {
                     "name": "moduleID",
@@ -1038,14 +1038,14 @@
             "name": "start",
             "access": "private",
             "tagname": "",
-            "class": "PIX.core.return",
-            "module": "PIX",
-            "namespace": "PIX.core"
+            "class": "MOD.core.return",
+            "module": "MOD",
+            "namespace": "MOD.core"
         },
         {
             "file": "core.js",
             "line": 922,
-            "description": "starts up an instance of all modules\n\n\tPIX.core.start_all();",
+            "description": "starts up an instance of all modules\n\n\tMOD.core.start_all();",
             "return": {
                 "description": "",
                 "type": "None"
@@ -1054,14 +1054,14 @@
             "name": "start_all",
             "access": "private",
             "tagname": "",
-            "class": "PIX.core.return",
-            "module": "PIX",
-            "namespace": "PIX.core"
+            "class": "MOD.core.return",
+            "module": "MOD",
+            "namespace": "MOD.core"
         },
         {
             "file": "core.js",
             "line": 944,
-            "description": "stops an instance of a running module\n\n\tPIX.core.stop( 'my-module' );",
+            "description": "stops an instance of a running module\n\n\tMOD.core.stop( 'my-module' );",
             "params": [
                 {
                     "name": "moduleID",
@@ -1077,14 +1077,14 @@
             "name": "stop",
             "access": "private",
             "tagname": "",
-            "class": "PIX.core.return",
-            "module": "PIX",
-            "namespace": "PIX.core"
+            "class": "MOD.core.return",
+            "module": "MOD",
+            "namespace": "MOD.core"
         },
         {
             "file": "core.js",
             "line": 968,
-            "description": "stops all instances of modules\n\n\tPIX.core.stop_all();",
+            "description": "stops all instances of modules\n\n\tMOD.core.stop_all();",
             "return": {
                 "description": "",
                 "type": "None"
@@ -1093,14 +1093,14 @@
             "name": "stop_all",
             "access": "private",
             "tagname": "",
-            "class": "PIX.core.return",
-            "module": "PIX",
-            "namespace": "PIX.core"
+            "class": "MOD.core.return",
+            "module": "MOD",
+            "namespace": "MOD.core"
         },
         {
             "file": "core.js",
             "line": 990,
-            "description": "add events to our module, events allow for cross module communication\n\n\tvar evts = {\n\t\t'some-event' : function ( data ) {\n\t\t\t// do something with passed in event data\n\t\t},\n\n\t\t'some-other-event' : function ( data ) {\n\t\t\t// handle a different event\n\t\t}\n\t};\n\n\tPIX.core.register_events( evts, 'my-module' );",
+            "description": "add events to our module, events allow for cross module communication\n\n\tvar evts = {\n\t\t'some-event' : function ( data ) {\n\t\t\t// do something with passed in event data\n\t\t},\n\n\t\t'some-other-event' : function ( data ) {\n\t\t\t// handle a different event\n\t\t}\n\t};\n\n\tMOD.core.register_events( evts, 'my-module' );",
             "params": [
                 {
                     "name": "evts",
@@ -1121,14 +1121,14 @@
             "name": "register_events",
             "access": "private",
             "tagname": "",
-            "class": "PIX.core.return",
-            "module": "PIX",
-            "namespace": "PIX.core"
+            "class": "MOD.core.return",
+            "module": "MOD",
+            "namespace": "MOD.core"
         },
         {
             "file": "core.js",
             "line": 1030,
-            "description": "responsible for checking modules this event and then executing it if it is found\n\n\tvar evt = {\n\t\t'some-event' : data\n\t}\n\n\tPIX.core.trigger_event( evt );",
+            "description": "responsible for checking modules this event and then executing it if it is found\n\n\tvar evt = {\n\t\t'some-event' : data\n\t}\n\n\tMOD.core.trigger_event( evt );",
             "params": [
                 {
                     "name": "evt",
@@ -1144,14 +1144,14 @@
             "name": "trigger_event",
             "access": "private",
             "tagname": "",
-            "class": "PIX.core.return",
-            "module": "PIX",
-            "namespace": "PIX.core"
+            "class": "MOD.core.return",
+            "module": "MOD",
+            "namespace": "MOD.core"
         },
         {
             "file": "core.js",
             "line": 1066,
-            "description": "removes events from a specified module\n\n\tvar evts = [ 'some-event', 'some-other-event' ];\n\n\tPIX.core.remove_events( evts, 'my-module' );",
+            "description": "removes events from a specified module\n\n\tvar evts = [ 'some-event', 'some-other-event' ];\n\n\tMOD.core.remove_events( evts, 'my-module' );",
             "params": [
                 {
                     "name": "evts",
@@ -1172,17 +1172,17 @@
             "name": "remove_events",
             "access": "private",
             "tagname": "",
-            "class": "PIX.core.return",
-            "module": "PIX",
-            "namespace": "PIX.core"
+            "class": "MOD.core.return",
+            "module": "MOD",
+            "namespace": "MOD.core"
         },
         {
             "file": "modules.js",
             "line": 2,
             "description": "All modules for the application are stored in this file\nA module is a small piece of the application that is responsible for a minute\namount of tasks",
-            "class": "PIX.sandbox",
-            "module": "PIX",
-            "namespace": "PIX.core"
+            "class": "MOD.sandbox",
+            "module": "MOD",
+            "namespace": "MOD.core"
         },
         {
             "file": "modules.js",
@@ -1199,9 +1199,9 @@
                 "description": "",
                 "type": "None"
             },
-            "class": "PIX.sandbox",
-            "module": "PIX",
-            "namespace": "PIX.core"
+            "class": "MOD.sandbox",
+            "module": "MOD",
+            "namespace": "MOD.core"
         },
         {
             "file": "modules.js",
@@ -1218,18 +1218,18 @@
                 "description": "",
                 "type": "None"
             },
-            "class": "PIX.sandbox",
-            "module": "PIX",
-            "namespace": "PIX.core"
+            "class": "MOD.sandbox",
+            "module": "MOD",
+            "namespace": "MOD.core"
         },
         {
             "file": "sandbox.js",
             "line": 15,
-            "description": "Responsible for the creatation of a sandbox instance, it returns an object with the Sanbox API so that the module instance can communicate with the core. This function is only used in the core to create instances in the create_module function for testing and in the start function for starting up an instance of the actual module\n\n\tPIX.sandbox.create( PIX.core, 'my-module' ); // this function is called in the core and should not be called anywhere",
+            "description": "Responsible for the creatation of a sandbox instance, it returns an object with the Sanbox API so that the module instance can communicate with the core. This function is only used in the core to create instances in the create_module function for testing and in the start function for starting up an instance of the actual module\n\n\tMOD.sandbox.create( MOD.core, 'my-module' ); // this function is called in the core and should not be called anywhere",
             "params": [
                 {
                     "name": "core",
-                    "description": "the PIX.core object, this is how the instance of the sandbox can access the core",
+                    "description": "the MOD.core object, this is how the instance of the sandbox can access the core",
                     "type": "Object"
                 },
                 {
@@ -1246,9 +1246,9 @@
             "name": "create",
             "access": "private",
             "tagname": "",
-            "class": "PIX.sandbox",
-            "module": "PIX",
-            "namespace": "PIX"
+            "class": "MOD.sandbox",
+            "module": "MOD",
+            "namespace": "MOD"
         },
         {
             "file": "sandbox.js",
@@ -1259,9 +1259,9 @@
             "type": "Object",
             "access": "private",
             "tagname": "",
-            "class": "PIX.sandbox",
-            "module": "PIX",
-            "namespace": "PIX"
+            "class": "MOD.sandbox",
+            "module": "MOD",
+            "namespace": "MOD"
         },
         {
             "file": "sandbox.js",
@@ -1282,9 +1282,9 @@
             "name": "find",
             "access": "public",
             "tagname": "",
-            "class": "PIX.sandbox.return",
-            "module": "PIX",
-            "namespace": "PIX.sandbox"
+            "class": "MOD.sandbox.return",
+            "module": "MOD",
+            "namespace": "MOD.sandbox"
         },
         {
             "file": "sandbox.js",
@@ -1315,9 +1315,9 @@
             "name": "add_event",
             "access": "public",
             "tagname": "",
-            "class": "PIX.sandbox.return",
-            "module": "PIX",
-            "namespace": "PIX.sandbox"
+            "class": "MOD.sandbox.return",
+            "module": "MOD",
+            "namespace": "MOD.sandbox"
         },
         {
             "file": "sandbox.js",
@@ -1348,9 +1348,9 @@
             "name": "remove_event",
             "access": "public",
             "tagname": "",
-            "class": "PIX.sandbox.return",
-            "module": "PIX",
-            "namespace": "PIX.sandbox"
+            "class": "MOD.sandbox.return",
+            "module": "MOD",
+            "namespace": "MOD.sandbox"
         },
         {
             "file": "sandbox.js",
@@ -1371,9 +1371,9 @@
             "name": "notify",
             "access": "public",
             "tagname": "",
-            "class": "PIX.sandbox.return",
-            "module": "PIX",
-            "namespace": "PIX.sandbox"
+            "class": "MOD.sandbox.return",
+            "module": "MOD",
+            "namespace": "MOD.sandbox"
         },
         {
             "file": "sandbox.js",
@@ -1394,9 +1394,9 @@
             "name": "listen",
             "access": "public",
             "tagname": "",
-            "class": "PIX.sandbox.return",
-            "module": "PIX",
-            "namespace": "PIX.sandbox"
+            "class": "MOD.sandbox.return",
+            "module": "MOD",
+            "namespace": "MOD.sandbox"
         },
         {
             "file": "sandbox.js",
@@ -1422,9 +1422,9 @@
             "name": "ignore",
             "access": "public",
             "tagname": "",
-            "class": "PIX.sandbox.return",
-            "module": "PIX",
-            "namespace": "PIX.sandbox"
+            "class": "MOD.sandbox.return",
+            "module": "MOD",
+            "namespace": "MOD.sandbox"
         },
         {
             "file": "sandbox.js",
@@ -1445,9 +1445,9 @@
             "name": "create_element",
             "access": "public",
             "tagname": "",
-            "class": "PIX.sandbox.return",
-            "module": "PIX",
-            "namespace": "PIX.sandbox"
+            "class": "MOD.sandbox.return",
+            "module": "MOD",
+            "namespace": "MOD.sandbox"
         },
         {
             "file": "sandbox.js",
@@ -1473,9 +1473,9 @@
             "name": "append",
             "access": "public",
             "tagname": "",
-            "class": "PIX.sandbox.return",
-            "module": "PIX",
-            "namespace": "PIX.sandbox"
+            "class": "MOD.sandbox.return",
+            "module": "MOD",
+            "namespace": "MOD.sandbox"
         },
         {
             "file": "sandbox.js",
@@ -1501,9 +1501,9 @@
             "name": "prepend",
             "access": "public",
             "tagname": "",
-            "class": "PIX.sandbox.return",
-            "module": "PIX",
-            "namespace": "PIX.sandbox"
+            "class": "MOD.sandbox.return",
+            "module": "MOD",
+            "namespace": "MOD.sandbox"
         },
         {
             "file": "sandbox.js",
@@ -1529,14 +1529,14 @@
             "name": "remove",
             "access": "public",
             "tagname": "",
-            "class": "PIX.sandbox.return",
-            "module": "PIX",
-            "namespace": "PIX.sandbox"
+            "class": "MOD.sandbox.return",
+            "module": "MOD",
+            "namespace": "MOD.sandbox"
         },
         {
             "file": "sandbox.js",
             "line": 260,
-            "description": "Used for all ajax requests\n\n\tvar config = {\n \t\turl : 'http://pixafy.com/get/the/awesome/json',\n \t\ttype : 'GET',\n \t\tdataType : 'JSON',\n \t\tdata : {\n \t\t\tsome : 'data',\n \t\t\tmore : 'data'\n \t\t},\n \t\tdone : function( response ) {\n   \t\t\t// do something with successful results\n\t\t},\n\t\tfail : function( error ) {\n\t\t\t// do something with unseccessful ajax request\n\t\t\talert( error.message );\n\t\t},\n\t\tscope : this   // set the scope for the callback functions\n\t}\n\n\tsb.request( config );",
+            "description": "Used for all ajax requests\n\n\tvar config = {\n \t\turl : 'http://MODafy.com/get/the/awesome/json',\n \t\ttype : 'GET',\n \t\tdataType : 'JSON',\n \t\tdata : {\n \t\t\tsome : 'data',\n \t\t\tmore : 'data'\n \t\t},\n \t\tdone : function( response ) {\n   \t\t\t// do something with successful results\n\t\t},\n\t\tfail : function( error ) {\n\t\t\t// do something with unseccessful ajax request\n\t\t\talert( error.message );\n\t\t},\n\t\tscope : this   // set the scope for the callback functions\n\t}\n\n\tsb.request( config );",
             "params": [
                 {
                     "name": "config",
@@ -1552,9 +1552,9 @@
             "name": "request",
             "access": "public",
             "tagname": "",
-            "class": "PIX.sandbox.return",
-            "module": "PIX",
-            "namespace": "PIX.sandbox"
+            "class": "MOD.sandbox.return",
+            "module": "MOD",
+            "namespace": "MOD.sandbox"
         },
         {
             "file": "sandbox.js",
@@ -1585,9 +1585,9 @@
             "name": "modify",
             "access": "public",
             "tagname": "",
-            "class": "PIX.sandbox.return",
-            "module": "PIX",
-            "namespace": "PIX.sandbox"
+            "class": "MOD.sandbox.return",
+            "module": "MOD",
+            "namespace": "MOD.sandbox"
         },
         {
             "file": "sandbox.js",
@@ -1628,9 +1628,9 @@
             "name": "animate",
             "access": "public",
             "tagname": "",
-            "class": "PIX.sandbox.return",
-            "module": "PIX",
-            "namespace": "PIX.sandbox"
+            "class": "MOD.sandbox.return",
+            "module": "MOD",
+            "namespace": "MOD.sandbox"
         },
         {
             "file": "sandbox.js",
@@ -1649,9 +1649,9 @@
             },
             "access": "public",
             "tagname": "",
-            "class": "PIX.sandbox.return",
-            "module": "PIX",
-            "namespace": "PIX.sandbox"
+            "class": "MOD.sandbox.return",
+            "module": "MOD",
+            "namespace": "MOD.sandbox"
         },
         {
             "file": "sandbox.js",
@@ -1677,9 +1677,9 @@
             "name": "is",
             "access": "public",
             "tagname": "",
-            "class": "PIX.sandbox.return",
-            "module": "PIX",
-            "namespace": "PIX.sandbox"
+            "class": "MOD.sandbox.return",
+            "module": "MOD",
+            "namespace": "MOD.sandbox"
         }
     ],
     "warnings": [

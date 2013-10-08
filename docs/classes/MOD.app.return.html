@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>app.js - MODJS</title>
+    <title>MOD.app.return - MODJS</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -100,98 +100,164 @@
             <div class="apidocs">
                 <div id="docs-main">
                     <div class="content">
-                        <h1 class="file-heading">File: app.js</h1>
+                        <h1>MOD.app.return Class</h1>
+<div class="box meta">
+    
 
-<div class="file">
-    <pre class="code prettyprint linenums">
-/**
- * ## The Application Engine
- * - This layer is responsible for handling starting all the modules according to the application configuration set in {root}/MODafy/MODjs.json
- * - The return object of this class has only one method, the run method which you call to start the app
- * - **This layer depends on the MODJS_CONFIG global application configuration object**
- *
- * **For app return object documentation see the MOD.app.return class API**
- *
- * @class  app
- * @namespace MOD
- * @static
- */
+    
 
-MOD.app = (function() {
+    
+        <div class="foundat">
+            Defined in: <a href="../files/app.js.html#l48"><code>app.js:48</code></a>
+        </div>
+    
 
-	/**
-	 * Responsible for starting all modules in the config assigned to start on document ready state
-	 * @param  {array} modules the list of modules to start
-	 * @return {none}
-	 * @method  start_on_ready
-	 * @private
-	 */
-	start_on_ready = function ( modules ) {
-		var len = modules.length, i = 0;
+    
+        
+            Module: <a href="../modules/MOD.html">MOD</a>
+        
+    
 
-		for ( ; i &lt; len; ) {
-			MOD.core.start( modules[ i ] );
-			++i;
-		}
-	},
-
-	/**
-	 * Responsible for starting all modules in the config assigned to start on window load state
-	 * @param  {array} modules the list of modules to start
-	 * @return {none}
-	 * @method  start_on_load
-	 * @private
-	 */
-	start_on_load = function ( modules ) {
-		var len = modules.length, i = 0;
-
-		for ( ; i &lt; len; ) {
-			MOD.core.start( modules[ i ] );
-			++i;
-		}
-	}
-
-	/**
-	 * This is the return object of the app object, it contains only the run method used to start the application
-	 *
-	 * @class  return
-	 * @namespace MOD.app
-	 */
-	return {
-
-		/**
-		 * The method responsible for starting the application, makes an ajax call to the MODjs.json config file and processes the response
-		 *
-		 * 	MOD.app.run();
-		 *
-		 *
-		 * @return {none}
-		 * @method  run
-		 * @public
-		 */
-		run : function () {
-
-			// set out debug status
-			MOD.core.util.debug = ( MOD.config.debug ) ? MOD.config.debug : true;
-
-			if ( MOD.config.onready ) {
-				MOD.core.dom.onready(function () {
-					start_on_ready( MOD.config.onready.modules );
-				});
-			}
-
-			if ( MOD.config.onload ) {
-				MOD.core.dom.onload(function () {
-					start_on_load( MOD.config.onload.modules );
-				});
-			}
-		}
-	}
+    
+</div>
 
 
-}());
 
-    </pre>
+<div class="box intro">
+    <p>This is the return object of the app object, it contains only the run method used to start the application</p>
+
+</div>
+
+
+
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
+
+        
+            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
+        
+        
+        
+        
+    </ul>
+
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
+
+            
+                <div class="index-section methods">
+                    <h3>Methods</h3>
+
+                    <ul class="index-list methods">
+                        
+                            <li class="index-item method public">
+                                <a href="#method_run">run</a>
+
+                                
+                                
+                            </li>
+                        
+                    </ul>
+                </div>
+            
+
+            
+
+            
+
+            
+        </div>
+
+        
+            <div id="methods" class="api-class-tabpanel">
+                <h2 class="off-left">Methods</h2>
+
+                
+                    <div id="method_run" class="method item public">
+    <h3 class="name"><code>run</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">None</span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/app.js.html#l56"><code>app.js:56</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>The method responsible for starting the application, makes an ajax call to the MODjs.json config file and processes the response</p>
+<pre class="code prettyprint"><code>MOD.app.run();</code></pre>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">None</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+            </div>
+        
+
+        
+
+        
+
+        
+    </div>
 </div>
 
                     </div>
