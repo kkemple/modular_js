@@ -10,6 +10,9 @@ ModJS is a javascript framework that utilizes the Module, Factory, and Mediator 
 ## Documentation
 Every method in the framework is documented and available with examples and whether or not the function should be used publicly. For documentation simple navigate to path/to/project/docs/ in your browser and the full documentation will be available to you. ( Documentation created using YUIdoc )
 
+## Working Example
+To see the framework in action simply download the project and navigate to path/to/project/ in your browser. The example searches Instagram for the specified hashtag and displays recent images with that tag
+
 ## So what does this framework really accomplish?
 The point of ModJS is force developers into creating reusable fully modular code that will allow a higher reusability rate with JS. It will all be written the same way eliminating consistancy issues and it will be fully adaptable to any development environment making it future-proof in regard to back-end framework changes.
 
