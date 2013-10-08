@@ -17,15 +17,13 @@ By decoupling all the layers of the application you can drop in an entire base a
 If you would like to contribute to this project:
 
 - Clone the repo
-- Set up proper Gitflow
-- Create new feature with name of task or recommended change
+- Check out develop branch
+- Create new feature or issue branch with name of task or recommended change
 - Make changes
 - Push new branch to origin
 - Add a new merge request with a detailed explaination of the changes you made
 
 Once the changes are reviewed they will either be added or the merge request will be closed.
-
-> **This project uses Gitflow, if you are not familiar with Gitflow please reseach it!**
 
 
 ## Code Best Practices and Standards
@@ -37,10 +35,11 @@ This should include any parameters passed in, what the function does, and what i
 
 ```javascript
 /**
- * @function          is_arr
  * @description       check to see if object is an array
  * @param  {unknown}  arr
  * @return {Boolean}  true or false
+ * @method          is_array
+ * @private
  */
 MOD.core.util.is_array = function( arr ) {
    return ( typeof arr === 'object' && ( Object.toString.call( arr ) === '[object Array]' ) ) ? true : false;

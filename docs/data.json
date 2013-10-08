@@ -172,7 +172,7 @@
             "module": "MOD",
             "namespace": "MOD.core.dom",
             "file": "core.js",
-            "line": 727,
+            "line": 736,
             "description": "Handles all interaction with forms in the DOM"
         },
         "MOD.core.return": {
@@ -186,7 +186,7 @@
             "module": "MOD",
             "namespace": "MOD.core",
             "file": "core.js",
-            "line": 816,
+            "line": 825,
             "description": "This is the return object of the core, it is passed in to the sandbox when a module is created. This allows the sandbox to have access to core functions, but prevents the modules from knowing about the core, keeping the code loosely coupled",
             "type": "Object"
         },
@@ -683,7 +683,7 @@
         {
             "file": "core.js",
             "line": 529,
-            "description": "Update styles on a DOM element",
+            "description": "Update styles on a DOM element\n\n\tvar css = {\n\t\t'color' : '#444',\n\t\t'background-color' : '#f7f7f7'\n\t};\n\n\tMOD.core.dom.style( el, css );",
             "params": [
                 {
                     "name": "el",
@@ -710,7 +710,7 @@
         },
         {
             "file": "core.js",
-            "line": 551,
+            "line": 560,
             "description": "Add a class to an elment within the module\n\n\tMOD.core.dom.add_class( el, 'class-to-add' );",
             "params": [
                 {
@@ -738,7 +738,7 @@
         },
         {
             "file": "core.js",
-            "line": 578,
+            "line": 587,
             "description": "Remove a class from an element within the module\n\n\tMOD.core.dom.remove_class( el, 'class-to-remove' );",
             "params": [
                 {
@@ -766,7 +766,7 @@
         },
         {
             "file": "core.js",
-            "line": 605,
+            "line": 614,
             "description": "Append elements within the scope of the module, accepts DOM elements or html\n\n\tvar el = MOD.core.dom.create( config );\n\n\tMOD.core.dom.append_elems( el_to_append_to, el );",
             "params": [
                 {
@@ -794,7 +794,7 @@
         },
         {
             "file": "core.js",
-            "line": 623,
+            "line": 632,
             "description": "Prepend elements within the scope of the module, accepts DOM elements or html\n\n\tvar el = MOD.core.dom.create( config );\n\n\tMOD.core.dom.prepend_elems( el_to_append_to, el );",
             "params": [
                 {
@@ -822,7 +822,7 @@
         },
         {
             "file": "core.js",
-            "line": 641,
+            "line": 650,
             "description": "Remove elements from within another element within the module\n\n\tMOD.core.dom.remove_elems( el, 'li.inactive' );",
             "params": [
                 {
@@ -850,7 +850,7 @@
         },
         {
             "file": "core.js",
-            "line": 657,
+            "line": 666,
             "description": "Handles running any code that needs to be run only after the document has loaded\n> Used by the MOD.app object\n\n\tMOD.core.dom.onready( function () {\n\t\t// do some stuff when the document is loaded\n\t});",
             "params": [
                 {
@@ -873,7 +873,7 @@
         },
         {
             "file": "core.js",
-            "line": 677,
+            "line": 686,
             "description": "Handles running any code that needs to be run only after the window has loaded\n> Used by the MOD.app object\n\n\tMOD.core.dom.onload( function () {\n\t\t// do some stuff when the window is loaded\n\t});",
             "params": [
                 {
@@ -896,7 +896,7 @@
         },
         {
             "file": "core.js",
-            "line": 697,
+            "line": 706,
             "description": "Responsible for handling matching checks on DOM elements\n\n\tif ( MOD.core.dom.is( el, 'checked' ) ) {\n\t\tvar value = MOD.core.dom.form.val( el );\n\t}",
             "params": [
                 {
@@ -924,7 +924,7 @@
         },
         {
             "file": "core.js",
-            "line": 733,
+            "line": 742,
             "description": "Get the value of a form element\n\n\tMOD.core.dom.val( input );",
             "params": [
                 {
@@ -947,7 +947,7 @@
         },
         {
             "file": "core.js",
-            "line": 756,
+            "line": 765,
             "description": "Checks to see if a string is a valid email address\n\n\tvar email = \"some@email.com\";\n\n\tif ( MOD.core.dom.form.is_valid_email( email ) ) {\n\t\t// do something with valid email\n\t}",
             "params": [
                 {
@@ -970,7 +970,7 @@
         },
         {
             "file": "core.js",
-            "line": 780,
+            "line": 789,
             "description": "Checks to see if a string is a valid phone number. Matches:\n\n- 5558675309\n- 555 867 5309\n- 555-867-5309\n- 555.867.5309\n- (555) 867 5309\n- (555)-867-5309\n- (555).867.5309\n\n\n\t\tvar phone = \"555-867-5309\";\n\n\t\tif ( MOD.core.dom.form.is_valid_phone_number( phone ) ) {\n\t\t\t// do something with valid phone number\n\t\t}",
             "params": [
                 {
@@ -993,7 +993,7 @@
         },
         {
             "file": "core.js",
-            "line": 827,
+            "line": 836,
             "description": "this is a factory function used to create modules for the application\n\n\tMOD.core.create_module( 'my-module', function( sb ) {\n\n\t\tinit : function () {\n\n\t\t\t// handle the creation of the module\n\t\t\tvar btn, input, term;\n\n\t\t\tbtn = sb.find( '.my-btn' )[0]   // get the element from the return object\n\t\t\tinput = sb.find( '.my-input' )[0]   // same for the input\n\n\t\t\tsb.add_event( btn, 'click', this.doSomething );\n\t\t},\n\n\t\tdestroy : function () {\n\n\t\t\t// handle breaking the module down\n\t\t\tsb.remove_event( btn, 'click', this.doSomething );\n\t\t\tbtn = input = term = null;\n\t\t},\n\n\t\tdoSomething : function () {\n\n\t\t\t// all functionality goes in to functions that are isolated to the module\n\t\t\tterm = sb.val( input );\n\n\t\t\tsb.notify({\n\t\t\t\ttype : 'search-initiated',\n\t\t\t\tdata : term\n\t\t\t});\n\t\t}\n\t});",
             "params": [
                 {
@@ -1021,7 +1021,7 @@
         },
         {
             "file": "core.js",
-            "line": 898,
+            "line": 907,
             "description": "starts up an instance of a particular module\n\n\tMOD.core.start( 'my-module' );",
             "params": [
                 {
@@ -1044,7 +1044,7 @@
         },
         {
             "file": "core.js",
-            "line": 922,
+            "line": 931,
             "description": "starts up an instance of all modules\n\n\tMOD.core.start_all();",
             "return": {
                 "description": "",
@@ -1060,7 +1060,7 @@
         },
         {
             "file": "core.js",
-            "line": 944,
+            "line": 953,
             "description": "stops an instance of a running module\n\n\tMOD.core.stop( 'my-module' );",
             "params": [
                 {
@@ -1083,7 +1083,7 @@
         },
         {
             "file": "core.js",
-            "line": 968,
+            "line": 977,
             "description": "stops all instances of modules\n\n\tMOD.core.stop_all();",
             "return": {
                 "description": "",
@@ -1099,7 +1099,7 @@
         },
         {
             "file": "core.js",
-            "line": 990,
+            "line": 999,
             "description": "add events to our module, events allow for cross module communication\n\n\tvar evts = {\n\t\t'some-event' : function ( data ) {\n\t\t\t// do something with passed in event data\n\t\t},\n\n\t\t'some-other-event' : function ( data ) {\n\t\t\t// handle a different event\n\t\t}\n\t};\n\n\tMOD.core.register_events( evts, 'my-module' );",
             "params": [
                 {
@@ -1127,7 +1127,7 @@
         },
         {
             "file": "core.js",
-            "line": 1030,
+            "line": 1039,
             "description": "responsible for checking modules this event and then executing it if it is found\n\n\tvar evt = {\n\t\t'some-event' : data\n\t}\n\n\tMOD.core.trigger_event( evt );",
             "params": [
                 {
@@ -1150,7 +1150,7 @@
         },
         {
             "file": "core.js",
-            "line": 1066,
+            "line": 1075,
             "description": "removes events from a specified module\n\n\tvar evts = [ 'some-event', 'some-other-event' ];\n\n\tMOD.core.remove_events( evts, 'my-module' );",
             "params": [
                 {
