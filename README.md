@@ -1,6 +1,6 @@
-# MODJS
+# ModJS
 
-MODJS is a javascript framework that utilizes the Module, Factory, and Mediator patterns to be a base for projects that allows for the quick integration of complex, scalable, and application level javascript without starting from scratch. There are four tiers to the framework which allows for better seperation of code and a more scalable architecture. The four levels are:
+ModJS is a javascript framework that utilizes the Module, Factory, and Mediator patterns to be a base for projects that allows for the quick integration of complex, scalable, and application level javascript without starting from scratch. There are four tiers to the framework which allows for better seperation of code and a more scalable architecture. The four levels are:
 
 - **Base**: This layer is currently jQuery, but it could be replaced by any JS library used for cross-browser normalization and utility functions. However it is very important to know that the only other layer that has access to the Base layer is the Core layer. This allows for easy decoupling of the Base layer, making it interchangable and the framework itself more versitile and reusable.
 - **Core**: This layer is the actual core of the framework. It contains all utitity functions such as dom functions, and assistive functions such as array checks, mapping, and any other functions that are used to assist in faster development of JS. It is the only layer that can communicate with the Base layer, and it also works with the Sandbox layer.
@@ -8,7 +8,7 @@ MODJS is a javascript framework that utilizes the Module, Factory, and Mediator 
 - **Module**: This layer is responsible for small sections of the application that are independent pieces of functionality. An example would be Twitter. The tweets feed is one module, search is another module, and posting a tweet is another module. All other modules should be independent of each other and the addition or removal of a module should have no affect on any other part of the application (site).
 
 ## So what does this framework really accomplish?
-The point of MODJS is force developers into creating reusable fully modular code that will allow a higher reusability rate with JS. It will all be written the same way eliminating consistancy issues and it will be fully adaptable to any development environment making it future-proof in regard to back-end framework changes.
+The point of ModJS is force developers into creating reusable fully modular code that will allow a higher reusability rate with JS. It will all be written the same way eliminating consistancy issues and it will be fully adaptable to any development environment making it future-proof in regard to back-end framework changes.
 
 ## How does it work as a whole?
 By decoupling all the layers of the application you can drop in an entire base and some modules from previous projects and with minor updates you could potentially decrease development time by a large amount. It will also help developers adopt the latest application development methods and best practices.
@@ -42,7 +42,7 @@ This should include any parameters passed in, what the function does, and what i
  * @param  {unknown}  arr
  * @return {Boolean}  true or false
  */
-MODAFY.core.util.is_arr = function( arr ) {
+MOD.core.util.is_array = function( arr ) {
    return ( typeof arr === 'object' && ( Object.toString.call( arr ) === '[object Array]' ) ) ? true : false;
 };
 ```

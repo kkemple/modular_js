@@ -39,9 +39,9 @@ MOD.core.create_module( 'instagram-search', function( sb ) {
 		search : function ( e ) {
 
 			//get our vars, set a default for the search term
-			var term = sb.get_value( input ) || 'MODafy',
+			var term = sb.get_value( input ) || 'GitHub',
 				instagramURL;
-				access_token = '22033045.ea9028a.eec94286a2e049429fe51c3fbc95db20';
+				access_token = '22033045.ea9028a.eec94286a2e049429fe51c3fbc95db20';   // access token for demonstrational purposes only!!!
 
 			// set the loader to active
 			sb.modify( loader, 'add-class', 'active' );
