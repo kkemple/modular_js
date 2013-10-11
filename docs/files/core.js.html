@@ -285,35 +285,32 @@ MOD.core = (function () {
 		},
 
 		/**
-		 * Performs a function on each member of an array
-		 *
-		 * 	function getText ( item ) {
-		 * 		return item.text;
-		 * 	}
-		 *
-		 * 	var arr = sb.find( &#x27;.some-paragraphs&#x27; );
-		 *
-		 *	var textArr = MOD.core.util.map( arr, getText );
-		 *
-		 *
-		 * @param  {array}   arr the array to map over
-		 * @param  {Function} fn  the callback to execute for each array item
-		 * @param  {object} scope  the scope of the callback function to run
-		 * @return {array}       the results of the mapping if anything is returned in the callback function
-		 * @method map
-		 * @private
-		 */
+		* Performs a function on each member of an array
+		*
+		* 	function getText ( item ) {
+		* 		return item.text;
+		* 	}
+		*
+		* 	var arr = sb.find( &#x27;.some-paragraphs&#x27; );
+		*
+		*	var textArr = MOD.core.util.map( arr, getText, this );
+		*
+		*
+		* @param  {array}   arr the array to map over
+		* @param  {Function} fn  the callback to execute for each array item
+		* @return {array}       the results of the mapping if anything is returned in the callback function
+		* @method map
+		* @private
+		*/
 		map : function( arr, fn, scope ) {
 			var ret = [], i =0;
-
-			// set the scope for the callback
-			( scope ) ? scope : null;
+			scope = ( scope ) ? scope : null;
 
 			if ( root.util.is_array( arr ) &amp;&amp; typeof fn === &#x27;function&#x27; ) {
 
 				while ( arr[ i ] ) {
 
-					ret.push( fn.call( scope, arr[ i ] ) );
+					ret.push( fn.call( scope, arr[ i ], i ) );
 					++i;
 				}
 
@@ -328,7 +325,7 @@ MOD.core = (function () {
 		 * Handles all ajax requests for the application
 		 *
 		 * 	var config = {
-		 *  		url : &#x27;http://MODafy.com/get/the/awesome/json&#x27;,
+		 *  		url : &#x27;http://kurtiskemple.com/get/the/awesome/json&#x27;,
 		 *  		type : &#x27;GET&#x27;,
 		 *  		dataType : &#x27;JSON&#x27;,
 		 *  		data : {
@@ -615,7 +612,7 @@ MOD.core = (function () {
 		 * Add attributes to an element like src, href, etc...
 		 *
 		 * 	var attrs = {
-		 * 		&#x27;src&#x27; : http://MODafy.com/awesome/image.jpg,
+		 * 		&#x27;src&#x27; : http://kurtiskemple.com/awesome/image.jpg,
 		 * 		&#x27;class&#x27; : &#x27;awesome-img&#x27;
 		 * 	};
 		 *
@@ -634,15 +631,6 @@ MOD.core = (function () {
 
 		/**
 		 * Update styles on a DOM element
-		 *
-		 * 	var css = {
-		 * 		&#x27;color&#x27; : &#x27;#444&#x27;,
-		 * 		&#x27;background-color&#x27; : &#x27;#f7f7f7&#x27;
-		 * 	};
-		 *
-		 * 	MOD.core.dom.style( el, css );
-		 *
-		 *
 		 * @param  {object} el  the element to style
 		 * @param  {object} css the key/value object of css properties
 		 * @return {none}
@@ -678,12 +666,16 @@ MOD.core = (function () {
 		add_class : function ( el, class_to_add ) {
 			var classes = class_to_add.split( /\s+/ ),
 				className = &#x27; &#x27; + el.className + &#x27; &#x27;,
+				currentClasses = className.split( /\s+/ ),
 				len = classes.length,
 				i = 0;
 
 			for ( ; i &lt; len; ) {
+				if ( ! root.util.array_contains( currentClasses, classes[ i ] ) ) {
 
-				className = className.replace( &#x27; &#x27; + classes[ i ] + &#x27; &#x27;, &#x27; &#x27; );
+					className = className + &#x27; &#x27; + classes[ i ];
+				}
+
 				++i;
 			}
 
@@ -810,36 +802,6 @@ MOD.core = (function () {
 		},
 
 		/**
-		 * Responsible for handling matching checks on DOM elements
-		 *
-		 * 	if ( MOD.core.dom.is( el, &#x27;checked&#x27; ) ) {
-		 * 		var value = MOD.core.dom.form.val( el );
-		 * 	}
-		 *
-		 *
-		 * @param  {object}  el    the element to check against
-		 * @param  {string}  check the property to match
-		 * @return {Boolean}       true if it matches, else false
-		 * @method  is
-		 * @private
-		 */
-		is : function ( el, check ) {
-			switch ( check ) {
-				case &#x27;selected&#x27;:
-				case &#x27;checked&#x27;:
-				case &#x27;first-child&#x27;:
-				case &#x27;last-child&#x27;:
-					check = &#x27;:&#x27; + check;
-				break;
-				default:
-					check = check;
-				break;
-			}
-
-			return jQuery( el ).is( check );
-		},
-
-		/**
 		 * Handles all interaction with forms in the DOM
 		 * @class  form
 		 * @namespace MOD.core.dom
@@ -860,12 +822,8 @@ MOD.core = (function () {
 				return jQuery( el ).val();
 			},
 
-			prop : function ( el, prop ) {
-
-			},
-
-			submit : function ( el ) {
-
+			serialize : function ( el ) {
+				return jQuery( el ).serialize();
 			},
 
 			/**

@@ -188,15 +188,15 @@
                                 
                             </li>
                         
-                            <li class="index-item method public">
-                                <a href="#method_ignore">ignore</a>
+                            <li class="index-item method">
+                                <a href="#method_foreach">foreach</a>
 
                                 
                                 
                             </li>
                         
                             <li class="index-item method public">
-                                <a href="#method_is">is</a>
+                                <a href="#method_ignore">ignore</a>
 
                                 
                                 
@@ -1009,6 +1009,167 @@ var singleEl = elems[0];</code></pre>
 </div>
 
                 
+                    <div id="method_foreach" class="method item">
+    <h3 class="name"><code>foreach</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>arr</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>fn</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>scope</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/sandbox.js.html#l406"><code>sandbox.js:406</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Perform a function on each member of an array</p>
+<pre class="code prettyprint"><code>// get values of multiselect
+
+var elems = sb.find( &#39;select option&#39; ),
+    values = [];
+
+values = sb.foreach( elems, function( item, index ) {
+     if ( item.selected === true ) {
+         return item.value;
+     }
+}, this );</code></pre>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">arr</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the array of items to loop over</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">fn</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the function to run on each item</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">scope</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the scope of the function that is running</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array" class="crosslink external" target="_blank">Array</a></span>:
+                    
+                    <p>an array of the returned results from original array, if anything is returned from callback function</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
                     <div id="method_ignore" class="method item public">
     <h3 class="name"><code>ignore</code></h3>
 
@@ -1132,156 +1293,6 @@ sb.ignore( evts, &#39;my-module&#39; );</code></pre>
                     
                         <span class="type">None</span>:
                     
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
-                    <div id="method_is" class="method item public">
-    <h3 class="name"><code>is</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>el</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>check</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
-        </span>
-    
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/sandbox.js.html#l402"><code>sandbox.js:402</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>Check function for determining if elements match a certain criteria</p>
-<p>Available checks are:</p>
-<ul>
-<li>selected</li>
-<li>checked</li>
-<li>first-child</li>
-<li>last-child</li>
-<li><p>DOM element tags such as &#39;form&#39;, &#39;li&#39;, &#39;a&#39;, etc...</p>
-<p>  var elems = sb.find( &#39;#city option&#39; );
-  var el, selected, value;</p>
-<p>  for ( el in elems ) {</p>
-<pre class="code prettyprint"><code>  if ( elems.hasOwnProperty( el ) ) {
-      if ( sb.is( el, &#39;selected&#39; ) ) {
-          selected = el;
-      }
-  }</code></pre>
-<p>  }</p>
-<p>  value = sb.get_value( selected );</p>
-</li>
-</ul>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">el</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>the element to check against</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">check</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>the property to check for</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
-                    
-                    <p>true if an element has the requested property</p>
-
                 
             </div>
         </div>
@@ -2187,7 +2198,7 @@ sb.remove( parent, &#39;li.inactive&#39; );</code></pre>
     <div class="description">
         <p>Used for all ajax requests</p>
 <pre class="code prettyprint"><code>var config = {
-     url : &#39;http://MODafy.com/get/the/awesome/json&#39;,
+     url : &#39;http://kurtiskemple.com/get/the/awesome/json&#39;,
      type : &#39;GET&#39;,
      dataType : &#39;JSON&#39;,
      data : {
@@ -2195,7 +2206,7 @@ sb.remove( parent, &#39;li.inactive&#39; );</code></pre>
          more : &#39;data&#39;
      },
      done : function( response ) {
-           // do something with successful results
+        // do something with successful results
     },
     fail : function( error ) {
         // do something with unseccessful ajax request

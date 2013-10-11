@@ -286,7 +286,7 @@
             
         
         
-        <a href="../files/core.js.html#l221"><code>core.js:221</code></a>
+        <a href="../files/core.js.html#l218"><code>core.js:218</code></a>
         
         </p>
 
@@ -299,7 +299,7 @@
     <div class="description">
         <p>Handles all ajax requests for the application</p>
 <pre class="code prettyprint"><code>var config = {
-     url : &#39;http://MODafy.com/get/the/awesome/json&#39;,
+     url : &#39;http://kurtiskemple.com/get/the/awesome/json&#39;,
      type : &#39;GET&#39;,
      dataType : &#39;JSON&#39;,
      data : {
@@ -763,7 +763,7 @@ MOD.core.util.ajax( config );</code></pre>
             
         
         
-        <a href="../files/core.js.html#l283"><code>core.js:283</code></a>
+        <a href="../files/core.js.html#l280"><code>core.js:280</code></a>
         
         </p>
 
@@ -976,12 +976,6 @@ MOD.core.util.ajax( config );</code></pre>
                     
                 </li>
             
-                <li class="arg">
-                    
-                        <code>scope</code>
-                    
-                </li>
-            
             </ul><span class="paren">)</span>
         </div>
     
@@ -1035,7 +1029,7 @@ MOD.core.util.ajax( config );</code></pre>
 
 var arr = sb.find( &#39;.some-paragraphs&#39; );
 
-var textArr = MOD.core.util.map( arr, getText );</code></pre>
+var textArr = MOD.core.util.map( arr, getText, this );</code></pre>
 
     </div>
 
@@ -1071,22 +1065,6 @@ var textArr = MOD.core.util.map( arr, getText );</code></pre>
 
                     <div class="param-description">
                         <p>the callback to execute for each array item</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">scope</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>the scope of the callback function to run</p>
 
                     </div>
 
