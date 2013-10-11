@@ -158,7 +158,7 @@
             "module": "MOD",
             "namespace": "MOD.core",
             "file": "core.js",
-            "line": 325,
+            "line": 322,
             "description": "The MOD.core.dom object handles all DOM interaction, if it affects the page it should happen here. These functions should only be accessed by the sandbox, **never in the module!!**"
         },
         "MOD.core.dom.form": {
@@ -172,7 +172,7 @@
             "module": "MOD",
             "namespace": "MOD.core.dom",
             "file": "core.js",
-            "line": 736,
+            "line": 698,
             "description": "Handles all interaction with forms in the DOM"
         },
         "MOD.core.return": {
@@ -186,7 +186,7 @@
             "module": "MOD",
             "namespace": "MOD.core",
             "file": "core.js",
-            "line": 825,
+            "line": 783,
             "description": "This is the return object of the core, it is passed in to the sandbox when a module is created. This allows the sandbox to have access to core functions, but prevents the modules from knowing about the core, keeping the code loosely coupled",
             "type": "Object"
         },
@@ -459,7 +459,7 @@
         {
             "file": "core.js",
             "line": 181,
-            "description": "Performs a function on each member of an array\n\n\tfunction getText ( item ) {\n\t\treturn item.text;\n\t}\n\n\tvar arr = sb.find( '.some-paragraphs' );\n\n\tvar textArr = MOD.core.util.map( arr, getText );",
+            "description": "Performs a function on each member of an array\n\n\tfunction getText ( item ) {\n\t\treturn item.text;\n\t}\n\n\tvar arr = sb.find( '.some-paragraphs' );\n\n\tvar textArr = MOD.core.util.map( arr, getText, this );",
             "params": [
                 {
                     "name": "arr",
@@ -470,11 +470,6 @@
                     "name": "fn",
                     "description": "the callback to execute for each array item",
                     "type": "Function"
-                },
-                {
-                    "name": "scope",
-                    "description": "the scope of the callback function to run",
-                    "type": "Object"
                 }
             ],
             "return": {
@@ -491,8 +486,8 @@
         },
         {
             "file": "core.js",
-            "line": 221,
-            "description": "Handles all ajax requests for the application\n\n\tvar config = {\n \t\turl : 'http://MODafy.com/get/the/awesome/json',\n \t\ttype : 'GET',\n \t\tdataType : 'JSON',\n \t\tdata : {\n \t\t\tsome : 'data',\n \t\t\tmore : 'data'\n \t\t},\n \t\tdone : function( response ) {\n   \t\t\t// do something with successful results\n\t\t},\n\t\tfail : function( error ) {\n\t\t\t// do something with unseccessful ajax request\n\t\t\talert( error.message );\n\t\t},\n\t\tscope : this   // set the scope for the callback functions\n\t}\n\n\tMOD.core.util.ajax( config );",
+            "line": 218,
+            "description": "Handles all ajax requests for the application\n\n\tvar config = {\n \t\turl : 'http://kurtiskemple.com/get/the/awesome/json',\n \t\ttype : 'GET',\n \t\tdataType : 'JSON',\n \t\tdata : {\n \t\t\tsome : 'data',\n \t\t\tmore : 'data'\n \t\t},\n \t\tdone : function( response ) {\n   \t\t\t// do something with successful results\n\t\t},\n\t\tfail : function( error ) {\n\t\t\t// do something with unseccessful ajax request\n\t\t\talert( error.message );\n\t\t},\n\t\tscope : this   // set the scope for the callback functions\n\t}\n\n\tMOD.core.util.ajax( config );",
             "params": [
                 {
                     "name": "config",
@@ -514,7 +509,7 @@
         },
         {
             "file": "core.js",
-            "line": 283,
+            "line": 280,
             "description": "Check to see if browser is specified version of IE or lower\n\n\tif ( MOD.core.util.isIE( 8 ) ) {\n\t\t// Do something because browser is IE8 or lower\n\t}",
             "params": [
                 {
@@ -537,7 +532,7 @@
         },
         {
             "file": "core.js",
-            "line": 332,
+            "line": 329,
             "description": "The main query function, ties in to base to find elements. This function is the base for all DOM searching\n\n\tvar CONTAINER = MOD.dom.query( '#' + moduleID );",
             "params": [
                 {
@@ -565,7 +560,7 @@
         },
         {
             "file": "core.js",
-            "line": 370,
+            "line": 367,
             "description": "Attach events to elements within the module such as 'click', 'mouseenter', etc...\n\n\tMOD.core.dom.bind( btn, 'click', someFunction );",
             "params": [
                 {
@@ -598,7 +593,7 @@
         },
         {
             "file": "core.js",
-            "line": 393,
+            "line": 390,
             "description": "Remove events on elements within the module such as 'click', 'mouseenter', etc...\n\n\tMOD.core.dom.unbind( btn, 'click', someFunction );",
             "params": [
                 {
@@ -631,7 +626,7 @@
         },
         {
             "file": "core.js",
-            "line": 416,
+            "line": 413,
             "description": "Create a new DOM element and apply any attributes or create any child elements\n\n\tvar config = {\n\t\tel : 'div',\n\t\tattrs : {\n\t\t\t'id' : 'awesome',\n\t\t\t'class' : 'framework'\n\t\t},\n\t\tchildren : [\n\t\t\t{\n\t\t\t\tel : 'p',\n\t\t\t\ttext : 'This framework is awesome!!',\n\t\t\t\tattrs : {\n\t\t\t\t\t'class' : 'shout-it-out'\n\t\t\t\t}\n\t\t\t}\n\t\t]\n\t};\n\n\tvar el = MOD.core.dom.create( config );",
             "params": [
                 {
@@ -654,8 +649,8 @@
         },
         {
             "file": "core.js",
-            "line": 508,
-            "description": "Add attributes to an element like src, href, etc...\n\n\tvar attrs = {\n\t\t'src' : http://MODafy.com/awesome/image.jpg,\n\t\t'class' : 'awesome-img'\n\t};\n\n\tMOD.core.dom.apply_attrs( img, attrs );",
+            "line": 505,
+            "description": "Add attributes to an element like src, href, etc...\n\n\tvar attrs = {\n\t\t'src' : http://kurtiskemple.com/awesome/image.jpg,\n\t\t'class' : 'awesome-img'\n\t};\n\n\tMOD.core.dom.apply_attrs( img, attrs );",
             "params": [
                 {
                     "name": "el",
@@ -682,8 +677,8 @@
         },
         {
             "file": "core.js",
-            "line": 529,
-            "description": "Update styles on a DOM element\n\n\tvar css = {\n\t\t'color' : '#444',\n\t\t'background-color' : '#f7f7f7'\n\t};\n\n\tMOD.core.dom.style( el, css );",
+            "line": 526,
+            "description": "Update styles on a DOM element",
             "params": [
                 {
                     "name": "el",
@@ -710,7 +705,7 @@
         },
         {
             "file": "core.js",
-            "line": 560,
+            "line": 548,
             "description": "Add a class to an elment within the module\n\n\tMOD.core.dom.add_class( el, 'class-to-add' );",
             "params": [
                 {
@@ -738,7 +733,7 @@
         },
         {
             "file": "core.js",
-            "line": 587,
+            "line": 579,
             "description": "Remove a class from an element within the module\n\n\tMOD.core.dom.remove_class( el, 'class-to-remove' );",
             "params": [
                 {
@@ -766,7 +761,7 @@
         },
         {
             "file": "core.js",
-            "line": 614,
+            "line": 606,
             "description": "Append elements within the scope of the module, accepts DOM elements or html\n\n\tvar el = MOD.core.dom.create( config );\n\n\tMOD.core.dom.append_elems( el_to_append_to, el );",
             "params": [
                 {
@@ -794,7 +789,7 @@
         },
         {
             "file": "core.js",
-            "line": 632,
+            "line": 624,
             "description": "Prepend elements within the scope of the module, accepts DOM elements or html\n\n\tvar el = MOD.core.dom.create( config );\n\n\tMOD.core.dom.prepend_elems( el_to_append_to, el );",
             "params": [
                 {
@@ -822,7 +817,7 @@
         },
         {
             "file": "core.js",
-            "line": 650,
+            "line": 642,
             "description": "Remove elements from within another element within the module\n\n\tMOD.core.dom.remove_elems( el, 'li.inactive' );",
             "params": [
                 {
@@ -850,7 +845,7 @@
         },
         {
             "file": "core.js",
-            "line": 666,
+            "line": 658,
             "description": "Handles running any code that needs to be run only after the document has loaded\n> Used by the MOD.app object\n\n\tMOD.core.dom.onready( function () {\n\t\t// do some stuff when the document is loaded\n\t});",
             "params": [
                 {
@@ -873,7 +868,7 @@
         },
         {
             "file": "core.js",
-            "line": 686,
+            "line": 678,
             "description": "Handles running any code that needs to be run only after the window has loaded\n> Used by the MOD.app object\n\n\tMOD.core.dom.onload( function () {\n\t\t// do some stuff when the window is loaded\n\t});",
             "params": [
                 {
@@ -896,35 +891,7 @@
         },
         {
             "file": "core.js",
-            "line": 706,
-            "description": "Responsible for handling matching checks on DOM elements\n\n\tif ( MOD.core.dom.is( el, 'checked' ) ) {\n\t\tvar value = MOD.core.dom.form.val( el );\n\t}",
-            "params": [
-                {
-                    "name": "el",
-                    "description": "the element to check against",
-                    "type": "Object"
-                },
-                {
-                    "name": "check",
-                    "description": "the property to match",
-                    "type": "String"
-                }
-            ],
-            "return": {
-                "description": "true if it matches, else false",
-                "type": "Boolean"
-            },
-            "itemtype": "method",
-            "name": "is",
-            "access": "private",
-            "tagname": "",
-            "class": "MOD.core.dom",
-            "module": "MOD",
-            "namespace": "MOD.core"
-        },
-        {
-            "file": "core.js",
-            "line": 742,
+            "line": 704,
             "description": "Get the value of a form element\n\n\tMOD.core.dom.val( input );",
             "params": [
                 {
@@ -947,7 +914,7 @@
         },
         {
             "file": "core.js",
-            "line": 765,
+            "line": 723,
             "description": "Checks to see if a string is a valid email address\n\n\tvar email = \"some@email.com\";\n\n\tif ( MOD.core.dom.form.is_valid_email( email ) ) {\n\t\t// do something with valid email\n\t}",
             "params": [
                 {
@@ -970,7 +937,7 @@
         },
         {
             "file": "core.js",
-            "line": 789,
+            "line": 747,
             "description": "Checks to see if a string is a valid phone number. Matches:\n\n- 5558675309\n- 555 867 5309\n- 555-867-5309\n- 555.867.5309\n- (555) 867 5309\n- (555)-867-5309\n- (555).867.5309\n\n\n\t\tvar phone = \"555-867-5309\";\n\n\t\tif ( MOD.core.dom.form.is_valid_phone_number( phone ) ) {\n\t\t\t// do something with valid phone number\n\t\t}",
             "params": [
                 {
@@ -993,7 +960,7 @@
         },
         {
             "file": "core.js",
-            "line": 836,
+            "line": 794,
             "description": "this is a factory function used to create modules for the application\n\n\tMOD.core.create_module( 'my-module', function( sb ) {\n\n\t\tinit : function () {\n\n\t\t\t// handle the creation of the module\n\t\t\tvar btn, input, term;\n\n\t\t\tbtn = sb.find( '.my-btn' )[0]   // get the element from the return object\n\t\t\tinput = sb.find( '.my-input' )[0]   // same for the input\n\n\t\t\tsb.add_event( btn, 'click', this.doSomething );\n\t\t},\n\n\t\tdestroy : function () {\n\n\t\t\t// handle breaking the module down\n\t\t\tsb.remove_event( btn, 'click', this.doSomething );\n\t\t\tbtn = input = term = null;\n\t\t},\n\n\t\tdoSomething : function () {\n\n\t\t\t// all functionality goes in to functions that are isolated to the module\n\t\t\tterm = sb.val( input );\n\n\t\t\tsb.notify({\n\t\t\t\ttype : 'search-initiated',\n\t\t\t\tdata : term\n\t\t\t});\n\t\t}\n\t});",
             "params": [
                 {
@@ -1021,7 +988,7 @@
         },
         {
             "file": "core.js",
-            "line": 907,
+            "line": 865,
             "description": "starts up an instance of a particular module\n\n\tMOD.core.start( 'my-module' );",
             "params": [
                 {
@@ -1044,7 +1011,7 @@
         },
         {
             "file": "core.js",
-            "line": 931,
+            "line": 889,
             "description": "starts up an instance of all modules\n\n\tMOD.core.start_all();",
             "return": {
                 "description": "",
@@ -1060,7 +1027,7 @@
         },
         {
             "file": "core.js",
-            "line": 953,
+            "line": 911,
             "description": "stops an instance of a running module\n\n\tMOD.core.stop( 'my-module' );",
             "params": [
                 {
@@ -1083,7 +1050,7 @@
         },
         {
             "file": "core.js",
-            "line": 977,
+            "line": 935,
             "description": "stops all instances of modules\n\n\tMOD.core.stop_all();",
             "return": {
                 "description": "",
@@ -1099,7 +1066,7 @@
         },
         {
             "file": "core.js",
-            "line": 999,
+            "line": 957,
             "description": "add events to our module, events allow for cross module communication\n\n\tvar evts = {\n\t\t'some-event' : function ( data ) {\n\t\t\t// do something with passed in event data\n\t\t},\n\n\t\t'some-other-event' : function ( data ) {\n\t\t\t// handle a different event\n\t\t}\n\t};\n\n\tMOD.core.register_events( evts, 'my-module' );",
             "params": [
                 {
@@ -1127,7 +1094,7 @@
         },
         {
             "file": "core.js",
-            "line": 1039,
+            "line": 997,
             "description": "responsible for checking modules this event and then executing it if it is found\n\n\tvar evt = {\n\t\t'some-event' : data\n\t}\n\n\tMOD.core.trigger_event( evt );",
             "params": [
                 {
@@ -1150,7 +1117,7 @@
         },
         {
             "file": "core.js",
-            "line": 1075,
+            "line": 1033,
             "description": "removes events from a specified module\n\n\tvar evts = [ 'some-event', 'some-other-event' ];\n\n\tMOD.core.remove_events( evts, 'my-module' );",
             "params": [
                 {
@@ -1536,7 +1503,7 @@
         {
             "file": "sandbox.js",
             "line": 260,
-            "description": "Used for all ajax requests\n\n\tvar config = {\n \t\turl : 'http://MODafy.com/get/the/awesome/json',\n \t\ttype : 'GET',\n \t\tdataType : 'JSON',\n \t\tdata : {\n \t\t\tsome : 'data',\n \t\t\tmore : 'data'\n \t\t},\n \t\tdone : function( response ) {\n   \t\t\t// do something with successful results\n\t\t},\n\t\tfail : function( error ) {\n\t\t\t// do something with unseccessful ajax request\n\t\t\talert( error.message );\n\t\t},\n\t\tscope : this   // set the scope for the callback functions\n\t}\n\n\tsb.request( config );",
+            "description": "Used for all ajax requests\n\n\tvar config = {\n \t\turl : 'http://kurtiskemple.com/get/the/awesome/json',\n \t\ttype : 'GET',\n \t\tdataType : 'JSON',\n \t\tdata : {\n \t\t\tsome : 'data',\n \t\t\tmore : 'data'\n \t\t},\n \t\tdone : function( response ) {\n\t\t\t// do something with successful results\n\t\t},\n\t\tfail : function( error ) {\n\t\t\t// do something with unseccessful ajax request\n\t\t\talert( error.message );\n\t\t},\n\t\tscope : this   // set the scope for the callback functions\n\t}\n\n\tsb.request( config );",
             "params": [
                 {
                     "name": "config",
@@ -1655,34 +1622,42 @@
         },
         {
             "file": "sandbox.js",
-            "line": 402,
-            "description": "Check function for determining if elements match a certain criteria\n\nAvailable checks are:\n\n- selected\n- checked\n- first-child\n- last-child\n- DOM element tags such as 'form', 'li', 'a', etc...\n\n\tvar elems = sb.find( '#city option' );\n\tvar el, selected, value;\n\n\tfor ( el in elems ) {\n\t\tif ( elems.hasOwnProperty( el ) ) {\n\t\t\tif ( sb.is( el, 'selected' ) ) {\n\t\t\t\tselected = el;\n\t\t\t}\n\t\t}\n\t}\n\n\tvalue = sb.get_value( selected );",
+            "line": 406,
+            "description": "Perform a function on each member of an array\n\n\t// get values of multiselect\n\n\tvar elems = sb.find( 'select option' ),\n\t\tvalues = [];\n\n\tvalues = sb.foreach( elems, function( item, index ) {\n \t\tif ( item.selected === true ) {\n \t\t\treturn item.value;\n \t\t}\n\t}, this );",
             "params": [
                 {
-                    "name": "el",
-                    "description": "the element to check against",
-                    "type": "Object"
+                    "name": "arr",
+                    "description": "the array of items to loop over",
+                    "type": "Array"
                 },
                 {
-                    "name": "check",
-                    "description": "the property to check for",
-                    "type": "String"
+                    "name": "fn",
+                    "description": "the function to run on each item",
+                    "type": "Function"
+                },
+                {
+                    "name": "scope",
+                    "description": "the scope of the function that is running",
+                    "type": "Object"
                 }
             ],
             "return": {
-                "description": "true if an element has the requested property",
-                "type": "Boolean"
+                "description": "an array of the returned results from original array, if anything is returned from callback function",
+                "type": "Array"
             },
             "itemtype": "method",
-            "name": "is",
-            "access": "public",
-            "tagname": "",
+            "name": "foreach",
+            "puclic": "",
             "class": "MOD.sandbox.return",
             "module": "MOD",
             "namespace": "MOD.sandbox"
         }
     ],
     "warnings": [
+        {
+            "message": "unknown tag: puclic",
+            "line": " sandbox.js:406"
+        },
         {
             "message": "Missing item type\nAll modules for the application are stored in this file\nA module is a small piece of the application that is responsible for a minute\namount of tasks",
             "line": " modules.js:2"

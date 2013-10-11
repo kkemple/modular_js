@@ -179,35 +179,32 @@ MOD.core = (function () {
 		},
 
 		/**
-		 * Performs a function on each member of an array
-		 *
-		 * 	function getText ( item ) {
-		 * 		return item.text;
-		 * 	}
-		 *
-		 * 	var arr = sb.find( '.some-paragraphs' );
-		 *
-		 *	var textArr = MOD.core.util.map( arr, getText );
-		 *
-		 *
-		 * @param  {array}   arr the array to map over
-		 * @param  {Function} fn  the callback to execute for each array item
-		 * @param  {object} scope  the scope of the callback function to run
-		 * @return {array}       the results of the mapping if anything is returned in the callback function
-		 * @method map
-		 * @private
-		 */
+		* Performs a function on each member of an array
+		*
+		* 	function getText ( item ) {
+		* 		return item.text;
+		* 	}
+		*
+		* 	var arr = sb.find( '.some-paragraphs' );
+		*
+		*	var textArr = MOD.core.util.map( arr, getText, this );
+		*
+		*
+		* @param  {array}   arr the array to map over
+		* @param  {Function} fn  the callback to execute for each array item
+		* @return {array}       the results of the mapping if anything is returned in the callback function
+		* @method map
+		* @private
+		*/
 		map : function( arr, fn, scope ) {
 			var ret = [], i =0;
-
-			// set the scope for the callback
-			( scope ) ? scope : null;
+			scope = ( scope ) ? scope : null;
 
 			if ( root.util.is_array( arr ) && typeof fn === 'function' ) {
 
 				while ( arr[ i ] ) {
 
-					ret.push( fn.call( scope, arr[ i ] ) );
+					ret.push( fn.call( scope, arr[ i ], i ) );
 					++i;
 				}
 
@@ -222,7 +219,7 @@ MOD.core = (function () {
 		 * Handles all ajax requests for the application
 		 *
 		 * 	var config = {
-		 *  		url : 'http://MODafy.com/get/the/awesome/json',
+		 *  		url : 'http://kurtiskemple.com/get/the/awesome/json',
 		 *  		type : 'GET',
 		 *  		dataType : 'JSON',
 		 *  		data : {
@@ -509,7 +506,7 @@ MOD.core = (function () {
 		 * Add attributes to an element like src, href, etc...
 		 *
 		 * 	var attrs = {
-		 * 		'src' : http://MODafy.com/awesome/image.jpg,
+		 * 		'src' : http://kurtiskemple.com/awesome/image.jpg,
 		 * 		'class' : 'awesome-img'
 		 * 	};
 		 *
@@ -528,15 +525,6 @@ MOD.core = (function () {
 
 		/**
 		 * Update styles on a DOM element
-		 *
-		 * 	var css = {
-		 * 		'color' : '#444',
-		 * 		'background-color' : '#f7f7f7'
-		 * 	};
-		 *
-		 * 	MOD.core.dom.style( el, css );
-		 *
-		 *
 		 * @param  {object} el  the element to style
 		 * @param  {object} css the key/value object of css properties
 		 * @return {none}
@@ -572,12 +560,16 @@ MOD.core = (function () {
 		add_class : function ( el, class_to_add ) {
 			var classes = class_to_add.split( /\s+/ ),
 				className = ' ' + el.className + ' ',
+				currentClasses = className.split( /\s+/ ),
 				len = classes.length,
 				i = 0;
 
 			for ( ; i < len; ) {
+				if ( ! root.util.array_contains( currentClasses, classes[ i ] ) ) {
 
-				className = className.replace( ' ' + classes[ i ] + ' ', ' ' );
+					className = className + ' ' + classes[ i ];
+				}
+
 				++i;
 			}
 
@@ -704,36 +696,6 @@ MOD.core = (function () {
 		},
 
 		/**
-		 * Responsible for handling matching checks on DOM elements
-		 *
-		 * 	if ( MOD.core.dom.is( el, 'checked' ) ) {
-		 * 		var value = MOD.core.dom.form.val( el );
-		 * 	}
-		 *
-		 *
-		 * @param  {object}  el    the element to check against
-		 * @param  {string}  check the property to match
-		 * @return {Boolean}       true if it matches, else false
-		 * @method  is
-		 * @private
-		 */
-		is : function ( el, check ) {
-			switch ( check ) {
-				case 'selected':
-				case 'checked':
-				case 'first-child':
-				case 'last-child':
-					check = ':' + check;
-				break;
-				default:
-					check = check;
-				break;
-			}
-
-			return jQuery( el ).is( check );
-		},
-
-		/**
 		 * Handles all interaction with forms in the DOM
 		 * @class  form
 		 * @namespace MOD.core.dom
@@ -754,12 +716,8 @@ MOD.core = (function () {
 				return jQuery( el ).val();
 			},
 
-			prop : function ( el, prop ) {
-
-			},
-
-			submit : function ( el ) {
-
+			serialize : function ( el ) {
+				return jQuery( el ).serialize();
 			},
 
 			/**

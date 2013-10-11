@@ -261,7 +261,7 @@ MOD.sandbox = {
 			 * Used for all ajax requests
 			 *
 			 * 	var config = {
-			 *  		url : 'http://MODafy.com/get/the/awesome/json',
+			 *  		url : 'http://kurtiskemple.com/get/the/awesome/json',
 			 *  		type : 'GET',
 			 *  		dataType : 'JSON',
 			 *  		data : {
@@ -269,7 +269,7 @@ MOD.sandbox = {
 			 *  			more : 'data'
 			 *  		},
 			 *  		done : function( response ) {
-			 *    			// do something with successful results
+			 * 			// do something with successful results
 			 * 		},
 			 * 		fail : function( error ) {
 			 * 			// do something with unseccessful ajax request
@@ -399,40 +399,36 @@ MOD.sandbox = {
 				return core.dom.form.val( el );
 			},
 
+			prep_form : function ( el ) {
+				return core.dom.form.serialize( el );
+			},
+
 			/**
-			 * Check function for determining if elements match a certain criteria
-			 *
-			 * Available checks are:
-			 *
-			 * - selected
-			 * - checked
-			 * - first-child
-			 * - last-child
-			 * - DOM element tags such as 'form', 'li', 'a', etc...
-			 *
-			 * 	var elems = sb.find( '#city option' );
-			 * 	var el, selected, value;
-			 *
-			 * 	for ( el in elems ) {
-			 * 		if ( elems.hasOwnProperty( el ) ) {
-			 * 			if ( sb.is( el, 'selected' ) ) {
-			 * 				selected = el;
-			 * 			}
-			 * 		}
-			 * 	}
-			 *
-			 * 	value = sb.get_value( selected );
-			 *
-			 *
-			 * @param  {object}  el   the element to check against
-			 * @param  {string}  check the property to check for
-			 * @return {Boolean}      true if an element has the requested property
-			 * @method  is
-			 * @public
-			 */
-			is : function ( el, check ) {
-				return core.dom.form.is( el, prop );
+			* Perform a function on each member of an array
+			*
+			* 	// get values of multiselect
+			*
+			* 	var elems = sb.find( 'select option' ),
+			* 		values = [];
+			*
+			* 	values = sb.foreach( elems, function( item, index ) {
+			*  		if ( item.selected === true ) {
+			*  			return item.value;
+			*  		}
+			* 	}, this );
+			*
+			*
+			* @param  {array}   arr   the array of items to loop over
+			* @param  {Function} fn    the function to run on each item
+			* @param  {object}   scope the scope of the function that is running
+			* @return {array}         an array of the returned results from original array, if anything is returned from callback function
+			* @method  foreach
+			* @puclic
+			*/
+			foreach : function( arr, fn, scope ) {
+				return core.util.map( arr, fn, scope );
 			}
+
 		};
 	}
 };
