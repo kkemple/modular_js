@@ -328,13 +328,13 @@ describe( 'MOD.form', function () {
 
 	describe( 'PIX.form.prep', function () {
 		it( 'should return a name/value pair string of all elements in the form', function () {
-			var data = pix_form.prep( true );
+			var data = mod_form.prep( true );
 
 			expect( typeof data ).toEqual( 'string' );
 		});
 
-		it( 'should return a name/value pair string of all elements in the form', function () {
-			var data = pix_form.prep();
+		it( 'should return a name/value pair JSON object of all elements in the form', function () {
+			var data = mod_form.prep();
 			data = JSON.parse( data )
 
 			expect( data['text-input'] ).toEqual( 'sample-text-input' );
