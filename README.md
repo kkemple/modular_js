@@ -98,15 +98,6 @@ greetEmployee( employee.name );
 
 ### Spacing and Indentation
 
-When your code gets too long to easily read it should be broken on to a new line and double indented so it can be easily recongnized as an extension of the previous line. Example:
-
-```javascript
-// final code may not include a modify function, strictly for demonstration purposes
-var mod = Core.create_module( 'wp_search_results', {})
-mod.query( '.some-inner-element' ).modify( 'class' , 'remove', 'active')
-        .modify( 'text', 'Some new text' );
-```
-
 Function parameters should be spaced at the beginning and end, and after commas. Example:
 
 ```javascript
@@ -120,14 +111,17 @@ useSpaces( param1, param2 );
 When writing functions it is important to group similar items and to use proper indentation. Every inner operation should indent one more tab set than its parent element. Variables should be grouped together and different operations should have a line of space around them. Example:
 
 ```javascript
-var i = 0,
-    items = mod.query( '.inner-items' ),
-    len = items.length;
+var options = select.options,
+        i = 0,
+        len = options.length;
 
 for ( ; i < len; ) {
 
     //add a class to each item
-    item.modify( 'class', 'add', 'new-class' );
+    if ( options[ i ].selected === true ) {
+
+        return options[ i ].value;
+    }
 
     // increment our counter
     ++i;
