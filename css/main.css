@@ -197,6 +197,16 @@ body {
     background: url( '../img/heart-icon.png' ) no-repeat left center;
 }
 
+.error {
+    border: 1px solid red;
+    color: red;
+}
+
+.errors {
+    text-align: center;
+    color: red;
+}
+
 
 
 
@@ -222,8 +232,8 @@ body {
 }
 
 @media print,
-       (-o-min-device-MODel-ratio: 5/4),
-       (-webkit-min-device-MODel-ratio: 1.25),
+       (-o-min-device-pixel-ratio: 5/4),
+       (-webkit-min-device-pixel-ratio: 1.25),
        (min-resolution: 120dpi) {
 
 }

@@ -1,0 +1,12 @@
+{
+    "name": "ModJS",
+    "description": "A Large Scale Application JavaScript Framework",
+    "version": "0.1.0",
+    "url": "https://github.com/kkemple/modular_js",
+    "options": {
+        "outdir": "../docs",
+        "linkNatives": "true",
+        "themedir": "../bs-yuidoc-theme",
+        "helpers": ["../bs-yuidoc-theme/helpers/helpers.js"]
+    }
+}

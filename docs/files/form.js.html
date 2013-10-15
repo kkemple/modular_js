@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>form.js - ModJS</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.7.0/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="stylesheet" href="../assets/css/custom.css">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap-responsive.css">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+</head>
+<body class="yui3-skin-sam">
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <h1 class="brand" style="padding: 10px 16px 10px; height: 20px; line-height: 20px; margin-left: 0;">
+        
+            ModJS
+        </h1>
+	<div class="nav">
+            <li class="divider-vertical"></li>
+            <li>
+                <p class="navbar-text">
+                    API Docs for Version: <b>0.1.0</b>
+                </p>
+            </li>
+        </div>
+        <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
+            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/MOD.app", "classes/MOD.app.return", "classes/MOD.core", "classes/MOD.core.dom", "classes/MOD.core.return", "classes/MOD.core.util", "classes/MOD.form", "classes/MOD.form.return", "classes/MOD.form.return.check", "classes/MOD.sandbox", "classes/MOD.sandbox.return", "modules/MOD"]'>
+        </form>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="span3">
+	    <div>
+    <h3>APIs</h3>
+    <div id="sidebar">
+        <ul id="main-nav" class="nav nav-tabs" style="margin-bottom:0;">
+            <li class="active"><a href="#classes" data-toggle="tab">Classes</a></li>
+            <li><a href="#modules" data-toggle="tab">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" placeholder="Type to filter APIs">
+        </div>
+
+        <div class="tab-content" style="border: 1px solid #DDD; border-top:0;">
+            <div class="tab-pane active" id="classes">
+                <ul id="api-classes" class="nav nav-list">
+                    
+                        <li><a href="../classes/MOD.app.html">MOD.app</a></li>
+                    
+                        <li><a href="../classes/MOD.app.return.html">MOD.app.return</a></li>
+                    
+                        <li><a href="../classes/MOD.core.html">MOD.core</a></li>
+                    
+                        <li><a href="../classes/MOD.core.dom.html">MOD.core.dom</a></li>
+                    
+                        <li><a href="../classes/MOD.core.return.html">MOD.core.return</a></li>
+                    
+                        <li><a href="../classes/MOD.core.util.html">MOD.core.util</a></li>
+                    
+                        <li><a href="../classes/MOD.form.html">MOD.form</a></li>
+                    
+                        <li><a href="../classes/MOD.form.return.html">MOD.form.return</a></li>
+                    
+                        <li><a href="../classes/MOD.form.return.check.html">MOD.form.return.check</a></li>
+                    
+                        <li><a href="../classes/MOD.sandbox.html">MOD.sandbox</a></li>
+                    
+                        <li><a href="../classes/MOD.sandbox.return.html">MOD.sandbox.return</a></li>
+                    
+                </ul>
+            </div>
+
+            <div class="tab-pane" id="modules">
+                <ul id="api-modules" class="nav nav-list">
+                    
+                        <li><a href="../modules/MOD.html">MOD</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="span9">
+                <form id="options-form" class="form-inline pull-right">
+        Show:
+        <label for="api-show-inherited" class="checkbox">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected" class="checkbox">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private" class="checkbox">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated" class="checkbox">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </form>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <div class="page-header">
+    <h1>form.js <small>File</small></h1>
+</div>
+
+<div class="file">
+    <pre class="prettyprint linenums">
+/**
+ * The form object is responsible for processing actions like validation and serializing data for ajax requests
+ *
+ * ### Usage:
+ *
+ * 	var form = sb.query( &#x27;#example-form&#x27; )[ 0 ],
+ * 		url = form.action,
+ * 		method = form.method;
+ *
+ * 	form = new MOD.form( form );
+ *
+ * 	if ( form.validate() ) {
+ * 		sb.request({
+ * 			url : url,
+ * 			type : method,
+ * 			dataType : &#x27;JSON&#x27;,
+ * 			data : form.prep(),
+ * 			done : function ( data ) {
+ * 				// do something with return data
+ * 			},
+ * 			fail : function ( error ) {
+ * 				// do something with error
+ * 			},
+ * 			scope : this
+ * 		});
+ * 	}
+ *
+ *
+ * @class  form
+ * @namespace MOD
+ */
+
+MOD.form = function ( form ) {
+	var fields, current, error, error_container, ret, _all_fields, data;
+
+	/**
+	 * The form return object that contains all functionality like the validate method and serialize method
+	 * @type {Object}
+	 * @class  return
+	 * @namespace MOD.form
+	 */
+	ret = {
+
+		/**
+		 * gets the fields to validate
+		 * @param  {object} form the form DOM element to work with
+		 * @return {none}
+		 * @method  init
+		 * @private
+		 */
+		init: function ( form ) {
+			_all_fields = form.elements;
+			fields = form.getElementsByClassName( &#x27;validate&#x27; );
+		},
+
+		/**
+		 * the function responsible for handling all validation
+		 *
+		 * 	var el = document.getElementById( &#x27;example-form&#x27; );
+		 *
+		 * 	var form = MOD.form( el );
+		 *
+		 * 	if ( form.validate() ) {
+		 * 		// submit form
+		 * 	}
+		 *
+		 *
+		 * @return {boolean} false if validation fails, else true
+		 * @method  validate
+		 * @public
+		 */
+		validate: function () {
+			error = false;
+			ret.clear_errors();
+
+			MOD.core.util.map( fields, function( field, index ) {
+				var matchField, maxlength, minlength, reg, tag, type;
+				current = field;
+
+				if ( MOD.core.dom.has_class( field, &#x27;required&#x27; ) ) {
+
+					ret.check.required( field );
+				}
+
+				if ( MOD.core.dom.has_class( field, &#x27;email&#x27; ) ) {
+
+					ret.check.email( field );
+				}
+
+				if ( MOD.core.dom.has_class( field, &#x27;phone&#x27; ) ) {
+
+					ret.check.phone( field );
+				}
+
+				if ( MOD.core.dom.has_class( field, &#x27;url&#x27; ) ) {
+
+					ret.check.url( field );
+				}
+
+				if ( MOD.core.dom.has_class( field, &#x27;creditcard&#x27; ) ) {
+
+					ret.check.credit_card( field );
+				}
+
+				if ( MOD.core.dom.has_class( field, &#x27;minlength&#x27; ) ) {
+
+					ret.check.min_length( field );
+				}
+
+				if ( MOD.core.dom.has_class( field, &#x27;maxlength&#x27; ) ) {
+
+					ret.check.max_length( field );
+				}
+
+				if ( MOD.core.dom.has_class( field, &#x27;equalto&#x27; ) ) {
+
+					ret.check.equal_to( field );
+				}
+			});
+
+			if ( error !== true ) {
+				return true;
+			} else {
+				return false;
+			}
+		},
+
+		/**
+		 * sets up the error by adding error class to current field and by adding error message to errors container
+		 * @param {string} error the message to display with the error
+		 * @return {none}
+		 * @method set_error
+		 * @private
+		 */
+		set_error: function ( error ) {
+			error_container = form.getElementsByClassName( &#x27;errors&#x27; )[ 0 ];
+
+			if ( !error_container ) {
+				var ec = {
+					el : &#x27;div&#x27;,
+					attrs : {
+						&#x27;class&#x27; : &#x27;errors&#x27;
+					}
+				};
+				error_container = MOD.core.dom.create( ec );
+				form.insertBefore(  error_container, form.firstChild );
+			}
+
+			MOD.core.dom.add_class( current, &#x27;error&#x27; );
+
+			var config = {
+				el : &#x27;p&#x27;,
+				text : error,
+				attrs : {
+					&#x27;class&#x27; : &#x27;error-list-item&#x27;
+				}
+			};
+
+			error_container.appendChild( MOD.core.dom.create( config ) );
+
+		},
+
+		/**
+		 * responsible for clearing any previous error messages and removing error classes from elements
+		 * @return {none}
+		 * @method  clear_errors
+		 * @private
+		 */
+		clear_errors: function () {
+			MOD.core.util.map( fields, function ( item, index ) {
+				MOD.core.dom.remove_class( item, &#x27;error&#x27; );
+			});
+
+			if ( error_container ) {
+
+				error_container.innerHTML = null;
+			}
+		},
+
+		/**
+		 * Builds an object of all fields/groups with associated values, handles all field types except file
+		 * @return {object} the associative array of name/value paired elements
+		 * @method  prep
+		 * @public
+		 */
+		prep : function() {
+			data = {};
+
+			MOD.core.util.map( _all_fields, function( field, index ) {
+				var tag = field.tagName.toLowerCase();
+
+				switch ( tag ) {
+					case &#x27;input&#x27;:
+						var type = field.type;
+
+						switch ( type ) {
+							case &#x27;text&#x27;:
+							case &#x27;email&#x27;:
+							case &#x27;password&#x27;:
+							case &#x27;phone&#x27;:
+							case &#x27;url&#x27;:
+								data[ field.name ] = field.value;
+							break;
+							case &#x27;checkbox&#x27;:
+								if ( field.checked ) {
+									data[ field.name ] = &#x27;1&#x27;;
+								} else {
+									data[ field.name ] = &#x27;0&#x27;;
+								}
+							break;
+							case &#x27;radio&#x27;:
+								var checked = false;
+								MOD.core.util.map( form[ field.name ], function( radio, index ) {
+									if ( radio.checked ) {
+
+										data[ field.name ] = radio.value;
+										checked = true;
+									}
+								});
+								if ( !checked ) {
+									data[ field.name ] = &#x27;0&#x27;;
+								}
+							break;
+						}
+					break;
+					case &#x27;textarea&#x27;:
+						data[ field.name ] = field.value;
+					break;
+					case &#x27;select&#x27;:
+						if ( !field.multiple ) {
+
+							if ( field.selectedIndex !== -1 ) {
+
+								data[ field.name ] = field.options[ field.selectedIndex ].value;
+							} else {
+								data[ field.name ] = &#x27;&#x27;;
+							}
+						} else {
+							if ( field.selectedIndex !== -1 ) {
+								var arr = [];
+
+								MOD.core.util.map( field.options, function( option, index ) {
+									if ( option.selected === true ) {
+
+										arr.push( option.value );
+									}
+								});
+
+								data[ field.name ] = arr;
+							} else {
+								data[ field.name ] = [];
+							}
+						}
+					break;
+				}
+			});
+
+			return data;
+		},     // end prep function
+
+		/**
+		 * contains all the check methods for validation
+		 * @type {Object}
+		 * @class check
+		 * @namespace MOD.form.return
+		 */
+		check : {
+
+			/**
+			 * Checks to make the field has a value
+			 *
+			 * @param  {object} field the field to check the value of
+			 * @return {none}
+			 * @method required
+			 * @private
+			 */
+			required : function ( field ) {
+				var tag = field.tagName.toLowerCase();
+
+				switch ( tag ) {
+					case &#x27;input&#x27;:
+						var type = field.type;
+
+						switch ( type ) {
+							case &#x27;text&#x27;:
+							case &#x27;email&#x27;:
+							case &#x27;password&#x27;:
+							case &#x27;phone&#x27;:
+							case &#x27;url&#x27;:
+								if ( field.value.length &lt; 1 ) {
+
+									error = true;
+									ret.set_error( &#x27;One or more fields are required.&#x27; );
+								}
+							break;
+							case &#x27;checkbox&#x27;: {
+								if ( field.checked === false ) {
+
+									error = true;
+									ret.set_error( &#x27;This field is required.&#x27; );
+								}
+							}
+							break;
+							case &#x27;radio&#x27;: {
+								var name = field.name, selected = false;
+								var radios = [], radio, i, len;
+
+								MOD.core.util.map( fields, function ( item, index ) {
+									if ( item.name === name ) {
+										radios.push( item );
+									}
+								});
+
+								for ( i = 0, len = radios.length; i &lt; len; i++ ) {
+
+									if ( radios[ i ].checked === true ) {
+
+										selected = true;
+										return;
+									}
+								}
+								if ( !selected ) {
+
+									error = true;
+									ret.set_error( &#x27;One or more options is required.&#x27; );
+								}
+							}
+							break;
+						}
+					break;
+					case &#x27;textarea&#x27;:
+						if ( field.value.length &lt; 1 ) {
+
+							error = true;
+							ret.set_error( &#x27;One or more fields are required.&#x27; );
+						}
+					break;
+					case &#x27;select&#x27;:
+						if ( field.options.selectedIndex === -1 ) {
+
+							error = true;
+							ret.set_error( &#x27;One or more options are required.&#x27; );
+						}
+					break;
+				}
+			},
+
+			/**
+			 * Checks to make sure the field is a valid email address
+			 *
+			 * @param  {object} field the field to check the value of
+			 * @return {none}
+			 * @method email
+			 * @private
+			 */
+			email : function ( field ) {
+				var val = field.value;
+					arr = val.match( /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/ );
+
+				if ( arr === null ) {
+
+					error = true;
+					ret.set_error( &#x27;Not a valid email address.&#x27; );
+				}
+			},
+
+			/**
+			 * Checks to make sure field value is a valid phone number
+			 *
+			 * - 5558675309
+			 * - 555 867 5309
+			 * - 555-867-5309
+			 * - 555.867.5309
+			 * - (555) 867 5309
+			 * - (555)-867-5309
+			 * - (555).867.5309
+			 *
+			 * @param  {object} field the field to check the value of
+			 * @return {none}
+			 * @method  phone
+			 * @private
+			 */
+			phone : function ( field ) {
+				var val = field.value,
+					arr = val.match( /^\(+?[0-9]{3}\)+?\s[0-9]{3}[\s|\.|-][0-9]{4}|^[0-9]{3}[\s|\.|\-][0-9]{3}[\s|\.|-][0-9]{4}|^[0-9]{10}$/ );
+				if ( arr === null ) {
+
+					error = true;
+					ret.set_error( &#x27;Not a valid phone number.&#x27; );
+				}
+			},
+
+			/**
+			 * Checks to make sure the field is a valid url
+			 *
+			 * @param  {object} field the field to check the value of
+			 * @return {none}
+			 * @method  url
+			 * @private
+			 */
+			url : function ( field ) {
+				var val = field.value,
+					arr = val.match( /[-a-zA-Z0-9@:%_\+.~#?&amp;\/\/=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&amp;\/\/=]*)?/ );
+
+				if ( arr === null ) {
+
+					error = true;
+					ret.set_error( &#x27;Not a valid url.&#x27; );
+				}
+			},
+
+			/**
+			 * Checks to make sure the field is a number 16 digits in length
+			 *
+			 * @param  {object} field the field to check the value of
+			 * @return {none}
+			 * @method  credit_card
+			 * @private
+			 */
+			credit_card : function ( field ) {
+				var val = field.value,
+					arr = val.match( /\d{16}/ );
+
+				if ( arr === null ) {
+
+					error = true;
+					ret.set_error( &#x27;Not a valid credit card number.&#x27; );
+				}
+			},
+
+			/**
+			 * Checks to see if value length is greater than minimum
+			 *
+			 * - input
+			 * - select ( multi )
+			 * - textarea
+			 *
+			 *
+			 * @param  {object} field the field to check the value of
+			 * @return {none}
+			 * @method  min_length
+			 * @private
+			 */
+			min_length : function ( field ) {
+				var tag = field.tagName.toLowerCase(),
+					minlength = parseInt( field.getAttribute( &#x27;data-minlength&#x27; ), 10 );
+
+				switch ( tag ) {
+					case &#x27;input&#x27;:
+						type = field.type;
+
+						switch ( type ) {
+							case &#x27;text&#x27;:
+							case &#x27;email&#x27;:
+							case &#x27;password&#x27;:
+							case &#x27;phone&#x27;:
+							case &#x27;url&#x27;:
+								if ( field.value.length &lt; minlength ) {
+
+									error = true;
+									ret.set_error( &#x27;Minimum length is &#x27; + minlength + &#x27;.&#x27; );
+								}
+							break;
+						}
+					break;
+					case &#x27;textarea&#x27;:
+						if ( field.value.length &lt; minlength ) {
+
+							error = true;
+							ret.set_error( &#x27;Minimum length is &#x27; + minlength + &#x27;.&#x27; );
+						}
+					break;
+					case &#x27;select&#x27;:
+						var count = 0, option;
+
+						if ( field.multiple ) {
+							for ( i = 0, len = field.options.length; i &lt; len; i++ ) {
+								if ( field.options[ i ].selected === true ) {
+
+									++count;
+								}
+							}
+
+							if ( count &lt; minlength ) {
+								error = true;
+								ret.set_error( &#x27;Minimum length is &#x27; + minlength + &#x27;.&#x27; );
+							}
+						}
+					break;
+				}
+			},
+
+			/**
+			 * Checks to see if value length is less than maximum
+			 *
+			 * - input
+			 * - select ( multi )
+			 * - textarea
+			 *
+			 *
+			 * @param  {object} field the field to check the value of
+			 * @return {none}
+			 * @method max_length
+			 * @private
+			 */
+			max_length : function ( field ) {
+				var tag = field.tagName.toLowerCase(),
+					maxlength = parseInt( field.getAttribute( &#x27;data-maxlength&#x27; ), 10 );
+
+				switch ( tag ) {
+					case &#x27;input&#x27;:
+						var type = field.type;
+
+						switch ( type ) {
+							case &#x27;text&#x27;:
+							case &#x27;email&#x27;:
+							case &#x27;password&#x27;:
+							case &#x27;phone&#x27;:
+							case &#x27;url&#x27;:
+								if ( field.value.length &gt; maxlength ) {
+
+									error = true;
+									ret.set_error( &#x27;Maximum length is &#x27; + maxlength + &#x27;.&#x27; );
+								}
+							break;
+						}
+					break;
+					case &#x27;textarea&#x27;:
+						if ( field.value.length &gt; maxlength ) {
+
+							error = true;
+							ret.set_error( &#x27;Maximum length is &#x27; + maxlength + &#x27;.&#x27; );
+						}
+					break;
+					case &#x27;select&#x27;:
+						var count = 0, option, i, len;
+
+						if ( field.multiple ) {
+							for ( i = 0, len = field.options.length; i &lt; len; i++ ) {
+								if ( field.options[ i ].selected === true ) {
+
+									++count;
+								}
+							}
+
+							if ( count &gt; maxlength ) {
+								error = true;
+								ret.set_error( &#x27;Maximum length is &#x27; + maxlength + &#x27;.&#x27; );
+							}
+						}
+					break;
+				}
+			},
+
+			/**
+			 * Checks to see if value length is equal to the specified length
+			 *
+			 * - input
+			 * - select ( multi )
+			 * - textarea
+			 *
+			 *
+			 * @param  {object} field the field to check the value of
+			 * @return {none}
+			 * @method equal_to
+			 * @private
+			 */
+			equal_to : function ( field ) {
+				var tag = field.tagName.toLowerCase(),
+					equalto = parseInt( field.getAttribute( &#x27;data-equalto&#x27; ), 10 );
+
+				switch ( tag ) {
+					case &#x27;input&#x27;:
+						var type = field.type;
+
+						switch ( type ) {
+							case &#x27;text&#x27;:
+							case &#x27;email&#x27;:
+							case &#x27;password&#x27;:
+							case &#x27;phone&#x27;:
+							case &#x27;url&#x27;:
+								if ( field.value.length !== equalto ) {
+
+									error = true;
+									ret.set_error( &#x27;Minimum length is &#x27; + equalto + &#x27;.&#x27; );
+								}
+							break;
+						}
+					break;
+					case &#x27;textarea&#x27;:
+						if ( field.value.length !== equalto ) {
+
+							error = true;
+							ret.set_error( &#x27;Minimum length is &#x27; + equalto + &#x27;.&#x27; );
+						}
+					break;
+					case &#x27;select&#x27;:
+						var count = 0, option, i, len;
+
+						if ( field.multiple ) {
+							for ( i = 0, len = field.options.length; i &lt; len; i++ ) {
+								if ( field.options[ i ].selected === true ) {
+
+									++count;
+								}
+							}
+
+							if ( count !== equalto ) {
+								error = true;
+								ret.set_error( &#x27;Minimum length is &#x27; + equalto + &#x27;.&#x27; );
+							}
+						}
+					break;
+				}
+			}
+		}     // end check object
+	};     // end return object
+
+	ret.init( form );
+	return ret;
+};
+
+
+
+
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/jquery/jquery-1.8.2.min.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.js"></script>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script src="../assets/js/yuidoc-bootstrap.js"></script>
+<script>prettyPrint();</script>
+</body>
+</html>
