@@ -1,8 +1,8 @@
 /**
  * ## The Application Engine
- * - This layer is responsible for handling starting all the modules according to the application configuration set in {root}/MODafy/MODjs.json
+ * - This layer is responsible for handling starting all the modules according to the application configuration set in config.js
  * - The return object of this class has only one method, the run method which you call to start the app
- * - **This layer depends on the MODJS_CONFIG global application configuration object**
+ *
  *
  * **For app return object documentation see the MOD.app.return class API**
  *
@@ -54,7 +54,7 @@ MOD.app = (function() {
 	return {
 
 		/**
-		 * The method responsible for starting the application, makes an ajax call to the MODjs.json config file and processes the response
+		 * The method responsible for starting the application, reads the MOD.config object and processes the response
 		 *
 		 * 	MOD.app.run();
 		 *
