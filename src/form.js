@@ -179,12 +179,15 @@ MOD.form = function ( form ) {
 
 		/**
 		 * Builds an object of all fields/groups with associated values, handles all field types except file
-		 * @return {object} the associative array of name/value paired elements
+		 * @param {Boolean} serialize if true it formats values according to application/x-www-form-urlencoded format, else it returns JSON object
+		 * @return {JSON object / form urlencoded string} the form name/value pairs in one of the two specified return types
 		 * @method  prep
 		 * @public
 		 */
-		prep : function() {
+		prep : function( serialize ) {
+			serialize = ( serialize ) ? serialize : false;
 			data = {};
+			var pairs = [], name;
 
 			MOD.core.util.map( _all_fields, function( field, index ) {
 				var tag = field.tagName.toLowerCase();
@@ -255,7 +258,28 @@ MOD.form = function ( form ) {
 				}
 			});
 
-			return data;
+			if ( !data ) return "";
+
+			if ( serialize ) {
+
+				for ( name in data ) {
+					if ( data.hasOwnProperty( name ) ) {
+
+						if ( typeof data !== 'function' ) {
+
+							var value = data[ name ].toString();
+							name = encodeURIComponent( name ).replace( /\%20/g, '+' );
+							value = encodeURIComponent( value ).replace( /\%20/g, '+' );
+
+							pairs.push( name + '=' + value );
+						}
+					}
+				}
+
+				return pairs.join( '&' );
+			} else {
+				return JSON.stringify( data );
+			}
 		},     // end prep function
 
 		/**

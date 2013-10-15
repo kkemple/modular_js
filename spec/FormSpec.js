@@ -326,16 +326,18 @@ describe( 'MOD.form', function () {
 		});
 	});
 
-	describe( 'MOD.form.prep', function () {
-		it( 'should return a name/value pair object of all elements in the form', function () {
-			var data = mod_form.prep();
+	describe( 'PIX.form.prep', function () {
+		it( 'should return a name/value pair string of all elements in the form', function () {
+			var data = pix_form.prep( true );
 
-			expect( data['text-input'] ).toBeDefined();
+			expect( typeof data ).toEqual( 'string' );
+		});
+
+		it( 'should return a name/value pair string of all elements in the form', function () {
+			var data = pix_form.prep();
+			data = JSON.parse( data )
+
 			expect( data['text-input'] ).toEqual( 'sample-text-input' );
-			expect( data['textarea'] ).toEqual( 'sample-text-area' );
-			expect( data['select'] ).toEqual( '1' );
-			expect( data['checkbox'] ).toEqual( '0' );
-			expect( data['radio-group'] ).toEqual( '0' );
 		});
 	});
 

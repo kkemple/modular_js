@@ -231,7 +231,7 @@
             "module": "MOD",
             "namespace": "MOD.form.return",
             "file": "form.js",
-            "line": 261,
+            "line": 285,
             "description": "contains all the check methods for validation",
             "type": "{Object}"
         },
@@ -1204,9 +1204,16 @@
             "file": "form.js",
             "line": 180,
             "description": "Builds an object of all fields/groups with associated values, handles all field types except file",
+            "params": [
+                {
+                    "name": "serialize",
+                    "description": "if true it formats values according to application/x-www-form-urlencoded format, else it returns JSON object",
+                    "type": "Boolean"
+                }
+            ],
             "return": {
-                "description": "the associative array of name/value paired elements",
-                "type": "Object"
+                "description": "the form name/value pairs in one of the two specified return types",
+                "type": "JSON object / form urlencoded string"
             },
             "itemtype": "method",
             "name": "prep",
@@ -1218,7 +1225,7 @@
         },
         {
             "file": "form.js",
-            "line": 269,
+            "line": 293,
             "description": "Checks to make the field has a value",
             "params": [
                 {
@@ -1241,7 +1248,7 @@
         },
         {
             "file": "form.js",
-            "line": 348,
+            "line": 372,
             "description": "Checks to make sure the field is a valid email address",
             "params": [
                 {
@@ -1264,7 +1271,7 @@
         },
         {
             "file": "form.js",
-            "line": 367,
+            "line": 391,
             "description": "Checks to make sure field value is a valid phone number\n\n- 5558675309\n- 555 867 5309\n- 555-867-5309\n- 555.867.5309\n- (555) 867 5309\n- (555)-867-5309\n- (555).867.5309",
             "params": [
                 {
@@ -1287,7 +1294,7 @@
         },
         {
             "file": "form.js",
-            "line": 393,
+            "line": 417,
             "description": "Checks to make sure the field is a valid url",
             "params": [
                 {
@@ -1310,7 +1317,7 @@
         },
         {
             "file": "form.js",
-            "line": 412,
+            "line": 436,
             "description": "Checks to make sure the field is a number 16 digits in length",
             "params": [
                 {
@@ -1333,7 +1340,7 @@
         },
         {
             "file": "form.js",
-            "line": 431,
+            "line": 455,
             "description": "Checks to see if value length is greater than minimum\n\n- input\n- select ( multi )\n- textarea",
             "params": [
                 {
@@ -1356,7 +1363,7 @@
         },
         {
             "file": "form.js",
-            "line": 493,
+            "line": 517,
             "description": "Checks to see if value length is less than maximum\n\n- input\n- select ( multi )\n- textarea",
             "params": [
                 {
@@ -1379,7 +1386,7 @@
         },
         {
             "file": "form.js",
-            "line": 555,
+            "line": 579,
             "description": "Checks to see if value length is equal to the specified length\n\n- input\n- select ( multi )\n- textarea",
             "params": [
                 {
