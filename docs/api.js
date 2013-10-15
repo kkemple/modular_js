@@ -11,7 +11,8 @@ YUI.add("yuidoc-meta", function(Y) {
         "MOD.form.return",
         "MOD.form.return.check",
         "MOD.sandbox",
-        "MOD.sandbox.return"
+        "MOD.sandbox.return",
+        "MOD.ui"
     ],
     "modules": [
         "MOD"
