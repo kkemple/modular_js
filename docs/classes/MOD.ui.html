@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>MOD - ModJS</title>
+    <title>MOD.ui - ModJS</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.7.0/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -118,10 +118,10 @@
                 <div id="docs-main">
                     <div class="content">
                         <div class="page-header">
-    <h1>MOD <small>Module</small></h1>
+    <h1>MOD.ui <small>Class</small></h1>
 </div>
 
-<div class="clearfix well well-small">
+<div class="well well-small">
     
 
     
@@ -133,101 +133,159 @@
     
 
     
-</div>
-
-
-
-<div class="moduledesc well well-small">
-    <p>The application namespace.</p>
-
-</div>
-
-
-
-<div class="yui3-g">
-    <div class="yui3-u-1-2">
         
-            <p>This module provides the following classes:</p>
+            Module: <a href="../modules/MOD.html">MOD</a>
+        
+    
 
-            <ul class="module-classes">
+    
+</div>
+
+
+
+<div class="well well-small">
+    <p>The ui object stores all of the prebuilt widgets for the framework
+ - scroll : scrolls to section on page</p>
+
+</div>
+
+
+
+<div>
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#index">Index</a></li>
+
+        
+            <li><a data-toggle="tab" href="#methods">Methods</a></li>
+        
+        
+        
+        
+    </ul>
+
+    <div class="tab-content">
+        <div id="index" class="tab-pane active">
+            <h2 class="off-left">Item Index</h2>
+
             
-                <li class="module-class">
-                    <a href="../classes/MOD.app.html">
-                        MOD.app
-                    </a>
-                </li>
+                <div class="index-section methods">
+                    <h3>Methods</h3>
+
+                    <ul class="index-list methods">
+                        
+                            <li class="index-item method public">
+                                <a href="#" data-tabid="#methods" data-anchor="#method_scroll" data-tablink="scroll">scroll</a>
+
+                                
+                                
+                            </li>
+                        
+                    </ul>
+                </div>
             
-                <li class="module-class">
-                    <a href="../classes/MOD.app.return.html">
-                        MOD.app.return
-                    </a>
-                </li>
+
             
-                <li class="module-class">
-                    <a href="../classes/MOD.core.html">
-                        MOD.core
-                    </a>
-                </li>
+
             
-                <li class="module-class">
-                    <a href="../classes/MOD.core.dom.html">
-                        MOD.core.dom
-                    </a>
-                </li>
+
             
-                <li class="module-class">
-                    <a href="../classes/MOD.core.return.html">
-                        MOD.core.return
-                    </a>
-                </li>
+        </div>
+
+        
+            <div id="methods" class="tab-pane">
+                <h2 class="off-left">Methods</h2>
+
+                
+                    <div id="method_scroll" class="method item public">
+    <h3 class="name"><code>scroll</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
             
-                <li class="module-class">
-                    <a href="../classes/MOD.core.util.html">
-                        MOD.core.util
-                    </a>
-                </li>
+                
+                <p>
+                
+                Defined in
+                
             
-                <li class="module-class">
-                    <a href="../classes/MOD.form.html">
-                        MOD.form
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/MOD.form.return.html">
-                        MOD.form.return
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/MOD.form.return.check.html">
-                        MOD.form.return.check
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/MOD.sandbox.html">
-                        MOD.sandbox
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/MOD.sandbox.return.html">
-                        MOD.sandbox.return
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/MOD.ui.html">
-                        MOD.ui
-                    </a>
-                </li>
-            
-            </ul>
+        
+        
+        <a href="../files/widgets.js.html#l10"><code>widgets.js:10</code></a>
+        
+        </p>
+
+
+        
+
         
     </div>
 
-    <div class="yui3-u-1-2">
+    <div class="description">
+        <p>Scroll to section widget that allows for scolling to a section of the page with custom callback function</p>
+<pre class="code prettyprint"><code>var scroller = new PIX.ui.scroll({
+    el : &#39;scroll-anchor&#39;, // the id of the element to set event on
+    offset : 0, // the amount of distance to offset the scroll
+    duration : 300, // the amount of time it takes to complete scroll
+    callback : function () {} // the function to fire when element is done scrolling
+});
+
+scroller.update( newConfig ); // you can use the update function to set new params</code></pre>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>:
+                    
+                    <p>the update method, allows you to update any config property</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+            </div>
+        
+
+        
+
+        
+
         
     </div>
 </div>

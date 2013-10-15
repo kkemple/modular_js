@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>MOD - ModJS</title>
+    <title>widgets.js - ModJS</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.7.0/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -118,118 +118,84 @@
                 <div id="docs-main">
                     <div class="content">
                         <div class="page-header">
-    <h1>MOD <small>Module</small></h1>
+    <h1>widgets.js <small>File</small></h1>
 </div>
 
-<div class="clearfix well well-small">
-    
+<div class="file">
+    <pre class="prettyprint linenums">
+/**
+ * The ui object stores all of the prebuilt widgets for the framework
+ *  - scroll : scrolls to section on page
+ *
+ * @class  ui
+ * @namespace MOD
+ */
 
-    
+MOD.ui = {
+	/**
+	 * Scroll to section widget that allows for scolling to a section of the page with custom callback function
+	 *
+	 * 	var scroller = new PIX.ui.scroll({
+	 * 		el : &#x27;scroll-anchor&#x27;, // the id of the element to set event on
+	 * 		offset : 0, // the amount of distance to offset the scroll
+	 * 		duration : 300, // the amount of time it takes to complete scroll
+	 * 		callback : function () {} // the function to fire when element is done scrolling
+	 * 	});
+	 *
+	 * 	scroller.update( newConfig ); // you can use the update function to set new params
+	 *
+	 *
+	 * @return {object} the update method, allows you to update any config property
+	 * @method  scroll
+	 * @public
+	 */
+	scroll : function ( config ) {
+		var el, target, offset, duration, callback, sb, ret;
 
-    
-        <div class="foundat">
-            Defined in: <a href="../files/widgets.js.html#l1"><code>widgets.js:1</code></a>
-        </div>
-    
+		function init ( config ) {
+			el = document.getElementById( config.el ),
+			offset = config.offset,
+			duration = config.duration,
+			callback = config.callback;
 
-    
-</div>
+			target = document.getElementById( el.href.split( &#x27;#&#x27; )[1] ),
+			sb = PIX.sandbox.create( PIX.core, config.el );
+			sb.add_event( el, &#x27;click&#x27;, scroll );
+		}
 
+		function destroy () {
+			sb.remove_event( el, &#x27;click&#x27;, scroll );
+			el = target = offset = duration = callback = null;
+		}
 
+		function scroll ( e ) {
+			var top = sb.offset( target ).y;
+			var attrs = {
+				&#x27;scroll-top&#x27; : top - offset
+			};
 
-<div class="moduledesc well well-small">
-    <p>The application namespace.</p>
+			sb.animate( &#x27;html, body&#x27;, attrs, duration, callback );
 
-</div>
+			sb.notify({
+				type : &#x27;ui.scroll.&#x27; + config.el,
+				data : null
+			});
 
+			e.preventDefault();
+		}
 
+		ret = {
+			update : function ( config ) {
+				destroy();
+				init( config );
+			}
+		};
 
-<div class="yui3-g">
-    <div class="yui3-u-1-2">
-        
-            <p>This module provides the following classes:</p>
-
-            <ul class="module-classes">
-            
-                <li class="module-class">
-                    <a href="../classes/MOD.app.html">
-                        MOD.app
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/MOD.app.return.html">
-                        MOD.app.return
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/MOD.core.html">
-                        MOD.core
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/MOD.core.dom.html">
-                        MOD.core.dom
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/MOD.core.return.html">
-                        MOD.core.return
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/MOD.core.util.html">
-                        MOD.core.util
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/MOD.form.html">
-                        MOD.form
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/MOD.form.return.html">
-                        MOD.form.return
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/MOD.form.return.check.html">
-                        MOD.form.return.check
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/MOD.sandbox.html">
-                        MOD.sandbox
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/MOD.sandbox.return.html">
-                        MOD.sandbox.return
-                    </a>
-                </li>
-            
-                <li class="module-class">
-                    <a href="../classes/MOD.ui.html">
-                        MOD.ui
-                    </a>
-                </li>
-            
-            </ul>
-        
-    </div>
-
-    <div class="yui3-u-1-2">
-        
-    </div>
+		init( config );
+		return ret;
+	}
+};
+    </pre>
 </div>
 
                     </div>
