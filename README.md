@@ -8,16 +8,16 @@ ModJS is a javascript framework that utilizes the Module, Factory, and Mediator 
 - **Module**: This layer is responsible for small sections of the application that are independent pieces of functionality. An example would be Twitter. The tweets feed is one module, search is another module, and posting a tweet is another module. All other modules should be independent of each other and the addition or removal of a module should have no affect on any other part of the application (site).
 
 ## Documentation
-Every method in the framework is documented and available with examples and whether or not the function should be used publicly. For documentation simple navigate to path/to/project/docs/ in your browser and the full documentation will be available to you. ( Documentation created using YUIdoc )
+Every method in the framework is documented and available with examples and whether or not the function should be used publicly. For documentation simple navigate to "path/to/project/docs/" in your browser and the full documentation will be available to you. ( Documentation created using YUIdoc )
+
+## Tests
+Currently there is a full suite of tests for the core object and form object. Not sure I am going to write tests for the sanbox because it really just calls functions from the core. To view tests simply navigate to "path/to/project/SpecRunner.html" and the test results will be available for you.
 
 ## Working Example
-To see the framework in action simply download the project and navigate to path/to/project/ in your browser. The example searches Instagram for the specified hashtag and displays recent images with that tag
+To see the framework in action simply download the project and navigate to "path/to/project/" in your browser. The example searches Instagram for the specified hashtag and displays recent images with that tag
 
-## So what does this framework really accomplish?
-The point of ModJS is force developers into creating reusable fully modular code that will allow a higher reusability rate with JS. It will all be written the same way eliminating consistancy issues and it will be fully adaptable to any development environment making it future-proof in regard to back-end framework changes.
-
-## How does it work as a whole?
-By decoupling all the layers of the application you can drop in an entire base and some modules from previous projects and with minor updates you could potentially decrease development time by a large amount. It will also help developers adopt the latest application development methods and best practices.
+## Why is it useful?
+By decoupling all the layers of the application you can drop in some modules from previous projects and with minor updates you could decrease development time by a large amount. You could also change out the jQuery base layer with your tool of choice and with only editing about 15 functions still be able to use all of your previous modules becauset the sandbox layer never has to change.It makes projects infinitely scalable by 1) seperating business logic into neat little packages greatly decreasing the potential for unforseen issues caused by altering code ( we have all experienced the domino effect, you make one change and suddenly ten other functions need to be updated ), 2) seperating the core of the application from a third-party library making it super-adaptable to any project. It will also help developers adopt the latest application development methods and best practices.
 
 ## Contributing
 If you would like to contribute to this project:
