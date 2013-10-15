@@ -5,9 +5,11 @@ YUI.add("yuidoc-meta", function(Y) {
         "MOD.app.return",
         "MOD.core",
         "MOD.core.dom",
-        "MOD.core.dom.form",
         "MOD.core.return",
         "MOD.core.util",
+        "MOD.form",
+        "MOD.form.return",
+        "MOD.form.return.check",
         "MOD.sandbox",
         "MOD.sandbox.return"
     ],
