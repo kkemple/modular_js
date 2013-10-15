@@ -213,6 +213,13 @@
                             </li>
                         
                             <li class="index-item method private">
+                                <a href="#" data-tabid="#methods" data-anchor="#method_offset" data-tablink="offset">offset</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method private">
                                 <a href="#" data-tabid="#methods" data-anchor="#method_onload" data-tablink="onload">onload</a>
 
                                 
@@ -228,6 +235,13 @@
                         
                             <li class="index-item method private">
                                 <a href="#" data-tabid="#methods" data-anchor="#method_prepend_elems" data-tablink="prepend_elems">prepend_elems</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method private">
+                                <a href="#" data-tabid="#methods" data-anchor="#method_prop" data-tablink="prop">prop</a>
 
                                 
                                 
@@ -331,7 +345,7 @@
             
         
         
-        <a href="../files/core.js.html#l566"><code>core.js:566</code></a>
+        <a href="../files/core.js.html#l611"><code>core.js:611</code></a>
         
         </p>
 
@@ -461,7 +475,7 @@
             
         
         
-        <a href="../files/core.js.html#l651"><code>core.js:651</code></a>
+        <a href="../files/core.js.html#l696"><code>core.js:696</code></a>
         
         </p>
 
@@ -606,7 +620,7 @@ MOD.core.dom.append_elems( el_to_append_to, el );</code></pre>
     <div class="description">
         <p>Add attributes to an element like src, href, etc...</p>
 <pre class="code prettyprint"><code>var attrs = {
-    &#39;src&#39; : http://kurtiskemple.com/awesome/image.jpg,
+    &#39;src&#39; : http://someurl.com/awesome/image.jpg,
     &#39;class&#39; : &#39;awesome-img&#39;
 };
 
@@ -1007,7 +1021,7 @@ var el = MOD.core.dom.create( config );</code></pre>
             
         
         
-        <a href="../files/core.js.html#l624"><code>core.js:624</code></a>
+        <a href="../files/core.js.html#l669"><code>core.js:669</code></a>
         
         </p>
 
@@ -1089,6 +1103,118 @@ var el = MOD.core.dom.create( config );</code></pre>
 </div>
 
                 
+                    <div id="method_offset" class="method item private">
+    <h3 class="name"><code>offset</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>el</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/core.js.html#l552"><code>core.js:552</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>returns x and y coords of the offset of the element relative to the document</p>
+<pre class="code prettyprint"><code>var offset = PIX.core.dom.offset( el );
+
+window.scrollTo( 0, offset.y );</code></pre>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">el</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the DOM element you want the offset of</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>:
+                    
+                    <p>object containing x and y coords</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
                     <div id="method_onload" class="method item private">
     <h3 class="name"><code>onload</code></h3>
 
@@ -1137,7 +1263,7 @@ var el = MOD.core.dom.create( config );</code></pre>
             
         
         
-        <a href="../files/core.js.html#l711"><code>core.js:711</code></a>
+        <a href="../files/core.js.html#l760"><code>core.js:760</code></a>
         
         </p>
 
@@ -1250,7 +1376,7 @@ var el = MOD.core.dom.create( config );</code></pre>
             
         
         
-        <a href="../files/core.js.html#l691"><code>core.js:691</code></a>
+        <a href="../files/core.js.html#l740"><code>core.js:740</code></a>
         
         </p>
 
@@ -1369,7 +1495,7 @@ var el = MOD.core.dom.create( config );</code></pre>
             
         
         
-        <a href="../files/core.js.html#l673"><code>core.js:673</code></a>
+        <a href="../files/core.js.html#l718"><code>core.js:718</code></a>
         
         </p>
 
@@ -1419,6 +1545,157 @@ MOD.core.dom.prepend_elems( el_to_append_to, el );</code></pre>
 
                     <div class="param-description">
                         <p>the elements to prepend</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">None</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_prop" class="method item private">
+    <h3 class="name"><code>prop</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>el</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>prop</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>value</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">None</span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/core.js.html#l535"><code>core.js:535</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Gets or sets a single property on an element</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">el</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the DOM element to update</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">prop</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the property or attribute to update/retrieve</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">value</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>if setting, the value to apply to the property/attribute</p>
 
                     </div>
 
@@ -1633,7 +1910,7 @@ MOD.core.dom.prepend_elems( el_to_append_to, el );</code></pre>
             
         
         
-        <a href="../files/core.js.html#l597"><code>core.js:597</code></a>
+        <a href="../files/core.js.html#l642"><code>core.js:642</code></a>
         
         </p>
 
@@ -1763,7 +2040,7 @@ MOD.core.dom.prepend_elems( el_to_append_to, el );</code></pre>
             
         
         
-        <a href="../files/core.js.html#l544"><code>core.js:544</code></a>
+        <a href="../files/core.js.html#l589"><code>core.js:589</code></a>
         
         </p>
 

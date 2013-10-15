@@ -343,7 +343,7 @@ MOD.core = (function () {
 		 * Handles all ajax requests for the application
 		 *
 		 * 	var config = {
-		 *  		url : &#x27;http://kurtiskemple.com/get/the/awesome/json&#x27;,
+		 *  		url : &#x27;http://someurl.com/get/the/awesome/json&#x27;,
 		 *  		type : &#x27;GET&#x27;,
 		 *  		dataType : &#x27;JSON&#x27;,
 		 *  		data : {
@@ -629,7 +629,7 @@ MOD.core = (function () {
 		 * Add attributes to an element like src, href, etc...
 		 *
 		 * 	var attrs = {
-		 * 		&#x27;src&#x27; : http://kurtiskemple.com/awesome/image.jpg,
+		 * 		&#x27;src&#x27; : http://someurl.com/awesome/image.jpg,
 		 * 		&#x27;class&#x27; : &#x27;awesome-img&#x27;
 		 * 	};
 		 *
@@ -655,13 +655,58 @@ MOD.core = (function () {
 			}
 		},
 
-		//TODO: add comment
+		/**
+		 * Gets or sets a single property on an element
+		 * @param  {object} el    the DOM element to update
+		 * @param  {string} prop  the property or attribute to update/retrieve
+		 * @param  {string} value if setting, the value to apply to the property/attribute
+		 * @return {none}
+		 * @method prop
+		 * @private
+		 */
 		prop : function( el, prop, value ) {
 			if ( value === undefined ) {
 				return el.getAttribute( prop );
 			} else {
 				el.setAttribute( prop, value );
 			}
+		},
+
+		/**
+		 * returns x and y coords of the offset of the element relative to the document
+		 *
+		 * 	var offset = PIX.core.dom.offset( el );
+		 *
+		 * 	window.scrollTo( 0, offset.y );
+		 *
+		 *
+		 * @param  {object} el the DOM element you want the offset of
+		 * @return {object}    object containing x and y coords
+		 * @method  offset
+		 * @private
+		 */
+		offset : function( el ) {
+			var offset = (function() {
+				if ( window.pageXOffset !== null ) {
+
+					return {
+						x : window.pageXOffset,
+						y : window.pageYOffset
+					};
+				} else {
+					return {
+						x : document.documentElement.scrollLeft,
+						y : document.documentElement.scrollTop
+					}
+				}
+			}());
+
+			var box = el.getBoundingClientRect();
+
+			return {
+				x : Math.floor( box.left + offset.x ),
+				y : Math.floor( box.top + offset.y )
+			};
 		},
 
 		/**
@@ -808,7 +853,11 @@ MOD.core = (function () {
 		 * @private
 		 */
 		prepend_elems : function( el, elems ) {
-			el.insertBefore( elems, el.firstChild );
+			if ( typeof elems === &#x27;string&#x27; ) {
+				el.innerHTML = elems + el.innerHTML;
+			} else {
+				el.insertBefore( elems, el.firstChild );
+			}
 		},
 
 		/**
