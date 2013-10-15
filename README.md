@@ -10,9 +10,6 @@ ModJS is a javascript framework that utilizes the Module, Factory, and Mediator 
 ## Documentation
 Every method in the framework is documented and available with examples and whether or not the function should be used publicly. For documentation simple navigate to "path/to/project/docs/" in your browser and the full documentation will be available to you. ( Documentation created using YUIdoc )
 
-## Tests
-Currently there is a full suite of tests for the core object and form object. Not sure I am going to write tests for the sanbox because it really just calls functions from the core. To view tests simply navigate to "path/to/project/SpecRunner.html" and the test results will be available for you.
-
 ## Working Example
 To see the framework in action simply download the project and navigate to "path/to/project/" in your browser. The example searches Instagram for the specified hashtag and displays recent images with that tag
 
