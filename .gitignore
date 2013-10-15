@@ -1,1 +1,7 @@
 /node_modules
+/lib
+/spec
+/bs-yuidoc-theme
+/gruntfile.js
+/jasmine-test.json
+/package.json
