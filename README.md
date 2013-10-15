@@ -17,12 +17,12 @@ Currently there is a full suite of tests for the core object and form object. No
 To see the framework in action simply download the project and navigate to "path/to/project/" in your browser. The example searches Instagram for the specified hashtag and displays recent images with that tag
 
 ## Why is it useful?
-By decoupling all the layers of the application you can drop in some modules from previous projects and with minor updates you could decrease development time by a large amount. You could also change out the jQuery base layer with your tool of choice and with only editing about 15 functions still be able to use all of your previous modules becauset the sandbox layer never has to change.It makes projects infinitely scalable by 1) seperating business logic into neat little packages greatly decreasing the potential for unforseen issues caused by altering code ( we have all experienced the domino effect, you make one change and suddenly ten other functions need to be updated ), 2) seperating the core of the application from a third-party library making it super-adaptable to any project. It will also help developers adopt the latest application development methods and best practices.
+By decoupling all the layers of the application you can drop in your modules from previous projects and with minor updates you will already have large chunks of functionality at your disposal. You could also change out the jQuery base layer with your tool of choice and with only editing about 15 functions still be able to use all of your previous modules because the sandbox layer never has to change. It makes projects infinitely scalable by 1) seperating business logic into neat little packages, greatly decreasing the potential for unforseen issues caused by altering code ( we have all experienced the domino effect, you make one change and suddenly ten other functions need to be updated ), and 2) seperating the core of the application from a third-party library making the framework super-adaptable to any project.
 
 ## Contributing
 If you would like to contribute to this project:
 
-- Clone the repo
+- Fork the repo
 - Check out develop branch
 - Create new feature or issue branch with name of task or recommended change
 - Make changes
