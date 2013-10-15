@@ -326,7 +326,7 @@ describe( 'MOD.form', function () {
 		});
 	});
 
-	describe( 'PIX.form.prep', function () {
+	describe( 'MOD.form.prep', function () {
 		it( 'should return a name/value pair string of all elements in the form', function () {
 			var data = mod_form.prep( true );
 
