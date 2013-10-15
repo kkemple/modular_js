@@ -187,7 +187,7 @@
             "module": "MOD",
             "namespace": "MOD.core",
             "file": "core.js",
-            "line": 733,
+            "line": 782,
             "description": "This is the return object of the core, it is passed in to the sandbox when a module is created. This allows the sandbox to have access to core functions, but prevents the modules from knowing about the core, keeping the code loosely coupled",
             "type": "Object"
         },
@@ -532,7 +532,7 @@
         {
             "file": "core.js",
             "line": 219,
-            "description": "Handles all ajax requests for the application\n\n\tvar config = {\n \t\turl : 'http://kurtiskemple.com/get/the/awesome/json',\n \t\ttype : 'GET',\n \t\tdataType : 'JSON',\n \t\tdata : {\n \t\t\tsome : 'data',\n \t\t\tmore : 'data'\n \t\t},\n \t\tdone : function( response ) {\n   \t\t\t// do something with successful results\n\t\t},\n\t\tfail : function( error ) {\n\t\t\t// do something with unseccessful ajax request\n\t\t\talert( error.message );\n\t\t},\n\t\tscope : this   // set the scope for the callback functions\n\t}\n\n\tMOD.core.util.ajax( config );",
+            "description": "Handles all ajax requests for the application\n\n\tvar config = {\n \t\turl : 'http://someurl.com/get/the/awesome/json',\n \t\ttype : 'GET',\n \t\tdataType : 'JSON',\n \t\tdata : {\n \t\t\tsome : 'data',\n \t\t\tmore : 'data'\n \t\t},\n \t\tdone : function( response ) {\n   \t\t\t// do something with successful results\n\t\t},\n\t\tfail : function( error ) {\n\t\t\t// do something with unseccessful ajax request\n\t\t\talert( error.message );\n\t\t},\n\t\tscope : this   // set the scope for the callback functions\n\t}\n\n\tMOD.core.util.ajax( config );",
             "params": [
                 {
                     "name": "config",
@@ -700,7 +700,7 @@
         {
             "file": "core.js",
             "line": 505,
-            "description": "Add attributes to an element like src, href, etc...\n\n\tvar attrs = {\n\t\t'src' : http://kurtiskemple.com/awesome/image.jpg,\n\t\t'class' : 'awesome-img'\n\t};\n\n\tMOD.core.dom.apply_attrs( img, attrs );",
+            "description": "Add attributes to an element like src, href, etc...\n\n\tvar attrs = {\n\t\t'src' : http://someurl.com/awesome/image.jpg,\n\t\t'class' : 'awesome-img'\n\t};\n\n\tMOD.core.dom.apply_attrs( img, attrs );",
             "params": [
                 {
                     "name": "el",
@@ -727,7 +727,63 @@
         },
         {
             "file": "core.js",
-            "line": 544,
+            "line": 535,
+            "description": "Gets or sets a single property on an element",
+            "params": [
+                {
+                    "name": "el",
+                    "description": "the DOM element to update",
+                    "type": "Object"
+                },
+                {
+                    "name": "prop",
+                    "description": "the property or attribute to update/retrieve",
+                    "type": "String"
+                },
+                {
+                    "name": "value",
+                    "description": "if setting, the value to apply to the property/attribute",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "None"
+            },
+            "itemtype": "method",
+            "name": "prop",
+            "access": "private",
+            "tagname": "",
+            "class": "MOD.core.dom",
+            "module": "MOD",
+            "namespace": "MOD.core"
+        },
+        {
+            "file": "core.js",
+            "line": 552,
+            "description": "returns x and y coords of the offset of the element relative to the document\n\n\tvar offset = PIX.core.dom.offset( el );\n\n\twindow.scrollTo( 0, offset.y );",
+            "params": [
+                {
+                    "name": "el",
+                    "description": "the DOM element you want the offset of",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "object containing x and y coords",
+                "type": "Object"
+            },
+            "itemtype": "method",
+            "name": "offset",
+            "access": "private",
+            "tagname": "",
+            "class": "MOD.core.dom",
+            "module": "MOD",
+            "namespace": "MOD.core"
+        },
+        {
+            "file": "core.js",
+            "line": 589,
             "description": "Update styles on a DOM element",
             "params": [
                 {
@@ -755,7 +811,7 @@
         },
         {
             "file": "core.js",
-            "line": 566,
+            "line": 611,
             "description": "Add a class to an elment within the module\n\n\tMOD.core.dom.add_class( el, 'class-to-add' );",
             "params": [
                 {
@@ -783,7 +839,7 @@
         },
         {
             "file": "core.js",
-            "line": 597,
+            "line": 642,
             "description": "Remove a class from an element within the module\n\n\tMOD.core.dom.remove_class( el, 'class-to-remove' );",
             "params": [
                 {
@@ -811,7 +867,7 @@
         },
         {
             "file": "core.js",
-            "line": 624,
+            "line": 669,
             "description": "Checks a DOM element for a specified class\n\n\tif ( MOD.core.dom.has_class( el, 'some-class' ) ) {\n\t\t// do something if has class\n\t} else {\n\t\t// do something if doesn't have class\n\t}",
             "params": [
                 {
@@ -839,7 +895,7 @@
         },
         {
             "file": "core.js",
-            "line": 651,
+            "line": 696,
             "description": "Append elements within the scope of the module, accepts DOM elements or html\n\n\tvar el = MOD.core.dom.create( config );\n\n\tMOD.core.dom.append_elems( el_to_append_to, el );",
             "params": [
                 {
@@ -867,7 +923,7 @@
         },
         {
             "file": "core.js",
-            "line": 673,
+            "line": 718,
             "description": "Prepend elements within the scope of the module, accepts DOM elements or html\n\n\tvar el = MOD.core.dom.create( config );\n\n\tMOD.core.dom.prepend_elems( el_to_append_to, el );",
             "params": [
                 {
@@ -895,7 +951,7 @@
         },
         {
             "file": "core.js",
-            "line": 691,
+            "line": 740,
             "description": "Handles running any code that needs to be run only after the document has loaded\n> Used by the MOD.app object\n\n\tMOD.core.dom.onready( function () {\n\t\t// do some stuff when the document is loaded\n\t});",
             "params": [
                 {
@@ -918,7 +974,7 @@
         },
         {
             "file": "core.js",
-            "line": 711,
+            "line": 760,
             "description": "Handles running any code that needs to be run only after the window has loaded\n> Used by the MOD.app object\n\n\tMOD.core.dom.onload( function () {\n\t\t// do some stuff when the window is loaded\n\t});",
             "params": [
                 {
@@ -941,7 +997,7 @@
         },
         {
             "file": "core.js",
-            "line": 744,
+            "line": 793,
             "description": "this is a factory function used to create modules for the application\n\n\tMOD.core.create_module( 'my-module', function( sb ) {\n\n\t\tinit : function () {\n\n\t\t\t// handle the creation of the module\n\t\t\tvar btn, input, term;\n\n\t\t\tbtn = sb.find( '.my-btn' )[0]   // get the element from the return object\n\t\t\tinput = sb.find( '.my-input' )[0]   // same for the input\n\n\t\t\tsb.add_event( btn, 'click', this.doSomething );\n\t\t},\n\n\t\tdestroy : function () {\n\n\t\t\t// handle breaking the module down\n\t\t\tsb.remove_event( btn, 'click', this.doSomething );\n\t\t\tbtn = input = term = null;\n\t\t},\n\n\t\tdoSomething : function () {\n\n\t\t\t// all functionality goes in to functions that are isolated to the module\n\t\t\tterm = sb.val( input );\n\n\t\t\tsb.notify({\n\t\t\t\ttype : 'search-initiated',\n\t\t\t\tdata : term\n\t\t\t});\n\t\t}\n\t});",
             "params": [
                 {
@@ -969,7 +1025,7 @@
         },
         {
             "file": "core.js",
-            "line": 818,
+            "line": 867,
             "description": "starts up an instance of a particular module\n\n\tMOD.core.start( 'my-module' );",
             "params": [
                 {
@@ -992,7 +1048,7 @@
         },
         {
             "file": "core.js",
-            "line": 844,
+            "line": 893,
             "description": "starts up an instance of all modules\n\n\tMOD.core.start_all();",
             "return": {
                 "description": "true if all modules are successfully started, else false",
@@ -1008,7 +1064,7 @@
         },
         {
             "file": "core.js",
-            "line": 870,
+            "line": 919,
             "description": "stops an instance of a running module\n\n\tMOD.core.stop( 'my-module' );",
             "params": [
                 {
@@ -1031,7 +1087,7 @@
         },
         {
             "file": "core.js",
-            "line": 896,
+            "line": 945,
             "description": "stops all instances of modules\n\n\tMOD.core.stop_all();",
             "return": {
                 "description": "true if all modules are successfully stopped, else false",
@@ -1047,7 +1103,7 @@
         },
         {
             "file": "core.js",
-            "line": 922,
+            "line": 971,
             "description": "add events to our module, events allow for cross module communication\n\n\tvar evts = {\n\t\t'some-event' : function ( data ) {\n\t\t\t// do something with passed in event data\n\t\t},\n\n\t\t'some-other-event' : function ( data ) {\n\t\t\t// handle a different event\n\t\t}\n\t};\n\n\tMOD.core.register_events( evts, 'my-module' );",
             "params": [
                 {
@@ -1075,7 +1131,7 @@
         },
         {
             "file": "core.js",
-            "line": 965,
+            "line": 1014,
             "description": "responsible for checking modules this event and then executing it if it is found\n\n\tvar evt = {\n\t\t'some-event' : data\n\t}\n\n\tMOD.core.trigger_event( evt );",
             "params": [
                 {
@@ -1096,7 +1152,7 @@
         },
         {
             "file": "core.js",
-            "line": 1004,
+            "line": 1053,
             "description": "removes events from a specified module\n\n\tvar evts = [ 'some-event', 'some-other-event' ];\n\n\tMOD.core.remove_events( evts, 'my-module' );",
             "params": [
                 {
@@ -1739,7 +1795,7 @@
         {
             "file": "sandbox.js",
             "line": 242,
-            "description": "Used for all ajax requests\n\n\tvar config = {\n \t\turl : 'http://kurtiskemple.com/get/the/awesome/json',\n \t\ttype : 'GET',\n \t\tdataType : 'JSON',\n \t\tdata : {\n \t\t\tsome : 'data',\n \t\t\tmore : 'data'\n \t\t},\n \t\tdone : function( response ) {\n   \t\t\t// do something with successful results\n\t\t},\n\t\tfail : function( error ) {\n\t\t\t// do something with unseccessful ajax request\n\t\t\talert( error.message );\n\t\t},\n\t\tscope : this   // set the scope for the callback functions\n\t}\n\n\tsb.request( config );",
+            "description": "Used for all ajax requests\n\n\tvar config = {\n \t\turl : 'http://someurl.com/get/the/awesome/json',\n \t\ttype : 'GET',\n \t\tdataType : 'JSON',\n \t\tdata : {\n \t\t\tsome : 'data',\n \t\t\tmore : 'data'\n \t\t},\n \t\tdone : function( response ) {\n   \t\t\t// do something with successful results\n\t\t},\n\t\tfail : function( error ) {\n\t\t\t// do something with unseccessful ajax request\n\t\t\talert( error.message );\n\t\t},\n\t\tscope : this   // set the scope for the callback functions\n\t}\n\n\tsb.request( config );",
             "params": [
                 {
                     "name": "config",
@@ -1795,6 +1851,62 @@
         {
             "file": "sandbox.js",
             "line": 342,
+            "description": "Gets or sets a single property on an element",
+            "params": [
+                {
+                    "name": "el",
+                    "description": "the DOM element to update",
+                    "type": "Object"
+                },
+                {
+                    "name": "prop",
+                    "description": "the property or attribute to update/retrieve",
+                    "type": "String"
+                },
+                {
+                    "name": "value",
+                    "description": "if setting, the value to apply to the property/attribute",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "None"
+            },
+            "itemtype": "method",
+            "name": "attr",
+            "access": "public",
+            "tagname": "",
+            "class": "MOD.sandbox.return",
+            "module": "MOD",
+            "namespace": "MOD.sandbox"
+        },
+        {
+            "file": "sandbox.js",
+            "line": 355,
+            "description": "returns x and y coords of the offset of the element relative to the document\n\n\tvar offset = sb.offset( el );\n\n\twindow.scrollTo( 0, offset.y );",
+            "params": [
+                {
+                    "name": "el",
+                    "description": "the DOM element you want the offset of",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "object containing x and y coords",
+                "type": "Object"
+            },
+            "itemtype": "method",
+            "name": "offset",
+            "access": "public",
+            "tagname": "",
+            "class": "MOD.sandbox.return",
+            "module": "MOD",
+            "namespace": "MOD.sandbox"
+        },
+        {
+            "file": "sandbox.js",
+            "line": 372,
             "description": "Checks a DOM element for a specified class\n\n\tif ( sb.has_class( el, 'some-class' ) ) {\n\t\t// do something if has class\n\t} else {\n\t\t// do something if doesn't have class\n\t}",
             "params": [
                 {
@@ -1822,7 +1934,7 @@
         },
         {
             "file": "sandbox.js",
-            "line": 362,
+            "line": 392,
             "description": "Handles all animations of DOM elements\n\n\tvar el = sb.find( '#dialog' );\n\n\tvar props = {\n\t\topacity : 0.6,\n\t\ttop : 30\n\t};\n\n\tsb.animate( el, props, 600, someFunction, this );",
             "params": [
                 {
@@ -1865,7 +1977,7 @@
         },
         {
             "file": "sandbox.js",
-            "line": 394,
+            "line": 418,
             "description": "* Perform a function on each member of an array\n\t\t\t*\n\t\t\t* \t// get values of multiselect\n\t\t\t*\n\t\t\t* \tvar elems = sb.find( 'select option' ),\n\t\t\t* \t\tvalues = [];\n\t\t\t*\n\t\t\t* \tvalues = sb.foreach( elems, function( item, index ) {\n\t\t\t*  \t\tif ( item.selected === true ) {\n\t\t\t*  \t\t\treturn item.value;\n\t\t\t*  \t\t}\n\t\t\t* \t}, this );\n\t\t\t*\n\t\t\t*\n\t\t\t* @param  {array}   arr   the array of items to loop over\n\t\t\t* @param  {Function} fn    the function to run on each item\n\t\t\t* @param  {object}   scope the scope of the function that is running\n\t\t\t* @return {array}         an array of the returned results from original array, if anything is returned from callback function\n\t\t\t* @method  foreach\n\t\t\t* @puclic",
             "class": "MOD.sandbox.return",
             "module": "MOD",
@@ -1875,7 +1987,7 @@
     "warnings": [
         {
             "message": "Missing item type\nresponsible for checking modules this event and then executing it if it is found\n\n\tvar evt = {\n\t\t'some-event' : data\n\t}\n\n\tMOD.core.trigger_event( evt );",
-            "line": " core.js:965"
+            "line": " core.js:1014"
         },
         {
             "message": "Missing item type\nAll modules for the application are stored in this file\nA module is a small piece of the application that is responsible for a minute\namount of tasks",
@@ -1891,7 +2003,7 @@
         },
         {
             "message": "Missing item type\n* Perform a function on each member of an array\n\t\t\t*\n\t\t\t* \t// get values of multiselect\n\t\t\t*\n\t\t\t* \tvar elems = sb.find( 'select option' ),\n\t\t\t* \t\tvalues = [];\n\t\t\t*\n\t\t\t* \tvalues = sb.foreach( elems, function( item, index ) {\n\t\t\t*  \t\tif ( item.selected === true ) {\n\t\t\t*  \t\t\treturn item.value;\n\t\t\t*  \t\t}\n\t\t\t* \t}, this );\n\t\t\t*\n\t\t\t*\n\t\t\t* @param  {array}   arr   the array of items to loop over\n\t\t\t* @param  {Function} fn    the function to run on each item\n\t\t\t* @param  {object}   scope the scope of the function that is running\n\t\t\t* @return {array}         an array of the returned results from original array, if anything is returned from callback function\n\t\t\t* @method  foreach\n\t\t\t* @puclic",
-            "line": " sandbox.js:394"
+            "line": " sandbox.js:418"
         }
     ]
 }

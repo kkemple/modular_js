@@ -193,6 +193,13 @@
                             </li>
                         
                             <li class="index-item method public">
+                                <a href="#" data-tabid="#methods" data-anchor="#method_attr" data-tablink="attr">attr</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method public">
                                 <a href="#" data-tabid="#methods" data-anchor="#method_create_element" data-tablink="create_element">create_element</a>
 
                                 
@@ -236,6 +243,13 @@
                         
                             <li class="index-item method public">
                                 <a href="#" data-tabid="#methods" data-anchor="#method_notify" data-tablink="notify">notify</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method public">
+                                <a href="#" data-tabid="#methods" data-anchor="#method_offset" data-tablink="offset">offset</a>
 
                                 
                                 
@@ -504,7 +518,7 @@ sb.add_event( btn, &#39;click&#39;, this.search );</code></pre>
             
         
         
-        <a href="../files/sandbox.js.html#l362"><code>sandbox.js:362</code></a>
+        <a href="../files/sandbox.js.html#l392"><code>sandbox.js:392</code></a>
         
         </p>
 
@@ -740,6 +754,157 @@ sb.append( parent, el );</code></pre>
 
                     <div class="param-description">
                         <p>the elements to append</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">None</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_attr" class="method item public">
+    <h3 class="name"><code>attr</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>el</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>prop</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>value</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">None</span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/sandbox.js.html#l342"><code>sandbox.js:342</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Gets or sets a single property on an element</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">el</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the DOM element to update</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">prop</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the property or attribute to update/retrieve</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">value</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>if setting, the value to apply to the property/attribute</p>
 
                     </div>
 
@@ -1074,7 +1239,7 @@ var singleEl = elems[0];</code></pre>
             
         
         
-        <a href="../files/sandbox.js.html#l342"><code>sandbox.js:342</code></a>
+        <a href="../files/sandbox.js.html#l372"><code>sandbox.js:372</code></a>
         
         </p>
 
@@ -1706,6 +1871,118 @@ sb.notify( evt );</code></pre>
 </div>
 
                 
+                    <div id="method_offset" class="method item public">
+    <h3 class="name"><code>offset</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>el</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/sandbox.js.html#l355"><code>sandbox.js:355</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>returns x and y coords of the offset of the element relative to the document</p>
+<pre class="code prettyprint"><code>var offset = sb.offset( el );
+
+window.scrollTo( 0, offset.y );</code></pre>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">el</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the DOM element you want the offset of</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>:
+                    
+                    <p>object containing x and y coords</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
                     <div id="method_prepend" class="method item public">
     <h3 class="name"><code>prepend</code></h3>
 
@@ -2052,7 +2329,7 @@ sb.prepend( parent, el );</code></pre>
     <div class="description">
         <p>Used for all ajax requests</p>
 <pre class="code prettyprint"><code>var config = {
-     url : &#39;http://kurtiskemple.com/get/the/awesome/json&#39;,
+     url : &#39;http://someurl.com/get/the/awesome/json&#39;,
      type : &#39;GET&#39;,
      dataType : &#39;JSON&#39;,
      data : {

@@ -243,7 +243,7 @@ MOD.sandbox = {
 			 * Used for all ajax requests
 			 *
 			 * 	var config = {
-			 *  		url : 'http://kurtiskemple.com/get/the/awesome/json',
+			 *  		url : 'http://someurl.com/get/the/awesome/json',
 			 *  		type : 'GET',
 			 *  		dataType : 'JSON',
 			 *  		data : {
@@ -340,6 +340,36 @@ MOD.sandbox = {
 			},
 
 			/**
+			 * Gets or sets a single property on an element
+			 * @param  {object} el    the DOM element to update
+			 * @param  {string} prop  the property or attribute to update/retrieve
+			 * @param  {string} value if setting, the value to apply to the property/attribute
+			 * @return {none}
+			 * @method attr
+			 * @public
+			 */
+			attr : function( el, prop, value ) {
+				core.dom.prop( el, prop, value );
+			},
+
+			/**
+			 * returns x and y coords of the offset of the element relative to the document
+			 *
+			 * 	var offset = sb.offset( el );
+			 *
+			 * 	window.scrollTo( 0, offset.y );
+			 *
+			 *
+			 * @param  {object} el the DOM element you want the offset of
+			 * @return {object}    object containing x and y coords
+			 * @method  offset
+			 * @public
+			 */
+			offset : function( el ) {
+				return core.dom.offset( el );
+			},
+
+			/**
 			 * Checks a DOM element for a specified class
 			 *
 			 * 	if ( sb.has_class( el, 'some-class' ) ) {
@@ -385,12 +415,6 @@ MOD.sandbox = {
 				core.dom.animate( el, value, duration, callback, scope );
 			},
 
-			//TODO: remove to MOD.form
-			//TODO: add comment
-			prep_form : function ( el ) {
-				return core.dom.form.serialize( el );
-			},
-
 			/**
 
 			* Perform a function on each member of an array
@@ -417,7 +441,6 @@ MOD.sandbox = {
 			foreach : function( arr, fn, scope ) {
 				return core.util.map( arr, fn, scope );
 			}
-
 		};
 	}
 };

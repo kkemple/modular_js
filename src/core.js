@@ -220,7 +220,7 @@ MOD.core = (function () {
 		 * Handles all ajax requests for the application
 		 *
 		 * 	var config = {
-		 *  		url : 'http://kurtiskemple.com/get/the/awesome/json',
+		 *  		url : 'http://someurl.com/get/the/awesome/json',
 		 *  		type : 'GET',
 		 *  		dataType : 'JSON',
 		 *  		data : {
@@ -506,7 +506,7 @@ MOD.core = (function () {
 		 * Add attributes to an element like src, href, etc...
 		 *
 		 * 	var attrs = {
-		 * 		'src' : http://kurtiskemple.com/awesome/image.jpg,
+		 * 		'src' : http://someurl.com/awesome/image.jpg,
 		 * 		'class' : 'awesome-img'
 		 * 	};
 		 *
@@ -532,13 +532,58 @@ MOD.core = (function () {
 			}
 		},
 
-		//TODO: add comment
+		/**
+		 * Gets or sets a single property on an element
+		 * @param  {object} el    the DOM element to update
+		 * @param  {string} prop  the property or attribute to update/retrieve
+		 * @param  {string} value if setting, the value to apply to the property/attribute
+		 * @return {none}
+		 * @method prop
+		 * @private
+		 */
 		prop : function( el, prop, value ) {
 			if ( value === undefined ) {
 				return el.getAttribute( prop );
 			} else {
 				el.setAttribute( prop, value );
 			}
+		},
+
+		/**
+		 * returns x and y coords of the offset of the element relative to the document
+		 *
+		 * 	var offset = PIX.core.dom.offset( el );
+		 *
+		 * 	window.scrollTo( 0, offset.y );
+		 *
+		 *
+		 * @param  {object} el the DOM element you want the offset of
+		 * @return {object}    object containing x and y coords
+		 * @method  offset
+		 * @private
+		 */
+		offset : function( el ) {
+			var offset = (function() {
+				if ( window.pageXOffset !== null ) {
+
+					return {
+						x : window.pageXOffset,
+						y : window.pageYOffset
+					};
+				} else {
+					return {
+						x : document.documentElement.scrollLeft,
+						y : document.documentElement.scrollTop
+					}
+				}
+			}());
+
+			var box = el.getBoundingClientRect();
+
+			return {
+				x : Math.floor( box.left + offset.x ),
+				y : Math.floor( box.top + offset.y )
+			};
 		},
 
 		/**
@@ -685,7 +730,11 @@ MOD.core = (function () {
 		 * @private
 		 */
 		prepend_elems : function( el, elems ) {
-			el.insertBefore( elems, el.firstChild );
+			if ( typeof elems === 'string' ) {
+				el.innerHTML = elems + el.innerHTML;
+			} else {
+				el.insertBefore( elems, el.firstChild );
+			}
 		},
 
 		/**
