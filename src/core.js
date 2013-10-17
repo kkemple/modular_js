@@ -1,4 +1,11 @@
 
+// TODO: vanillify ajax requests
+// TODO: vanillify event handlers
+// TODO: vanillify animations
+// TODO: vanillify queries
+// TODO: add standard animations like fade and slide
+
+
 /**
  * The application namespace.
  * @module MOD
@@ -523,11 +530,14 @@ MOD.core = (function () {
 			if ( root.util.is_object( attrs ) ) {
 
 				for ( var key in attrs ) {
+
 					if ( attrs.hasOwnProperty( key ) ) {
+
 						el.setAttribute( key, attrs[ key ] );
 					}
 				}
 			} else {
+
 				root.util.log( 1, 'APPLY ATTRIBUTES : FAILED : "Attributes argument is of wrong type."' );
 			}
 		},
@@ -543,8 +553,10 @@ MOD.core = (function () {
 		 */
 		prop : function( el, prop, value ) {
 			if ( value === undefined ) {
+
 				return el.getAttribute( prop );
 			} else {
+
 				el.setAttribute( prop, value );
 			}
 		},
@@ -571,6 +583,7 @@ MOD.core = (function () {
 						y : window.pageYOffset
 					};
 				} else {
+
 					return {
 						x : document.documentElement.scrollLeft,
 						y : document.documentElement.scrollTop
@@ -832,7 +845,7 @@ MOD.core = (function () {
 		 * 		doSomething : function () {
 		 *
 		 * 			// all functionality goes in to functions that are isolated to the module
-		 * 			term = sb.val( input );
+		 * 			term = input.value;
 		 *
 		 * 			sb.notify({
 		 * 				type : 'search-initiated',

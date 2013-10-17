@@ -174,6 +174,13 @@
                     <ul class="index-list methods">
                         
                             <li class="index-item method public">
+                                <a href="#" data-tabid="#methods" data-anchor="#method_add_class" data-tablink="add_class">add_class</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method public">
                                 <a href="#" data-tabid="#methods" data-anchor="#method_add_event" data-tablink="add_event">add_event</a>
 
                                 
@@ -209,7 +216,21 @@
                             </li>
                         
                             <li class="index-item method public">
+                                <a href="#" data-tabid="#methods" data-anchor="#method_css" data-tablink="css">css</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method public">
                                 <a href="#" data-tabid="#methods" data-anchor="#method_find" data-tablink="find">find</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method public">
+                                <a href="#" data-tabid="#methods" data-anchor="#method_has_class" data-tablink="has_class">has_class</a>
 
                                 
                                 
@@ -237,13 +258,6 @@
                             </li>
                         
                             <li class="index-item method public">
-                                <a href="#" data-tabid="#methods" data-anchor="#method_modify" data-tablink="modify">modify</a>
-
-                                
-                                
-                            </li>
-                        
-                            <li class="index-item method public">
                                 <a href="#" data-tabid="#methods" data-anchor="#method_notify" data-tablink="notify">notify</a>
 
                                 
@@ -259,6 +273,13 @@
                         
                             <li class="index-item method public">
                                 <a href="#" data-tabid="#methods" data-anchor="#method_prepend" data-tablink="prepend">prepend</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method public">
+                                <a href="#" data-tabid="#methods" data-anchor="#method_remove_class" data-tablink="remove_class">remove_class</a>
 
                                 
                                 
@@ -292,6 +313,122 @@
         
             <div id="methods" class="tab-pane">
                 <h2 class="off-left">Methods</h2>
+
+                
+                    <div id="method_add_class" class="method item public">
+    <h3 class="name"><code>add_class</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>el</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>class_to_add</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/sandbox.js.html#l275"><code>sandbox.js:275</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Adds a class or classes to an element</p>
+<pre class="code prettyprint"><code>var el = sb.query( &#39;#some-div&#39; )[0];
+
+sb.add_class( el, &#39;some-class&#39; );</code></pre>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">el</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the DOM element to add the class(es) to</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">class_to_add</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>a string of the class(es) to add</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
 
                 
                     <div id="method_add_event" class="method item public">
@@ -520,7 +657,7 @@ sb.add_event( btn, &#39;click&#39;, this.search );</code></pre>
             
         
         
-        <a href="../files/sandbox.js.html#l392"><code>sandbox.js:392</code></a>
+        <a href="../files/sandbox.js.html#l390"><code>sandbox.js:390</code></a>
         
         </p>
 
@@ -844,7 +981,7 @@ sb.append( parent, el );</code></pre>
             
         
         
-        <a href="../files/sandbox.js.html#l342"><code>sandbox.js:342</code></a>
+        <a href="../files/sandbox.js.html#l340"><code>sandbox.js:340</code></a>
         
         </p>
 
@@ -1062,6 +1199,158 @@ sb.create_element( config );</code></pre>
 </div>
 
                 
+                    <div id="method_css" class="method item public">
+    <h3 class="name"><code>css</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>el</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>css</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>if</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">String / null</span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/sandbox.js.html#l328"><code>sandbox.js:328</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">el</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the element to style</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">css</code>
+                        <span class="type">Object / string</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the key/value object of css properties / or css property string</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">if</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>set, should be string value of style to set on element</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">String / null</span>:
+                    
+                    <p>if calling for property returns property value as string</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
                     <div id="method_find" class="method item public">
     <h3 class="name"><code>find</code></h3>
 
@@ -1211,6 +1500,124 @@ var singleEl = elems[0];</code></pre>
     
 
     
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/sandbox.js.html#l309"><code>sandbox.js:309</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Checks an element for a particular class</p>
+<pre class="code prettyprint"><code>var el = sb.query( &#39;#some-div&#39; )[0];
+
+if ( sb.has_class( el, &#39;some-class&#39; ) ) {
+    // do something!!
+}</code></pre>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">el</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the DOM element to look for the class on</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">class_to_find</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the class to look for</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+
+    
+</div>
+
+                
+                    <div id="method_has_class" class="method item public">
+    <h3 class="name"><code>has_class</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>el</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>class_to_find</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
         <span class="returns-inline">
             <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
         </span>
@@ -1241,7 +1648,7 @@ var singleEl = elems[0];</code></pre>
             
         
         
-        <a href="../files/sandbox.js.html#l372"><code>sandbox.js:372</code></a>
+        <a href="../files/sandbox.js.html#l370"><code>sandbox.js:370</code></a>
         
         </p>
 
@@ -1572,194 +1979,6 @@ sb.ignore( evts, &#39;my-module&#39; );</code></pre>
 </div>
 
                 
-                    <div id="method_modify" class="method item public">
-    <h3 class="name"><code>modify</code></h3>
-
-    
-        <div class="args">
-            <span class="paren">(</span><ul class="args-list inline commas">
-            
-                <li class="arg">
-                    
-                        <code>el</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>action</code>
-                    
-                </li>
-            
-                <li class="arg">
-                    
-                        <code>value</code>
-                    
-                </li>
-            
-            </ul><span class="paren">)</span>
-        </div>
-    
-
-    
-        <span class="returns-inline">
-            <span class="type">None</span>
-        </span>
-    
-
-    
-
-    
-        <span class="flag public">public</span>
-    
-
-    
-
-    
-
-    
-
-    
-
-    <div class="meta">
-        
-            
-                
-                <p>
-                
-                Defined in
-                
-            
-        
-        
-        <a href="../files/sandbox.js.html#l275"><code>sandbox.js:275</code></a>
-        
-        </p>
-
-
-        
-
-        
-    </div>
-
-    <div class="description">
-        <p>This function is responsible for handling all modifications to an element</p>
-<p><strong>Available actions are:</strong></p>
-<ul>
-<li>&#39;add-class&#39; - takes a string value</li>
-<li>&#39;remove-class&#39; - takes a string value</li>
-<li>&#39;styles&#39; - takes an object of values ( like jQuery .css() method )</li>
-<li>&#39;attr&#39; - takes an object of values ( like jQuery .attr() method )</li>
-</ul>
-<pre class="code prettyprint"><code>// add-class action
-var el = sb.find( &#39;.element&#39; )[0];
-sb.modify( el, &#39;add-class&#39;, &#39;new-class&#39; );
-
-
-// remove-class action
-var el = sb.find( &#39;.element&#39; )[0];
-sb.modify( el, &#39;remove-class&#39;, &#39;new-class&#39; );
-
-
-// styles action
-var el = sb.find( &#39;.element&#39; )[0];
-var css = {
-    &#39;color&#39; : &#39;#444&#39;,
-    &#39;background&#39; : &#39;#f7f7f7&#39;,
-    &#39;padding&#39; : &#39;20px&#39;
-};
-sb.modify( el, &#39;styles&#39;, css );
-
-
-// attr action
-var el = sb.find( &#39;.element&#39; )[0];
-var attrs = {
-    &#39;id&#39; : &#39;profile-thumbnail&#39;,
-    &#39;src&#39; : &#39;http://someurl.to/the/thumbnail&#39;,
-    &#39;width&#39; : &#39;45&#39;,
-    &#39;height&#39; : &#39;45&#39;,
-    &#39;data-hover&#39; : &#39;true&#39;
-};
-sb.modify( el, &#39;styles&#39;, css );</code></pre>
-
-    </div>
-
-    
-        <div class="params">
-            <h4>Parameters:</h4>
-
-            <ul class="params-list">
-            
-                <li class="param">
-                    
-                        <code class="param-name">el</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>the element to modify</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">action</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>the action to perform</p>
-
-                    </div>
-
-                    
-                </li>
-            
-                <li class="param">
-                    
-                        <code class="param-name">value</code>
-                        <span class="type">String, object</span>
-                    
-
-                    
-
-                    <div class="param-description">
-                        <p>the value(s) to apply, could be a string or object</p>
-
-                    </div>
-
-                    
-                </li>
-            
-            </ul>
-        </div>
-    
-
-    
-        <div class="returns">
-            <h4>Returns:</h4>
-
-            <div class="returns-description">
-                
-                    
-                        <span class="type">None</span>:
-                    
-                
-            </div>
-        </div>
-    
-
-    
-</div>
-
-                
                     <div id="method_notify" class="method item public">
     <h3 class="name"><code>notify</code></h3>
 
@@ -1921,7 +2140,7 @@ sb.notify( evt );</code></pre>
             
         
         
-        <a href="../files/sandbox.js.html#l355"><code>sandbox.js:355</code></a>
+        <a href="../files/sandbox.js.html#l353"><code>sandbox.js:353</code></a>
         
         </p>
 
@@ -2112,6 +2331,122 @@ sb.prepend( parent, el );</code></pre>
                 
             </div>
         </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_remove_class" class="method item public">
+    <h3 class="name"><code>remove_class</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>el</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>class_to_remove</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/sandbox.js.html#l292"><code>sandbox.js:292</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Removes a class or classes from an element</p>
+<pre class="code prettyprint"><code>var el = sb.query( &#39;#some-div&#39; )[0];
+
+sb.remove_class( el, &#39;some-class&#39; );</code></pre>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">el</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the DOM element to remove the class(es) from</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">class_to_remove</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>a string of the class(es) to add</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
     
 
     
