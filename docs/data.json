@@ -2009,34 +2009,6 @@
         {
             "file": "sandbox.js",
             "line": 370,
-            "description": "Checks a DOM element for a specified class\n\n\tif ( sb.has_class( el, 'some-class' ) ) {\n\t\t// do something if has class\n\t} else {\n\t\t// do something if doesn't have class\n\t}",
-            "params": [
-                {
-                    "name": "el",
-                    "description": "the DOM element to check",
-                    "type": "Object"
-                },
-                {
-                    "name": "class_to_find",
-                    "description": "the class to look for",
-                    "type": "String"
-                }
-            ],
-            "return": {
-                "description": "true if has class / else false",
-                "type": "Boolean"
-            },
-            "itemtype": "method",
-            "name": "has_class",
-            "access": "public",
-            "tagname": "",
-            "class": "MOD.sandbox.return",
-            "module": "MOD",
-            "namespace": "MOD.sandbox"
-        },
-        {
-            "file": "sandbox.js",
-            "line": 390,
             "description": "Handles all animations of DOM elements\n\n\tvar el = sb.find( '#dialog' );\n\n\tvar props = {\n\t\topacity : 0.6,\n\t\ttop : 30\n\t};\n\n\tsb.animate( el, props, 600, someFunction, this );",
             "params": [
                 {
@@ -2079,7 +2051,7 @@
         },
         {
             "file": "sandbox.js",
-            "line": 416,
+            "line": 396,
             "description": "* Perform a function on each member of an array\n\t\t\t*\n\t\t\t* \t// get values of multiselect\n\t\t\t*\n\t\t\t* \tvar elems = sb.find( 'select option' ),\n\t\t\t* \t\tvalues = [];\n\t\t\t*\n\t\t\t* \tvalues = sb.foreach( elems, function( item, index ) {\n\t\t\t*  \t\tif ( item.selected === true ) {\n\t\t\t*  \t\t\treturn item.value;\n\t\t\t*  \t\t}\n\t\t\t* \t}, this );\n\t\t\t*\n\t\t\t*\n\t\t\t* @param  {array}   arr   the array of items to loop over\n\t\t\t* @param  {Function} fn    the function to run on each item\n\t\t\t* @param  {object}   scope the scope of the function that is running\n\t\t\t* @return {array}         an array of the returned results from original array, if anything is returned from callback function\n\t\t\t* @method  foreach\n\t\t\t* @puclic",
             "class": "MOD.sandbox.return",
             "module": "MOD",
@@ -2128,7 +2100,7 @@
         },
         {
             "message": "Missing item type\n* Perform a function on each member of an array\n\t\t\t*\n\t\t\t* \t// get values of multiselect\n\t\t\t*\n\t\t\t* \tvar elems = sb.find( 'select option' ),\n\t\t\t* \t\tvalues = [];\n\t\t\t*\n\t\t\t* \tvalues = sb.foreach( elems, function( item, index ) {\n\t\t\t*  \t\tif ( item.selected === true ) {\n\t\t\t*  \t\t\treturn item.value;\n\t\t\t*  \t\t}\n\t\t\t* \t}, this );\n\t\t\t*\n\t\t\t*\n\t\t\t* @param  {array}   arr   the array of items to loop over\n\t\t\t* @param  {Function} fn    the function to run on each item\n\t\t\t* @param  {object}   scope the scope of the function that is running\n\t\t\t* @return {array}         an array of the returned results from original array, if anything is returned from callback function\n\t\t\t* @method  foreach\n\t\t\t* @puclic",
-            "line": " sandbox.js:416"
+            "line": " sandbox.js:396"
         }
     ]
 }

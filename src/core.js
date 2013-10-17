@@ -861,7 +861,7 @@ MOD.core = (function () {
 		 * @method  create_module
 		 * @public
 		 */
-		create_module : function( moduleID, creator ) {
+		create_module : function ( moduleID, creator ) {
 			var temp;
 
 			// sanity check for correct types on our params
@@ -904,7 +904,7 @@ MOD.core = (function () {
 		 * @method start
 		 * @private
 		 */
-		start : function( moduleID ) {
+		start : function ( moduleID ) {
 			var mod = module_data[ moduleID ];
 
 			if ( mod ) {
@@ -929,7 +929,7 @@ MOD.core = (function () {
 		 * @method  start_all
 		 * @private
 		 */
-		start_all : function() {
+		start_all : function () {
 			var moduleID;
 
 			for ( moduleID in module_data ) {
@@ -956,7 +956,7 @@ MOD.core = (function () {
 		 * @method  stop
 		 * @private
 		 */
-		stop : function( moduleID ) {
+		stop : function ( moduleID ) {
 			var mod = module_data[ moduleID ];
 
 			if ( mod.instance ) {
@@ -981,7 +981,7 @@ MOD.core = (function () {
 		 * @method  stop_all
 		 * @private
 		 */
-		stop_all : function() {
+		stop_all : function () {
 			var moduleID;
 
 			for ( var moduleID in module_data ) {
@@ -1019,7 +1019,7 @@ MOD.core = (function () {
 		 * @method  register_events
 		 * @private
 		 */
-		register_events : function( evts, moduleID ) {
+		register_events : function ( evts, moduleID ) {
 			if ( this.util.is_object( evts ) &&  moduleID ) {
 
 				var mod = module_data[ moduleID ];
@@ -1054,7 +1054,7 @@ MOD.core = (function () {
 		 * @return {Boolean} returns true if function completes without error, else false
 		 * @private
 		 */
-		trigger_event : function( evt ) {
+		trigger_event : function ( evt ) {
 			var mod;
 
 			if ( this.util.is_object( evt ) && evt.type ) {
@@ -1093,7 +1093,7 @@ MOD.core = (function () {
 		 * @method  remove_events
 		 * @private
 		 */
-		remove_events : function( evts, moduleID ) {
+		remove_events : function ( evts, moduleID ) {
 			if ( root.util.is_array( evts ) &&  moduleID ) {
 
 				// check for the existance of the specified module

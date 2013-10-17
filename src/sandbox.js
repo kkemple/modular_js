@@ -368,26 +368,6 @@ MOD.sandbox = {
 			},
 
 			/**
-			 * Checks a DOM element for a specified class
-			 *
-			 * 	if ( sb.has_class( el, 'some-class' ) ) {
-			 * 		// do something if has class
-			 * 	} else {
-			 * 		// do something if doesn't have class
-			 * 	}
-			 *
-			 *
-			 * @param  {object}  el            the DOM element to check
-			 * @param  {string}  class_to_find the class to look for
-			 * @return {Boolean}               true if has class / else false
-			 * @method  has_class
-			 * @public
-			 */
-			has_class : function ( el, class_to_find ) {
-				return core.dom.has_class( el, class_to_find );
-			},
-
-			/**
 			 * Handles all animations of DOM elements
 			 *
 			 * 	var el = sb.find( '#dialog' );
