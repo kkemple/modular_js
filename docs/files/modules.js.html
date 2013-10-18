@@ -27,7 +27,7 @@
             </li>
         </div>
         <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
-            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/MOD.app", "classes/MOD.app.return", "classes/MOD.core", "classes/MOD.core.dom", "classes/MOD.core.return", "classes/MOD.core.util", "classes/MOD.form", "classes/MOD.form.return", "classes/MOD.form.return.check", "classes/MOD.sandbox", "classes/MOD.sandbox.return", "classes/MOD.ui", "modules/MOD"]'>
+            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/MOD.app", "classes/MOD.app.return", "classes/MOD.core", "classes/MOD.core.dom", "classes/MOD.core.return", "classes/MOD.core.util", "classes/MOD.form", "classes/MOD.form.return", "classes/MOD.form.return.check", "classes/MOD.sandbox", "classes/MOD.sandbox.return", "classes/MOD.template", "classes/MOD.ui", "modules/MOD"]'>
         </form>
     </div>
 </div>
@@ -71,6 +71,8 @@
                         <li><a href="../classes/MOD.sandbox.html">MOD.sandbox</a></li>
                     
                         <li><a href="../classes/MOD.sandbox.return.html">MOD.sandbox.return</a></li>
+                    
+                        <li><a href="../classes/MOD.template.html">MOD.template</a></li>
                     
                         <li><a href="../classes/MOD.ui.html">MOD.ui</a></li>
                     
@@ -227,12 +229,11 @@ MOD.core.create_module( &#x27;instagram-search&#x27;, function( sb ) {
  * @return {none}
  */
 MOD.core.create_module( &#x27;instagram-feed&#x27;, function( sb ) {
-	var container, template, loader, root = this;
+	var container, loader, root = this;
 
 	return {
 		init : function () {
 			container = sb.find( &#x27;.instagram-post-container&#x27; )[ 0 ],
-			template = sb.find( &#x27;#instagram-post-template&#x27; )[ 0 ].innerHTML,
 			loader = sb.find( &#x27;.ajax-loader&#x27; )[ 0 ];
 
 			sb.listen({
@@ -242,7 +243,7 @@ MOD.core.create_module( &#x27;instagram-feed&#x27;, function( sb ) {
 
 		destroy : function () {
 			sb.ignore( [ &#x27;instagram-search-results-returned&#x27; ], &#x27;instagram-feed&#x27; );
-			container = template = loader = null;
+			container = loader = null;
 		},
 
 		build : function ( data ) {
@@ -256,20 +257,14 @@ MOD.core.create_module( &#x27;instagram-feed&#x27;, function( sb ) {
 
 				sb.add_class( loader, &#x27;active&#x27; );
 
-				// loop the data and build our html from the template within the module
-				while ( data[ i ] ) {
+				// store out templating function
+				var build_post = MOD.template.parse( &#x27;instagram_post_template&#x27; );
 
-					// right now we are only handling images
-					if ( data[ i ].type === &#x27;image&#x27; ) {
+				// generate the HTML
+				sb.foreach( data, function( item, index ) {
+					html += build_post( item );
+				});
 
-						html += template.replace( /{{link}}/, data[ i ].images.standard_resolution.url )
-									.replace( /{{profile_picture}}/, data[ i ].user.profile_picture )
-									.replace( /{{username}}/, data[ i ].user.username )
-									.replace( /{{tags}}/, data[ i ].tags.join( &#x27;, &#x27; ) )
-									.replace( /{{likes}}/, data[ i ].likes.count );
-					}
-					++i;
-				}
 			} else {
 
 				// if data is empty then there are no results, so let the user know
@@ -282,6 +277,7 @@ MOD.core.create_module( &#x27;instagram-feed&#x27;, function( sb ) {
 				});
 			}
 
+			// Finish loading
 			sb.remove_class( loader, &#x27;active&#x27; );
 
 			// add the instagram posts or message

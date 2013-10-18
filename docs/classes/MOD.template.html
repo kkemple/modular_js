@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>MOD.app.return - ModJS</title>
+    <title>MOD.template - ModJS</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.7.0/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -120,7 +120,7 @@
                 <div id="docs-main">
                     <div class="content">
                         <div class="page-header">
-    <h1>MOD.app.return <small>Class</small></h1>
+    <h1>MOD.template <small>Class</small></h1>
 </div>
 
 <div class="well well-small">
@@ -130,7 +130,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/app.js.html#l48"><code>app.js:48</code></a>
+            Defined in: <a href="../files/template.js.html#l2"><code>template.js:2</code></a>
         </div>
     
 
@@ -146,7 +146,105 @@
 
 
 <div class="well well-small">
-    <p>This is the return object of the app object, it contains only the run method used to start the application</p>
+    <p>template namespace handles the conversion of micro templates</p>
+<blockquote>
+<p><strong>To see this in action simple look at the code for the example</strong></p>
+</blockquote>
+<h4>Usage:</h4>
+<p>Templating can save you a ton of time and the browser a ton of memory if done correctly. It is perfect for handling JSON responses from AJAX calls and it is very lightweight. Below you will find and example of how to use it.</p>
+<pre class="code prettyprint"><code> // First add a script tag with a type of "text/template" to your page
+ // This won&#39;t be read by the browser or by GOOGLE or screen readers
+&lt;script type="text/template"&gt;
+
+&lt;/script&gt;
+
+// Then build out your HTML as if you were just hard-coding it
+&lt;li class="instagram-post"&gt;
+         &lt;div class="instagram-image-container"&gt;
+             &lt;img src="" class="instagram-image" /&gt;
+         &lt;/div&gt;
+         &lt;div class="instagram-meta-data"&gt;
+             &lt;div class="instagram-meta-top"&gt;
+                 &lt;div class="instagram-user"&gt;
+                     &lt;img src="" class="instagram-user-profile-img" /&gt;
+                     &lt;span class="instagram-username"&gt;&lt;/span&gt;
+                 &lt;/div&gt;
+                 &lt;div class="instagram-tags"&gt;
+                     &lt;p&gt;&lt;/p&gt;
+                 &lt;/div&gt;
+                 &lt;div class="instagram-likes"&gt;
+                     &lt;p&gt;&lt;/p&gt;
+                 &lt;/div&gt;
+             &lt;/div&gt;
+         &lt;/div&gt;
+    &lt;/li&gt;
+
+// next we add in our template tags "&lt;% %&gt;" and let the engine know where exactly we will access our passed in object
+// pay close attention to the "=" sign in the template tags, this lets the parser know you want a value, otherwise
+// it expects to run an operation
+// if you look at the tags section you will see we return the value of an operation and this is perfectly acceptable
+
+&lt;li class="instagram-post"&gt;
+         &lt;div class="instagram-image-container"&gt;
+             &lt;img src="&lt;%= images.standard_resolution.url %&gt;" class="instagram-image" /&gt;
+         &lt;/div&gt;
+         &lt;div class="instagram-meta-data"&gt;
+             &lt;div class="instagram-meta-top"&gt;
+                 &lt;div class="instagram-user"&gt;
+                     &lt;img src="&lt;%= user.profile_picture %&gt;" class="instagram-user-profile-img" /&gt;
+                     &lt;span class="instagram-username"&gt;&lt;%= user.username %&gt;&lt;/span&gt;
+                 &lt;/div&gt;
+                 &lt;div class="instagram-tags"&gt;
+                     &lt;p&gt;&lt;%= tags.join( &#39;, &#39; ) %&gt;&lt;/p&gt;
+                 &lt;/div&gt;
+                 &lt;div class="instagram-likes"&gt;
+                     &lt;p&gt;&lt;%= likes.count %&gt;&lt;/p&gt;
+                 &lt;/div&gt;
+             &lt;/div&gt;
+         &lt;/div&gt;
+    &lt;/li&gt;
+
+// you can also run for loops like so
+&lt;ul&gt;
+&lt;% for ( var i = 0, len = user.images.length; i &lt; len; i++ ) { %&gt;
+     &lt;li&gt;&lt;img src="&lt;%= user.images[ i ] %&gt;" /&gt;&lt;/li&gt;
+&lt;% } %&gt;
+&lt;/ul&gt;
+
+// Putting it all together
+&lt;script type="text/template" id="instagram_post_template"&gt;
+     &lt;li class="instagram-post"&gt;
+                &lt;div class="instagram-image-container"&gt;
+                    &lt;img src="&lt;%= images.standard_resolution.url %&gt;" class="instagram-image" /&gt;
+                &lt;/div&gt;
+                &lt;div class="instagram-meta-data"&gt;
+                    &lt;div class="instagram-meta-top"&gt;
+                        &lt;div class="instagram-user"&gt;
+                            &lt;img src="&lt;%= user.profile_picture %&gt;" class="instagram-user-profile-img" /&gt;
+                            &lt;span class="instagram-username"&gt;&lt;%= user.username %&gt;&lt;/span&gt;
+                        &lt;/div&gt;
+                        &lt;div class="instagram-tags"&gt;
+                            &lt;p&gt;&lt;%= tags.join( &#39;, &#39; ) %&gt;&lt;/p&gt;
+                        &lt;/div&gt;
+                        &lt;div class="instagram-likes"&gt;
+                            &lt;p&gt;&lt;%= likes.count %&gt;&lt;/p&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+           &lt;/li&gt;
+&lt;/script&gt;
+
+// data will be our return object from an ajax request to instagram
+
+var html = &#39;&#39;, build_post;
+
+build_post = MOD.template.parse( &#39;instagram_post_template&#39; );
+
+sb.foreach( data, function( item, index ) {
+    html += build_post( item );
+});
+
+sb.append( some_element, html );</code></pre>
 
 </div>
 
@@ -175,7 +273,7 @@
                     <ul class="index-list methods">
                         
                             <li class="index-item method public">
-                                <a href="#" data-tabid="#methods" data-anchor="#method_run" data-tablink="run">run</a>
+                                <a href="#" data-tabid="#methods" data-anchor="#method_parse" data-tablink="parse">parse</a>
 
                                 
                                 
@@ -197,16 +295,32 @@
                 <h2 class="off-left">Methods</h2>
 
                 
-                    <div id="method_run" class="method item public">
-    <h3 class="name"><code>run</code></h3>
+                    <div id="method_parse" class="method item public">
+    <h3 class="name"><code>parse</code></h3>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>id</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>data</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
         <span class="returns-inline">
-            <span class="type">None</span>
+            <span class="type">Function/HTML string</span>
         </span>
     
 
@@ -235,7 +349,7 @@
             
         
         
-        <a href="../files/app.js.html#l56"><code>app.js:56</code></a>
+        <a href="../files/template.js.html#l119"><code>template.js:119</code></a>
         
         </p>
 
@@ -246,11 +360,50 @@
     </div>
 
     <div class="description">
-        <p>The method responsible for starting the application, reads the MOD.config object and processes the response</p>
-<pre class="code prettyprint"><code>MOD.app.run();</code></pre>
+        <p>The method responsible for creating the function to run on our template</p>
 
     </div>
 
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">id</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the id of the template tag to fetch</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">data</code>
+                        <span class="type">Anything</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the information you want to inject into the template</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
     
 
     
@@ -260,8 +413,10 @@
             <div class="returns-description">
                 
                     
-                        <span class="type">None</span>:
+                        <span class="type">Function/HTML string</span>:
                     
+                    <p>if data is passed the function is called immediately else it is returned so it can be used later in the code</p>
+
                 
             </div>
         </div>

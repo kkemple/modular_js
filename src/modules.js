@@ -130,8 +130,10 @@ MOD.core.create_module( 'instagram-feed', function( sb ) {
 
 				sb.add_class( loader, 'active' );
 
+				// store out templating function
 				var build_post = MOD.template.parse( 'instagram_post_template' );
 
+				// generate the HTML
 				sb.foreach( data, function( item, index ) {
 					html += build_post( item );
 				});
@@ -148,6 +150,7 @@ MOD.core.create_module( 'instagram-feed', function( sb ) {
 				});
 			}
 
+			// Finish loading
 			sb.remove_class( loader, 'active' );
 
 			// add the instagram posts or message
