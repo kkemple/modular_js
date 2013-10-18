@@ -102,12 +102,11 @@ MOD.core.create_module( 'instagram-search', function( sb ) {
  * @return {none}
  */
 MOD.core.create_module( 'instagram-feed', function( sb ) {
-	var container, template, loader, root = this;
+	var container, loader, root = this;
 
 	return {
 		init : function () {
 			container = sb.find( '.instagram-post-container' )[ 0 ],
-			template = sb.find( '#instagram-post-template' )[ 0 ].innerHTML,
 			loader = sb.find( '.ajax-loader' )[ 0 ];
 
 			sb.listen({
@@ -117,7 +116,7 @@ MOD.core.create_module( 'instagram-feed', function( sb ) {
 
 		destroy : function () {
 			sb.ignore( [ 'instagram-search-results-returned' ], 'instagram-feed' );
-			container = template = loader = null;
+			container = loader = null;
 		},
 
 		build : function ( data ) {
@@ -131,20 +130,12 @@ MOD.core.create_module( 'instagram-feed', function( sb ) {
 
 				sb.add_class( loader, 'active' );
 
-				// loop the data and build our html from the template within the module
-				while ( data[ i ] ) {
+				var build_post = MOD.template.parse( 'instagram_post_template' );
 
-					// right now we are only handling images
-					if ( data[ i ].type === 'image' ) {
+				sb.foreach( data, function( item, index ) {
+					html += build_post( item );
+				});
 
-						html += template.replace( /{{link}}/, data[ i ].images.standard_resolution.url )
-									.replace( /{{profile_picture}}/, data[ i ].user.profile_picture )
-									.replace( /{{username}}/, data[ i ].user.username )
-									.replace( /{{tags}}/, data[ i ].tags.join( ', ' ) )
-									.replace( /{{likes}}/, data[ i ].likes.count );
-					}
-					++i;
-				}
 			} else {
 
 				// if data is empty then there are no results, so let the user know
