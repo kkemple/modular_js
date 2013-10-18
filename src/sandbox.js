@@ -273,70 +273,68 @@ MOD.sandbox = {
 			},
 
 			/**
-			 * This function is responsible for handling all modifications to an element
+			 * Adds a class or classes to an element
 			 *
-			 * **Available actions are:**
+			 * 	var el = sb.query( '#some-div' )[0];
 			 *
-			 * - 'add-class' - takes a string value
-			 * - 'remove-class' - takes a string value
-			 * - 'styles' - takes an object of values ( like jQuery .css() method )
-			 * - 'attr' - takes an object of values ( like jQuery .attr() method )
+			 * 	sb.add_class( el, 'some-class' );
 			 *
 			 *
-			 * 	// add-class action
-			 * 	var el = sb.find( '.element' )[0];
-			 * 	sb.modify( el, 'add-class', 'new-class' );
-			 *
-			 *
-			 * 	// remove-class action
-			 * 	var el = sb.find( '.element' )[0];
-			 * 	sb.modify( el, 'remove-class', 'new-class' );
-			 *
-			 *
-			 * 	// styles action
-			 * 	var el = sb.find( '.element' )[0];
-			 * 	var css = {
-			 * 		'color' : '#444',
-			 * 		'background' : '#f7f7f7',
-			 * 		'padding' : '20px'
-			 * 	};
-			 * 	sb.modify( el, 'styles', css );
-			 *
-			 *
-			 * 	// attr action
-			 * 	var el = sb.find( '.element' )[0];
-			 * 	var attrs = {
-			 * 		'id' : 'profile-thumbnail',
-			 * 		'src' : 'http://someurl.to/the/thumbnail',
-			 * 		'width' : '45',
-			 * 		'height' : '45',
-			 * 		'data-hover' : 'true'
-			 * 	};
-			 * 	sb.modify( el, 'styles', css );
-			 *
-			 *
-			 * @param  {object} el     the element to modify
-			 * @param  {string} action the action to perform
-			 * @param  {string, object} value  the value(s) to apply, could be a string or object
-			 * @return {none}
-			 * @method  modify
+			 * @param {object} el           the DOM element to add the class(es) to
+			 * @param {string} class_to_add a string of the class(es) to add
+			 * @method  add_class
 			 * @public
 			 */
-			modify : function ( el, action, value ) {
-				switch ( action ) {
-					case 'add-class':
-						core.dom.add_class( el, value );
-					break;
-					case 'remove-class':
-						core.dom.remove_class( el, value );
-					break;
-					case 'styles':
-						core.dom.style( el, value );
-					break;
-					case 'attr':
-						core.dom.apply_attrs( value );
-					break;
-				}
+			add_class : function ( el, class_to_add ) {
+				core.dom.add_class( el, class_to_add );
+			},
+
+			/**
+			 * Removes a class or classes from an element
+			 *
+			 * 	var el = sb.query( '#some-div' )[0];
+			 *
+			 * 	sb.remove_class( el, 'some-class' );
+			 *
+			 *
+			 * @param {object} el           the DOM element to remove the class(es) from
+			 * @param {string} class_to_remove a string of the class(es) to add
+			 * @method  remove_class
+			 * @public
+			 */
+			remove_class : function ( el, class_to_remove ) {
+				core.dom.remove_class( el, class_to_remove );
+			},
+
+			/**
+			 * Checks an element for a particular class
+			 *
+			 * 	var el = sb.query( '#some-div' )[0];
+			 *
+			 * 	if ( sb.has_class( el, 'some-class' ) ) {
+			 * 		// do something!!
+			 * 	}
+			 *
+			 *
+			 * @param {object} el           the DOM element to look for the class on
+			 * @param {string} class_to_find the class to look for
+			 * @method  has_class
+			 * @public
+			 */
+			has_class : function ( el, class_to_find ) {
+				core.dom.has_class( el, class_to_find );
+			},
+
+			/**
+			 * @param  {object} el  the element to style
+			 * @param  {object / string} css the key/value object of css properties / or css property string
+			 * @param  {string} if set, should be string value of style to set on element
+			 * @return {string / null} if calling for property returns property value as string
+			 * @method  css
+			 * @public
+			 */
+			css : function ( el, css, value ) {
+				core.dom.style( el, css, value );
 			},
 
 			/**
@@ -367,26 +365,6 @@ MOD.sandbox = {
 			 */
 			offset : function( el ) {
 				return core.dom.offset( el );
-			},
-
-			/**
-			 * Checks a DOM element for a specified class
-			 *
-			 * 	if ( sb.has_class( el, 'some-class' ) ) {
-			 * 		// do something if has class
-			 * 	} else {
-			 * 		// do something if doesn't have class
-			 * 	}
-			 *
-			 *
-			 * @param  {object}  el            the DOM element to check
-			 * @param  {string}  class_to_find the class to look for
-			 * @return {Boolean}               true if has class / else false
-			 * @method  has_class
-			 * @public
-			 */
-			has_class : function ( el, class_to_find ) {
-				return core.dom.has_class( el, class_to_find );
 			},
 
 			/**

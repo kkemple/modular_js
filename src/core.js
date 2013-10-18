@@ -1,4 +1,11 @@
 
+// TODO: vanillify ajax requests
+// TODO: vanillify event handlers
+// TODO: vanillify animations
+// TODO: vanillify queries
+// TODO: add standard animations like fade and slide
+
+
 /**
  * The application namespace.
  * @module MOD
@@ -523,11 +530,14 @@ MOD.core = (function () {
 			if ( root.util.is_object( attrs ) ) {
 
 				for ( var key in attrs ) {
+
 					if ( attrs.hasOwnProperty( key ) ) {
+
 						el.setAttribute( key, attrs[ key ] );
 					}
 				}
 			} else {
+
 				root.util.log( 1, 'APPLY ATTRIBUTES : FAILED : "Attributes argument is of wrong type."' );
 			}
 		},
@@ -543,8 +553,10 @@ MOD.core = (function () {
 		 */
 		prop : function( el, prop, value ) {
 			if ( value === undefined ) {
+
 				return el.getAttribute( prop );
 			} else {
+
 				el.setAttribute( prop, value );
 			}
 		},
@@ -571,6 +583,7 @@ MOD.core = (function () {
 						y : window.pageYOffset
 					};
 				} else {
+
 					return {
 						x : document.documentElement.scrollLeft,
 						y : document.documentElement.scrollTop
@@ -589,22 +602,38 @@ MOD.core = (function () {
 		/**
 		 * Update styles on a DOM element
 		 * @param  {object} el  the element to style
-		 * @param  {object} css the key/value object of css properties
-		 * @return {none}
+		 * @param  {object / string} css the key/value object of css properties / or css property string
+		 * @param  {string} if set, should be string value of style to set on element
+		 * @return {string / null} if calling for property returns property value as string
 		 * @method  style
 		 * @private
 		 */
-		style : function ( el, css ) {
+		style : function ( el, css, value ) {
 			var ccProp, prop;
 
-			for ( prop in css ) {
+			if ( typeof css === 'object' ) {
 
-				if ( css.hasOwnProperty( prop ) ) {
+				for ( prop in css ) {
 
-					ccProp = root.util.to_camel_case( prop );
+					if ( css.hasOwnProperty( prop ) ) {
 
-					el.style[ ccProp ] = css[ prop ];
+						ccProp = root.util.to_camel_case( prop );
+
+						el.style[ ccProp ] = css[ prop ];
+					}
 				}
+
+				return null;
+			} else if ( typeof css === 'string' && value === undefined ) {
+
+				compStyle = ( window.getComputedStyle ) ? window.getComputedStyle( el ) : getComputedStyle( el );
+				return compStyle.getPropertyValue( css );
+			} else if ( typeof css === 'string' && typeof value === 'string' ) {
+
+				el.style[ root.util.to_camel_case( css ) ] = value;
+				return null;
+			} else {
+				root.util.log( 1, 'STYLE : FAILED : "One or more arguments are of wrong type"' );
 			}
 		},
 
@@ -816,7 +845,7 @@ MOD.core = (function () {
 		 * 		doSomething : function () {
 		 *
 		 * 			// all functionality goes in to functions that are isolated to the module
-		 * 			term = sb.val( input );
+		 * 			term = input.value;
 		 *
 		 * 			sb.notify({
 		 * 				type : 'search-initiated',
@@ -832,7 +861,7 @@ MOD.core = (function () {
 		 * @method  create_module
 		 * @public
 		 */
-		create_module : function( moduleID, creator ) {
+		create_module : function ( moduleID, creator ) {
 			var temp;
 
 			// sanity check for correct types on our params
@@ -875,7 +904,7 @@ MOD.core = (function () {
 		 * @method start
 		 * @private
 		 */
-		start : function( moduleID ) {
+		start : function ( moduleID ) {
 			var mod = module_data[ moduleID ];
 
 			if ( mod ) {
@@ -900,7 +929,7 @@ MOD.core = (function () {
 		 * @method  start_all
 		 * @private
 		 */
-		start_all : function() {
+		start_all : function () {
 			var moduleID;
 
 			for ( moduleID in module_data ) {
@@ -927,7 +956,7 @@ MOD.core = (function () {
 		 * @method  stop
 		 * @private
 		 */
-		stop : function( moduleID ) {
+		stop : function ( moduleID ) {
 			var mod = module_data[ moduleID ];
 
 			if ( mod.instance ) {
@@ -952,7 +981,7 @@ MOD.core = (function () {
 		 * @method  stop_all
 		 * @private
 		 */
-		stop_all : function() {
+		stop_all : function () {
 			var moduleID;
 
 			for ( var moduleID in module_data ) {
@@ -990,7 +1019,7 @@ MOD.core = (function () {
 		 * @method  register_events
 		 * @private
 		 */
-		register_events : function( evts, moduleID ) {
+		register_events : function ( evts, moduleID ) {
 			if ( this.util.is_object( evts ) &&  moduleID ) {
 
 				var mod = module_data[ moduleID ];
@@ -1025,7 +1054,7 @@ MOD.core = (function () {
 		 * @return {Boolean} returns true if function completes without error, else false
 		 * @private
 		 */
-		trigger_event : function( evt ) {
+		trigger_event : function ( evt ) {
 			var mod;
 
 			if ( this.util.is_object( evt ) && evt.type ) {
@@ -1064,7 +1093,7 @@ MOD.core = (function () {
 		 * @method  remove_events
 		 * @private
 		 */
-		remove_events : function( evts, moduleID ) {
+		remove_events : function ( evts, moduleID ) {
 			if ( root.util.is_array( evts ) &&  moduleID ) {
 
 				// check for the existance of the specified module
@@ -1098,6 +1127,138 @@ MOD.core = (function () {
 		}
 	};
 
+
+
+	/*======================================
+		Assistive Functions
+	======================================*/
+
+	// Author Shawn Allen
+	// https://github.com/shawnbot/aight/blob/master/js/computed-style.js
+
+	function getComputedStyle ( el ) {
+
+		var Push = Array.prototype.push;
+
+		function getComputedStylePixel( element, property, fontSize ) {
+			var
+			value = element.currentStyle[property].match(/([\d\.]+)(%|cm|em|in|mm|pc|pt|)/) || [0, 0, ''],
+			size = value[ 1 ],
+			suffix = value[ 2 ],
+			rootSize;
+
+			fontSize = fontSize != null ? fontSize : /%|em/.test( suffix ) && element.parentElement ? getComputedStylePixel( element.parentElement, 'fontSize', null ) : 16;
+			rootSize = property == 'fontSize' ? fontSize : /width/i.test( property ) ? element.clientWidth : element.clientHeight;
+
+			return suffix === '%' ? size / 100 * rootSize :
+			       suffix === 'cm' ? size * 0.3937 * 96 :
+			       suffix === 'em' ? size * fontSize :
+			       suffix === 'in' ? size * 96 :
+			       suffix === 'mm' ? size * 0.3937 * 96 / 10 :
+			       suffix === 'pc' ? size * 12 * 96 / 72 :
+			       suffix === 'pt' ? size * 96 / 72 :
+			       size;
+		}
+
+		function setShortStyleProperty( style, property ) {
+			var
+			borderSuffix = property == 'border' ? 'Width' : '',
+			t = property + 'Top' + borderSuffix,
+			r = property + 'Right' + borderSuffix,
+			b = property + 'Bottom' + borderSuffix,
+			l = property + 'Left' + borderSuffix;
+
+			style[ property ] = ( style[ t ] == style[ r ] && style[ t ] == style[ b ] && style[ t ] == style[ l ] ? [ style[ t ] ] :
+			                   style[ t ] == style[ b ] && style[ l ] == style[ r ] ? [ style[ t ], style[ r ] ] :
+			                   style[ l ] == style[ r ] ? [ style[ t ], style[ r ], style[ b ] ] :
+			                   [ style[ t ], style[ r ], style[ b ], style[ l ] ]).join(' ');
+		}
+
+		function CSSStyleDeclaration( element ) {
+			var
+			style = this,
+			currentStyle = element.currentStyle,
+			fontSize = getComputedStylePixel( element, 'fontSize' );
+
+			for ( property in currentStyle ) {
+				Push.call( style, property == 'styleFloat' ? 'float' : property.replace( /[A-Z]/, function ( match ) {
+					return '-' + match.toLowerCase();
+				}));
+
+				if ( property === 'width' ) {
+
+					style[ property ] = element.offsetWidth + 'px';
+				} else if ( property === 'height' ) {
+
+					style[ property ] = element.offsetHeight + 'px';
+				} else if ( property === 'styleFloat' ) {
+					style[ 'float' ] = currentStyle[ property ];
+				} else if ( /margin.|padding.|border.+W/.test( property ) && style[ property ] != 'auto' ) {
+
+					style[ property ] = Math.round( getComputedStylePixel( element, property, fontSize ) ) + 'px';
+				} else {
+
+					style[ property ] = currentStyle[ property ];
+				}
+			}
+
+			setShortStyleProperty( style, 'margin' );
+			setShortStyleProperty( style, 'padding' );
+			setShortStyleProperty( style, 'border' );
+
+			style.fontSize = Math.round( fontSize ) + 'px';
+		}
+
+		CSSStyleDeclaration.prototype = {
+			constructor: CSSStyleDeclaration,
+
+			getPropertyPriority: function () {
+
+				throw Error( 'NotSupportedError: DOM Exception 9' );
+			},
+
+			getPropertyValue: function ( property ) {
+
+				if ( property === undefined ) {
+
+					throw Error('TypeError: Not enough arguments to CSSStyleDeclaration.getPropertyValue');
+				}
+
+				property = property.replace( /-\w/g, function ( match ) {
+					return match[ 1 ].toUpperCase();
+				});
+
+				return ( typeof this[ property ] === 'function' ||
+					property.match( /^(?:cssText|length|\d+)$/ ) ) ? '' : this[ property ];
+			},
+
+			item: function ( index ) {
+
+				if ( property === undefined ) {
+					throw Error( 'TypeError: Not enough arguments to CSSStyleDeclaration.item' );
+				}
+
+				return this[ parseInt( index, 10 ) ];
+			},
+
+			removeProperty: function () {
+
+				throw Error( 'NoModificationAllowedError: DOM Exception 7' );
+			},
+
+			setProperty: function () {
+
+				throw Error( 'NoModificationAllowedError: DOM Exception 7' );
+			},
+
+			getPropertyCSSValue: function () {
+
+				throw Error( 'NotSupportedError: DOM Exception 9' );
+			}
+		};
+
+		return new CSSStyleDeclaration( el );
+	}
 }());
 
 

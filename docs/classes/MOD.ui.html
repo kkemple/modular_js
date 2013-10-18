@@ -27,7 +27,7 @@
             </li>
         </div>
         <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
-            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/MOD.app", "classes/MOD.app.return", "classes/MOD.core", "classes/MOD.core.dom", "classes/MOD.core.return", "classes/MOD.core.util", "classes/MOD.form", "classes/MOD.form.return", "classes/MOD.form.return.check", "classes/MOD.sandbox", "classes/MOD.sandbox.return", "classes/MOD.ui", "modules/MOD"]'>
+            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/MOD.app", "classes/MOD.app.return", "classes/MOD.core", "classes/MOD.core.dom", "classes/MOD.core.return", "classes/MOD.core.util", "classes/MOD.form", "classes/MOD.form.return", "classes/MOD.form.return.check", "classes/MOD.sandbox", "classes/MOD.sandbox.return", "classes/MOD.template", "classes/MOD.ui", "modules/MOD"]'>
         </form>
     </div>
 </div>
@@ -71,6 +71,8 @@
                         <li><a href="../classes/MOD.sandbox.html">MOD.sandbox</a></li>
                     
                         <li><a href="../classes/MOD.sandbox.return.html">MOD.sandbox.return</a></li>
+                    
+                        <li><a href="../classes/MOD.template.html">MOD.template</a></li>
                     
                         <li><a href="../classes/MOD.ui.html">MOD.ui</a></li>
                     
@@ -200,7 +202,17 @@
     <h3 class="name"><code>scroll</code></h3>
 
     
-        <span class="paren">()</span>
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>config</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
     
 
     
@@ -258,6 +270,30 @@ scroller.update( newConfig ); // you can use the update function to set new para
     </div>
 
     
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">config</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the settings for the scroll instance</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
 
     
         <div class="returns">
@@ -268,7 +304,7 @@ scroller.update( newConfig ); // you can use the update function to set new para
                     
                         <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>:
                     
-                    <p>the update method, allows you to update any config property</p>
+                    <p>contains the update method, allows you to update any config property</p>
 
                 
             </div>
