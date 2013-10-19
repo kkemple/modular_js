@@ -767,6 +767,74 @@ MOD.core = (function () {
 		},
 
 		/**
+		 * Gets the next element that is not a text node, script tag, or style tag
+		 *
+		 * 	var next = MOD.core.dom.next_element( el );
+		 *
+		 *
+		 * @param  {object} el the object whos next sibling you require
+		 * @return {object}    the next sibling
+		 * @method  next_element
+		 * @private
+		 */
+		next_element : function ( el ) {
+			var next;
+
+			next = el.nextSibling;
+
+			if ( next === null ) {
+
+				return null;
+			} if ( next.nodeType > 1 ) {
+
+				return this.next_element( next );
+			} else if ( next.tagName.toLowerCase() === 'script' ) {
+
+				return this.next_element( next );
+			} else if ( next.tagName.toLowerCase() === 'style' ) {
+
+				return this.next_element( next );
+			} else {
+
+				return next;
+			}
+		},
+
+		/**
+		 * Gets the previous element that is not a text node, script tag, or style tag
+		 *
+		 * 	var prev = MOD.core.dom.previous_element( el );
+		 *
+		 *
+		 * @param  {object} el the object whos previous sibling you require
+		 * @return {object}    the previous sibling
+		 * @method  previous_element
+		 * @private
+		 */
+		previous_element : function ( el ) {
+			var prev;
+
+			prev = el.previousSibling;
+
+			if ( prev === null ) {
+
+				return null;
+			} else if ( prev.nodeType > 1 ) {
+
+				return this.previous_element( prev );
+			} else if ( prev.tagName.toLowerCase() === 'script' ) {
+
+				return this.previous_element( prev );
+			} else if ( prev.tagName.toLowerCase() === 'style' ) {
+
+				return this.previous_element( prev );
+			} else {
+
+				return prev;
+			}
+		},
+
+		/**
 		 * Handles running any code that needs to be run only after the document has loaded
 		 * > Used by the MOD.app object
 		 *

@@ -3,7 +3,8 @@
         "name": "ModJS",
         "description": "A Large Scale Application JavaScript Framework",
         "version": "0.1.0",
-        "url": "https://github.com/kkemple/modular_js"
+        "url": "https://github.com/kkemple/modular_js",
+        "logo": "../modjs.png"
     },
     "files": {
         "app.js": {
@@ -211,7 +212,7 @@
             "module": "MOD",
             "namespace": "MOD.core",
             "file": "core.js",
-            "line": 811,
+            "line": 879,
             "description": "This is the return object of the core, it is passed in to the sandbox when a module is created. This allows the sandbox to have access to core functions, but prevents the modules from knowing about the core, keeping the code loosely coupled",
             "type": "Object"
         },
@@ -300,7 +301,7 @@
             "namespace": "MOD",
             "file": "template.js",
             "line": 2,
-            "description": "template namespace handles the conversion of micro templates\n> **To see this in action simple look at the code for the example**\n\n#### Usage:\nTemplating can save you a ton of time and the browser a ton of memory if done correctly. It is perfect for handling JSON responses from AJAX calls and it is very lightweight. Below you will find and example of how to use it.\n\n\n\n\t // First add a script tag with a type of \"text/template\" to your page\n\t // This won't be read by the browser or by GOOGLE or screen readers\n\t<script type=\"text/template\">\n\n\t</script>\n\n\t// Then build out your HTML as if you were just hard-coding it\n\t<li class=\"instagram-post\">\n             <div class=\"instagram-image-container\">\n                 <img src=\"\" class=\"instagram-image\" />\n             </div>\n             <div class=\"instagram-meta-data\">\n                 <div class=\"instagram-meta-top\">\n                     <div class=\"instagram-user\">\n                         <img src=\"\" class=\"instagram-user-profile-img\" />\n                         <span class=\"instagram-username\"></span>\n                     </div>\n                     <div class=\"instagram-tags\">\n                         <p></p>\n                     </div>\n                     <div class=\"instagram-likes\">\n                         <p></p>\n                     </div>\n                 </div>\n             </div>\n        </li>\n\n\t// next we add in our template tags \"<% %>\" and let the engine know where exactly we will access our passed in object\n\t// pay close attention to the \"=\" sign in the template tags, this lets the parser know you want a value, otherwise\n\t// it expects to run an operation\n\t// if you look at the tags section you will see we return the value of an operation and this is perfectly acceptable\n\n\t<li class=\"instagram-post\">\n             <div class=\"instagram-image-container\">\n                 <img src=\"<%= images.standard_resolution.url %>\" class=\"instagram-image\" />\n             </div>\n             <div class=\"instagram-meta-data\">\n                 <div class=\"instagram-meta-top\">\n                     <div class=\"instagram-user\">\n                         <img src=\"<%= user.profile_picture %>\" class=\"instagram-user-profile-img\" />\n                         <span class=\"instagram-username\"><%= user.username %></span>\n                     </div>\n                     <div class=\"instagram-tags\">\n                         <p><%= tags.join( ', ' ) %></p>\n                     </div>\n                     <div class=\"instagram-likes\">\n                         <p><%= likes.count %></p>\n                     </div>\n                 </div>\n             </div>\n        </li>\n\n\t// you can also run for loops like so\n\t<ul>\n\t<% for ( var i = 0, len = user.images.length; i < len; i++ ) { %>\n \t\t<li><img src=\"<%= user.images[ i ] %>\" /></li>\n\t<% } %>\n\t</ul>\n\n\t// Putting it all together\n\t<script type=\"text/template\" id=\"instagram_post_template\">\n \t\t<li class=\"instagram-post\">\n       \t\t     <div class=\"instagram-image-container\">\n       \t\t         <img src=\"<%= images.standard_resolution.url %>\" class=\"instagram-image\" />\n       \t\t     </div>\n       \t\t     <div class=\"instagram-meta-data\">\n       \t\t         <div class=\"instagram-meta-top\">\n       \t\t             <div class=\"instagram-user\">\n       \t\t                 <img src=\"<%= user.profile_picture %>\" class=\"instagram-user-profile-img\" />\n       \t\t                 <span class=\"instagram-username\"><%= user.username %></span>\n       \t\t             </div>\n       \t\t             <div class=\"instagram-tags\">\n       \t\t                 <p><%= tags.join( ', ' ) %></p>\n       \t\t             </div>\n       \t\t             <div class=\"instagram-likes\">\n       \t\t                 <p><%= likes.count %></p>\n       \t\t             </div>\n       \t\t         </div>\n       \t\t     </div>\n       \t\t</li>\n\t</script>\n\n\t// data will be our return object from an ajax request to instagram\n\n\tvar html = '', build_post;\n\n\tbuild_post = MOD.template.parse( 'instagram_post_template' );\n\n\tsb.foreach( data, function( item, index ) {\n\t\thtml += build_post( item );\n\t});\n\n\tsb.append( some_element, html );",
+            "description": "template namespace handles the conversion of micro templates\n> **To see this in action simply look at the code for the example**\n\n#### Usage:\nTemplating can save you a ton of time and the browser a ton of memory if done correctly. It is perfect for handling JSON responses from AJAX calls and it is very lightweight. Below you will find and example of how to use it.\n\n\n\n\t // First add a script tag with a type of \"text/template\" to your page\n\t // This won't be read by the browser or by GOOGLE or screen readers\n\t<script type=\"text/template\">\n\n\t</script>\n\n\t// Then build out your HTML as if you were just hard-coding it\n\t<li class=\"instagram-post\">\n             <div class=\"instagram-image-container\">\n                 <img src=\"\" class=\"instagram-image\" />\n             </div>\n             <div class=\"instagram-meta-data\">\n                 <div class=\"instagram-meta-top\">\n                     <div class=\"instagram-user\">\n                         <img src=\"\" class=\"instagram-user-profile-img\" />\n                         <span class=\"instagram-username\"></span>\n                     </div>\n                     <div class=\"instagram-tags\">\n                         <p></p>\n                     </div>\n                     <div class=\"instagram-likes\">\n                         <p></p>\n                     </div>\n                 </div>\n             </div>\n        </li>\n\n\t// next we add in our template tags \"<% %>\" and let the engine know where exactly we will access our passed in object\n\t// pay close attention to the \"=\" sign in the template tags, this lets the parser know you want a value, otherwise\n\t// it expects to run an operation\n\t// if you look at the tags section you will see we return the value of an operation and this is perfectly acceptable\n\n\t<li class=\"instagram-post\">\n             <div class=\"instagram-image-container\">\n                 <img src=\"<%= images.standard_resolution.url %>\" class=\"instagram-image\" />\n             </div>\n             <div class=\"instagram-meta-data\">\n                 <div class=\"instagram-meta-top\">\n                     <div class=\"instagram-user\">\n                         <img src=\"<%= user.profile_picture %>\" class=\"instagram-user-profile-img\" />\n                         <span class=\"instagram-username\"><%= user.username %></span>\n                     </div>\n                     <div class=\"instagram-tags\">\n                         <p><%= tags.join( ', ' ) %></p>\n                     </div>\n                     <div class=\"instagram-likes\">\n                         <p><%= likes.count %></p>\n                     </div>\n                 </div>\n             </div>\n        </li>\n\n\t// you can also run for loops like so\n\t<ul>\n\t<% for ( var i = 0, len = user.images.length; i < len; i++ ) { %>\n \t\t<li><img src=\"<%= user.images[ i ] %>\" /></li>\n\t<% } %>\n\t</ul>\n\n\t// Putting it all together\n\t<script type=\"text/template\" id=\"instagram_post_template\">\n \t\t<li class=\"instagram-post\">\n       \t\t     <div class=\"instagram-image-container\">\n       \t\t         <img src=\"<%= images.standard_resolution.url %>\" class=\"instagram-image\" />\n       \t\t     </div>\n       \t\t     <div class=\"instagram-meta-data\">\n       \t\t         <div class=\"instagram-meta-top\">\n       \t\t             <div class=\"instagram-user\">\n       \t\t                 <img src=\"<%= user.profile_picture %>\" class=\"instagram-user-profile-img\" />\n       \t\t                 <span class=\"instagram-username\"><%= user.username %></span>\n       \t\t             </div>\n       \t\t             <div class=\"instagram-tags\">\n       \t\t                 <p><%= tags.join( ', ' ) %></p>\n       \t\t             </div>\n       \t\t             <div class=\"instagram-likes\">\n       \t\t                 <p><%= likes.count %></p>\n       \t\t             </div>\n       \t\t         </div>\n       \t\t     </div>\n       \t\t</li>\n\t</script>\n\n\t// data will be our return object from an ajax request to instagram\n\n\tvar html = '', build_post;\n\n\tbuild_post = MOD.template.parse( 'instagram_post_template' );\n\n\tsb.foreach( data, function( item, index ) {\n\t\thtml += build_post( item );\n\t});\n\n\tsb.append( some_element, html );",
             "return": {
                 "description": "the object containing the parse method",
                 "type": "Object"
@@ -1013,6 +1014,52 @@
         {
             "file": "core.js",
             "line": 769,
+            "description": "Gets the next element that is not a text node, script tag, or style tag\n\n\tvar next = MOD.core.dom.next_element( el );",
+            "params": [
+                {
+                    "name": "el",
+                    "description": "the object whos next sibling you require",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "the next sibling",
+                "type": "Object"
+            },
+            "itemtype": "method",
+            "name": "next_element",
+            "access": "private",
+            "tagname": "",
+            "class": "MOD.core.dom",
+            "module": "MOD",
+            "namespace": "MOD.core"
+        },
+        {
+            "file": "core.js",
+            "line": 803,
+            "description": "Gets the previous element that is not a text node, script tag, or style tag\n\n\tvar prev = MOD.core.dom.previous_element( el );",
+            "params": [
+                {
+                    "name": "el",
+                    "description": "the object whos previous sibling you require",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "the previous sibling",
+                "type": "Object"
+            },
+            "itemtype": "method",
+            "name": "previous_element",
+            "access": "private",
+            "tagname": "",
+            "class": "MOD.core.dom",
+            "module": "MOD",
+            "namespace": "MOD.core"
+        },
+        {
+            "file": "core.js",
+            "line": 837,
             "description": "Handles running any code that needs to be run only after the document has loaded\n> Used by the MOD.app object\n\n\tMOD.core.dom.onready( function () {\n\t\t// do some stuff when the document is loaded\n\t});",
             "params": [
                 {
@@ -1035,7 +1082,7 @@
         },
         {
             "file": "core.js",
-            "line": 789,
+            "line": 857,
             "description": "Handles running any code that needs to be run only after the window has loaded\n> Used by the MOD.app object\n\n\tMOD.core.dom.onload( function () {\n\t\t// do some stuff when the window is loaded\n\t});",
             "params": [
                 {
@@ -1058,7 +1105,7 @@
         },
         {
             "file": "core.js",
-            "line": 822,
+            "line": 890,
             "description": "this is a factory function used to create modules for the application\n\n\tMOD.core.create_module( 'my-module', function( sb ) {\n\n\t\tinit : function () {\n\n\t\t\t// handle the creation of the module\n\t\t\tvar btn, input, term;\n\n\t\t\tbtn = sb.find( '.my-btn' )[0]   // get the element from the return object\n\t\t\tinput = sb.find( '.my-input' )[0]   // same for the input\n\n\t\t\tsb.add_event( btn, 'click', this.doSomething );\n\t\t},\n\n\t\tdestroy : function () {\n\n\t\t\t// handle breaking the module down\n\t\t\tsb.remove_event( btn, 'click', this.doSomething );\n\t\t\tbtn = input = term = null;\n\t\t},\n\n\t\tdoSomething : function () {\n\n\t\t\t// all functionality goes in to functions that are isolated to the module\n\t\t\tterm = input.value;\n\n\t\t\tsb.notify({\n\t\t\t\ttype : 'search-initiated',\n\t\t\t\tdata : term\n\t\t\t});\n\t\t}\n\t});",
             "params": [
                 {
@@ -1086,7 +1133,7 @@
         },
         {
             "file": "core.js",
-            "line": 896,
+            "line": 964,
             "description": "starts up an instance of a particular module\n\n\tMOD.core.start( 'my-module' );",
             "params": [
                 {
@@ -1109,7 +1156,7 @@
         },
         {
             "file": "core.js",
-            "line": 922,
+            "line": 990,
             "description": "starts up an instance of all modules\n\n\tMOD.core.start_all();",
             "return": {
                 "description": "true if all modules are successfully started, else false",
@@ -1125,7 +1172,7 @@
         },
         {
             "file": "core.js",
-            "line": 948,
+            "line": 1016,
             "description": "stops an instance of a running module\n\n\tMOD.core.stop( 'my-module' );",
             "params": [
                 {
@@ -1148,7 +1195,7 @@
         },
         {
             "file": "core.js",
-            "line": 974,
+            "line": 1042,
             "description": "stops all instances of modules\n\n\tMOD.core.stop_all();",
             "return": {
                 "description": "true if all modules are successfully stopped, else false",
@@ -1164,7 +1211,7 @@
         },
         {
             "file": "core.js",
-            "line": 1000,
+            "line": 1068,
             "description": "add events to our module, events allow for cross module communication\n\n\tvar evts = {\n\t\t'some-event' : function ( data ) {\n\t\t\t// do something with passed in event data\n\t\t},\n\n\t\t'some-other-event' : function ( data ) {\n\t\t\t// handle a different event\n\t\t}\n\t};\n\n\tMOD.core.register_events( evts, 'my-module' );",
             "params": [
                 {
@@ -1192,7 +1239,7 @@
         },
         {
             "file": "core.js",
-            "line": 1043,
+            "line": 1111,
             "description": "responsible for checking modules this event and then executing it if it is found\n\n\tvar evt = {\n\t\t'some-event' : data\n\t}\n\n\tMOD.core.trigger_event( evt );",
             "params": [
                 {
@@ -1213,7 +1260,7 @@
         },
         {
             "file": "core.js",
-            "line": 1082,
+            "line": 1150,
             "description": "removes events from a specified module\n\n\tvar evts = [ 'some-event', 'some-other-event' ];\n\n\tMOD.core.remove_events( evts, 'my-module' );",
             "params": [
                 {
@@ -1856,6 +1903,52 @@
         {
             "file": "sandbox.js",
             "line": 242,
+            "description": "Gets the next element that is not a text node, script tag, or style tag\n\n\tvar next = sb.next( el );",
+            "params": [
+                {
+                    "name": "el",
+                    "description": "the object whos next sibling you require",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "the next sibling",
+                "type": "Object"
+            },
+            "itemtype": "method",
+            "name": "next",
+            "access": "public",
+            "tagname": "",
+            "class": "MOD.sandbox.return",
+            "module": "MOD",
+            "namespace": "MOD.sandbox"
+        },
+        {
+            "file": "sandbox.js",
+            "line": 257,
+            "description": "Gets the previous element that is not a text node, script tag, or style tag\n\n\tvar prev = sb.prev( el );",
+            "params": [
+                {
+                    "name": "el",
+                    "description": "the object whos previous sibling you require",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "the previous sibling",
+                "type": "Object"
+            },
+            "itemtype": "method",
+            "name": "prev",
+            "access": "public",
+            "tagname": "",
+            "class": "MOD.sandbox.return",
+            "module": "MOD",
+            "namespace": "MOD.sandbox"
+        },
+        {
+            "file": "sandbox.js",
+            "line": 272,
             "description": "Used for all ajax requests\n\n\tvar config = {\n \t\turl : 'http://someurl.com/get/the/awesome/json',\n \t\ttype : 'GET',\n \t\tdataType : 'JSON',\n \t\tdata : {\n \t\t\tsome : 'data',\n \t\t\tmore : 'data'\n \t\t},\n \t\tdone : function( response ) {\n   \t\t\t// do something with successful results\n\t\t},\n\t\tfail : function( error ) {\n\t\t\t// do something with unseccessful ajax request\n\t\t\talert( error.message );\n\t\t},\n\t\tscope : this   // set the scope for the callback functions\n\t}\n\n\tsb.request( config );",
             "params": [
                 {
@@ -1878,7 +1971,7 @@
         },
         {
             "file": "sandbox.js",
-            "line": 275,
+            "line": 305,
             "description": "Adds a class or classes to an element\n\n\tvar el = sb.query( '#some-div' )[0];\n\n\tsb.add_class( el, 'some-class' );",
             "params": [
                 {
@@ -1902,7 +1995,7 @@
         },
         {
             "file": "sandbox.js",
-            "line": 292,
+            "line": 322,
             "description": "Removes a class or classes from an element\n\n\tvar el = sb.query( '#some-div' )[0];\n\n\tsb.remove_class( el, 'some-class' );",
             "params": [
                 {
@@ -1926,7 +2019,7 @@
         },
         {
             "file": "sandbox.js",
-            "line": 309,
+            "line": 339,
             "description": "Checks an element for a particular class\n\n\tvar el = sb.query( '#some-div' )[0];\n\n\tif ( sb.has_class( el, 'some-class' ) ) {\n\t\t// do something!!\n\t}",
             "params": [
                 {
@@ -1950,7 +2043,7 @@
         },
         {
             "file": "sandbox.js",
-            "line": 328,
+            "line": 358,
             "params": [
                 {
                     "name": "el",
@@ -1982,7 +2075,7 @@
         },
         {
             "file": "sandbox.js",
-            "line": 340,
+            "line": 370,
             "description": "Gets or sets a single property on an element",
             "params": [
                 {
@@ -2015,7 +2108,7 @@
         },
         {
             "file": "sandbox.js",
-            "line": 353,
+            "line": 383,
             "description": "returns x and y coords of the offset of the element relative to the document\n\n\tvar offset = sb.offset( el );\n\n\twindow.scrollTo( 0, offset.y );",
             "params": [
                 {
@@ -2038,7 +2131,7 @@
         },
         {
             "file": "sandbox.js",
-            "line": 370,
+            "line": 400,
             "description": "Handles all animations of DOM elements\n\n\tvar el = sb.find( '#dialog' );\n\n\tvar props = {\n\t\topacity : 0.6,\n\t\ttop : 30\n\t};\n\n\tsb.animate( el, props, 600, someFunction, this );",
             "params": [
                 {
@@ -2081,7 +2174,7 @@
         },
         {
             "file": "sandbox.js",
-            "line": 396,
+            "line": 426,
             "description": "* Perform a function on each member of an array\n\t\t\t*\n\t\t\t* \t// get values of multiselect\n\t\t\t*\n\t\t\t* \tvar elems = sb.find( 'select option' ),\n\t\t\t* \t\tvalues = [];\n\t\t\t*\n\t\t\t* \tvalues = sb.foreach( elems, function( item, index ) {\n\t\t\t*  \t\tif ( item.selected === true ) {\n\t\t\t*  \t\t\treturn item.value;\n\t\t\t*  \t\t}\n\t\t\t* \t}, this );\n\t\t\t*\n\t\t\t*\n\t\t\t* @param  {array}   arr   the array of items to loop over\n\t\t\t* @param  {Function} fn    the function to run on each item\n\t\t\t* @param  {object}   scope the scope of the function that is running\n\t\t\t* @return {array}         an array of the returned results from original array, if anything is returned from callback function\n\t\t\t* @method  foreach\n\t\t\t* @puclic",
             "class": "MOD.sandbox.return",
             "module": "MOD",
@@ -2151,7 +2244,7 @@
     "warnings": [
         {
             "message": "Missing item type\nresponsible for checking modules this event and then executing it if it is found\n\n\tvar evt = {\n\t\t'some-event' : data\n\t}\n\n\tMOD.core.trigger_event( evt );",
-            "line": " core.js:1043"
+            "line": " core.js:1111"
         },
         {
             "message": "Missing item type\nAll modules for the application are stored in this file\nA module is a small piece of the application that is responsible for a minute\namount of tasks",
@@ -2167,7 +2260,7 @@
         },
         {
             "message": "Missing item type\n* Perform a function on each member of an array\n\t\t\t*\n\t\t\t* \t// get values of multiselect\n\t\t\t*\n\t\t\t* \tvar elems = sb.find( 'select option' ),\n\t\t\t* \t\tvalues = [];\n\t\t\t*\n\t\t\t* \tvalues = sb.foreach( elems, function( item, index ) {\n\t\t\t*  \t\tif ( item.selected === true ) {\n\t\t\t*  \t\t\treturn item.value;\n\t\t\t*  \t\t}\n\t\t\t* \t}, this );\n\t\t\t*\n\t\t\t*\n\t\t\t* @param  {array}   arr   the array of items to loop over\n\t\t\t* @param  {Function} fn    the function to run on each item\n\t\t\t* @param  {object}   scope the scope of the function that is running\n\t\t\t* @return {array}         an array of the returned results from original array, if anything is returned from callback function\n\t\t\t* @method  foreach\n\t\t\t* @puclic",
-            "line": " sandbox.js:396"
+            "line": " sandbox.js:426"
         },
         {
             "message": "Missing item type\nThe return object containing our parse method",

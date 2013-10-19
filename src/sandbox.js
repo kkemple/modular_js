@@ -240,6 +240,36 @@ MOD.sandbox = {
 			},
 
 			/**
+			 * Gets the next element that is not a text node, script tag, or style tag
+			 *
+			 * 	var next = sb.next( el );
+			 *
+			 *
+			 * @param  {object} el the object whos next sibling you require
+			 * @return {object}    the next sibling
+			 * @method  next
+			 * @public
+			 */
+			next : function ( el ) {
+				return core.dom.next_element( el );
+			},
+
+			/**
+			 * Gets the previous element that is not a text node, script tag, or style tag
+			 *
+			 * 	var prev = sb.prev( el );
+			 *
+			 *
+			 * @param  {object} el the object whos previous sibling you require
+			 * @return {object}    the previous sibling
+			 * @method  prev
+			 * @public
+			 */
+			prev : function ( el ) {
+				return core.dom.previous_element( el );
+			},
+
+			/**
 			 * Used for all ajax requests
 			 *
 			 * 	var config = {

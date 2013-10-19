@@ -15,7 +15,9 @@
 <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
         <h1 class="brand" style="padding: 10px 16px 10px; height: 20px; line-height: 20px; margin-left: 0;">
-        
+            
+    	    <img alt="ModJS" src="../../modjs.png" style="max-height: 137%; margin-top: -5px;" title="ModJS">
+            
             ModJS
         </h1>
 	<div class="nav">
@@ -217,6 +219,13 @@
                             </li>
                         
                             <li class="index-item method private">
+                                <a href="#" data-tabid="#methods" data-anchor="#method_next_element" data-tablink="next_element">next_element</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method private">
                                 <a href="#" data-tabid="#methods" data-anchor="#method_offset" data-tablink="offset">offset</a>
 
                                 
@@ -239,6 +248,13 @@
                         
                             <li class="index-item method private">
                                 <a href="#" data-tabid="#methods" data-anchor="#method_prepend_elems" data-tablink="prepend_elems">prepend_elems</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method private">
+                                <a href="#" data-tabid="#methods" data-anchor="#method_previous_element" data-tablink="previous_element">previous_element</a>
 
                                 
                                 
@@ -1107,6 +1123,116 @@ var el = MOD.core.dom.create( config );</code></pre>
 </div>
 
                 
+                    <div id="method_next_element" class="method item private">
+    <h3 class="name"><code>next_element</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>el</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/core.js.html#l769"><code>core.js:769</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Gets the next element that is not a text node, script tag, or style tag</p>
+<pre class="code prettyprint"><code>var next = MOD.core.dom.next_element( el );</code></pre>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">el</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the object whos next sibling you require</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>:
+                    
+                    <p>the next sibling</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
                     <div id="method_offset" class="method item private">
     <h3 class="name"><code>offset</code></h3>
 
@@ -1267,7 +1393,7 @@ window.scrollTo( 0, offset.y );</code></pre>
             
         
         
-        <a href="../files/core.js.html#l789"><code>core.js:789</code></a>
+        <a href="../files/core.js.html#l857"><code>core.js:857</code></a>
         
         </p>
 
@@ -1380,7 +1506,7 @@ window.scrollTo( 0, offset.y );</code></pre>
             
         
         
-        <a href="../files/core.js.html#l769"><code>core.js:769</code></a>
+        <a href="../files/core.js.html#l837"><code>core.js:837</code></a>
         
         </p>
 
@@ -1568,6 +1694,116 @@ MOD.core.dom.prepend_elems( el_to_append_to, el );</code></pre>
                     
                         <span class="type">None</span>:
                     
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_previous_element" class="method item private">
+    <h3 class="name"><code>previous_element</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>el</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/core.js.html#l803"><code>core.js:803</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Gets the previous element that is not a text node, script tag, or style tag</p>
+<pre class="code prettyprint"><code>var prev = MOD.core.dom.previous_element( el );</code></pre>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">el</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the object whos previous sibling you require</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>:
+                    
+                    <p>the previous sibling</p>
+
                 
             </div>
         </div>
