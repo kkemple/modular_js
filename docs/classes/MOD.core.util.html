@@ -22,7 +22,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">
+      <a class="navbar-brand" href="/index.html">
                 
                 <img alt="ModJS" src="../../modjs.png" style="height: 30px; margin-top: -5px;" title="ModJS">
                 
@@ -32,8 +32,8 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav">
-        <li><a href="../start.html">Getting Started</a></li>
-        <li><a href="index.html">Docs</a></li>
+        <li><a href="/start.html">Getting Started</a></li>
+        <li><a href="/docs/index.html">Docs</a></li>
         <li><a href="https://github.com/kkemple/modular_js">Code</a></li>
         <li><a href="https://github.com/kkemple/modular_js/issues">Issues</a></li>
       </ul>
@@ -486,7 +486,7 @@ MOD.core.util.ajax( config );</code></pre>
 
     <div class="description">
         <p>Checks an array for a given value</p>
-<pre class="code prettyprint"><code>if ( PIX.core.util.array_contains( arr, &#39;some value&#39; ) ) {
+<pre class="code prettyprint"><code>if ( MOD.core.util.array_contains( arr, &#39;some value&#39; ) ) {
     // do something with value
 }</code></pre>
 
@@ -1244,7 +1244,7 @@ var textArr = MOD.core.util.map( arr, getText, this );</code></pre>
         <p>Converts dash-seperated words to camelCase, see what I did there =]</p>
 <pre class="code prettyprint"><code>var str = &#39;some-string&#39;;
 
-str = PIX.core.util.to_camel_case( str );
+str = MOD.core.util.to_camel_case( str );
 
 console.log( str ); // would output &#39;someString&#39;</code></pre>
 

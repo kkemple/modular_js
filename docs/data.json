@@ -388,7 +388,7 @@
         {
             "file": "core.js",
             "line": 103,
-            "description": "Converts dash-seperated words to camelCase, see what I did there =]\n\n\tvar str = 'some-string';\n\n\tstr = PIX.core.util.to_camel_case( str );\n\n\tconsole.log( str ); // would output 'someString'",
+            "description": "Converts dash-seperated words to camelCase, see what I did there =]\n\n\tvar str = 'some-string';\n\n\tstr = MOD.core.util.to_camel_case( str );\n\n\tconsole.log( str ); // would output 'someString'",
             "params": [
                 {
                     "name": "str",
@@ -462,7 +462,7 @@
         {
             "file": "core.js",
             "line": 169,
-            "description": "Checks an array for a given value\n\n\tif ( PIX.core.util.array_contains( arr, 'some value' ) ) {\n\t\t// do something with value\n\t}",
+            "description": "Checks an array for a given value\n\n\tif ( MOD.core.util.array_contains( arr, 'some value' ) ) {\n\t\t// do something with value\n\t}",
             "params": [
                 {
                     "name": "arr",
