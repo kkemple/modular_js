@@ -105,7 +105,7 @@ MOD.core = (function () {
 		 *
 		 * 	var str = 'some-string';
 		 *
-		 * 	str = PIX.core.util.to_camel_case( str );
+		 * 	str = MOD.core.util.to_camel_case( str );
 		 *
 		 * 	console.log( str ); // would output 'someString'
 		 *
@@ -169,7 +169,7 @@ MOD.core = (function () {
 		/**
 		 * Checks an array for a given value
 		 *
-		 * 	if ( PIX.core.util.array_contains( arr, 'some value' ) ) {
+		 * 	if ( MOD.core.util.array_contains( arr, 'some value' ) ) {
 		 * 		// do something with value
 		 * 	}
 		 *
