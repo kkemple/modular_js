@@ -111,10 +111,6 @@
 MOD.template = (function() {
 	var cache = {};
 
-	/**
-	 * The return object containing our parse method
-	 * @type {Object}
-	 */
 	ret = {
 		/**
 		 * The method responsible for creating the function to run on our template

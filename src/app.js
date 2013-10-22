@@ -45,12 +45,6 @@ MOD.app = (function() {
 		}
 	}
 
-	/**
-	 * This is the return object of the app object, it contains only the run method used to start the application
-	 *
-	 * @class  return
-	 * @namespace MOD.app
-	 */
 	return {
 
 		/**

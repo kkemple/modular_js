@@ -3,6 +3,7 @@
     "description": "A Large Scale Application JavaScript Framework",
     "version": "0.1.0",
     "url": "https://github.com/kkemple/modular_js",
+    "logo": "../modjs.png",
     "options": {
         "outdir": "../docs",
         "linkNatives": "true",
