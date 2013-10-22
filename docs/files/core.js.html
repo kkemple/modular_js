@@ -37,11 +37,13 @@
         <li><a href="https://github.com/kkemple/modular_js">Code</a></li>
         <li><a href="https://github.com/kkemple/modular_js/issues">Issues</a></li>
       </ul>
+      <!--
       <form class="navbar-form navbar-right" style="line-height: 40px; height: 40px;">
             <div class="form-group">
             <input style="margin-top: 0;" type="text" class="search-query form-control" placeholder="Search for classes/modules..." data-obj='["classes/MOD.app", "classes/MOD.core", "classes/MOD.core.dom", "classes/MOD.core.util", "classes/MOD.form", "classes/MOD.form.check", "classes/MOD.sandbox", "classes/MOD.template", "classes/MOD.ui", "modules/MOD"]'>
             </div>
     </form>
+    -->
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container -->
 </nav>
@@ -261,6 +263,14 @@ MOD.core = (function () {
 
 		/**
 		 * Converts dash-seperated words to camelCase, see what I did there =]
+		 *
+		 * 	var str = &#x27;some-string&#x27;;
+		 *
+		 * 	str = PIX.core.util.to_camel_case( str );
+		 *
+		 * 	console.log( str ); // would output &#x27;someString&#x27;
+		 *
+		 *
 		 * @param  {String} str the string to camel case
 		 * @param  {String} splitter either space or dash
 		 * @return {String} camel cased string
@@ -290,7 +300,7 @@ MOD.core = (function () {
 		/**
 		 * Checks for the type of whatever is passed in, if it is an object returns true
 		 *
-		 * 	MOD.core.util.is_object( some_unknown_value );
+		 * 	MOD.core.util.is_object( obj );
 		 *
 		 *
 		 * @param  {unknown}  anything the var to check for type of object
@@ -305,7 +315,7 @@ MOD.core = (function () {
 		/**
 		 * Checks for the type of whatever is passed in, if it is an array returns true
 		 *
-		 * 	MOD.core.util.is_array( some_unknown_value );
+		 * 	MOD.core.util.is_array( arr );
 		 *
 		 *
 		 * @param  {unknown}  anything the var to check for type of array
@@ -319,6 +329,12 @@ MOD.core = (function () {
 
 		/**
 		 * Checks an array for a given value
+		 *
+		 * 	if ( PIX.core.util.array_contains( arr, &#x27;some value&#x27; ) ) {
+		 * 		// do something with value
+		 * 	}
+		 *
+		 *
 		 * @param  {array} arr   the array to search through
 		 * @param  {anything} value the value to look for
 		 * @return {boolean}       true if array contains value, else false
@@ -1496,6 +1512,7 @@ MOD.core = (function () {
 <script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script src="../assets/js/yuidoc-bootstrap.js"></script>
 <script>
+    $( 'pre' ).addClass( 'linenums' );
     prettyPrint();
 </script>
 </body>

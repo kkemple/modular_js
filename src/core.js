@@ -102,6 +102,14 @@ MOD.core = (function () {
 
 		/**
 		 * Converts dash-seperated words to camelCase, see what I did there =]
+		 *
+		 * 	var str = 'some-string';
+		 *
+		 * 	str = PIX.core.util.to_camel_case( str );
+		 *
+		 * 	console.log( str ); // would output 'someString'
+		 *
+		 *
 		 * @param  {String} str the string to camel case
 		 * @param  {String} splitter either space or dash
 		 * @return {String} camel cased string
@@ -131,7 +139,7 @@ MOD.core = (function () {
 		/**
 		 * Checks for the type of whatever is passed in, if it is an object returns true
 		 *
-		 * 	MOD.core.util.is_object( some_unknown_value );
+		 * 	MOD.core.util.is_object( obj );
 		 *
 		 *
 		 * @param  {unknown}  anything the var to check for type of object
@@ -146,7 +154,7 @@ MOD.core = (function () {
 		/**
 		 * Checks for the type of whatever is passed in, if it is an array returns true
 		 *
-		 * 	MOD.core.util.is_array( some_unknown_value );
+		 * 	MOD.core.util.is_array( arr );
 		 *
 		 *
 		 * @param  {unknown}  anything the var to check for type of array
@@ -160,6 +168,12 @@ MOD.core = (function () {
 
 		/**
 		 * Checks an array for a given value
+		 *
+		 * 	if ( PIX.core.util.array_contains( arr, 'some value' ) ) {
+		 * 		// do something with value
+		 * 	}
+		 *
+		 *
 		 * @param  {array} arr   the array to search through
 		 * @param  {anything} value the value to look for
 		 * @return {boolean}       true if array contains value, else false

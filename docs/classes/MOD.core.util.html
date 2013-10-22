@@ -37,11 +37,13 @@
         <li><a href="https://github.com/kkemple/modular_js">Code</a></li>
         <li><a href="https://github.com/kkemple/modular_js/issues">Issues</a></li>
       </ul>
+      <!--
       <form class="navbar-form navbar-right" style="line-height: 40px; height: 40px;">
             <div class="form-group">
             <input style="margin-top: 0;" type="text" class="search-query form-control" placeholder="Search for classes/modules..." data-obj='["classes/MOD.app", "classes/MOD.core", "classes/MOD.core.dom", "classes/MOD.core.util", "classes/MOD.form", "classes/MOD.form.check", "classes/MOD.sandbox", "classes/MOD.template", "classes/MOD.ui", "modules/MOD"]'>
             </div>
     </form>
+    -->
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container -->
 </nav>
@@ -340,7 +342,7 @@
             
         
         
-        <a href="../files/core.js.html#l226"><code>core.js:226</code></a>
+        <a href="../files/core.js.html#l240"><code>core.js:240</code></a>
         
         </p>
 
@@ -472,7 +474,7 @@ MOD.core.util.ajax( config );</code></pre>
             
         
         
-        <a href="../files/core.js.html#l161"><code>core.js:161</code></a>
+        <a href="../files/core.js.html#l169"><code>core.js:169</code></a>
         
         </p>
 
@@ -484,6 +486,9 @@ MOD.core.util.ajax( config );</code></pre>
 
     <div class="description">
         <p>Checks an array for a given value</p>
+<pre class="code prettyprint"><code>if ( PIX.core.util.array_contains( arr, &#39;some value&#39; ) ) {
+    // do something with value
+}</code></pre>
 
     </div>
 
@@ -597,7 +602,7 @@ MOD.core.util.ajax( config );</code></pre>
             
         
         
-        <a href="../files/core.js.html#l146"><code>core.js:146</code></a>
+        <a href="../files/core.js.html#l154"><code>core.js:154</code></a>
         
         </p>
 
@@ -609,7 +614,7 @@ MOD.core.util.ajax( config );</code></pre>
 
     <div class="description">
         <p>Checks for the type of whatever is passed in, if it is an array returns true</p>
-<pre class="code prettyprint"><code>MOD.core.util.is_array( some_unknown_value );</code></pre>
+<pre class="code prettyprint"><code>MOD.core.util.is_array( arr );</code></pre>
 
     </div>
 
@@ -707,7 +712,7 @@ MOD.core.util.ajax( config );</code></pre>
             
         
         
-        <a href="../files/core.js.html#l131"><code>core.js:131</code></a>
+        <a href="../files/core.js.html#l139"><code>core.js:139</code></a>
         
         </p>
 
@@ -719,7 +724,7 @@ MOD.core.util.ajax( config );</code></pre>
 
     <div class="description">
         <p>Checks for the type of whatever is passed in, if it is an object returns true</p>
-<pre class="code prettyprint"><code>MOD.core.util.is_object( some_unknown_value );</code></pre>
+<pre class="code prettyprint"><code>MOD.core.util.is_object( obj );</code></pre>
 
     </div>
 
@@ -823,7 +828,7 @@ MOD.core.util.ajax( config );</code></pre>
             
         
         
-        <a href="../files/core.js.html#l288"><code>core.js:288</code></a>
+        <a href="../files/core.js.html#l302"><code>core.js:302</code></a>
         
         </p>
 
@@ -1087,7 +1092,7 @@ MOD.core.util.ajax( config );</code></pre>
             
         
         
-        <a href="../files/core.js.html#l189"><code>core.js:189</code></a>
+        <a href="../files/core.js.html#l203"><code>core.js:203</code></a>
         
         </p>
 
@@ -1237,6 +1242,11 @@ var textArr = MOD.core.util.map( arr, getText, this );</code></pre>
 
     <div class="description">
         <p>Converts dash-seperated words to camelCase, see what I did there =]</p>
+<pre class="code prettyprint"><code>var str = &#39;some-string&#39;;
+
+str = PIX.core.util.to_camel_case( str );
+
+console.log( str ); // would output &#39;someString&#39;</code></pre>
 
     </div>
 
@@ -1548,6 +1558,7 @@ str = MOD.core.util.trim( str );
 <script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script src="../assets/js/yuidoc-bootstrap.js"></script>
 <script>
+    $( 'pre' ).addClass( 'linenums' );
     prettyPrint();
 </script>
 </body>
