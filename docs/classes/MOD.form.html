@@ -8,11 +8,46 @@
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="stylesheet" href="../assets/css/custom.css">
     <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap-responsive.css">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600|Prosto+One' rel='stylesheet' type='text/css'>
+
 </head>
 <body class="yui3-skin-sam">
-<div class="navbar navbar-fixed-top">
+<nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">
+                
+                <img alt="ModJS" src="../../modjs.png" style="height: 30px; margin-top: -5px;" title="ModJS">
+                
+    </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../start.html">Getting Started</a></li>
+        <li><a href="index.html">Docs</a></li>
+        <li><a href="https://github.com/kkemple/modular_js">Code</a></li>
+        <li><a href="https://github.com/kkemple/modular_js/issues">Issues</a></li>
+      </ul>
+      <form class="navbar-form navbar-right" style="line-height: 40px; height: 40px;">
+            <div class="form-group">
+            <input style="margin-top: 0;" type="text" class="search-query form-control" placeholder="Search for classes/modules..." data-obj='["classes/MOD.app", "classes/MOD.core", "classes/MOD.core.dom", "classes/MOD.core.util", "classes/MOD.form", "classes/MOD.form.check", "classes/MOD.sandbox", "classes/MOD.template", "classes/MOD.ui", "modules/MOD"]'>
+            </div>
+    </form>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container -->
+</nav>
+
+<!--
+<div class="navbar navbar-fixed-top navbar-inverse">
     <div class="navbar-inner">
         <h1 class="brand" style="padding: 10px 16px 10px; height: 20px; line-height: 20px; margin-left: 0;">
             
@@ -29,13 +64,14 @@
             </li>
         </div>
         <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
-            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/MOD.app", "classes/MOD.app.return", "classes/MOD.core", "classes/MOD.core.dom", "classes/MOD.core.return", "classes/MOD.core.util", "classes/MOD.form", "classes/MOD.form.return", "classes/MOD.form.return.check", "classes/MOD.sandbox", "classes/MOD.sandbox.return", "classes/MOD.template", "classes/MOD.ui", "modules/MOD"]'>
+            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/MOD.app", "classes/MOD.core", "classes/MOD.core.dom", "classes/MOD.core.util", "classes/MOD.form", "classes/MOD.form.check", "classes/MOD.sandbox", "classes/MOD.template", "classes/MOD.ui", "modules/MOD"]'>
         </form>
     </div>
 </div>
+-->
 <div class="container">
     <div class="row">
-        <div class="span3">
+        <div class="col-md-3">
 	    <div>
     <h3>APIs</h3>
     <div id="sidebar">
@@ -45,7 +81,9 @@
         </ul>
 
         <div id="api-tabview-filter">
-            <input type="search" placeholder="Type to filter APIs">
+            <div class="form-group">
+            <input type="search" class="form-control" placeholder="Type to filter APIs">
+            </div>
         </div>
 
         <div class="tab-content" style="border: 1px solid #DDD; border-top:0;">
@@ -54,25 +92,17 @@
                     
                         <li><a href="../classes/MOD.app.html">MOD.app</a></li>
                     
-                        <li><a href="../classes/MOD.app.return.html">MOD.app.return</a></li>
-                    
                         <li><a href="../classes/MOD.core.html">MOD.core</a></li>
                     
                         <li><a href="../classes/MOD.core.dom.html">MOD.core.dom</a></li>
-                    
-                        <li><a href="../classes/MOD.core.return.html">MOD.core.return</a></li>
                     
                         <li><a href="../classes/MOD.core.util.html">MOD.core.util</a></li>
                     
                         <li><a href="../classes/MOD.form.html">MOD.form</a></li>
                     
-                        <li><a href="../classes/MOD.form.return.html">MOD.form.return</a></li>
-                    
-                        <li><a href="../classes/MOD.form.return.check.html">MOD.form.return.check</a></li>
+                        <li><a href="../classes/MOD.form.check.html">MOD.form.check</a></li>
                     
                         <li><a href="../classes/MOD.sandbox.html">MOD.sandbox</a></li>
-                    
-                        <li><a href="../classes/MOD.sandbox.return.html">MOD.sandbox.return</a></li>
                     
                         <li><a href="../classes/MOD.template.html">MOD.template</a></li>
                     
@@ -93,7 +123,7 @@
 </div>
 
         </div>
-        <div class="span9">
+        <div class="col-md-9">
                 <form id="options-form" class="form-inline pull-right">
         Show:
         <label for="api-show-inherited" class="checkbox">
@@ -181,6 +211,8 @@ if ( form.validate() ) {
         <li class="active"><a data-toggle="tab" href="#index">Index</a></li>
 
         
+            <li><a data-toggle="tab" href="#methods">Methods</a></li>
+        
         
         
         
@@ -191,6 +223,49 @@ if ( form.validate() ) {
             <h2 class="off-left">Item Index</h2>
 
             
+                <div class="index-section methods">
+                    <h3>Methods</h3>
+
+                    <ul class="index-list methods">
+                        
+                            <li class="index-item method private">
+                                <a href="#" data-tabid="#methods" data-anchor="#method_clear_errors" data-tablink="clear_errors">clear_errors</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method private">
+                                <a href="#" data-tabid="#methods" data-anchor="#method_init" data-tablink="init">init</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method public">
+                                <a href="#" data-tabid="#methods" data-anchor="#method_prep" data-tablink="prep">prep</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method private">
+                                <a href="#" data-tabid="#methods" data-anchor="#method_set_error" data-tablink="set_error">set_error</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method public">
+                                <a href="#" data-tabid="#methods" data-anchor="#method_validate" data-tablink="validate">validate</a>
+
+                                
+                                
+                            </li>
+                        
+                    </ul>
+                </div>
+            
 
             
 
@@ -199,6 +274,490 @@ if ( form.validate() ) {
             
         </div>
 
+        
+            <div id="methods" class="tab-pane">
+                <h2 class="off-left">Methods</h2>
+
+                
+                    <div id="method_clear_errors" class="method item private">
+    <h3 class="name"><code>clear_errors</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">None</span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/form.js.html#l157"><code>form.js:157</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>responsible for clearing any previous error messages and removing error classes from elements</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">None</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_init" class="method item private">
+    <h3 class="name"><code>init</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>form</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">None</span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/form.js.html#l38"><code>form.js:38</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>gets the fields to validate</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">form</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the form DOM element to work with</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">None</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_prep" class="method item public">
+    <h3 class="name"><code>prep</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>serialize</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">JSON object / form urlencoded string</span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/form.js.html#l174"><code>form.js:174</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Builds an object of all fields/groups with associated values, handles all field types except file</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">serialize</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>if true it formats values according to application/x-www-form-urlencoded format, else it returns JSON object</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">JSON object / form urlencoded string</span>:
+                    
+                    <p>the form name/value pairs in one of the two specified return types</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_set_error" class="method item private">
+    <h3 class="name"><code>set_error</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>error</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">None</span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/form.js.html#l122"><code>form.js:122</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>sets up the error by adding error class to current field and by adding error message to errors container</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">error</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the message to display with the error</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">None</span>:
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_validate" class="method item public">
+    <h3 class="name"><code>validate</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/form.js.html#l50"><code>form.js:50</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>the function responsible for handling all validation</p>
+<pre class="code prettyprint"><code>var el = document.getElementById( &#39;example-form&#39; );
+
+var form = MOD.form( el );
+
+if ( form.validate() ) {
+    // submit form
+}</code></pre>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
+                    
+                    <p>false if validation fails, else true</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+            </div>
         
 
         
@@ -219,6 +778,8 @@ if ( form.validate() ) {
 <script src="../assets/vendor/bootstrap/js/bootstrap.js"></script>
 <script src="../assets/vendor/prettify/prettify-min.js"></script>
 <script src="../assets/js/yuidoc-bootstrap.js"></script>
-<script>prettyPrint();</script>
+<script>
+    prettyPrint();
+</script>
 </body>
 </html>

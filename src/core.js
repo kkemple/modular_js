@@ -19,7 +19,7 @@ var MOD = {};
  * - This layer is responsible for communication with the Base layer
  * - All business logic is executed here
  * - Returns an object with the necessary functions for handling modules
- * >For docs on the return object see the MOD.core.return class docs
+ *
  *
  * ##### No core method should ever be called from a module, core methods should only be called from the MOD.app object for initialization and the MOD.sandbox object for business logic
  *
@@ -875,14 +875,6 @@ MOD.core = (function () {
 		}
 	};
 
-
-	/**
-	 * This is the return object of the core, it is passed in to the sandbox when a module is created. This allows the sandbox to have access to core functions, but prevents the modules from knowing about the core, keeping the code loosely coupled
-	 *
-	 * @type Object
-	 * @class  return
-	 * @namespace MOD.core
-	 */
 	return {
 		util : this.util,
 		dom : this.dom,

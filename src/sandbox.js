@@ -3,8 +3,6 @@
  * - This layer is responsible for interacting with the core layer
  * - This layer acts as an API between the module and core layers
  *
- * **For API documentation see the MOD.sandbox.return class API**
- *
  * @class  sandbox
  * @namespace MOD
  * @static
@@ -32,13 +30,6 @@ MOD.sandbox = {
 		 */
 		var CONTAINER = core.dom.query( '#' + moduleID );
 
-		/**
-		 * Our return object containing all the functionality a module will need to communicate with core and other modules.
-		 * ##### All method examples will demonstrate how to use the Sandbox from the modules
-		 *
-		 * @class  return
-		 * @namespace MOD.sandbox
-		 */
 		return {
 
 			/**
@@ -284,7 +275,7 @@ MOD.sandbox = {
 			 *    			// do something with successful results
 			 * 		},
 			 * 		fail : function( error ) {
-			 * 			// do something with unseccessful ajax request
+			 * 			// do something with unsuccessful ajax request
 			 * 			alert( error.message );
 			 * 		},
 			 * 		scope : this   // set the scope for the callback functions
