@@ -28,12 +28,12 @@ MOD.ui = {
 		var el, target, offset, duration, callback, sb, ret;
 
 		function init ( config ) {
-			el = document.getElementById( config.el ),
-			offset = config.offset,
-			duration = config.duration,
+			el = document.getElementById( config.el );
+			offset = config.offset;
+			duration = config.duration;
 			callback = config.callback;
 
-			target = document.getElementById( el.href.split( '#' )[1] ),
+			target = document.getElementById( el.href.split( '#' )[1] );
 			sb = PIX.sandbox.create( PIX.core, config.el );
 			sb.add_event( el, 'click', scroll );
 		}

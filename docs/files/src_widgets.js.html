@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>widgets.js - ModJS</title>
+    <title>src\widgets.js - ModJS</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.7.0/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -118,7 +118,7 @@
                 <div id="docs-main">
                     <div class="content">
                         <div class="page-header">
-    <h1>widgets.js <small>File</small></h1>
+    <h1>src\widgets.js <small>File</small></h1>
 </div>
 
 <div class="file">
@@ -153,12 +153,12 @@ MOD.ui = {
 		var el, target, offset, duration, callback, sb, ret;
 
 		function init ( config ) {
-			el = document.getElementById( config.el ),
-			offset = config.offset,
-			duration = config.duration,
+			el = document.getElementById( config.el );
+			offset = config.offset;
+			duration = config.duration;
 			callback = config.callback;
 
-			target = document.getElementById( el.href.split( &#x27;#&#x27; )[1] ),
+			target = document.getElementById( el.href.split( &#x27;#&#x27; )[1] );
 			sb = PIX.sandbox.create( PIX.core, config.el );
 			sb.add_event( el, &#x27;click&#x27;, scroll );
 		}

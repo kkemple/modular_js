@@ -439,7 +439,7 @@ MOD.core = (function () {
 		 * @private
 		 */
 		create : function ( config ) {
-			var i, len, el, child;
+			var el, child;
 
 
 			// check for any config settings
@@ -469,8 +469,7 @@ MOD.core = (function () {
 
 					if ( root.util.is_array( config.children ) ) {
 
-						i = 0,
-						len = config.children.length;
+						var i = 0, len = config.children.length;
 
 						// loop over our children array and build them,
 						// also append them to parent element
@@ -497,7 +496,7 @@ MOD.core = (function () {
 				return false;
 			}
 
-			delete config;
+			config = null;
 
 			return el;
 		},
@@ -574,7 +573,7 @@ MOD.core = (function () {
 					return {
 						x : document.documentElement.scrollLeft,
 						y : document.documentElement.scrollTop
-					}
+					};
 				}
 			}());
 
@@ -955,7 +954,7 @@ MOD.core = (function () {
 		stop_all : function() {
 			var moduleID;
 
-			for ( var moduleID in module_data ) {
+			for ( moduleID in module_data ) {
 
 				if ( module_data.hasOwnProperty( moduleID ) ) {
 
