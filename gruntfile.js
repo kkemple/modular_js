@@ -7,7 +7,9 @@ module.exports = function(grunt) {
 			options: {
 				'-W099': true,
 				'-W014': true,
-				'-W069': true
+				'-W069': true,
+				'-W054': true,
+				'-W083': true
 			},
 			src: ['src/core.js', 'src/sanbox.js', 'src/template.js', 'src/form.js', 'src/app.js', 'src/widgets.js', 'spec/*.js']
 		},

@@ -1341,7 +1341,7 @@ MOD.core = (function () {
 			suffix = value[ 2 ],
 			rootSize;
 
-			fontSize = fontSize != null ? fontSize : /%|em/.test( suffix ) &amp;&amp; element.parentElement ? getComputedStylePixel( element.parentElement, &#x27;fontSize&#x27;, null ) : 16;
+			fontSize = fontSize !== null ? fontSize : /%|em/.test( suffix ) &amp;&amp; element.parentElement ? getComputedStylePixel( element.parentElement, &#x27;fontSize&#x27;, null ) : 16;
 			rootSize = property == &#x27;fontSize&#x27; ? fontSize : /width/i.test( property ) ? element.clientWidth : element.clientHeight;
 
 			return suffix === &#x27;%&#x27; ? size / 100 * rootSize :
@@ -1374,7 +1374,7 @@ MOD.core = (function () {
 			currentStyle = element.currentStyle,
 			fontSize = getComputedStylePixel( element, &#x27;fontSize&#x27; );
 
-			for ( property in currentStyle ) {
+			for ( var property in currentStyle ) {
 				Push.call( style, property == &#x27;styleFloat&#x27; ? &#x27;float&#x27; : property.replace( /[A-Z]/, function ( match ) {
 					return &#x27;-&#x27; + match.toLowerCase();
 				}));

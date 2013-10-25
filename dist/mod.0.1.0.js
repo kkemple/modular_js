@@ -5,6 +5,13 @@
  * URL: http://kurtiskemple.com
  */
 
+// TODO: vanillify ajax requests
+// TODO: vanillify event handlers
+// TODO: vanillify animations
+// TODO: vanillify queries
+// TODO: add standard animations like fade and slide
+
+
 /**
  * The application namespace.
  * @module MOD
@@ -18,7 +25,7 @@ var MOD = {};
  * - This layer is responsible for communication with the Base layer
  * - All business logic is executed here
  * - Returns an object with the necessary functions for handling modules
- * >For docs on the return object see the MOD.core.return class docs
+ *
  *
  * ##### No core method should ever be called from a module, core methods should only be called from the MOD.app object for initialization and the MOD.sandbox object for business logic
  *
@@ -101,6 +108,14 @@ MOD.core = (function () {
 
 		/**
 		 * Converts dash-seperated words to camelCase, see what I did there =]
+		 *
+		 * 	var str = 'some-string';
+		 *
+		 * 	str = MOD.core.util.to_camel_case( str );
+		 *
+		 * 	console.log( str ); // would output 'someString'
+		 *
+		 *
 		 * @param  {String} str the string to camel case
 		 * @param  {String} splitter either space or dash
 		 * @return {String} camel cased string
@@ -130,7 +145,7 @@ MOD.core = (function () {
 		/**
 		 * Checks for the type of whatever is passed in, if it is an object returns true
 		 *
-		 * 	MOD.core.util.is_object( some_unknown_value );
+		 * 	MOD.core.util.is_object( obj );
 		 *
 		 *
 		 * @param  {unknown}  anything the var to check for type of object
@@ -145,7 +160,7 @@ MOD.core = (function () {
 		/**
 		 * Checks for the type of whatever is passed in, if it is an array returns true
 		 *
-		 * 	MOD.core.util.is_array( some_unknown_value );
+		 * 	MOD.core.util.is_array( arr );
 		 *
 		 *
 		 * @param  {unknown}  anything the var to check for type of array
@@ -159,6 +174,12 @@ MOD.core = (function () {
 
 		/**
 		 * Checks an array for a given value
+		 *
+		 * 	if ( MOD.core.util.array_contains( arr, 'some value' ) ) {
+		 * 		// do something with value
+		 * 	}
+		 *
+		 *
 		 * @param  {array} arr   the array to search through
 		 * @param  {anything} value the value to look for
 		 * @return {boolean}       true if array contains value, else false
@@ -528,11 +549,14 @@ MOD.core = (function () {
 			if ( root.util.is_object( attrs ) ) {
 
 				for ( var key in attrs ) {
+
 					if ( attrs.hasOwnProperty( key ) ) {
+
 						el.setAttribute( key, attrs[ key ] );
 					}
 				}
 			} else {
+
 				root.util.log( 1, 'APPLY ATTRIBUTES : FAILED : "Attributes argument is of wrong type."' );
 			}
 		},
@@ -548,8 +572,10 @@ MOD.core = (function () {
 		 */
 		prop : function( el, prop, value ) {
 			if ( value === undefined ) {
+
 				return el.getAttribute( prop );
 			} else {
+
 				el.setAttribute( prop, value );
 			}
 		},
@@ -576,6 +602,7 @@ MOD.core = (function () {
 						y : window.pageYOffset
 					};
 				} else {
+
 					return {
 						x : document.documentElement.scrollLeft,
 						y : document.documentElement.scrollTop
@@ -594,22 +621,38 @@ MOD.core = (function () {
 		/**
 		 * Update styles on a DOM element
 		 * @param  {object} el  the element to style
-		 * @param  {object} css the key/value object of css properties
-		 * @return {none}
+		 * @param  {object / string} css the key/value object of css properties / or css property string
+		 * @param  {string} if set, should be string value of style to set on element
+		 * @return {string / null} if calling for property returns property value as string
 		 * @method  style
 		 * @private
 		 */
-		style : function ( el, css ) {
+		style : function ( el, css, value ) {
 			var ccProp, prop;
 
-			for ( prop in css ) {
+			if ( typeof css === 'object' ) {
 
-				if ( css.hasOwnProperty( prop ) ) {
+				for ( prop in css ) {
 
-					ccProp = root.util.to_camel_case( prop );
+					if ( css.hasOwnProperty( prop ) ) {
 
-					el.style[ ccProp ] = css[ prop ];
+						ccProp = root.util.to_camel_case( prop );
+
+						el.style[ ccProp ] = css[ prop ];
+					}
 				}
+
+				return null;
+			} else if ( typeof css === 'string' && value === undefined ) {
+
+				compStyle = ( window.getComputedStyle ) ? window.getComputedStyle( el ) : getComputedStyle( el );
+				return compStyle.getPropertyValue( css );
+			} else if ( typeof css === 'string' && typeof value === 'string' ) {
+
+				el.style[ root.util.to_camel_case( css ) ] = value;
+				return null;
+			} else {
+				root.util.log( 1, 'STYLE : FAILED : "One or more arguments are of wrong type"' );
 			}
 		},
 
@@ -743,6 +786,74 @@ MOD.core = (function () {
 		},
 
 		/**
+		 * Gets the next element that is not a text node, script tag, or style tag
+		 *
+		 * 	var next = MOD.core.dom.next_element( el );
+		 *
+		 *
+		 * @param  {object} el the object whos next sibling you require
+		 * @return {object}    the next sibling
+		 * @method  next_element
+		 * @private
+		 */
+		next_element : function ( el ) {
+			var next;
+
+			next = el.nextSibling;
+
+			if ( next === null ) {
+
+				return null;
+			} if ( next.nodeType > 1 ) {
+
+				return this.next_element( next );
+			} else if ( next.tagName.toLowerCase() === 'script' ) {
+
+				return this.next_element( next );
+			} else if ( next.tagName.toLowerCase() === 'style' ) {
+
+				return this.next_element( next );
+			} else {
+
+				return next;
+			}
+		},
+
+		/**
+		 * Gets the previous element that is not a text node, script tag, or style tag
+		 *
+		 * 	var prev = MOD.core.dom.previous_element( el );
+		 *
+		 *
+		 * @param  {object} el the object whos previous sibling you require
+		 * @return {object}    the previous sibling
+		 * @method  previous_element
+		 * @private
+		 */
+		previous_element : function ( el ) {
+			var prev;
+
+			prev = el.previousSibling;
+
+			if ( prev === null ) {
+
+				return null;
+			} else if ( prev.nodeType > 1 ) {
+
+				return this.previous_element( prev );
+			} else if ( prev.tagName.toLowerCase() === 'script' ) {
+
+				return this.previous_element( prev );
+			} else if ( prev.tagName.toLowerCase() === 'style' ) {
+
+				return this.previous_element( prev );
+			} else {
+
+				return prev;
+			}
+		},
+
+		/**
 		 * Handles running any code that needs to be run only after the document has loaded
 		 * > Used by the MOD.app object
 		 *
@@ -783,14 +894,6 @@ MOD.core = (function () {
 		}
 	};
 
-
-	/**
-	 * This is the return object of the core, it is passed in to the sandbox when a module is created. This allows the sandbox to have access to core functions, but prevents the modules from knowing about the core, keeping the code loosely coupled
-	 *
-	 * @type Object
-	 * @class  return
-	 * @namespace MOD.core
-	 */
 	return {
 		util : this.util,
 		dom : this.dom,
@@ -821,7 +924,7 @@ MOD.core = (function () {
 		 * 		doSomething : function () {
 		 *
 		 * 			// all functionality goes in to functions that are isolated to the module
-		 * 			term = sb.val( input );
+		 * 			term = input.value;
 		 *
 		 * 			sb.notify({
 		 * 				type : 'search-initiated',
@@ -837,7 +940,7 @@ MOD.core = (function () {
 		 * @method  create_module
 		 * @public
 		 */
-		create_module : function( moduleID, creator ) {
+		create_module : function ( moduleID, creator ) {
 			var temp;
 
 			// sanity check for correct types on our params
@@ -880,7 +983,7 @@ MOD.core = (function () {
 		 * @method start
 		 * @private
 		 */
-		start : function( moduleID ) {
+		start : function ( moduleID ) {
 			var mod = module_data[ moduleID ];
 
 			if ( mod ) {
@@ -905,7 +1008,7 @@ MOD.core = (function () {
 		 * @method  start_all
 		 * @private
 		 */
-		start_all : function() {
+		start_all : function () {
 			var moduleID;
 
 			for ( moduleID in module_data ) {
@@ -932,7 +1035,7 @@ MOD.core = (function () {
 		 * @method  stop
 		 * @private
 		 */
-		stop : function( moduleID ) {
+		stop : function ( moduleID ) {
 			var mod = module_data[ moduleID ];
 
 			if ( mod.instance ) {
@@ -957,7 +1060,7 @@ MOD.core = (function () {
 		 * @method  stop_all
 		 * @private
 		 */
-		stop_all : function() {
+		stop_all : function () {
 			var moduleID;
 
 			for ( moduleID in module_data ) {
@@ -995,7 +1098,7 @@ MOD.core = (function () {
 		 * @method  register_events
 		 * @private
 		 */
-		register_events : function( evts, moduleID ) {
+		register_events : function ( evts, moduleID ) {
 			if ( this.util.is_object( evts ) &&  moduleID ) {
 
 				var mod = module_data[ moduleID ];
@@ -1030,7 +1133,7 @@ MOD.core = (function () {
 		 * @return {Boolean} returns true if function completes without error, else false
 		 * @private
 		 */
-		trigger_event : function( evt ) {
+		trigger_event : function ( evt ) {
 			var mod;
 
 			if ( this.util.is_object( evt ) && evt.type ) {
@@ -1069,7 +1172,7 @@ MOD.core = (function () {
 		 * @method  remove_events
 		 * @private
 		 */
-		remove_events : function( evts, moduleID ) {
+		remove_events : function ( evts, moduleID ) {
 			if ( root.util.is_array( evts ) &&  moduleID ) {
 
 				// check for the existance of the specified module
@@ -1103,6 +1206,138 @@ MOD.core = (function () {
 		}
 	};
 
+
+
+	/*======================================
+		Assistive Functions
+	======================================*/
+
+	// Author Shawn Allen
+	// https://github.com/shawnbot/aight/blob/master/js/computed-style.js
+
+	function getComputedStyle ( el ) {
+
+		var Push = Array.prototype.push;
+
+		function getComputedStylePixel( element, property, fontSize ) {
+			var
+			value = element.currentStyle[property].match(/([\d\.]+)(%|cm|em|in|mm|pc|pt|)/) || [0, 0, ''],
+			size = value[ 1 ],
+			suffix = value[ 2 ],
+			rootSize;
+
+			fontSize = fontSize !== null ? fontSize : /%|em/.test( suffix ) && element.parentElement ? getComputedStylePixel( element.parentElement, 'fontSize', null ) : 16;
+			rootSize = property == 'fontSize' ? fontSize : /width/i.test( property ) ? element.clientWidth : element.clientHeight;
+
+			return suffix === '%' ? size / 100 * rootSize :
+			       suffix === 'cm' ? size * 0.3937 * 96 :
+			       suffix === 'em' ? size * fontSize :
+			       suffix === 'in' ? size * 96 :
+			       suffix === 'mm' ? size * 0.3937 * 96 / 10 :
+			       suffix === 'pc' ? size * 12 * 96 / 72 :
+			       suffix === 'pt' ? size * 96 / 72 :
+			       size;
+		}
+
+		function setShortStyleProperty( style, property ) {
+			var
+			borderSuffix = property == 'border' ? 'Width' : '',
+			t = property + 'Top' + borderSuffix,
+			r = property + 'Right' + borderSuffix,
+			b = property + 'Bottom' + borderSuffix,
+			l = property + 'Left' + borderSuffix;
+
+			style[ property ] = ( style[ t ] == style[ r ] && style[ t ] == style[ b ] && style[ t ] == style[ l ] ? [ style[ t ] ] :
+			                   style[ t ] == style[ b ] && style[ l ] == style[ r ] ? [ style[ t ], style[ r ] ] :
+			                   style[ l ] == style[ r ] ? [ style[ t ], style[ r ], style[ b ] ] :
+			                   [ style[ t ], style[ r ], style[ b ], style[ l ] ]).join(' ');
+		}
+
+		function CSSStyleDeclaration( element ) {
+			var
+			style = this,
+			currentStyle = element.currentStyle,
+			fontSize = getComputedStylePixel( element, 'fontSize' );
+
+			for ( var property in currentStyle ) {
+				Push.call( style, property == 'styleFloat' ? 'float' : property.replace( /[A-Z]/, function ( match ) {
+					return '-' + match.toLowerCase();
+				}));
+
+				if ( property === 'width' ) {
+
+					style[ property ] = element.offsetWidth + 'px';
+				} else if ( property === 'height' ) {
+
+					style[ property ] = element.offsetHeight + 'px';
+				} else if ( property === 'styleFloat' ) {
+					style[ 'float' ] = currentStyle[ property ];
+				} else if ( /margin.|padding.|border.+W/.test( property ) && style[ property ] != 'auto' ) {
+
+					style[ property ] = Math.round( getComputedStylePixel( element, property, fontSize ) ) + 'px';
+				} else {
+
+					style[ property ] = currentStyle[ property ];
+				}
+			}
+
+			setShortStyleProperty( style, 'margin' );
+			setShortStyleProperty( style, 'padding' );
+			setShortStyleProperty( style, 'border' );
+
+			style.fontSize = Math.round( fontSize ) + 'px';
+		}
+
+		CSSStyleDeclaration.prototype = {
+			constructor: CSSStyleDeclaration,
+
+			getPropertyPriority: function () {
+
+				throw Error( 'NotSupportedError: DOM Exception 9' );
+			},
+
+			getPropertyValue: function ( property ) {
+
+				if ( property === undefined ) {
+
+					throw Error('TypeError: Not enough arguments to CSSStyleDeclaration.getPropertyValue');
+				}
+
+				property = property.replace( /-\w/g, function ( match ) {
+					return match[ 1 ].toUpperCase();
+				});
+
+				return ( typeof this[ property ] === 'function' ||
+					property.match( /^(?:cssText|length|\d+)$/ ) ) ? '' : this[ property ];
+			},
+
+			item: function ( index ) {
+
+				if ( property === undefined ) {
+					throw Error( 'TypeError: Not enough arguments to CSSStyleDeclaration.item' );
+				}
+
+				return this[ parseInt( index, 10 ) ];
+			},
+
+			removeProperty: function () {
+
+				throw Error( 'NoModificationAllowedError: DOM Exception 7' );
+			},
+
+			setProperty: function () {
+
+				throw Error( 'NoModificationAllowedError: DOM Exception 7' );
+			},
+
+			getPropertyCSSValue: function () {
+
+				throw Error( 'NotSupportedError: DOM Exception 9' );
+			}
+		};
+
+		return new CSSStyleDeclaration( el );
+	}
 }());
 
 
@@ -1154,12 +1389,6 @@ MOD.app = (function() {
 		}
 	};
 
-	/**
-	 * This is the return object of the app object, it contains only the run method used to start the application
-	 *
-	 * @class  return
-	 * @namespace MOD.app
-	 */
 	return {
 
 		/**
@@ -1198,8 +1427,6 @@ MOD.app = (function() {
  * - This layer is responsible for interacting with the core layer
  * - This layer acts as an API between the module and core layers
  *
- * **For API documentation see the MOD.sandbox.return class API**
- *
  * @class  sandbox
  * @namespace MOD
  * @static
@@ -1227,13 +1454,6 @@ MOD.sandbox = {
 		 */
 		var CONTAINER = core.dom.query( '#' + moduleID );
 
-		/**
-		 * Our return object containing all the functionality a module will need to communicate with core and other modules.
-		 * ##### All method examples will demonstrate how to use the Sandbox from the modules
-		 *
-		 * @class  return
-		 * @namespace MOD.sandbox
-		 */
 		return {
 
 			/**
@@ -1435,6 +1655,36 @@ MOD.sandbox = {
 			},
 
 			/**
+			 * Gets the next element that is not a text node, script tag, or style tag
+			 *
+			 * 	var next = sb.next( el );
+			 *
+			 *
+			 * @param  {object} el the object whos next sibling you require
+			 * @return {object}    the next sibling
+			 * @method  next
+			 * @public
+			 */
+			next : function ( el ) {
+				return core.dom.next_element( el );
+			},
+
+			/**
+			 * Gets the previous element that is not a text node, script tag, or style tag
+			 *
+			 * 	var prev = sb.prev( el );
+			 *
+			 *
+			 * @param  {object} el the object whos previous sibling you require
+			 * @return {object}    the previous sibling
+			 * @method  prev
+			 * @public
+			 */
+			prev : function ( el ) {
+				return core.dom.previous_element( el );
+			},
+
+			/**
 			 * Used for all ajax requests
 			 *
 			 * 	var config = {
@@ -1449,7 +1699,7 @@ MOD.sandbox = {
 			 *    			// do something with successful results
 			 * 		},
 			 * 		fail : function( error ) {
-			 * 			// do something with unseccessful ajax request
+			 * 			// do something with unsuccessful ajax request
 			 * 			alert( error.message );
 			 * 		},
 			 * 		scope : this   // set the scope for the callback functions
@@ -1468,70 +1718,68 @@ MOD.sandbox = {
 			},
 
 			/**
-			 * This function is responsible for handling all modifications to an element
+			 * Adds a class or classes to an element
 			 *
-			 * **Available actions are:**
+			 * 	var el = sb.query( '#some-div' )[0];
 			 *
-			 * - 'add-class' - takes a string value
-			 * - 'remove-class' - takes a string value
-			 * - 'styles' - takes an object of values ( like jQuery .css() method )
-			 * - 'attr' - takes an object of values ( like jQuery .attr() method )
+			 * 	sb.add_class( el, 'some-class' );
 			 *
 			 *
-			 * 	// add-class action
-			 * 	var el = sb.find( '.element' )[0];
-			 * 	sb.modify( el, 'add-class', 'new-class' );
-			 *
-			 *
-			 * 	// remove-class action
-			 * 	var el = sb.find( '.element' )[0];
-			 * 	sb.modify( el, 'remove-class', 'new-class' );
-			 *
-			 *
-			 * 	// styles action
-			 * 	var el = sb.find( '.element' )[0];
-			 * 	var css = {
-			 * 		'color' : '#444',
-			 * 		'background' : '#f7f7f7',
-			 * 		'padding' : '20px'
-			 * 	};
-			 * 	sb.modify( el, 'styles', css );
-			 *
-			 *
-			 * 	// attr action
-			 * 	var el = sb.find( '.element' )[0];
-			 * 	var attrs = {
-			 * 		'id' : 'profile-thumbnail',
-			 * 		'src' : 'http://someurl.to/the/thumbnail',
-			 * 		'width' : '45',
-			 * 		'height' : '45',
-			 * 		'data-hover' : 'true'
-			 * 	};
-			 * 	sb.modify( el, 'styles', css );
-			 *
-			 *
-			 * @param  {object} el     the element to modify
-			 * @param  {string} action the action to perform
-			 * @param  {string, object} value  the value(s) to apply, could be a string or object
-			 * @return {none}
-			 * @method  modify
+			 * @param {object} el           the DOM element to add the class(es) to
+			 * @param {string} class_to_add a string of the class(es) to add
+			 * @method  add_class
 			 * @public
 			 */
-			modify : function ( el, action, value ) {
-				switch ( action ) {
-					case 'add-class':
-						core.dom.add_class( el, value );
-					break;
-					case 'remove-class':
-						core.dom.remove_class( el, value );
-					break;
-					case 'styles':
-						core.dom.style( el, value );
-					break;
-					case 'attr':
-						core.dom.apply_attrs( value );
-					break;
-				}
+			add_class : function ( el, class_to_add ) {
+				core.dom.add_class( el, class_to_add );
+			},
+
+			/**
+			 * Removes a class or classes from an element
+			 *
+			 * 	var el = sb.query( '#some-div' )[0];
+			 *
+			 * 	sb.remove_class( el, 'some-class' );
+			 *
+			 *
+			 * @param {object} el           the DOM element to remove the class(es) from
+			 * @param {string} class_to_remove a string of the class(es) to add
+			 * @method  remove_class
+			 * @public
+			 */
+			remove_class : function ( el, class_to_remove ) {
+				core.dom.remove_class( el, class_to_remove );
+			},
+
+			/**
+			 * Checks an element for a particular class
+			 *
+			 * 	var el = sb.query( '#some-div' )[0];
+			 *
+			 * 	if ( sb.has_class( el, 'some-class' ) ) {
+			 * 		// do something!!
+			 * 	}
+			 *
+			 *
+			 * @param {object} el           the DOM element to look for the class on
+			 * @param {string} class_to_find the class to look for
+			 * @method  has_class
+			 * @public
+			 */
+			has_class : function ( el, class_to_find ) {
+				core.dom.has_class( el, class_to_find );
+			},
+
+			/**
+			 * @param  {object} el  the element to style
+			 * @param  {object / string} css the key/value object of css properties / or css property string
+			 * @param  {string} if set, should be string value of style to set on element
+			 * @return {string / null} if calling for property returns property value as string
+			 * @method  css
+			 * @public
+			 */
+			css : function ( el, css, value ) {
+				core.dom.style( el, css, value );
 			},
 
 			/**
@@ -1562,26 +1810,6 @@ MOD.sandbox = {
 			 */
 			offset : function( el ) {
 				return core.dom.offset( el );
-			},
-
-			/**
-			 * Checks a DOM element for a specified class
-			 *
-			 * 	if ( sb.has_class( el, 'some-class' ) ) {
-			 * 		// do something if has class
-			 * 	} else {
-			 * 		// do something if doesn't have class
-			 * 	}
-			 *
-			 *
-			 * @param  {object}  el            the DOM element to check
-			 * @param  {string}  class_to_find the class to look for
-			 * @return {Boolean}               true if has class / else false
-			 * @method  has_class
-			 * @public
-			 */
-			has_class : function ( el, class_to_find ) {
-				return core.dom.has_class( el, class_to_find );
 			},
 
 			/**
@@ -1674,12 +1902,6 @@ MOD.sandbox = {
 MOD.form = function ( form ) {
 	var fields, current, error, error_container, ret, _all_fields, data;
 
-	/**
-	 * The form return object that contains all functionality like the validate method and serialize method
-	 * @type {Object}
-	 * @class  return
-	 * @namespace MOD.form
-	 */
 	ret = {
 
 		/**
@@ -1927,7 +2149,7 @@ MOD.form = function ( form ) {
 		 * contains all the check methods for validation
 		 * @type {Object}
 		 * @class check
-		 * @namespace MOD.form.return
+		 * @namespace MOD.form
 		 */
 		check : {
 
@@ -2037,7 +2259,6 @@ MOD.form = function ( form ) {
 			 * - 555-867-5309
 			 * - 555.867.5309
 			 * - (555) 867 5309
-			 * - (555)-867-5309
 			 * - (555).867.5309
 			 *
 			 * @param  {object} field the field to check the value of
@@ -2309,7 +2530,8 @@ MOD.ui = {
 	 * 	scroller.update( newConfig ); // you can use the update function to set new params
 	 *
 	 *
-	 * @return {object} the update method, allows you to update any config property
+	 * @param {object} config the settings for the scroll instance
+	 * @return {object} contains the update method, allows you to update any config property
 	 * @method  scroll
 	 * @public
 	 */
