@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src\form.js - ModJS</title>
+    <title>src\form.js - Mod JS</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.7.0/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -16,7 +16,9 @@
     <div class="navbar-inner">
         <h1 class="brand" style="padding: 10px 16px 10px; height: 20px; line-height: 20px; margin-left: 0;">
         
-            ModJS
+	    <img alt="Mod JS" src="..\..\modjs.png" style="max-height: 65%;" title="Mod JS">
+        
+            Mod JS
         </h1>
 	<div class="nav">
             <li class="divider-vertical"></li>
@@ -27,7 +29,7 @@
             </li>
         </div>
         <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
-            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/MOD.app", "classes/MOD.app.return", "classes/MOD.core", "classes/MOD.core.dom", "classes/MOD.core.return", "classes/MOD.core.util", "classes/MOD.form", "classes/MOD.form.return", "classes/MOD.form.return.check", "classes/MOD.sandbox", "classes/MOD.sandbox.return", "classes/MOD.ui", "modules/MOD"]'>
+            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/MOD.app", "classes/MOD.core", "classes/MOD.core.dom", "classes/MOD.core.util", "classes/MOD.form", "classes/MOD.form.check", "classes/MOD.sandbox", "classes/MOD.template", "classes/MOD.ui", "modules/MOD"]'>
         </form>
     </div>
 </div>
@@ -52,25 +54,19 @@
                     
                         <li><a href="../classes/MOD.app.html">MOD.app</a></li>
                     
-                        <li><a href="../classes/MOD.app.return.html">MOD.app.return</a></li>
-                    
                         <li><a href="../classes/MOD.core.html">MOD.core</a></li>
                     
                         <li><a href="../classes/MOD.core.dom.html">MOD.core.dom</a></li>
-                    
-                        <li><a href="../classes/MOD.core.return.html">MOD.core.return</a></li>
                     
                         <li><a href="../classes/MOD.core.util.html">MOD.core.util</a></li>
                     
                         <li><a href="../classes/MOD.form.html">MOD.form</a></li>
                     
-                        <li><a href="../classes/MOD.form.return.html">MOD.form.return</a></li>
-                    
-                        <li><a href="../classes/MOD.form.return.check.html">MOD.form.return.check</a></li>
+                        <li><a href="../classes/MOD.form.check.html">MOD.form.check</a></li>
                     
                         <li><a href="../classes/MOD.sandbox.html">MOD.sandbox</a></li>
                     
-                        <li><a href="../classes/MOD.sandbox.return.html">MOD.sandbox.return</a></li>
+                        <li><a href="../classes/MOD.template.html">MOD.template</a></li>
                     
                         <li><a href="../classes/MOD.ui.html">MOD.ui</a></li>
                     
@@ -158,12 +154,6 @@
 MOD.form = function ( form ) {
 	var fields, current, error, error_container, ret, _all_fields, data;
 
-	/**
-	 * The form return object that contains all functionality like the validate method and serialize method
-	 * @type {Object}
-	 * @class  return
-	 * @namespace MOD.form
-	 */
 	ret = {
 
 		/**
@@ -411,7 +401,7 @@ MOD.form = function ( form ) {
 		 * contains all the check methods for validation
 		 * @type {Object}
 		 * @class check
-		 * @namespace MOD.form.return
+		 * @namespace MOD.form
 		 */
 		check : {
 
@@ -521,7 +511,6 @@ MOD.form = function ( form ) {
 			 * - 555-867-5309
 			 * - 555.867.5309
 			 * - (555) 867 5309
-			 * - (555)-867-5309
 			 * - (555).867.5309
 			 *
 			 * @param  {object} field the field to check the value of

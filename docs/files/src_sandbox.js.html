@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src\sandbox.js - ModJS</title>
+    <title>src\sandbox.js - Mod JS</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.7.0/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -16,7 +16,9 @@
     <div class="navbar-inner">
         <h1 class="brand" style="padding: 10px 16px 10px; height: 20px; line-height: 20px; margin-left: 0;">
         
-            ModJS
+	    <img alt="Mod JS" src="..\..\modjs.png" style="max-height: 65%;" title="Mod JS">
+        
+            Mod JS
         </h1>
 	<div class="nav">
             <li class="divider-vertical"></li>
@@ -27,7 +29,7 @@
             </li>
         </div>
         <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
-            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/MOD.app", "classes/MOD.app.return", "classes/MOD.core", "classes/MOD.core.dom", "classes/MOD.core.return", "classes/MOD.core.util", "classes/MOD.form", "classes/MOD.form.return", "classes/MOD.form.return.check", "classes/MOD.sandbox", "classes/MOD.sandbox.return", "classes/MOD.ui", "modules/MOD"]'>
+            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/MOD.app", "classes/MOD.core", "classes/MOD.core.dom", "classes/MOD.core.util", "classes/MOD.form", "classes/MOD.form.check", "classes/MOD.sandbox", "classes/MOD.template", "classes/MOD.ui", "modules/MOD"]'>
         </form>
     </div>
 </div>
@@ -52,25 +54,19 @@
                     
                         <li><a href="../classes/MOD.app.html">MOD.app</a></li>
                     
-                        <li><a href="../classes/MOD.app.return.html">MOD.app.return</a></li>
-                    
                         <li><a href="../classes/MOD.core.html">MOD.core</a></li>
                     
                         <li><a href="../classes/MOD.core.dom.html">MOD.core.dom</a></li>
-                    
-                        <li><a href="../classes/MOD.core.return.html">MOD.core.return</a></li>
                     
                         <li><a href="../classes/MOD.core.util.html">MOD.core.util</a></li>
                     
                         <li><a href="../classes/MOD.form.html">MOD.form</a></li>
                     
-                        <li><a href="../classes/MOD.form.return.html">MOD.form.return</a></li>
-                    
-                        <li><a href="../classes/MOD.form.return.check.html">MOD.form.return.check</a></li>
+                        <li><a href="../classes/MOD.form.check.html">MOD.form.check</a></li>
                     
                         <li><a href="../classes/MOD.sandbox.html">MOD.sandbox</a></li>
                     
-                        <li><a href="../classes/MOD.sandbox.return.html">MOD.sandbox.return</a></li>
+                        <li><a href="../classes/MOD.template.html">MOD.template</a></li>
                     
                         <li><a href="../classes/MOD.ui.html">MOD.ui</a></li>
                     
@@ -128,8 +124,6 @@
  * - This layer is responsible for interacting with the core layer
  * - This layer acts as an API between the module and core layers
  *
- * **For API documentation see the MOD.sandbox.return class API**
- *
  * @class  sandbox
  * @namespace MOD
  * @static
@@ -157,13 +151,6 @@ MOD.sandbox = {
 		 */
 		var CONTAINER = core.dom.query( &#x27;#&#x27; + moduleID );
 
-		/**
-		 * Our return object containing all the functionality a module will need to communicate with core and other modules.
-		 * ##### All method examples will demonstrate how to use the Sandbox from the modules
-		 *
-		 * @class  return
-		 * @namespace MOD.sandbox
-		 */
 		return {
 
 			/**
@@ -365,6 +352,36 @@ MOD.sandbox = {
 			},
 
 			/**
+			 * Gets the next element that is not a text node, script tag, or style tag
+			 *
+			 * 	var next = sb.next( el );
+			 *
+			 *
+			 * @param  {object} el the object whos next sibling you require
+			 * @return {object}    the next sibling
+			 * @method  next
+			 * @public
+			 */
+			next : function ( el ) {
+				return core.dom.next_element( el );
+			},
+
+			/**
+			 * Gets the previous element that is not a text node, script tag, or style tag
+			 *
+			 * 	var prev = sb.prev( el );
+			 *
+			 *
+			 * @param  {object} el the object whos previous sibling you require
+			 * @return {object}    the previous sibling
+			 * @method  prev
+			 * @public
+			 */
+			prev : function ( el ) {
+				return core.dom.previous_element( el );
+			},
+
+			/**
 			 * Used for all ajax requests
 			 *
 			 * 	var config = {
@@ -379,7 +396,7 @@ MOD.sandbox = {
 			 *    			// do something with successful results
 			 * 		},
 			 * 		fail : function( error ) {
-			 * 			// do something with unseccessful ajax request
+			 * 			// do something with unsuccessful ajax request
 			 * 			alert( error.message );
 			 * 		},
 			 * 		scope : this   // set the scope for the callback functions
@@ -398,70 +415,68 @@ MOD.sandbox = {
 			},
 
 			/**
-			 * This function is responsible for handling all modifications to an element
+			 * Adds a class or classes to an element
 			 *
-			 * **Available actions are:**
+			 * 	var el = sb.query( &#x27;#some-div&#x27; )[0];
 			 *
-			 * - &#x27;add-class&#x27; - takes a string value
-			 * - &#x27;remove-class&#x27; - takes a string value
-			 * - &#x27;styles&#x27; - takes an object of values ( like jQuery .css() method )
-			 * - &#x27;attr&#x27; - takes an object of values ( like jQuery .attr() method )
+			 * 	sb.add_class( el, &#x27;some-class&#x27; );
 			 *
 			 *
-			 * 	// add-class action
-			 * 	var el = sb.find( &#x27;.element&#x27; )[0];
-			 * 	sb.modify( el, &#x27;add-class&#x27;, &#x27;new-class&#x27; );
-			 *
-			 *
-			 * 	// remove-class action
-			 * 	var el = sb.find( &#x27;.element&#x27; )[0];
-			 * 	sb.modify( el, &#x27;remove-class&#x27;, &#x27;new-class&#x27; );
-			 *
-			 *
-			 * 	// styles action
-			 * 	var el = sb.find( &#x27;.element&#x27; )[0];
-			 * 	var css = {
-			 * 		&#x27;color&#x27; : &#x27;#444&#x27;,
-			 * 		&#x27;background&#x27; : &#x27;#f7f7f7&#x27;,
-			 * 		&#x27;padding&#x27; : &#x27;20px&#x27;
-			 * 	};
-			 * 	sb.modify( el, &#x27;styles&#x27;, css );
-			 *
-			 *
-			 * 	// attr action
-			 * 	var el = sb.find( &#x27;.element&#x27; )[0];
-			 * 	var attrs = {
-			 * 		&#x27;id&#x27; : &#x27;profile-thumbnail&#x27;,
-			 * 		&#x27;src&#x27; : &#x27;http://someurl.to/the/thumbnail&#x27;,
-			 * 		&#x27;width&#x27; : &#x27;45&#x27;,
-			 * 		&#x27;height&#x27; : &#x27;45&#x27;,
-			 * 		&#x27;data-hover&#x27; : &#x27;true&#x27;
-			 * 	};
-			 * 	sb.modify( el, &#x27;styles&#x27;, css );
-			 *
-			 *
-			 * @param  {object} el     the element to modify
-			 * @param  {string} action the action to perform
-			 * @param  {string, object} value  the value(s) to apply, could be a string or object
-			 * @return {none}
-			 * @method  modify
+			 * @param {object} el           the DOM element to add the class(es) to
+			 * @param {string} class_to_add a string of the class(es) to add
+			 * @method  add_class
 			 * @public
 			 */
-			modify : function ( el, action, value ) {
-				switch ( action ) {
-					case &#x27;add-class&#x27;:
-						core.dom.add_class( el, value );
-					break;
-					case &#x27;remove-class&#x27;:
-						core.dom.remove_class( el, value );
-					break;
-					case &#x27;styles&#x27;:
-						core.dom.style( el, value );
-					break;
-					case &#x27;attr&#x27;:
-						core.dom.apply_attrs( value );
-					break;
-				}
+			add_class : function ( el, class_to_add ) {
+				core.dom.add_class( el, class_to_add );
+			},
+
+			/**
+			 * Removes a class or classes from an element
+			 *
+			 * 	var el = sb.query( &#x27;#some-div&#x27; )[0];
+			 *
+			 * 	sb.remove_class( el, &#x27;some-class&#x27; );
+			 *
+			 *
+			 * @param {object} el           the DOM element to remove the class(es) from
+			 * @param {string} class_to_remove a string of the class(es) to add
+			 * @method  remove_class
+			 * @public
+			 */
+			remove_class : function ( el, class_to_remove ) {
+				core.dom.remove_class( el, class_to_remove );
+			},
+
+			/**
+			 * Checks an element for a particular class
+			 *
+			 * 	var el = sb.query( &#x27;#some-div&#x27; )[0];
+			 *
+			 * 	if ( sb.has_class( el, &#x27;some-class&#x27; ) ) {
+			 * 		// do something!!
+			 * 	}
+			 *
+			 *
+			 * @param {object} el           the DOM element to look for the class on
+			 * @param {string} class_to_find the class to look for
+			 * @method  has_class
+			 * @public
+			 */
+			has_class : function ( el, class_to_find ) {
+				core.dom.has_class( el, class_to_find );
+			},
+
+			/**
+			 * @param  {object} el  the element to style
+			 * @param  {object / string} css the key/value object of css properties / or css property string
+			 * @param  {string} if set, should be string value of style to set on element
+			 * @return {string / null} if calling for property returns property value as string
+			 * @method  css
+			 * @public
+			 */
+			css : function ( el, css, value ) {
+				core.dom.style( el, css, value );
 			},
 
 			/**
@@ -492,26 +507,6 @@ MOD.sandbox = {
 			 */
 			offset : function( el ) {
 				return core.dom.offset( el );
-			},
-
-			/**
-			 * Checks a DOM element for a specified class
-			 *
-			 * 	if ( sb.has_class( el, &#x27;some-class&#x27; ) ) {
-			 * 		// do something if has class
-			 * 	} else {
-			 * 		// do something if doesn&#x27;t have class
-			 * 	}
-			 *
-			 *
-			 * @param  {object}  el            the DOM element to check
-			 * @param  {string}  class_to_find the class to look for
-			 * @return {Boolean}               true if has class / else false
-			 * @method  has_class
-			 * @public
-			 */
-			has_class : function ( el, class_to_find ) {
-				return core.dom.has_class( el, class_to_find );
 			},
 
 			/**

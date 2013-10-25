@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>MOD.core - ModJS</title>
+    <title>MOD.core - Mod JS</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.7.0/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -16,7 +16,9 @@
     <div class="navbar-inner">
         <h1 class="brand" style="padding: 10px 16px 10px; height: 20px; line-height: 20px; margin-left: 0;">
         
-            ModJS
+	    <img alt="Mod JS" src="..\..\modjs.png" style="max-height: 65%;" title="Mod JS">
+        
+            Mod JS
         </h1>
 	<div class="nav">
             <li class="divider-vertical"></li>
@@ -27,7 +29,7 @@
             </li>
         </div>
         <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
-            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/MOD.app", "classes/MOD.app.return", "classes/MOD.core", "classes/MOD.core.dom", "classes/MOD.core.return", "classes/MOD.core.util", "classes/MOD.form", "classes/MOD.form.return", "classes/MOD.form.return.check", "classes/MOD.sandbox", "classes/MOD.sandbox.return", "classes/MOD.ui", "modules/MOD"]'>
+            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/MOD.app", "classes/MOD.core", "classes/MOD.core.dom", "classes/MOD.core.util", "classes/MOD.form", "classes/MOD.form.check", "classes/MOD.sandbox", "classes/MOD.template", "classes/MOD.ui", "modules/MOD"]'>
         </form>
     </div>
 </div>
@@ -52,25 +54,19 @@
                     
                         <li><a href="../classes/MOD.app.html">MOD.app</a></li>
                     
-                        <li><a href="../classes/MOD.app.return.html">MOD.app.return</a></li>
-                    
                         <li><a href="../classes/MOD.core.html">MOD.core</a></li>
                     
                         <li><a href="../classes/MOD.core.dom.html">MOD.core.dom</a></li>
-                    
-                        <li><a href="../classes/MOD.core.return.html">MOD.core.return</a></li>
                     
                         <li><a href="../classes/MOD.core.util.html">MOD.core.util</a></li>
                     
                         <li><a href="../classes/MOD.form.html">MOD.form</a></li>
                     
-                        <li><a href="../classes/MOD.form.return.html">MOD.form.return</a></li>
-                    
-                        <li><a href="../classes/MOD.form.return.check.html">MOD.form.return.check</a></li>
+                        <li><a href="../classes/MOD.form.check.html">MOD.form.check</a></li>
                     
                         <li><a href="../classes/MOD.sandbox.html">MOD.sandbox</a></li>
                     
-                        <li><a href="../classes/MOD.sandbox.return.html">MOD.sandbox.return</a></li>
+                        <li><a href="../classes/MOD.template.html">MOD.template</a></li>
                     
                         <li><a href="../classes/MOD.ui.html">MOD.ui</a></li>
                     
@@ -128,7 +124,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_core.js.html#l8"><code>src\core.js:8</code></a>
+            Defined in: <a href="../files/src_core.js.html#l15"><code>src\core.js:15</code></a>
         </div>
     
 
@@ -149,10 +145,7 @@
 <ul>
 <li>This layer is responsible for communication with the Base layer</li>
 <li>All business logic is executed here</li>
-<li>Returns an object with the necessary functions for handling modules<blockquote>
-<p>For docs on the return object see the MOD.core.return class docs</p>
-</blockquote>
-</li>
+<li>Returns an object with the necessary functions for handling modules</li>
 </ul>
 <h5>No core method should ever be called from a module, core methods should only be called from the MOD.app object for initialization and the MOD.sandbox object for business logic</h5>
 

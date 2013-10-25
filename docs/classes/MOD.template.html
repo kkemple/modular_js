@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>MOD.template - Mod JS</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.7.0/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="stylesheet" href="../assets/css/custom.css">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap-responsive.css">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+</head>
+<body class="yui3-skin-sam">
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <h1 class="brand" style="padding: 10px 16px 10px; height: 20px; line-height: 20px; margin-left: 0;">
+        
+	    <img alt="Mod JS" src="..\..\modjs.png" style="max-height: 65%;" title="Mod JS">
+        
+            Mod JS
+        </h1>
+	<div class="nav">
+            <li class="divider-vertical"></li>
+            <li>
+                <p class="navbar-text">
+                    API Docs for Version: <b>0.1.0</b>
+                </p>
+            </li>
+        </div>
+        <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
+            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/MOD.app", "classes/MOD.core", "classes/MOD.core.dom", "classes/MOD.core.util", "classes/MOD.form", "classes/MOD.form.check", "classes/MOD.sandbox", "classes/MOD.template", "classes/MOD.ui", "modules/MOD"]'>
+        </form>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="span3">
+	    <div>
+    <h3>APIs</h3>
+    <div id="sidebar">
+        <ul id="main-nav" class="nav nav-tabs" style="margin-bottom:0;">
+            <li class="active"><a href="#classes" data-toggle="tab">Classes</a></li>
+            <li><a href="#modules" data-toggle="tab">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" placeholder="Type to filter APIs">
+        </div>
+
+        <div class="tab-content" style="border: 1px solid #DDD; border-top:0;">
+            <div class="tab-pane active" id="classes">
+                <ul id="api-classes" class="nav nav-list">
+                    
+                        <li><a href="../classes/MOD.app.html">MOD.app</a></li>
+                    
+                        <li><a href="../classes/MOD.core.html">MOD.core</a></li>
+                    
+                        <li><a href="../classes/MOD.core.dom.html">MOD.core.dom</a></li>
+                    
+                        <li><a href="../classes/MOD.core.util.html">MOD.core.util</a></li>
+                    
+                        <li><a href="../classes/MOD.form.html">MOD.form</a></li>
+                    
+                        <li><a href="../classes/MOD.form.check.html">MOD.form.check</a></li>
+                    
+                        <li><a href="../classes/MOD.sandbox.html">MOD.sandbox</a></li>
+                    
+                        <li><a href="../classes/MOD.template.html">MOD.template</a></li>
+                    
+                        <li><a href="../classes/MOD.ui.html">MOD.ui</a></li>
+                    
+                </ul>
+            </div>
+
+            <div class="tab-pane" id="modules">
+                <ul id="api-modules" class="nav nav-list">
+                    
+                        <li><a href="../modules/MOD.html">MOD</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="span9">
+                <form id="options-form" class="form-inline pull-right">
+        Show:
+        <label for="api-show-inherited" class="checkbox">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected" class="checkbox">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private" class="checkbox">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated" class="checkbox">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </form>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <div class="page-header">
+    <h1>MOD.template <small>Class</small></h1>
+</div>
+
+<div class="well well-small">
+    
+
+    
+
+    
+        <div class="foundat">
+            Defined in: <a href="../files/src_template.js.html#l2"><code>src\template.js:2</code></a>
+        </div>
+    
+
+    
+        
+            Module: <a href="../modules/MOD.html">MOD</a>
+        
+    
+
+    
+</div>
+
+
+
+<div class="well well-small">
+    <p>template namespace handles the conversion of micro templates</p>
+<blockquote>
+<p><strong>To see this in action simply look at the code for the example</strong></p>
+</blockquote>
+<h4>Usage:</h4>
+<p>Templating can save you a ton of time and the browser a ton of memory if done correctly. It is perfect for handling JSON responses from AJAX calls and it is very lightweight. Below you will find and example of how to use it.</p>
+<pre class="code prettyprint"><code> // First add a script tag with a type of "text/template" to your page
+ // This won&#39;t be read by the browser or by GOOGLE or screen readers
+&lt;script type="text/template"&gt;
+
+&lt;/script&gt;
+
+// Then build out your HTML as if you were just hard-coding it
+&lt;li class="instagram-post"&gt;
+         &lt;div class="instagram-image-container"&gt;
+             &lt;img src="" class="instagram-image" /&gt;
+         &lt;/div&gt;
+         &lt;div class="instagram-meta-data"&gt;
+             &lt;div class="instagram-meta-top"&gt;
+                 &lt;div class="instagram-user"&gt;
+                     &lt;img src="" class="instagram-user-profile-img" /&gt;
+                     &lt;span class="instagram-username"&gt;&lt;/span&gt;
+                 &lt;/div&gt;
+                 &lt;div class="instagram-tags"&gt;
+                     &lt;p&gt;&lt;/p&gt;
+                 &lt;/div&gt;
+                 &lt;div class="instagram-likes"&gt;
+                     &lt;p&gt;&lt;/p&gt;
+                 &lt;/div&gt;
+             &lt;/div&gt;
+         &lt;/div&gt;
+    &lt;/li&gt;
+
+// next we add in our template tags "&lt;% %&gt;" and let the engine know where exactly we will access our passed in object
+// pay close attention to the "=" sign in the template tags, this lets the parser know you want a value, otherwise
+// it expects to run an operation
+// if you look at the tags section you will see we return the value of an operation and this is perfectly acceptable
+
+&lt;li class="instagram-post"&gt;
+         &lt;div class="instagram-image-container"&gt;
+             &lt;img src="&lt;%= images.standard_resolution.url %&gt;" class="instagram-image" /&gt;
+         &lt;/div&gt;
+         &lt;div class="instagram-meta-data"&gt;
+             &lt;div class="instagram-meta-top"&gt;
+                 &lt;div class="instagram-user"&gt;
+                     &lt;img src="&lt;%= user.profile_picture %&gt;" class="instagram-user-profile-img" /&gt;
+                     &lt;span class="instagram-username"&gt;&lt;%= user.username %&gt;&lt;/span&gt;
+                 &lt;/div&gt;
+                 &lt;div class="instagram-tags"&gt;
+                     &lt;p&gt;&lt;%= tags.join( &#39;, &#39; ) %&gt;&lt;/p&gt;
+                 &lt;/div&gt;
+                 &lt;div class="instagram-likes"&gt;
+                     &lt;p&gt;&lt;%= likes.count %&gt;&lt;/p&gt;
+                 &lt;/div&gt;
+             &lt;/div&gt;
+         &lt;/div&gt;
+    &lt;/li&gt;
+
+// you can also run for loops like so
+&lt;ul&gt;
+&lt;% for ( var i = 0, len = user.images.length; i &lt; len; i++ ) { %&gt;
+     &lt;li&gt;&lt;img src="&lt;%= user.images[ i ] %&gt;" /&gt;&lt;/li&gt;
+&lt;% } %&gt;
+&lt;/ul&gt;
+
+// Putting it all together
+&lt;script type="text/template" id="instagram_post_template"&gt;
+     &lt;li class="instagram-post"&gt;
+                &lt;div class="instagram-image-container"&gt;
+                    &lt;img src="&lt;%= images.standard_resolution.url %&gt;" class="instagram-image" /&gt;
+                &lt;/div&gt;
+                &lt;div class="instagram-meta-data"&gt;
+                    &lt;div class="instagram-meta-top"&gt;
+                        &lt;div class="instagram-user"&gt;
+                            &lt;img src="&lt;%= user.profile_picture %&gt;" class="instagram-user-profile-img" /&gt;
+                            &lt;span class="instagram-username"&gt;&lt;%= user.username %&gt;&lt;/span&gt;
+                        &lt;/div&gt;
+                        &lt;div class="instagram-tags"&gt;
+                            &lt;p&gt;&lt;%= tags.join( &#39;, &#39; ) %&gt;&lt;/p&gt;
+                        &lt;/div&gt;
+                        &lt;div class="instagram-likes"&gt;
+                            &lt;p&gt;&lt;%= likes.count %&gt;&lt;/p&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+           &lt;/li&gt;
+&lt;/script&gt;
+
+// data will be our return object from an ajax request to instagram
+
+var html = &#39;&#39;, build_post;
+
+build_post = MOD.template.parse( &#39;instagram_post_template&#39; );
+
+sb.foreach( data, function( item, index ) {
+    html += build_post( item );
+});
+
+sb.append( some_element, html );</code></pre>
+
+</div>
+
+
+
+<div>
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#index">Index</a></li>
+
+        
+            <li><a data-toggle="tab" href="#methods">Methods</a></li>
+        
+        
+        
+        
+    </ul>
+
+    <div class="tab-content">
+        <div id="index" class="tab-pane active">
+            <h2 class="off-left">Item Index</h2>
+
+            
+                <div class="index-section methods">
+                    <h3>Methods</h3>
+
+                    <ul class="index-list methods">
+                        
+                            <li class="index-item method public">
+                                <a href="#" data-tabid="#methods" data-anchor="#method_parse" data-tablink="parse">parse</a>
+
+                                
+                                
+                            </li>
+                        
+                    </ul>
+                </div>
+            
+
+            
+
+            
+
+            
+        </div>
+
+        
+            <div id="methods" class="tab-pane">
+                <h2 class="off-left">Methods</h2>
+
+                
+                    <div id="method_parse" class="method item public">
+    <h3 class="name"><code>parse</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>id</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>data</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">Function/HTML string</span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_template.js.html#l115"><code>src\template.js:115</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>The method responsible for creating the function to run on our template</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">id</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the id of the template tag to fetch</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">data</code>
+                        <span class="type">Anything</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the information you want to inject into the template</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type">Function/HTML string</span>:
+                    
+                    <p>if data is passed the function is called immediately else it is returned so it can be used later in the code</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+            </div>
+        
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/jquery/jquery-1.8.2.min.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.js"></script>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script src="../assets/js/yuidoc-bootstrap.js"></script>
+<script>prettyPrint();</script>
+</body>
+</html>

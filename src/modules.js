@@ -44,7 +44,7 @@ MOD.core.create_module( 'instagram-search', function( sb ) {
 				access_token = '22033045.ea9028a.eec94286a2e049429fe51c3fbc95db20';
 
 			// set the loader to active
-			sb.modify( loader, 'add-class', 'active' );
+			sb.add_class( loader, 'active' );
 
 			// check the cache for the search term
 			if ( cache && cache[ term ] ) {
@@ -56,7 +56,7 @@ MOD.core.create_module( 'instagram-search', function( sb ) {
 				});
 
 				// update the loader
-				sb.modify( loader, 'remove-class', 'active' );
+				sb.remove_class( loader, 'active' );
 			} else {
 
 				// build our request URL
@@ -78,13 +78,13 @@ MOD.core.create_module( 'instagram-search', function( sb ) {
 						});
 
 						// update the loader
-						sb.modify( loader, 'remove-class', 'active' );
+						sb.remove_class( loader, 'active' );
 					},
 					fail : function ( error ) {
 
 						// TODO: add a better system for this, I will prolly run function again
 						alert( error.message );
-						sb.modify( loader, 'remove-class', 'active' );
+						sb.remove_class( loader, 'active' );
 					},
 					scope : this
 				});
@@ -102,13 +102,12 @@ MOD.core.create_module( 'instagram-search', function( sb ) {
  * @return {none}
  */
 MOD.core.create_module( 'instagram-feed', function( sb ) {
-	var container, template, loader, root = this;
+	var container, loader, root = this;
 
 	return {
 		init : function () {
 			container = sb.find( '.instagram-post-container' )[ 0 ],
-			template = sb.find( '#instagram-post-template' )[ 0 ].innerHTML,
-			loader = sb.find( '.ajax-loader' );
+			loader = sb.find( '.ajax-loader' )[ 0 ];
 
 			sb.listen({
 				'instagram-search-results-returned' : this.build
@@ -117,7 +116,7 @@ MOD.core.create_module( 'instagram-feed', function( sb ) {
 
 		destroy : function () {
 			sb.ignore( [ 'instagram-search-results-returned' ], 'instagram-feed' );
-			container = template = loader = null;
+			container = loader = null;
 		},
 
 		build : function ( data ) {
@@ -129,20 +128,16 @@ MOD.core.create_module( 'instagram-feed', function( sb ) {
 			// sanity check for data
 			if ( data ) {
 
-				// loop the data and build our html from the template within the module
-				while ( data[ i ] ) {
+				sb.add_class( loader, 'active' );
 
-					// right now we are only handling images
-					if ( data[ i ].type === 'image' ) {
+				// store out templating function
+				var build_post = MOD.template.parse( 'instagram_post_template' );
 
-						html += template.replace( /{{link}}/, data[ i ].images.standard_resolution.url )
-									.replace( /{{profile_picture}}/, data[ i ].user.profile_picture )
-									.replace( /{{username}}/, data[ i ].user.username )
-									.replace( /{{tags}}/, data[ i ].tags.join( ', ' ) )
-									.replace( /{{likes}}/, data[ i ].likes.count );
-					}
-					++i;
-				}
+				// generate the HTML
+				sb.foreach( data, function( item, index ) {
+					html += build_post( item );
+				});
+
 			} else {
 
 				// if data is empty then there are no results, so let the user know
@@ -154,6 +149,9 @@ MOD.core.create_module( 'instagram-feed', function( sb ) {
 					}
 				});
 			}
+
+			// Finish loading
+			sb.remove_class( loader, 'active' );
 
 			// add the instagram posts or message
 			sb.append( container, html );

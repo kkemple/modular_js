@@ -33,12 +33,6 @@
 MOD.form = function ( form ) {
 	var fields, current, error, error_container, ret, _all_fields, data;
 
-	/**
-	 * The form return object that contains all functionality like the validate method and serialize method
-	 * @type {Object}
-	 * @class  return
-	 * @namespace MOD.form
-	 */
 	ret = {
 
 		/**
@@ -286,7 +280,7 @@ MOD.form = function ( form ) {
 		 * contains all the check methods for validation
 		 * @type {Object}
 		 * @class check
-		 * @namespace MOD.form.return
+		 * @namespace MOD.form
 		 */
 		check : {
 
@@ -396,7 +390,6 @@ MOD.form = function ( form ) {
 			 * - 555-867-5309
 			 * - 555.867.5309
 			 * - (555) 867 5309
-			 * - (555)-867-5309
 			 * - (555).867.5309
 			 *
 			 * @param  {object} field the field to check the value of

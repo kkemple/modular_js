@@ -28,33 +28,32 @@
                     <ul class="instagram-post-container">
 
                     </ul>
-                    <script type="text/template" id="instagram-post-template">
-                        <li class="instagram-post">
-                            <div class="instagram-image-container">
-                                <img src="{{link}}" class="instagram-image" />
-                            </div>
-                            <div class="instagram-meta-data">
-                                <div class="instagram-meta-top">
-                                    <div class="instagram-user">
-                                        <img src="{{profile_picture}}" class="instagram-user-profile-img" />
-                                        <span class="instagram-username">{{username}}</span>
+                    <script type="text/template" id="instagram_post_template">
+                                <li class="instagram-post">
+                                    <div class="instagram-image-container">
+                                        <img src="<%= images.standard_resolution.url %>" class="instagram-image" />
                                     </div>
-                                    <div class="instagram-tags">
-                                        <p>{{tags}}</p>
+                                    <div class="instagram-meta-data">
+                                        <div class="instagram-meta-top">
+                                            <div class="instagram-user">
+                                                <img src="<%= user.profile_picture %>" class="instagram-user-profile-img" />
+                                                <span class="instagram-username"><%= user.username %></span>
+                                            </div>
+                                            <div class="instagram-tags">
+                                                <p><%= tags.join( ', ' ) %></p>
+                                            </div>
+                                            <div class="instagram-likes">
+                                                <p><%= likes.count %></p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="instagram-likes">
-                                        <p>{{likes}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
+                                </li>
                     </script>
                 </div>
             </div>
         </div>
         <script src="src/vendor/jquery-1.10.1.min.js"></script>
         <script src="dist/mod.0.1.0.min.js"></script>
-
         <script src="src/config.js"></script>
         <script src="src/modules.js"></script>
         <script src="src/scripts.js"></script>

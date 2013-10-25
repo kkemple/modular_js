@@ -1,8 +1,9 @@
 {
-    "name": "ModJS",
-    "description": "A Large Scale Application JavaScript Framework",
+    "name": "Mod JS",
+    "description": "A framework for modular, scalable JavaScript",
     "version": "0.1.0",
     "url": "https://github.com/kkemple/modular_js",
+    "logo": "../modjs.png",
     "options": {
         "paths": "src/",
         "outdir": "docs/",

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>src\core.js - ModJS</title>
+    <title>src\core.js - Mod JS</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.7.0/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -16,7 +16,9 @@
     <div class="navbar-inner">
         <h1 class="brand" style="padding: 10px 16px 10px; height: 20px; line-height: 20px; margin-left: 0;">
         
-            ModJS
+	    <img alt="Mod JS" src="..\..\modjs.png" style="max-height: 65%;" title="Mod JS">
+        
+            Mod JS
         </h1>
 	<div class="nav">
             <li class="divider-vertical"></li>
@@ -27,7 +29,7 @@
             </li>
         </div>
         <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
-            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/MOD.app", "classes/MOD.app.return", "classes/MOD.core", "classes/MOD.core.dom", "classes/MOD.core.return", "classes/MOD.core.util", "classes/MOD.form", "classes/MOD.form.return", "classes/MOD.form.return.check", "classes/MOD.sandbox", "classes/MOD.sandbox.return", "classes/MOD.ui", "modules/MOD"]'>
+            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/MOD.app", "classes/MOD.core", "classes/MOD.core.dom", "classes/MOD.core.util", "classes/MOD.form", "classes/MOD.form.check", "classes/MOD.sandbox", "classes/MOD.template", "classes/MOD.ui", "modules/MOD"]'>
         </form>
     </div>
 </div>
@@ -52,25 +54,19 @@
                     
                         <li><a href="../classes/MOD.app.html">MOD.app</a></li>
                     
-                        <li><a href="../classes/MOD.app.return.html">MOD.app.return</a></li>
-                    
                         <li><a href="../classes/MOD.core.html">MOD.core</a></li>
                     
                         <li><a href="../classes/MOD.core.dom.html">MOD.core.dom</a></li>
-                    
-                        <li><a href="../classes/MOD.core.return.html">MOD.core.return</a></li>
                     
                         <li><a href="../classes/MOD.core.util.html">MOD.core.util</a></li>
                     
                         <li><a href="../classes/MOD.form.html">MOD.form</a></li>
                     
-                        <li><a href="../classes/MOD.form.return.html">MOD.form.return</a></li>
-                    
-                        <li><a href="../classes/MOD.form.return.check.html">MOD.form.return.check</a></li>
+                        <li><a href="../classes/MOD.form.check.html">MOD.form.check</a></li>
                     
                         <li><a href="../classes/MOD.sandbox.html">MOD.sandbox</a></li>
                     
-                        <li><a href="../classes/MOD.sandbox.return.html">MOD.sandbox.return</a></li>
+                        <li><a href="../classes/MOD.template.html">MOD.template</a></li>
                     
                         <li><a href="../classes/MOD.ui.html">MOD.ui</a></li>
                     
@@ -124,6 +120,13 @@
 <div class="file">
     <pre class="prettyprint linenums">
 
+// TODO: vanillify ajax requests
+// TODO: vanillify event handlers
+// TODO: vanillify animations
+// TODO: vanillify queries
+// TODO: add standard animations like fade and slide
+
+
 /**
  * The application namespace.
  * @module MOD
@@ -137,7 +140,7 @@ var MOD = {};
  * - This layer is responsible for communication with the Base layer
  * - All business logic is executed here
  * - Returns an object with the necessary functions for handling modules
- * &gt;For docs on the return object see the MOD.core.return class docs
+ *
  *
  * ##### No core method should ever be called from a module, core methods should only be called from the MOD.app object for initialization and the MOD.sandbox object for business logic
  *
@@ -220,6 +223,14 @@ MOD.core = (function () {
 
 		/**
 		 * Converts dash-seperated words to camelCase, see what I did there =]
+		 *
+		 * 	var str = &#x27;some-string&#x27;;
+		 *
+		 * 	str = MOD.core.util.to_camel_case( str );
+		 *
+		 * 	console.log( str ); // would output &#x27;someString&#x27;
+		 *
+		 *
 		 * @param  {String} str the string to camel case
 		 * @param  {String} splitter either space or dash
 		 * @return {String} camel cased string
@@ -249,7 +260,7 @@ MOD.core = (function () {
 		/**
 		 * Checks for the type of whatever is passed in, if it is an object returns true
 		 *
-		 * 	MOD.core.util.is_object( some_unknown_value );
+		 * 	MOD.core.util.is_object( obj );
 		 *
 		 *
 		 * @param  {unknown}  anything the var to check for type of object
@@ -264,7 +275,7 @@ MOD.core = (function () {
 		/**
 		 * Checks for the type of whatever is passed in, if it is an array returns true
 		 *
-		 * 	MOD.core.util.is_array( some_unknown_value );
+		 * 	MOD.core.util.is_array( arr );
 		 *
 		 *
 		 * @param  {unknown}  anything the var to check for type of array
@@ -278,6 +289,12 @@ MOD.core = (function () {
 
 		/**
 		 * Checks an array for a given value
+		 *
+		 * 	if ( MOD.core.util.array_contains( arr, &#x27;some value&#x27; ) ) {
+		 * 		// do something with value
+		 * 	}
+		 *
+		 *
 		 * @param  {array} arr   the array to search through
 		 * @param  {anything} value the value to look for
 		 * @return {boolean}       true if array contains value, else false
@@ -647,11 +664,14 @@ MOD.core = (function () {
 			if ( root.util.is_object( attrs ) ) {
 
 				for ( var key in attrs ) {
+
 					if ( attrs.hasOwnProperty( key ) ) {
+
 						el.setAttribute( key, attrs[ key ] );
 					}
 				}
 			} else {
+
 				root.util.log( 1, &#x27;APPLY ATTRIBUTES : FAILED : &quot;Attributes argument is of wrong type.&quot;&#x27; );
 			}
 		},
@@ -667,8 +687,10 @@ MOD.core = (function () {
 		 */
 		prop : function( el, prop, value ) {
 			if ( value === undefined ) {
+
 				return el.getAttribute( prop );
 			} else {
+
 				el.setAttribute( prop, value );
 			}
 		},
@@ -695,6 +717,7 @@ MOD.core = (function () {
 						y : window.pageYOffset
 					};
 				} else {
+
 					return {
 						x : document.documentElement.scrollLeft,
 						y : document.documentElement.scrollTop
@@ -713,22 +736,38 @@ MOD.core = (function () {
 		/**
 		 * Update styles on a DOM element
 		 * @param  {object} el  the element to style
-		 * @param  {object} css the key/value object of css properties
-		 * @return {none}
+		 * @param  {object / string} css the key/value object of css properties / or css property string
+		 * @param  {string} if set, should be string value of style to set on element
+		 * @return {string / null} if calling for property returns property value as string
 		 * @method  style
 		 * @private
 		 */
-		style : function ( el, css ) {
+		style : function ( el, css, value ) {
 			var ccProp, prop;
 
-			for ( prop in css ) {
+			if ( typeof css === &#x27;object&#x27; ) {
 
-				if ( css.hasOwnProperty( prop ) ) {
+				for ( prop in css ) {
 
-					ccProp = root.util.to_camel_case( prop );
+					if ( css.hasOwnProperty( prop ) ) {
 
-					el.style[ ccProp ] = css[ prop ];
+						ccProp = root.util.to_camel_case( prop );
+
+						el.style[ ccProp ] = css[ prop ];
+					}
 				}
+
+				return null;
+			} else if ( typeof css === &#x27;string&#x27; &amp;&amp; value === undefined ) {
+
+				compStyle = ( window.getComputedStyle ) ? window.getComputedStyle( el ) : getComputedStyle( el );
+				return compStyle.getPropertyValue( css );
+			} else if ( typeof css === &#x27;string&#x27; &amp;&amp; typeof value === &#x27;string&#x27; ) {
+
+				el.style[ root.util.to_camel_case( css ) ] = value;
+				return null;
+			} else {
+				root.util.log( 1, &#x27;STYLE : FAILED : &quot;One or more arguments are of wrong type&quot;&#x27; );
 			}
 		},
 
@@ -862,6 +901,74 @@ MOD.core = (function () {
 		},
 
 		/**
+		 * Gets the next element that is not a text node, script tag, or style tag
+		 *
+		 * 	var next = MOD.core.dom.next_element( el );
+		 *
+		 *
+		 * @param  {object} el the object whos next sibling you require
+		 * @return {object}    the next sibling
+		 * @method  next_element
+		 * @private
+		 */
+		next_element : function ( el ) {
+			var next;
+
+			next = el.nextSibling;
+
+			if ( next === null ) {
+
+				return null;
+			} if ( next.nodeType &gt; 1 ) {
+
+				return this.next_element( next );
+			} else if ( next.tagName.toLowerCase() === &#x27;script&#x27; ) {
+
+				return this.next_element( next );
+			} else if ( next.tagName.toLowerCase() === &#x27;style&#x27; ) {
+
+				return this.next_element( next );
+			} else {
+
+				return next;
+			}
+		},
+
+		/**
+		 * Gets the previous element that is not a text node, script tag, or style tag
+		 *
+		 * 	var prev = MOD.core.dom.previous_element( el );
+		 *
+		 *
+		 * @param  {object} el the object whos previous sibling you require
+		 * @return {object}    the previous sibling
+		 * @method  previous_element
+		 * @private
+		 */
+		previous_element : function ( el ) {
+			var prev;
+
+			prev = el.previousSibling;
+
+			if ( prev === null ) {
+
+				return null;
+			} else if ( prev.nodeType &gt; 1 ) {
+
+				return this.previous_element( prev );
+			} else if ( prev.tagName.toLowerCase() === &#x27;script&#x27; ) {
+
+				return this.previous_element( prev );
+			} else if ( prev.tagName.toLowerCase() === &#x27;style&#x27; ) {
+
+				return this.previous_element( prev );
+			} else {
+
+				return prev;
+			}
+		},
+
+		/**
 		 * Handles running any code that needs to be run only after the document has loaded
 		 * &gt; Used by the MOD.app object
 		 *
@@ -902,14 +1009,6 @@ MOD.core = (function () {
 		}
 	};
 
-
-	/**
-	 * This is the return object of the core, it is passed in to the sandbox when a module is created. This allows the sandbox to have access to core functions, but prevents the modules from knowing about the core, keeping the code loosely coupled
-	 *
-	 * @type Object
-	 * @class  return
-	 * @namespace MOD.core
-	 */
 	return {
 		util : this.util,
 		dom : this.dom,
@@ -940,7 +1039,7 @@ MOD.core = (function () {
 		 * 		doSomething : function () {
 		 *
 		 * 			// all functionality goes in to functions that are isolated to the module
-		 * 			term = sb.val( input );
+		 * 			term = input.value;
 		 *
 		 * 			sb.notify({
 		 * 				type : &#x27;search-initiated&#x27;,
@@ -956,7 +1055,7 @@ MOD.core = (function () {
 		 * @method  create_module
 		 * @public
 		 */
-		create_module : function( moduleID, creator ) {
+		create_module : function ( moduleID, creator ) {
 			var temp;
 
 			// sanity check for correct types on our params
@@ -999,7 +1098,7 @@ MOD.core = (function () {
 		 * @method start
 		 * @private
 		 */
-		start : function( moduleID ) {
+		start : function ( moduleID ) {
 			var mod = module_data[ moduleID ];
 
 			if ( mod ) {
@@ -1024,7 +1123,7 @@ MOD.core = (function () {
 		 * @method  start_all
 		 * @private
 		 */
-		start_all : function() {
+		start_all : function () {
 			var moduleID;
 
 			for ( moduleID in module_data ) {
@@ -1051,7 +1150,7 @@ MOD.core = (function () {
 		 * @method  stop
 		 * @private
 		 */
-		stop : function( moduleID ) {
+		stop : function ( moduleID ) {
 			var mod = module_data[ moduleID ];
 
 			if ( mod.instance ) {
@@ -1076,7 +1175,7 @@ MOD.core = (function () {
 		 * @method  stop_all
 		 * @private
 		 */
-		stop_all : function() {
+		stop_all : function () {
 			var moduleID;
 
 			for ( moduleID in module_data ) {
@@ -1114,7 +1213,7 @@ MOD.core = (function () {
 		 * @method  register_events
 		 * @private
 		 */
-		register_events : function( evts, moduleID ) {
+		register_events : function ( evts, moduleID ) {
 			if ( this.util.is_object( evts ) &amp;&amp;  moduleID ) {
 
 				var mod = module_data[ moduleID ];
@@ -1149,7 +1248,7 @@ MOD.core = (function () {
 		 * @return {Boolean} returns true if function completes without error, else false
 		 * @private
 		 */
-		trigger_event : function( evt ) {
+		trigger_event : function ( evt ) {
 			var mod;
 
 			if ( this.util.is_object( evt ) &amp;&amp; evt.type ) {
@@ -1188,7 +1287,7 @@ MOD.core = (function () {
 		 * @method  remove_events
 		 * @private
 		 */
-		remove_events : function( evts, moduleID ) {
+		remove_events : function ( evts, moduleID ) {
 			if ( root.util.is_array( evts ) &amp;&amp;  moduleID ) {
 
 				// check for the existance of the specified module
@@ -1222,6 +1321,138 @@ MOD.core = (function () {
 		}
 	};
 
+
+
+	/*======================================
+		Assistive Functions
+	======================================*/
+
+	// Author Shawn Allen
+	// https://github.com/shawnbot/aight/blob/master/js/computed-style.js
+
+	function getComputedStyle ( el ) {
+
+		var Push = Array.prototype.push;
+
+		function getComputedStylePixel( element, property, fontSize ) {
+			var
+			value = element.currentStyle[property].match(/([\d\.]+)(%|cm|em|in|mm|pc|pt|)/) || [0, 0, &#x27;&#x27;],
+			size = value[ 1 ],
+			suffix = value[ 2 ],
+			rootSize;
+
+			fontSize = fontSize != null ? fontSize : /%|em/.test( suffix ) &amp;&amp; element.parentElement ? getComputedStylePixel( element.parentElement, &#x27;fontSize&#x27;, null ) : 16;
+			rootSize = property == &#x27;fontSize&#x27; ? fontSize : /width/i.test( property ) ? element.clientWidth : element.clientHeight;
+
+			return suffix === &#x27;%&#x27; ? size / 100 * rootSize :
+			       suffix === &#x27;cm&#x27; ? size * 0.3937 * 96 :
+			       suffix === &#x27;em&#x27; ? size * fontSize :
+			       suffix === &#x27;in&#x27; ? size * 96 :
+			       suffix === &#x27;mm&#x27; ? size * 0.3937 * 96 / 10 :
+			       suffix === &#x27;pc&#x27; ? size * 12 * 96 / 72 :
+			       suffix === &#x27;pt&#x27; ? size * 96 / 72 :
+			       size;
+		}
+
+		function setShortStyleProperty( style, property ) {
+			var
+			borderSuffix = property == &#x27;border&#x27; ? &#x27;Width&#x27; : &#x27;&#x27;,
+			t = property + &#x27;Top&#x27; + borderSuffix,
+			r = property + &#x27;Right&#x27; + borderSuffix,
+			b = property + &#x27;Bottom&#x27; + borderSuffix,
+			l = property + &#x27;Left&#x27; + borderSuffix;
+
+			style[ property ] = ( style[ t ] == style[ r ] &amp;&amp; style[ t ] == style[ b ] &amp;&amp; style[ t ] == style[ l ] ? [ style[ t ] ] :
+			                   style[ t ] == style[ b ] &amp;&amp; style[ l ] == style[ r ] ? [ style[ t ], style[ r ] ] :
+			                   style[ l ] == style[ r ] ? [ style[ t ], style[ r ], style[ b ] ] :
+			                   [ style[ t ], style[ r ], style[ b ], style[ l ] ]).join(&#x27; &#x27;);
+		}
+
+		function CSSStyleDeclaration( element ) {
+			var
+			style = this,
+			currentStyle = element.currentStyle,
+			fontSize = getComputedStylePixel( element, &#x27;fontSize&#x27; );
+
+			for ( property in currentStyle ) {
+				Push.call( style, property == &#x27;styleFloat&#x27; ? &#x27;float&#x27; : property.replace( /[A-Z]/, function ( match ) {
+					return &#x27;-&#x27; + match.toLowerCase();
+				}));
+
+				if ( property === &#x27;width&#x27; ) {
+
+					style[ property ] = element.offsetWidth + &#x27;px&#x27;;
+				} else if ( property === &#x27;height&#x27; ) {
+
+					style[ property ] = element.offsetHeight + &#x27;px&#x27;;
+				} else if ( property === &#x27;styleFloat&#x27; ) {
+					style[ &#x27;float&#x27; ] = currentStyle[ property ];
+				} else if ( /margin.|padding.|border.+W/.test( property ) &amp;&amp; style[ property ] != &#x27;auto&#x27; ) {
+
+					style[ property ] = Math.round( getComputedStylePixel( element, property, fontSize ) ) + &#x27;px&#x27;;
+				} else {
+
+					style[ property ] = currentStyle[ property ];
+				}
+			}
+
+			setShortStyleProperty( style, &#x27;margin&#x27; );
+			setShortStyleProperty( style, &#x27;padding&#x27; );
+			setShortStyleProperty( style, &#x27;border&#x27; );
+
+			style.fontSize = Math.round( fontSize ) + &#x27;px&#x27;;
+		}
+
+		CSSStyleDeclaration.prototype = {
+			constructor: CSSStyleDeclaration,
+
+			getPropertyPriority: function () {
+
+				throw Error( &#x27;NotSupportedError: DOM Exception 9&#x27; );
+			},
+
+			getPropertyValue: function ( property ) {
+
+				if ( property === undefined ) {
+
+					throw Error(&#x27;TypeError: Not enough arguments to CSSStyleDeclaration.getPropertyValue&#x27;);
+				}
+
+				property = property.replace( /-\w/g, function ( match ) {
+					return match[ 1 ].toUpperCase();
+				});
+
+				return ( typeof this[ property ] === &#x27;function&#x27; ||
+					property.match( /^(?:cssText|length|\d+)$/ ) ) ? &#x27;&#x27; : this[ property ];
+			},
+
+			item: function ( index ) {
+
+				if ( property === undefined ) {
+					throw Error( &#x27;TypeError: Not enough arguments to CSSStyleDeclaration.item&#x27; );
+				}
+
+				return this[ parseInt( index, 10 ) ];
+			},
+
+			removeProperty: function () {
+
+				throw Error( &#x27;NoModificationAllowedError: DOM Exception 7&#x27; );
+			},
+
+			setProperty: function () {
+
+				throw Error( &#x27;NoModificationAllowedError: DOM Exception 7&#x27; );
+			},
+
+			getPropertyCSSValue: function () {
+
+				throw Error( &#x27;NotSupportedError: DOM Exception 9&#x27; );
+			}
+		};
+
+		return new CSSStyleDeclaration( el );
+	}
 }());
 
 

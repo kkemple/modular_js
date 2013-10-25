@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>MOD.core.dom - ModJS</title>
+    <title>MOD.core.dom - Mod JS</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.7.0/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
@@ -16,7 +16,9 @@
     <div class="navbar-inner">
         <h1 class="brand" style="padding: 10px 16px 10px; height: 20px; line-height: 20px; margin-left: 0;">
         
-            ModJS
+	    <img alt="Mod JS" src="..\..\modjs.png" style="max-height: 65%;" title="Mod JS">
+        
+            Mod JS
         </h1>
 	<div class="nav">
             <li class="divider-vertical"></li>
@@ -27,7 +29,7 @@
             </li>
         </div>
         <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
-            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/MOD.app", "classes/MOD.app.return", "classes/MOD.core", "classes/MOD.core.dom", "classes/MOD.core.return", "classes/MOD.core.util", "classes/MOD.form", "classes/MOD.form.return", "classes/MOD.form.return.check", "classes/MOD.sandbox", "classes/MOD.sandbox.return", "classes/MOD.ui", "modules/MOD"]'>
+            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/MOD.app", "classes/MOD.core", "classes/MOD.core.dom", "classes/MOD.core.util", "classes/MOD.form", "classes/MOD.form.check", "classes/MOD.sandbox", "classes/MOD.template", "classes/MOD.ui", "modules/MOD"]'>
         </form>
     </div>
 </div>
@@ -52,25 +54,19 @@
                     
                         <li><a href="../classes/MOD.app.html">MOD.app</a></li>
                     
-                        <li><a href="../classes/MOD.app.return.html">MOD.app.return</a></li>
-                    
                         <li><a href="../classes/MOD.core.html">MOD.core</a></li>
                     
                         <li><a href="../classes/MOD.core.dom.html">MOD.core.dom</a></li>
-                    
-                        <li><a href="../classes/MOD.core.return.html">MOD.core.return</a></li>
                     
                         <li><a href="../classes/MOD.core.util.html">MOD.core.util</a></li>
                     
                         <li><a href="../classes/MOD.form.html">MOD.form</a></li>
                     
-                        <li><a href="../classes/MOD.form.return.html">MOD.form.return</a></li>
-                    
-                        <li><a href="../classes/MOD.form.return.check.html">MOD.form.return.check</a></li>
+                        <li><a href="../classes/MOD.form.check.html">MOD.form.check</a></li>
                     
                         <li><a href="../classes/MOD.sandbox.html">MOD.sandbox</a></li>
                     
-                        <li><a href="../classes/MOD.sandbox.return.html">MOD.sandbox.return</a></li>
+                        <li><a href="../classes/MOD.template.html">MOD.template</a></li>
                     
                         <li><a href="../classes/MOD.ui.html">MOD.ui</a></li>
                     
@@ -128,7 +124,7 @@
 
     
         <div class="foundat">
-            Defined in: <a href="../files/src_core.js.html#l322"><code>src\core.js:322</code></a>
+            Defined in: <a href="../files/src_core.js.html#l343"><code>src\core.js:343</code></a>
         </div>
     
 
@@ -207,8 +203,22 @@
                                 
                             </li>
                         
+                            <li class="index-item method public">
+                                <a href="#" data-tabid="#methods" data-anchor="#method_create_module" data-tablink="create_module">create_module</a>
+
+                                
+                                
+                            </li>
+                        
                             <li class="index-item method private">
                                 <a href="#" data-tabid="#methods" data-anchor="#method_has_class" data-tablink="has_class">has_class</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method private">
+                                <a href="#" data-tabid="#methods" data-anchor="#method_next_element" data-tablink="next_element">next_element</a>
 
                                 
                                 
@@ -243,6 +253,13 @@
                             </li>
                         
                             <li class="index-item method private">
+                                <a href="#" data-tabid="#methods" data-anchor="#method_previous_element" data-tablink="previous_element">previous_element</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method private">
                                 <a href="#" data-tabid="#methods" data-anchor="#method_prop" data-tablink="prop">prop</a>
 
                                 
@@ -257,7 +274,49 @@
                             </li>
                         
                             <li class="index-item method private">
+                                <a href="#" data-tabid="#methods" data-anchor="#method_register_events" data-tablink="register_events">register_events</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method private">
                                 <a href="#" data-tabid="#methods" data-anchor="#method_remove_class" data-tablink="remove_class">remove_class</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method private">
+                                <a href="#" data-tabid="#methods" data-anchor="#method_remove_events" data-tablink="remove_events">remove_events</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method private">
+                                <a href="#" data-tabid="#methods" data-anchor="#method_start" data-tablink="start">start</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method private">
+                                <a href="#" data-tabid="#methods" data-anchor="#method_start_all" data-tablink="start_all">start_all</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method private">
+                                <a href="#" data-tabid="#methods" data-anchor="#method_stop" data-tablink="stop">stop</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method private">
+                                <a href="#" data-tabid="#methods" data-anchor="#method_stop_all" data-tablink="stop_all">stop_all</a>
 
                                 
                                 
@@ -347,7 +406,7 @@
             
         
         
-        <a href="../files/src_core.js.html#l610"><code>src\core.js:610</code></a>
+        <a href="../files/src_core.js.html#l653"><code>src\core.js:653</code></a>
         
         </p>
 
@@ -477,7 +536,7 @@
             
         
         
-        <a href="../files/src_core.js.html#l695"><code>src\core.js:695</code></a>
+        <a href="../files/src_core.js.html#l738"><code>src\core.js:738</code></a>
         
         </p>
 
@@ -609,7 +668,7 @@ MOD.core.dom.append_elems( el_to_append_to, el );</code></pre>
             
         
         
-        <a href="../files/src_core.js.html#l504"><code>src\core.js:504</code></a>
+        <a href="../files/src_core.js.html#l525"><code>src\core.js:525</code></a>
         
         </p>
 
@@ -750,7 +809,7 @@ MOD.core.dom.apply_attrs( img, attrs );</code></pre>
             
         
         
-        <a href="../files/src_core.js.html#l367"><code>src\core.js:367</code></a>
+        <a href="../files/src_core.js.html#l388"><code>src\core.js:388</code></a>
         
         </p>
 
@@ -890,7 +949,7 @@ MOD.core.dom.apply_attrs( img, attrs );</code></pre>
             
         
         
-        <a href="../files/src_core.js.html#l413"><code>src\core.js:413</code></a>
+        <a href="../files/src_core.js.html#l434"><code>src\core.js:434</code></a>
         
         </p>
 
@@ -969,6 +1028,168 @@ var el = MOD.core.dom.create( config );</code></pre>
 </div>
 
                 
+                    <div id="method_create_module" class="method item public">
+    <h3 class="name"><code>create_module</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>moduleID</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>creator</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag public">public</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_core.js.html#l895"><code>src\core.js:895</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>this is a factory function used to create modules for the application</p>
+<pre class="code prettyprint"><code>MOD.core.create_module( &#39;my-module&#39;, function( sb ) {
+
+    init : function () {
+
+        // handle the creation of the module
+        var btn, input, term;
+
+        btn = sb.find( &#39;.my-btn&#39; )[0]   // get the element from the return object
+        input = sb.find( &#39;.my-input&#39; )[0]   // same for the input
+
+        sb.add_event( btn, &#39;click&#39;, this.doSomething );
+    },
+
+    destroy : function () {
+
+        // handle breaking the module down
+        sb.remove_event( btn, &#39;click&#39;, this.doSomething );
+        btn = input = term = null;
+    },
+
+    doSomething : function () {
+
+        // all functionality goes in to functions that are isolated to the module
+        term = input.value;
+
+        sb.notify({
+            type : &#39;search-initiated&#39;,
+            data : term
+        });
+    }
+});</code></pre>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">moduleID</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the reference ID of the module</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">creator</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the function ran to create the instance of the module</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
+                    
+                    <p>returns true if module is successfully created, else false</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
                     <div id="method_has_class" class="method item private">
     <h3 class="name"><code>has_class</code></h3>
 
@@ -1023,7 +1244,7 @@ var el = MOD.core.dom.create( config );</code></pre>
             
         
         
-        <a href="../files/src_core.js.html#l668"><code>src\core.js:668</code></a>
+        <a href="../files/src_core.js.html#l711"><code>src\core.js:711</code></a>
         
         </p>
 
@@ -1105,6 +1326,116 @@ var el = MOD.core.dom.create( config );</code></pre>
 </div>
 
                 
+                    <div id="method_next_element" class="method item private">
+    <h3 class="name"><code>next_element</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>el</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_core.js.html#l782"><code>src\core.js:782</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Gets the next element that is not a text node, script tag, or style tag</p>
+<pre class="code prettyprint"><code>var next = MOD.core.dom.next_element( el );</code></pre>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">el</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the object whos next sibling you require</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>:
+                    
+                    <p>the next sibling</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
                     <div id="method_offset" class="method item private">
     <h3 class="name"><code>offset</code></h3>
 
@@ -1153,7 +1484,7 @@ var el = MOD.core.dom.create( config );</code></pre>
             
         
         
-        <a href="../files/src_core.js.html#l551"><code>src\core.js:551</code></a>
+        <a href="../files/src_core.js.html#l577"><code>src\core.js:577</code></a>
         
         </p>
 
@@ -1265,7 +1596,7 @@ window.scrollTo( 0, offset.y );</code></pre>
             
         
         
-        <a href="../files/src_core.js.html#l759"><code>src\core.js:759</code></a>
+        <a href="../files/src_core.js.html#l870"><code>src\core.js:870</code></a>
         
         </p>
 
@@ -1378,7 +1709,7 @@ window.scrollTo( 0, offset.y );</code></pre>
             
         
         
-        <a href="../files/src_core.js.html#l739"><code>src\core.js:739</code></a>
+        <a href="../files/src_core.js.html#l850"><code>src\core.js:850</code></a>
         
         </p>
 
@@ -1497,7 +1828,7 @@ window.scrollTo( 0, offset.y );</code></pre>
             
         
         
-        <a href="../files/src_core.js.html#l717"><code>src\core.js:717</code></a>
+        <a href="../files/src_core.js.html#l760"><code>src\core.js:760</code></a>
         
         </p>
 
@@ -1575,6 +1906,116 @@ MOD.core.dom.prepend_elems( el_to_append_to, el );</code></pre>
 </div>
 
                 
+                    <div id="method_previous_element" class="method item private">
+    <h3 class="name"><code>previous_element</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>el</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_core.js.html#l816"><code>src\core.js:816</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Gets the previous element that is not a text node, script tag, or style tag</p>
+<pre class="code prettyprint"><code>var prev = MOD.core.dom.previous_element( el );</code></pre>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">el</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the object whos previous sibling you require</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>:
+                    
+                    <p>the previous sibling</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
                     <div id="method_prop" class="method item private">
     <h3 class="name"><code>prop</code></h3>
 
@@ -1635,7 +2076,7 @@ MOD.core.dom.prepend_elems( el_to_append_to, el );</code></pre>
             
         
         
-        <a href="../files/src_core.js.html#l534"><code>src\core.js:534</code></a>
+        <a href="../files/src_core.js.html#l558"><code>src\core.js:558</code></a>
         
         </p>
 
@@ -1780,7 +2221,7 @@ MOD.core.dom.prepend_elems( el_to_append_to, el );</code></pre>
             
         
         
-        <a href="../files/src_core.js.html#l329"><code>src\core.js:329</code></a>
+        <a href="../files/src_core.js.html#l350"><code>src\core.js:350</code></a>
         
         </p>
 
@@ -1858,6 +2299,148 @@ MOD.core.dom.prepend_elems( el_to_append_to, el );</code></pre>
 </div>
 
                 
+                    <div id="method_register_events" class="method item private">
+    <h3 class="name"><code>register_events</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>evts</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>moduleID</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_core.js.html#l1073"><code>src\core.js:1073</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>add events to our module, events allow for cross module communication</p>
+<pre class="code prettyprint"><code>var evts = {
+    &#39;some-event&#39; : function ( data ) {
+        // do something with passed in event data
+    },
+
+    &#39;some-other-event&#39; : function ( data ) {
+        // handle a different event
+    }
+};
+
+MOD.core.register_events( evts, &#39;my-module&#39; );</code></pre>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">evts</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the events and other data associated to add to module</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">moduleID</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the ID of the module to add them to</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
+                    
+                    <p>true if events successfully added, else false</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
                     <div id="method_remove_class" class="method item private">
     <h3 class="name"><code>remove_class</code></h3>
 
@@ -1912,7 +2495,7 @@ MOD.core.dom.prepend_elems( el_to_append_to, el );</code></pre>
             
         
         
-        <a href="../files/src_core.js.html#l641"><code>src\core.js:641</code></a>
+        <a href="../files/src_core.js.html#l684"><code>src\core.js:684</code></a>
         
         </p>
 
@@ -1988,8 +2571,8 @@ MOD.core.dom.prepend_elems( el_to_append_to, el );</code></pre>
 </div>
 
                 
-                    <div id="method_style" class="method item private">
-    <h3 class="name"><code>style</code></h3>
+                    <div id="method_remove_events" class="method item private">
+    <h3 class="name"><code>remove_events</code></h3>
 
     
         <div class="args">
@@ -1997,13 +2580,13 @@ MOD.core.dom.prepend_elems( el_to_append_to, el );</code></pre>
             
                 <li class="arg">
                     
-                        <code>el</code>
+                        <code>evts</code>
                     
                 </li>
             
                 <li class="arg">
                     
-                        <code>css</code>
+                        <code>moduleID</code>
                     
                 </li>
             
@@ -2013,7 +2596,7 @@ MOD.core.dom.prepend_elems( el_to_append_to, el );</code></pre>
 
     
         <span class="returns-inline">
-            <span class="type">None</span>
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
         </span>
     
 
@@ -2042,7 +2625,519 @@ MOD.core.dom.prepend_elems( el_to_append_to, el );</code></pre>
             
         
         
-        <a href="../files/src_core.js.html#l588"><code>src\core.js:588</code></a>
+        <a href="../files/src_core.js.html#l1155"><code>src\core.js:1155</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>removes events from a specified module</p>
+<pre class="code prettyprint"><code>var evts = [ &#39;some-event&#39;, &#39;some-other-event&#39; ];
+
+MOD.core.remove_events( evts, &#39;my-module&#39; );</code></pre>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">evts</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the events to remove from the modules</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">moduleID</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the ID of the module to remove the events from</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
+                    
+                    <p>true if events successfully removed, else false</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_start" class="method item private">
+    <h3 class="name"><code>start</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>moduleID</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_core.js.html#l969"><code>src\core.js:969</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>starts up an instance of a particular module</p>
+<pre class="code prettyprint"><code>MOD.core.start( &#39;my-module&#39; );</code></pre>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">moduleID</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the ID of the module to start</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
+                    
+                    <p>true if module successfully started, else false</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_start_all" class="method item private">
+    <h3 class="name"><code>start_all</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_core.js.html#l995"><code>src\core.js:995</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>starts up an instance of all modules</p>
+<pre class="code prettyprint"><code>MOD.core.start_all();</code></pre>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
+                    
+                    <p>true if all modules are successfully started, else false</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_stop" class="method item private">
+    <h3 class="name"><code>stop</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>moduleID</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_core.js.html#l1021"><code>src\core.js:1021</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>stops an instance of a running module</p>
+<pre class="code prettyprint"><code>MOD.core.stop( &#39;my-module&#39; );</code></pre>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">moduleID</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>the ID of the module to stop</p>
+
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
+                    
+                    <p>returns true if module is successfully stopped, else false</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_stop_all" class="method item private">
+    <h3 class="name"><code>stop_all</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_core.js.html#l1047"><code>src\core.js:1047</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>stops all instances of modules</p>
+<pre class="code prettyprint"><code>MOD.core.stop_all();</code></pre>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>:
+                    
+                    <p>true if all modules are successfully stopped, else false</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_style" class="method item private">
+    <h3 class="name"><code>style</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>el</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>css</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>if</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type">String / null</span>
+        </span>
+    
+
+    
+
+    
+        <span class="flag private">private</span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/src_core.js.html#l615"><code>src\core.js:615</code></a>
         
         </p>
 
@@ -2082,13 +3177,29 @@ MOD.core.dom.prepend_elems( el_to_append_to, el );</code></pre>
                 <li class="param">
                     
                         <code class="param-name">css</code>
-                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                        <span class="type">Object / string</span>
                     
 
                     
 
                     <div class="param-description">
-                        <p>the key/value object of css properties</p>
+                        <p>the key/value object of css properties / or css property string</p>
+
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">if</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+                    
+
+                    
+
+                    <div class="param-description">
+                        <p>set, should be string value of style to set on element</p>
 
                     </div>
 
@@ -2106,8 +3217,10 @@ MOD.core.dom.prepend_elems( el_to_append_to, el );</code></pre>
             <div class="returns-description">
                 
                     
-                        <span class="type">None</span>:
+                        <span class="type">String / null</span>:
                     
+                    <p>if calling for property returns property value as string</p>
+
                 
             </div>
         </div>
@@ -2177,7 +3290,7 @@ MOD.core.dom.prepend_elems( el_to_append_to, el );</code></pre>
             
         
         
-        <a href="../files/src_core.js.html#l390"><code>src\core.js:390</code></a>
+        <a href="../files/src_core.js.html#l411"><code>src\core.js:411</code></a>
         
         </p>
 
