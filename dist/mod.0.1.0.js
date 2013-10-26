@@ -1,4 +1,5 @@
-/* ModJS
+/* 
+ * ModJS
  * 2013-10-25
  * Author: Kurtis Kemple
  * Email: kurtiskemple@gmail.com
