@@ -25,10 +25,10 @@ html {
 }
 
 body {
-    font: 13px/1.4 'Lucida Grande', 'Lucida Sans Unicode', 'DejaVu Sans', 'Bitstream Vera Sans', 'Helvetica', 'Arial', sans-serif;
+    font: 13px/1.4 'Open Sans', sans-serif;
     margin: 0;
     padding: 0;
-    padding-top: 40px;
+    padding-top: 60px;
 }
 
 /* -- Links ----------------------------------------------------------------- */
@@ -61,7 +61,7 @@ dd p:first-child, td p:first-child { margin-top: 0; }
 
 /* -- Headings -------------------------------------------------------------- */
 h1, h2, h3, h4, h5, h6 {
-    color: #D98527;/*was #f80*/
+    color: #333333;/*was #f80*/
     font-family: 'Trebuchet MS', sans-serif;
     font-weight: bold;
     line-height: 1.1;
@@ -70,7 +70,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
     font-size: 184.6%;
-    color: #30418C;
+    color: #333333;
     margin: 0.75em 0 0.5em;
 }
 
@@ -117,12 +117,6 @@ pre.code, pre.terminal, pre.cmd {
     overflow-x: auto;
     *overflow-x: scroll;
     padding: 0.3em 0.6em;
-}
-
-pre.code {
-    background: #FCFBFA;
-    border: 1px solid #EFEEED;
-    border-left-width: 5px;
 }
 
 pre.terminal, pre.cmd {
@@ -388,7 +382,7 @@ specific tabview, see the other sections below.
 /* Headings */
 h2, h3, h4, h5, h6 {
     border: none;
-    color: #30418C;
+    color: #333333;
     font-weight: bold;
     text-decoration: none;
 }
@@ -683,6 +677,7 @@ kbd .cmd { font-family: Monaco, Helvetica; }
 .apidocs .L8,
 .apidocs .L9 {
     background: inherit;
+    color: #ccc;
 }
 
 /* -- Submodule List -------------------------------------------------------- */
@@ -704,7 +699,7 @@ kbd .cmd { font-family: Monaco, Helvetica; }
 #api-tabview-filter {
     border-bottom: none;
     border-top: none;
-    padding: 0.6em 10px 0 10px;
+    padding: 20px 10px 10px 10px;
 }
 
 #api-tabview-panel { border-top: none; }
@@ -791,3 +786,5 @@ kbd .cmd { font-family: Monaco, Helvetica; }
 .form-inline label {
     line-height: 20px;
 }
+
+

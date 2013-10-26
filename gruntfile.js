@@ -15,7 +15,7 @@ module.exports = function(grunt) {
 		},
 		uglify: {
 			options: {
-				banner: '/* <%= pkg.name %>\n * <%= grunt.template.today("yyyy-mm-dd") %>\n * Author: Kurtis Kemple\n * Email: kurtiskemple@gmail.com\n * URL: http://kurtiskemple.com\n */\n'
+				banner: '/* \n * <%= pkg.name %>\n * <%= grunt.template.today("yyyy-mm-dd") %>\n * Author: Kurtis Kemple\n * Email: kurtiskemple@gmail.com\n * URL: http://kurtiskemple.com\n */\n'
 			},
 			build: {
 				src : [ 'src/core.js', 'src/app.js', 'src/sandbox.js', 'src/form.js', 'src/widgets.js' ],
@@ -24,7 +24,7 @@ module.exports = function(grunt) {
 		},
 		concat: {
 			options: {
-				banner: '/* <%= pkg.name %>\n * <%= grunt.template.today("yyyy-mm-dd") %>\n * Author: Kurtis Kemple\n * Email: kurtiskemple@gmail.com\n * URL: http://kurtiskemple.com\n */\n',
+				banner: '/* \n * <%= pkg.name %>\n * <%= grunt.template.today("yyyy-mm-dd") %>\n * Author: Kurtis Kemple\n * Email: kurtiskemple@gmail.com\n * URL: http://kurtiskemple.com\n */\n',
 				separator: ';'
 			},
 			dist: {
@@ -54,16 +54,16 @@ module.exports = function(grunt) {
 	});
 
 	// Load the plugins
-	grunt.loadNpmTasks('grunt-contrib-jshint');
-	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-contrib-concat');
-	grunt.loadNpmTasks('grunt-contrib-jasmine');
-	grunt.loadNpmTasks('grunt-contrib-yuidoc');
-	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks( 'grunt-contrib-jshint' );
+	grunt.loadNpmTasks( 'grunt-contrib-uglify' );
+	grunt.loadNpmTasks( 'grunt-contrib-concat' );
+	grunt.loadNpmTasks( 'grunt-contrib-jasmine' );
+	grunt.loadNpmTasks( 'grunt-contrib-yuidoc' );
+	grunt.loadNpmTasks( 'grunt-contrib-watch' );
 
 	// Default task(s).
-	grunt.registerTask('default', [ 'jshint', 'jasmine', 'uglify', 'concat', 'yuidoc' ]);
-	grunt.registerTask('test', [ 'jshint', 'jasmine' ]);
-	grunt.registerTask('build', [ 'uglify', 'concat', 'yuidoc' ]);
+	grunt.registerTask( 'default', [ 'jshint', 'jasmine', 'uglify', 'concat', 'yuidoc' ] );
+	grunt.registerTask( 'test', [ 'jshint', 'jasmine' ] );
+	grunt.registerTask( 'build', [ 'uglify', 'concat', 'yuidoc' ] );
 
 };
