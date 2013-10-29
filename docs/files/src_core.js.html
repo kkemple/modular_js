@@ -982,6 +982,10 @@ MOD.core = (function () {
 			}
 		},
 
+		animate : function ( el, attrs, duration, callback ) {
+			jQuery( el ).animate( attrs, duration, callback );
+		},
+
 		/**
 		 * Handles running any code that needs to be run only after the document has loaded
 		 * &gt; Used by the MOD.app object

@@ -18,7 +18,7 @@ module.exports = function(grunt) {
 				banner: '/* \n * <%= pkg.name %>\n * <%= grunt.template.today("yyyy-mm-dd") %>\n * Author: Kurtis Kemple\n * Email: kurtiskemple@gmail.com\n * URL: http://kurtiskemple.com\n */\n'
 			},
 			build: {
-				src : [ 'src/core.js', 'src/app.js', 'src/sandbox.js', 'src/form.js', 'src/widgets.js' ],
+				src : [ 'src/core.js', 'src/app.js', 'src/sandbox.js', 'src/template.js', 'src/form.js', 'src/widgets.js' ],
 				dest : 'dist/mod.<%= pkg.version %>.min.js'
 			}
 		},
@@ -28,7 +28,7 @@ module.exports = function(grunt) {
 				separator: ';'
 			},
 			dist: {
-				src : [ 'src/core.js', 'src/app.js', 'src/sandbox.js', 'src/form.js', 'src/widgets.js' ],
+				src : [ 'src/core.js', 'src/app.js', 'src/sandbox.js', 'src/template.js', 'src/form.js', 'src/widgets.js' ],
 				dest : 'dist/mod.<%= pkg.version %>.js'
 			}
 		},

@@ -847,6 +847,10 @@ MOD.core = (function () {
 			}
 		},
 
+		animate : function ( el, attrs, duration, callback ) {
+			jQuery( el ).animate( attrs, duration, callback );
+		},
+
 		/**
 		 * Handles running any code that needs to be run only after the document has loaded
 		 * > Used by the MOD.app object
@@ -888,6 +892,12 @@ MOD.core = (function () {
 		}
 	};
 
+
+	/**
+	 * @class core
+	 * @namespace  MOD
+	 * @static
+	 */
 	return {
 		util : this.util,
 		dom : this.dom,
