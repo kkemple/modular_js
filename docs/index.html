@@ -2,17 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>ModJS</title>
+    <title>Mod JS</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.7.0/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="./assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="./assets/css/main.css" id="site_styles">
     <link rel="stylesheet" href="./assets/css/custom.css">
     <link rel="stylesheet" href="./assets/vendor/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="./assets/vendor/bootstrap/css/bootstrap-responsive.css">
     <link rel="shortcut icon" type="image/png" href="./assets/favicon.png">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600|Prosto+One' rel='stylesheet' type='text/css'>
-
 </head>
 <body class="yui3-skin-sam">
+
 <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -23,9 +23,9 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="../index.html">
-                
-                <img alt="ModJS" src="../modjs.png" style="height: 30px; margin-top: -5px;" title="ModJS">
-                
+
+                <img alt="ModJS" src="/modjs.png" style="height: 30px; margin-top: -5px;" title="ModJS">
+
     </a>
     </div>
 
@@ -47,33 +47,9 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container -->
 </nav>
-
-<!--
-<div class="navbar navbar-fixed-top navbar-inverse">
-    <div class="navbar-inner">
-        <h1 class="brand" style="padding: 10px 16px 10px; height: 20px; line-height: 20px; margin-left: 0;">
-            
-    	    <img alt="ModJS" src="../modjs.png" style="max-height: 137%; margin-top: -5px;" title="ModJS">
-            
-            ModJS
-        </h1>
-	<div class="nav">
-            <li class="divider-vertical"></li>
-            <li>
-                <p class="navbar-text">
-                    API Docs for Version: <b>0.1.0</b>
-                </p>
-            </li>
-        </div>
-        <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
-            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/MOD.app", "classes/MOD.core", "classes/MOD.core.dom", "classes/MOD.core.util", "classes/MOD.form", "classes/MOD.form.check", "classes/MOD.sandbox", "classes/MOD.template", "classes/MOD.ui", "modules/MOD"]'>
-        </form>
-    </div>
-</div>
--->
 <div class="container">
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-sm-3">
 	    <div>
     <h3>APIs</h3>
     <div id="sidebar">
@@ -83,9 +59,7 @@
         </ul>
 
         <div id="api-tabview-filter">
-            <div class="form-group">
-            <input type="search" class="form-control" placeholder="Type to filter APIs">
-            </div>
+            <input type="search" placeholder="Type to filter APIs">
         </div>
 
         <div class="tab-content" style="border: 1px solid #DDD; border-top:0;">
@@ -125,7 +99,7 @@
 </div>
 
         </div>
-        <div class="col-md-9">
+        <div class="col-sm-9">
                 <form id="options-form" class="form-inline pull-right">
         Show:
         <label for="api-show-inherited" class="checkbox">

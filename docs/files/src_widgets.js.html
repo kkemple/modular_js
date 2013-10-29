@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>src/widgets.js - Mod JS</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.7.0/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="stylesheet" href="../assets/css/custom.css">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap-responsive.css">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+</head>
+<body class="yui3-skin-sam">
+
+<nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">
+
+                <img alt="ModJS" src="/modjs.png" style="height: 30px; margin-top: -5px;" title="ModJS">
+
+    </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../start.html">Getting Started</a></li>
+        <li><a href="index.html">Docs</a></li>
+        <li><a href="https://github.com/kkemple/modular_js">Code</a></li>
+        <li><a href="https://github.com/kkemple/modular_js/issues">Issues</a></li>
+      </ul>
+      <!--
+      <form class="navbar-form navbar-right" style="line-height: 40px; height: 40px;">
+            <div class="form-group">
+            <input style="margin-top: 0;" type="text" class="search-query form-control" placeholder="Search for classes/modules..." data-obj='["classes/MOD.app", "classes/MOD.core", "classes/MOD.core.dom", "classes/MOD.core.util", "classes/MOD.form", "classes/MOD.form.check", "classes/MOD.sandbox", "classes/MOD.template", "classes/MOD.ui", "modules/MOD"]'>
+            </div>
+    </form>
+    -->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container -->
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+	    <div>
+    <h3>APIs</h3>
+    <div id="sidebar">
+        <ul id="main-nav" class="nav nav-tabs" style="margin-bottom:0;">
+            <li class="active"><a href="#classes" data-toggle="tab">Classes</a></li>
+            <li><a href="#modules" data-toggle="tab">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" placeholder="Type to filter APIs">
+        </div>
+
+        <div class="tab-content" style="border: 1px solid #DDD; border-top:0;">
+            <div class="tab-pane active" id="classes">
+                <ul id="api-classes" class="nav nav-list">
+                    
+                        <li><a href="../classes/MOD.app.html">MOD.app</a></li>
+                    
+                        <li><a href="../classes/MOD.core.html">MOD.core</a></li>
+                    
+                        <li><a href="../classes/MOD.core.dom.html">MOD.core.dom</a></li>
+                    
+                        <li><a href="../classes/MOD.core.util.html">MOD.core.util</a></li>
+                    
+                        <li><a href="../classes/MOD.form.html">MOD.form</a></li>
+                    
+                        <li><a href="../classes/MOD.form.check.html">MOD.form.check</a></li>
+                    
+                        <li><a href="../classes/MOD.sandbox.html">MOD.sandbox</a></li>
+                    
+                        <li><a href="../classes/MOD.template.html">MOD.template</a></li>
+                    
+                        <li><a href="../classes/MOD.ui.html">MOD.ui</a></li>
+                    
+                </ul>
+            </div>
+
+            <div class="tab-pane" id="modules">
+                <ul id="api-modules" class="nav nav-list">
+                    
+                        <li><a href="../modules/MOD.html">MOD</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="col-sm-9">
+                <form id="options-form" class="form-inline pull-right">
+        Show:
+        <label for="api-show-inherited" class="checkbox">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected" class="checkbox">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private" class="checkbox">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated" class="checkbox">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </form>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <div class="page-header">
+    <h1>src/widgets.js <small>File</small></h1>
+</div>
+
+<div class="file">
+    <pre class="prettyprint linenums">
+/**
+ * The ui object stores all of the prebuilt widgets for the framework
+ *  - scroll : scrolls to section on page
+ *
+ * @class  ui
+ * @namespace MOD
+ */
+
+MOD.ui = {
+	/**
+	 * Scroll to section widget that allows for scolling to a section of the page with custom callback function
+	 *
+	 * 	var scroller = new MOD.ui.scroll({
+	 * 		el : &#x27;scroll-anchor&#x27;, // the id of the element to set event on
+	 * 		offset : 0, // the amount of distance to offset the scroll
+	 * 		duration : 300, // the amount of time it takes to complete scroll
+	 * 		callback : function () {} // the function to fire when element is done scrolling
+	 * 	});
+	 *
+	 * 	scroller.update( newConfig ); // you can use the update function to set new params
+	 *
+	 *
+	 * @param {object} config the settings for the scroll instance
+	 * @return {object} contains the update method, allows you to update any config property
+	 * @method  scroll
+	 * @public
+	 */
+	scroll : function ( config ) {
+		var el, target, offset, duration, callback, sb, ret;
+
+		function init ( config ) {
+			el = document.getElementById( config.el );
+			offset = config.offset;
+			duration = config.duration;
+			callback = config.callback;
+
+			target = document.getElementById( el.href.split( &#x27;#&#x27; )[1] );
+			sb = MOD.sandbox.create( MOD.core, config.el );
+			sb.add_event( el, &#x27;click&#x27;, scroll );
+		}
+
+		function destroy () {
+			sb.remove_event( el, &#x27;click&#x27;, scroll );
+			el = target = offset = duration = callback = null;
+		}
+
+		function scroll ( e ) {
+			var top = sb.offset( target ).y;
+			var attrs = {
+				&#x27;scroll-top&#x27; : top - offset
+			};
+
+			sb.animate( &#x27;html, body&#x27;, attrs, duration, callback );
+
+			sb.notify({
+				type : &#x27;ui.scroll.&#x27; + config.el,
+				data : null
+			});
+
+			e.preventDefault();
+		}
+
+		ret = {
+			update : function ( config ) {
+				destroy();
+				init( config );
+			}
+		};
+
+		init( config );
+		return ret;
+	}
+};
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/jquery/jquery-1.8.2.min.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.js"></script>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script src="../assets/js/yuidoc-bootstrap.js"></script>
+<script>
+    $( 'pre' ).addClass( 'linenums' );
+    prettyPrint();
+</script>
+</body>
+</html>

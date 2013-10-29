@@ -12,6 +12,7 @@
  */
 
 MOD.app = (function() {
+	var start_on_ready, start_on_load;
 
 	/**
 	 * Responsible for starting all modules in the config assigned to start on document ready state
@@ -27,7 +28,7 @@ MOD.app = (function() {
 			MOD.core.start( modules[ i ] );
 			++i;
 		}
-	},
+	};
 
 	/**
 	 * Responsible for starting all modules in the config assigned to start on window load state
@@ -43,7 +44,7 @@ MOD.app = (function() {
 			MOD.core.start( modules[ i ] );
 			++i;
 		}
-	}
+	};
 
 	return {
 
@@ -74,7 +75,7 @@ MOD.app = (function() {
 				});
 			}
 		}
-	}
+	};
 
 
 }());

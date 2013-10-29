@@ -2,17 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>core.js - ModJS</title>
+    <title>src/core.js - Mod JS</title>
     <link rel="stylesheet" href="http://yui.yahooapis.com/3.7.0/build/cssgrids/cssgrids-min.css">
     <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
     <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
     <link rel="stylesheet" href="../assets/css/custom.css">
     <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap-responsive.css">
     <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600|Prosto+One' rel='stylesheet' type='text/css'>
-
 </head>
 <body class="yui3-skin-sam">
+
 <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -23,9 +23,9 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="../index.html">
-                
-                <img alt="ModJS" src="../../modjs.png" style="height: 30px; margin-top: -5px;" title="ModJS">
-                
+
+                <img alt="ModJS" src="/modjs.png" style="height: 30px; margin-top: -5px;" title="ModJS">
+
     </a>
     </div>
 
@@ -47,33 +47,9 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container -->
 </nav>
-
-<!--
-<div class="navbar navbar-fixed-top navbar-inverse">
-    <div class="navbar-inner">
-        <h1 class="brand" style="padding: 10px 16px 10px; height: 20px; line-height: 20px; margin-left: 0;">
-            
-    	    <img alt="ModJS" src="../../modjs.png" style="max-height: 137%; margin-top: -5px;" title="ModJS">
-            
-            ModJS
-        </h1>
-	<div class="nav">
-            <li class="divider-vertical"></li>
-            <li>
-                <p class="navbar-text">
-                    API Docs for Version: <b>0.1.0</b>
-                </p>
-            </li>
-        </div>
-        <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
-            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/MOD.app", "classes/MOD.core", "classes/MOD.core.dom", "classes/MOD.core.util", "classes/MOD.form", "classes/MOD.form.check", "classes/MOD.sandbox", "classes/MOD.template", "classes/MOD.ui", "modules/MOD"]'>
-        </form>
-    </div>
-</div>
--->
 <div class="container">
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-sm-3">
 	    <div>
     <h3>APIs</h3>
     <div id="sidebar">
@@ -83,9 +59,7 @@
         </ul>
 
         <div id="api-tabview-filter">
-            <div class="form-group">
-            <input type="search" class="form-control" placeholder="Type to filter APIs">
-            </div>
+            <input type="search" placeholder="Type to filter APIs">
         </div>
 
         <div class="tab-content" style="border: 1px solid #DDD; border-top:0;">
@@ -125,7 +99,7 @@
 </div>
 
         </div>
-        <div class="col-md-9">
+        <div class="col-sm-9">
                 <form id="options-form" class="form-inline pull-right">
         Show:
         <label for="api-show-inherited" class="checkbox">
@@ -154,7 +128,7 @@
                 <div id="docs-main">
                     <div class="content">
                         <div class="page-header">
-    <h1>core.js <small>File</small></h1>
+    <h1>src/core.js <small>File</small></h1>
 </div>
 
 <div class="file">
@@ -266,7 +240,7 @@ MOD.core = (function () {
 		 *
 		 * 	var str = &#x27;some-string&#x27;;
 		 *
-		 * 	str = PIX.core.util.to_camel_case( str );
+		 * 	str = MOD.core.util.to_camel_case( str );
 		 *
 		 * 	console.log( str ); // would output &#x27;someString&#x27;
 		 *
@@ -330,7 +304,7 @@ MOD.core = (function () {
 		/**
 		 * Checks an array for a given value
 		 *
-		 * 	if ( PIX.core.util.array_contains( arr, &#x27;some value&#x27; ) ) {
+		 * 	if ( MOD.core.util.array_contains( arr, &#x27;some value&#x27; ) ) {
 		 * 		// do something with value
 		 * 	}
 		 *
@@ -621,7 +595,7 @@ MOD.core = (function () {
 		 * @private
 		 */
 		create : function ( config ) {
-			var i, len, el, child;
+			var el, child;
 
 
 			// check for any config settings
@@ -651,8 +625,7 @@ MOD.core = (function () {
 
 					if ( root.util.is_array( config.children ) ) {
 
-						i = 0,
-						len = config.children.length;
+						var i = 0, len = config.children.length;
 
 						// loop over our children array and build them,
 						// also append them to parent element
@@ -679,7 +652,7 @@ MOD.core = (function () {
 				return false;
 			}
 
-			delete config;
+			config = null;
 
 			return el;
 		},
@@ -762,7 +735,7 @@ MOD.core = (function () {
 					return {
 						x : document.documentElement.scrollLeft,
 						y : document.documentElement.scrollTop
-					}
+					};
 				}
 			}());
 
@@ -1009,6 +982,10 @@ MOD.core = (function () {
 			}
 		},
 
+		animate : function ( el, attrs, duration, callback ) {
+			jQuery( el ).animate( attrs, duration, callback );
+		},
+
 		/**
 		 * Handles running any code that needs to be run only after the document has loaded
 		 * &gt; Used by the MOD.app object
@@ -1050,6 +1027,12 @@ MOD.core = (function () {
 		}
 	};
 
+
+	/**
+	 * @class core
+	 * @namespace  MOD
+	 * @static
+	 */
 	return {
 		util : this.util,
 		dom : this.dom,
@@ -1058,35 +1041,38 @@ MOD.core = (function () {
 		 * this is a factory function used to create modules for the application
 		 *
 		 * 	MOD.core.create_module( &#x27;my-module&#x27;, function( sb ) {
+		 *  		var ret, btn, input, term;
 		 *
-		 * 		init : function () {
+		 * 		ret = {
 		 *
-		 * 			// handle the creation of the module
-		 * 			var btn, input, term;
+		 * 			init : function () {
 		 *
-		 * 			btn = sb.find( &#x27;.my-btn&#x27; )[0]   // get the element from the return object
-		 * 			input = sb.find( &#x27;.my-input&#x27; )[0]   // same for the input
+		 * 				btn = sb.find( &#x27;.my-btn&#x27; )[0]   // get the element from the return object
+		 * 				input = sb.find( &#x27;.my-input&#x27; )[0]   // same for the input
 		 *
-		 * 			sb.add_event( btn, &#x27;click&#x27;, this.doSomething );
-		 * 		},
+		 * 				sb.add_event( btn, &#x27;click&#x27;, this.doSomething );
+		 * 			},
 		 *
-		 * 		destroy : function () {
+		 * 			destroy : function () {
 		 *
-		 * 			// handle breaking the module down
-		 * 			sb.remove_event( btn, &#x27;click&#x27;, this.doSomething );
-		 * 			btn = input = term = null;
-		 * 		},
+		 * 				// handle breaking the module down
+		 * 				sb.remove_event( btn, &#x27;click&#x27;, ret.doSomething );
+		 * 				btn = input = term = null;
+		 * 			},
 		 *
-		 * 		doSomething : function () {
+		 * 			doSomething : function () {
 		 *
-		 * 			// all functionality goes in to functions that are isolated to the module
-		 * 			term = input.value;
+		 * 				// all functionality goes in to functions that are isolated to the module
+		 * 			 	term = input.value;
 		 *
-		 * 			sb.notify({
-		 * 				type : &#x27;search-initiated&#x27;,
-		 * 				data : term
-		 * 			});
-		 * 		}
+		 * 				sb.notify({
+		 * 					type : &#x27;search-initiated&#x27;,
+		 * 					data : term
+		 * 				});
+		 * 			}
+		 * 		};
+		 *
+		 * 		returnt ret;
 		 * 	});
 		 *
 		 *
@@ -1219,7 +1205,7 @@ MOD.core = (function () {
 		stop_all : function () {
 			var moduleID;
 
-			for ( var moduleID in module_data ) {
+			for ( moduleID in module_data ) {
 
 				if ( module_data.hasOwnProperty( moduleID ) ) {
 
@@ -1382,7 +1368,7 @@ MOD.core = (function () {
 			suffix = value[ 2 ],
 			rootSize;
 
-			fontSize = fontSize != null ? fontSize : /%|em/.test( suffix ) &amp;&amp; element.parentElement ? getComputedStylePixel( element.parentElement, &#x27;fontSize&#x27;, null ) : 16;
+			fontSize = fontSize !== null ? fontSize : /%|em/.test( suffix ) &amp;&amp; element.parentElement ? getComputedStylePixel( element.parentElement, &#x27;fontSize&#x27;, null ) : 16;
 			rootSize = property == &#x27;fontSize&#x27; ? fontSize : /width/i.test( property ) ? element.clientWidth : element.clientHeight;
 
 			return suffix === &#x27;%&#x27; ? size / 100 * rootSize :
@@ -1415,7 +1401,7 @@ MOD.core = (function () {
 			currentStyle = element.currentStyle,
 			fontSize = getComputedStylePixel( element, &#x27;fontSize&#x27; );
 
-			for ( property in currentStyle ) {
+			for ( var property in currentStyle ) {
 				Push.call( style, property == &#x27;styleFloat&#x27; ? &#x27;float&#x27; : property.replace( /[A-Z]/, function ( match ) {
 					return &#x27;-&#x27; + match.toLowerCase();
 				}));

@@ -105,7 +105,7 @@ MOD.core = (function () {
 		 *
 		 * 	var str = 'some-string';
 		 *
-		 * 	str = PIX.core.util.to_camel_case( str );
+		 * 	str = MOD.core.util.to_camel_case( str );
 		 *
 		 * 	console.log( str ); // would output 'someString'
 		 *
@@ -169,7 +169,7 @@ MOD.core = (function () {
 		/**
 		 * Checks an array for a given value
 		 *
-		 * 	if ( PIX.core.util.array_contains( arr, 'some value' ) ) {
+		 * 	if ( MOD.core.util.array_contains( arr, 'some value' ) ) {
 		 * 		// do something with value
 		 * 	}
 		 *
@@ -460,7 +460,7 @@ MOD.core = (function () {
 		 * @private
 		 */
 		create : function ( config ) {
-			var i, len, el, child;
+			var el, child;
 
 
 			// check for any config settings
@@ -490,8 +490,7 @@ MOD.core = (function () {
 
 					if ( root.util.is_array( config.children ) ) {
 
-						i = 0,
-						len = config.children.length;
+						var i = 0, len = config.children.length;
 
 						// loop over our children array and build them,
 						// also append them to parent element
@@ -518,7 +517,7 @@ MOD.core = (function () {
 				return false;
 			}
 
-			delete config;
+			config = null;
 
 			return el;
 		},
@@ -601,7 +600,7 @@ MOD.core = (function () {
 					return {
 						x : document.documentElement.scrollLeft,
 						y : document.documentElement.scrollTop
-					}
+					};
 				}
 			}());
 
@@ -848,6 +847,10 @@ MOD.core = (function () {
 			}
 		},
 
+		animate : function ( el, attrs, duration, callback ) {
+			jQuery( el ).animate( attrs, duration, callback );
+		},
+
 		/**
 		 * Handles running any code that needs to be run only after the document has loaded
 		 * > Used by the MOD.app object
@@ -889,6 +892,12 @@ MOD.core = (function () {
 		}
 	};
 
+
+	/**
+	 * @class core
+	 * @namespace  MOD
+	 * @static
+	 */
 	return {
 		util : this.util,
 		dom : this.dom,
@@ -897,35 +906,38 @@ MOD.core = (function () {
 		 * this is a factory function used to create modules for the application
 		 *
 		 * 	MOD.core.create_module( 'my-module', function( sb ) {
+		 *  		var ret, btn, input, term;
 		 *
-		 * 		init : function () {
+		 * 		ret = {
 		 *
-		 * 			// handle the creation of the module
-		 * 			var btn, input, term;
+		 * 			init : function () {
 		 *
-		 * 			btn = sb.find( '.my-btn' )[0]   // get the element from the return object
-		 * 			input = sb.find( '.my-input' )[0]   // same for the input
+		 * 				btn = sb.find( '.my-btn' )[0]   // get the element from the return object
+		 * 				input = sb.find( '.my-input' )[0]   // same for the input
 		 *
-		 * 			sb.add_event( btn, 'click', this.doSomething );
-		 * 		},
+		 * 				sb.add_event( btn, 'click', this.doSomething );
+		 * 			},
 		 *
-		 * 		destroy : function () {
+		 * 			destroy : function () {
 		 *
-		 * 			// handle breaking the module down
-		 * 			sb.remove_event( btn, 'click', this.doSomething );
-		 * 			btn = input = term = null;
-		 * 		},
+		 * 				// handle breaking the module down
+		 * 				sb.remove_event( btn, 'click', ret.doSomething );
+		 * 				btn = input = term = null;
+		 * 			},
 		 *
-		 * 		doSomething : function () {
+		 * 			doSomething : function () {
 		 *
-		 * 			// all functionality goes in to functions that are isolated to the module
-		 * 			term = input.value;
+		 * 				// all functionality goes in to functions that are isolated to the module
+		 * 			 	term = input.value;
 		 *
-		 * 			sb.notify({
-		 * 				type : 'search-initiated',
-		 * 				data : term
-		 * 			});
-		 * 		}
+		 * 				sb.notify({
+		 * 					type : 'search-initiated',
+		 * 					data : term
+		 * 				});
+		 * 			}
+		 * 		};
+		 *
+		 * 		returnt ret;
 		 * 	});
 		 *
 		 *
@@ -1058,7 +1070,7 @@ MOD.core = (function () {
 		stop_all : function () {
 			var moduleID;
 
-			for ( var moduleID in module_data ) {
+			for ( moduleID in module_data ) {
 
 				if ( module_data.hasOwnProperty( moduleID ) ) {
 
@@ -1221,7 +1233,7 @@ MOD.core = (function () {
 			suffix = value[ 2 ],
 			rootSize;
 
-			fontSize = fontSize != null ? fontSize : /%|em/.test( suffix ) && element.parentElement ? getComputedStylePixel( element.parentElement, 'fontSize', null ) : 16;
+			fontSize = fontSize !== null ? fontSize : /%|em/.test( suffix ) && element.parentElement ? getComputedStylePixel( element.parentElement, 'fontSize', null ) : 16;
 			rootSize = property == 'fontSize' ? fontSize : /width/i.test( property ) ? element.clientWidth : element.clientHeight;
 
 			return suffix === '%' ? size / 100 * rootSize :
@@ -1254,7 +1266,7 @@ MOD.core = (function () {
 			currentStyle = element.currentStyle,
 			fontSize = getComputedStylePixel( element, 'fontSize' );
 
-			for ( property in currentStyle ) {
+			for ( var property in currentStyle ) {
 				Push.call( style, property == 'styleFloat' ? 'float' : property.replace( /[A-Z]/, function ( match ) {
 					return '-' + match.toLowerCase();
 				}));

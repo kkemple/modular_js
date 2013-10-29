@@ -10,7 +10,7 @@ MOD.ui = {
 	/**
 	 * Scroll to section widget that allows for scolling to a section of the page with custom callback function
 	 *
-	 * 	var scroller = new PIX.ui.scroll({
+	 * 	var scroller = new MOD.ui.scroll({
 	 * 		el : 'scroll-anchor', // the id of the element to set event on
 	 * 		offset : 0, // the amount of distance to offset the scroll
 	 * 		duration : 300, // the amount of time it takes to complete scroll
@@ -29,13 +29,13 @@ MOD.ui = {
 		var el, target, offset, duration, callback, sb, ret;
 
 		function init ( config ) {
-			el = document.getElementById( config.el ),
-			offset = config.offset,
-			duration = config.duration,
+			el = document.getElementById( config.el );
+			offset = config.offset;
+			duration = config.duration;
 			callback = config.callback;
 
-			target = document.getElementById( el.href.split( '#' )[1] ),
-			sb = PIX.sandbox.create( PIX.core, config.el );
+			target = document.getElementById( el.href.split( '#' )[1] );
+			sb = MOD.sandbox.create( MOD.core, config.el );
 			sb.add_event( el, 'click', scroll );
 		}
 

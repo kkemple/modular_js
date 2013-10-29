@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>src/modules.js - Mod JS</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.7.0/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="stylesheet" href="../assets/css/custom.css">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap-responsive.css">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+</head>
+<body class="yui3-skin-sam">
+
+<nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">
+
+                <img alt="ModJS" src="/modjs.png" style="height: 30px; margin-top: -5px;" title="ModJS">
+
+    </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../start.html">Getting Started</a></li>
+        <li><a href="index.html">Docs</a></li>
+        <li><a href="https://github.com/kkemple/modular_js">Code</a></li>
+        <li><a href="https://github.com/kkemple/modular_js/issues">Issues</a></li>
+      </ul>
+      <!--
+      <form class="navbar-form navbar-right" style="line-height: 40px; height: 40px;">
+            <div class="form-group">
+            <input style="margin-top: 0;" type="text" class="search-query form-control" placeholder="Search for classes/modules..." data-obj='["classes/MOD.app", "classes/MOD.core", "classes/MOD.core.dom", "classes/MOD.core.util", "classes/MOD.form", "classes/MOD.form.check", "classes/MOD.sandbox", "classes/MOD.template", "classes/MOD.ui", "modules/MOD"]'>
+            </div>
+    </form>
+    -->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container -->
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+	    <div>
+    <h3>APIs</h3>
+    <div id="sidebar">
+        <ul id="main-nav" class="nav nav-tabs" style="margin-bottom:0;">
+            <li class="active"><a href="#classes" data-toggle="tab">Classes</a></li>
+            <li><a href="#modules" data-toggle="tab">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" placeholder="Type to filter APIs">
+        </div>
+
+        <div class="tab-content" style="border: 1px solid #DDD; border-top:0;">
+            <div class="tab-pane active" id="classes">
+                <ul id="api-classes" class="nav nav-list">
+                    
+                        <li><a href="../classes/MOD.app.html">MOD.app</a></li>
+                    
+                        <li><a href="../classes/MOD.core.html">MOD.core</a></li>
+                    
+                        <li><a href="../classes/MOD.core.dom.html">MOD.core.dom</a></li>
+                    
+                        <li><a href="../classes/MOD.core.util.html">MOD.core.util</a></li>
+                    
+                        <li><a href="../classes/MOD.form.html">MOD.form</a></li>
+                    
+                        <li><a href="../classes/MOD.form.check.html">MOD.form.check</a></li>
+                    
+                        <li><a href="../classes/MOD.sandbox.html">MOD.sandbox</a></li>
+                    
+                        <li><a href="../classes/MOD.template.html">MOD.template</a></li>
+                    
+                        <li><a href="../classes/MOD.ui.html">MOD.ui</a></li>
+                    
+                </ul>
+            </div>
+
+            <div class="tab-pane" id="modules">
+                <ul id="api-modules" class="nav nav-list">
+                    
+                        <li><a href="../modules/MOD.html">MOD</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+        <div class="col-sm-9">
+                <form id="options-form" class="form-inline pull-right">
+        Show:
+        <label for="api-show-inherited" class="checkbox">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected" class="checkbox">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private" class="checkbox">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated" class="checkbox">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </form>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <div class="page-header">
+    <h1>src/modules.js <small>File</small></h1>
+</div>
+
+<div class="file">
+    <pre class="prettyprint linenums">
+
+/**
+ * All modules for the application are stored in this file
+ * A module is a small piece of the application that is responsible for a minute
+ * amount of tasks
+ */
+
+
+/**
+ * instagram-search-settings
+ * responsible for sending notifications when a search is requested
+ *
+ * @param  {object} sb a copy of the sandbox to interact with the core
+ * @return {none}
+ */
+MOD.core.create_module( &#x27;instagram-search&#x27;, function( sb ) {
+	var btn, input, loader, cache = {}, interval;
+
+	return {
+		init : function () {
+			btn = sb.find( &#x27;.instagram-search-submit&#x27; )[ 0 ],
+			input = sb.find( &#x27;.instagram-search-term&#x27; )[ 0 ],
+			loader = sb.find( &#x27;.ajax-loader&#x27; )[ 0 ];
+
+			sb.add_event( btn, &#x27;click&#x27;, this.search );
+
+			// clear cache every 10 min
+			interval = setInterval(function () {
+				cache = {};
+			}, 60*10*1000 );
+		},
+
+		destroy : function () {
+			sb.remove_event( btn, &#x27;click&#x27;, this.search );
+			btn = input = loader = null, cache = {};
+			clearInterval( interval );
+		},
+
+		search : function ( e ) {
+
+			//get our vars, set a default for the search term
+			var term = input.value || &#x27;javascript&#x27;,
+				instagramURL;
+				access_token = &#x27;22033045.ea9028a.eec94286a2e049429fe51c3fbc95db20&#x27;;
+
+			// set the loader to active
+			sb.add_class( loader, &#x27;active&#x27; );
+
+			// check the cache for the search term
+			if ( cache &amp;&amp; cache[ term ] ) {
+
+				// let the core know we have a notification to broadcast
+				sb.notify({
+					type : &#x27;instagram-search-results-returned&#x27;,
+					data : cache[ term ]
+				});
+
+				// update the loader
+				sb.remove_class( loader, &#x27;active&#x27; );
+			} else {
+
+				// build our request URL
+				instagramURL = &#x27;https://api.instagram.com/v1/tags/&#x27; + term + &#x27;/media/recent?callback=?&amp;count=10&amp;access_token=&#x27; + access_token;
+
+				sb.request({
+					url : instagramURL,
+					type : &#x27;GET&#x27;,
+					dataType : &#x27;JSON&#x27;,
+					done : function ( response ) {
+
+						// cache the request for ten minutes
+						cache[ term ] = response.data;
+
+						// let the core know we have a notification to announce
+						sb.notify({
+							type : &#x27;instagram-search-results-returned&#x27;,
+							data : response.data
+						});
+
+						// update the loader
+						sb.remove_class( loader, &#x27;active&#x27; );
+					},
+					fail : function ( error ) {
+
+						// TODO: add a better system for this, I will prolly run function again
+						alert( error.message );
+						sb.remove_class( loader, &#x27;active&#x27; );
+					},
+					scope : this
+				});
+			}
+		}
+	}
+});
+
+
+/**
+ * instagram feed
+ * responsible for building the feed when a search is requested
+ *
+ * @param  {object} sb a copy of the sandbox to interact with the core
+ * @return {none}
+ */
+MOD.core.create_module( &#x27;instagram-feed&#x27;, function( sb ) {
+	var container, loader, root = this;
+
+	return {
+		init : function () {
+			container = sb.find( &#x27;.instagram-post-container&#x27; )[ 0 ],
+			loader = sb.find( &#x27;.ajax-loader&#x27; )[ 0 ];
+
+			sb.listen({
+				&#x27;instagram-search-results-returned&#x27; : this.build
+			});
+		},
+
+		destroy : function () {
+			sb.ignore( [ &#x27;instagram-search-results-returned&#x27; ], &#x27;instagram-feed&#x27; );
+			container = loader = null;
+		},
+
+		build : function ( data ) {
+			var i = 0, html = &#x27;&#x27;;
+
+			// remove any previous results or messages
+			container.innerHTML = null;
+
+			// sanity check for data
+			if ( data ) {
+
+				sb.add_class( loader, &#x27;active&#x27; );
+
+				// store out templating function
+				var build_post = MOD.template.parse( &#x27;instagram_post_template&#x27; );
+
+				// generate the HTML
+				sb.foreach( data, function( item, index ) {
+					html += build_post( item );
+				});
+
+			} else {
+
+				// if data is empty then there are no results, so let the user know
+				html = sb.create_element({
+					el : &#x27;p&#x27;,
+					text : &#x27;Sorry, no results for that search term... =[&#x27;,
+					attrs : {
+						&#x27;class&#x27; : &#x27;instagram-feed-no-results&#x27;
+					}
+				});
+			}
+
+			// Finish loading
+			sb.remove_class( loader, &#x27;active&#x27; );
+
+			// add the instagram posts or message
+			sb.append( container, html );
+		}
+	}
+});
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/jquery/jquery-1.8.2.min.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.js"></script>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script src="../assets/js/yuidoc-bootstrap.js"></script>
+<script>
+    $( 'pre' ).addClass( 'linenums' );
+    prettyPrint();
+</script>
+</body>
+</html>
