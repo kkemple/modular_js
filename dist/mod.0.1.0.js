@@ -1,6 +1,6 @@
 /* 
  * ModJS
- * 2013-10-28
+ * 2013-10-29
  * Author: Kurtis Kemple
  * Email: kurtiskemple@gmail.com
  * URL: http://kurtiskemple.com
@@ -899,6 +899,12 @@ MOD.core = (function () {
 		}
 	};
 
+
+	/**
+	 * @class core
+	 * @namespace  MOD
+	 * @static
+	 */
 	return {
 		util : this.util,
 		dom : this.dom,
@@ -907,35 +913,38 @@ MOD.core = (function () {
 		 * this is a factory function used to create modules for the application
 		 *
 		 * 	MOD.core.create_module( 'my-module', function( sb ) {
+		 *  		var ret, btn, input, term;
 		 *
-		 * 		init : function () {
+		 * 		ret = {
 		 *
-		 * 			// handle the creation of the module
-		 * 			var btn, input, term;
+		 * 			init : function () {
 		 *
-		 * 			btn = sb.find( '.my-btn' )[0]   // get the element from the return object
-		 * 			input = sb.find( '.my-input' )[0]   // same for the input
+		 * 				btn = sb.find( '.my-btn' )[0]   // get the element from the return object
+		 * 				input = sb.find( '.my-input' )[0]   // same for the input
 		 *
-		 * 			sb.add_event( btn, 'click', this.doSomething );
-		 * 		},
+		 * 				sb.add_event( btn, 'click', this.doSomething );
+		 * 			},
 		 *
-		 * 		destroy : function () {
+		 * 			destroy : function () {
 		 *
-		 * 			// handle breaking the module down
-		 * 			sb.remove_event( btn, 'click', this.doSomething );
-		 * 			btn = input = term = null;
-		 * 		},
+		 * 				// handle breaking the module down
+		 * 				sb.remove_event( btn, 'click', ret.doSomething );
+		 * 				btn = input = term = null;
+		 * 			},
 		 *
-		 * 		doSomething : function () {
+		 * 			doSomething : function () {
 		 *
-		 * 			// all functionality goes in to functions that are isolated to the module
-		 * 			term = input.value;
+		 * 				// all functionality goes in to functions that are isolated to the module
+		 * 			 	term = input.value;
 		 *
-		 * 			sb.notify({
-		 * 				type : 'search-initiated',
-		 * 				data : term
-		 * 			});
-		 * 		}
+		 * 				sb.notify({
+		 * 					type : 'search-initiated',
+		 * 					data : term
+		 * 				});
+		 * 			}
+		 * 		};
+		 *
+		 * 		returnt ret;
 		 * 	});
 		 *
 		 *

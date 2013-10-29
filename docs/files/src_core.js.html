@@ -1027,6 +1027,12 @@ MOD.core = (function () {
 		}
 	};
 
+
+	/**
+	 * @class core
+	 * @namespace  MOD
+	 * @static
+	 */
 	return {
 		util : this.util,
 		dom : this.dom,
@@ -1035,35 +1041,38 @@ MOD.core = (function () {
 		 * this is a factory function used to create modules for the application
 		 *
 		 * 	MOD.core.create_module( &#x27;my-module&#x27;, function( sb ) {
+		 *  		var ret, btn, input, term;
 		 *
-		 * 		init : function () {
+		 * 		ret = {
 		 *
-		 * 			// handle the creation of the module
-		 * 			var btn, input, term;
+		 * 			init : function () {
 		 *
-		 * 			btn = sb.find( &#x27;.my-btn&#x27; )[0]   // get the element from the return object
-		 * 			input = sb.find( &#x27;.my-input&#x27; )[0]   // same for the input
+		 * 				btn = sb.find( &#x27;.my-btn&#x27; )[0]   // get the element from the return object
+		 * 				input = sb.find( &#x27;.my-input&#x27; )[0]   // same for the input
 		 *
-		 * 			sb.add_event( btn, &#x27;click&#x27;, this.doSomething );
-		 * 		},
+		 * 				sb.add_event( btn, &#x27;click&#x27;, this.doSomething );
+		 * 			},
 		 *
-		 * 		destroy : function () {
+		 * 			destroy : function () {
 		 *
-		 * 			// handle breaking the module down
-		 * 			sb.remove_event( btn, &#x27;click&#x27;, this.doSomething );
-		 * 			btn = input = term = null;
-		 * 		},
+		 * 				// handle breaking the module down
+		 * 				sb.remove_event( btn, &#x27;click&#x27;, ret.doSomething );
+		 * 				btn = input = term = null;
+		 * 			},
 		 *
-		 * 		doSomething : function () {
+		 * 			doSomething : function () {
 		 *
-		 * 			// all functionality goes in to functions that are isolated to the module
-		 * 			term = input.value;
+		 * 				// all functionality goes in to functions that are isolated to the module
+		 * 			 	term = input.value;
 		 *
-		 * 			sb.notify({
-		 * 				type : &#x27;search-initiated&#x27;,
-		 * 				data : term
-		 * 			});
-		 * 		}
+		 * 				sb.notify({
+		 * 					type : &#x27;search-initiated&#x27;,
+		 * 					data : term
+		 * 				});
+		 * 			}
+		 * 		};
+		 *
+		 * 		returnt ret;
 		 * 	});
 		 *
 		 *

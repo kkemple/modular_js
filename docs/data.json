@@ -142,7 +142,7 @@
             "module": "MOD",
             "namespace": "MOD",
             "file": "src/core.js",
-            "line": 15,
+            "line": 896,
             "description": "## The Application Framework Core\nThis layer is the actual core of the framework. It contains all utitity functions such as dom functions, and assistive functions such as array checks, mapping, and any other functions that are used to assist in faster development of JS. It is the only layer that can communicate with the Base layer, and it is only accessed by the Sandbox layer.\n\n- This layer is responsible for communication with the Base layer\n- All business logic is executed here\n- Returns an object with the necessary functions for handling modules\n\n\n##### No core method should ever be called from a module, core methods should only be called from the MOD.app object for initialization and the MOD.sandbox object for business logic",
             "static": 1
         },
@@ -1034,8 +1034,8 @@
         },
         {
             "file": "src/core.js",
-            "line": 899,
-            "description": "this is a factory function used to create modules for the application\n\n\tMOD.core.create_module( 'my-module', function( sb ) {\n\n\t\tinit : function () {\n\n\t\t\t// handle the creation of the module\n\t\t\tvar btn, input, term;\n\n\t\t\tbtn = sb.find( '.my-btn' )[0]   // get the element from the return object\n\t\t\tinput = sb.find( '.my-input' )[0]   // same for the input\n\n\t\t\tsb.add_event( btn, 'click', this.doSomething );\n\t\t},\n\n\t\tdestroy : function () {\n\n\t\t\t// handle breaking the module down\n\t\t\tsb.remove_event( btn, 'click', this.doSomething );\n\t\t\tbtn = input = term = null;\n\t\t},\n\n\t\tdoSomething : function () {\n\n\t\t\t// all functionality goes in to functions that are isolated to the module\n\t\t\tterm = input.value;\n\n\t\t\tsb.notify({\n\t\t\t\ttype : 'search-initiated',\n\t\t\t\tdata : term\n\t\t\t});\n\t\t}\n\t});",
+            "line": 905,
+            "description": "this is a factory function used to create modules for the application\n\n\tMOD.core.create_module( 'my-module', function( sb ) {\n \t\tvar ret, btn, input, term;\n\n\t\tret = {\n\n\t\t\tinit : function () {\n\n\t\t\t\tbtn = sb.find( '.my-btn' )[0]   // get the element from the return object\n\t\t\t\tinput = sb.find( '.my-input' )[0]   // same for the input\n\n\t\t\t\tsb.add_event( btn, 'click', this.doSomething );\n\t\t\t},\n\n\t\t\tdestroy : function () {\n\n\t\t\t\t// handle breaking the module down\n\t\t\t\tsb.remove_event( btn, 'click', ret.doSomething );\n\t\t\t\tbtn = input = term = null;\n\t\t\t},\n\n\t\t\tdoSomething : function () {\n\n\t\t\t\t// all functionality goes in to functions that are isolated to the module\n\t\t\t \tterm = input.value;\n\n\t\t\t\tsb.notify({\n\t\t\t\t\ttype : 'search-initiated',\n\t\t\t\t\tdata : term\n\t\t\t\t});\n\t\t\t}\n\t\t};\n\n\t\treturnt ret;\n\t});",
             "params": [
                 {
                     "name": "moduleID",
@@ -1056,13 +1056,13 @@
             "name": "create_module",
             "access": "public",
             "tagname": "",
-            "class": "MOD.core.dom",
+            "class": "MOD.core",
             "module": "MOD",
-            "namespace": "MOD.core"
+            "namespace": "MOD"
         },
         {
             "file": "src/core.js",
-            "line": 973,
+            "line": 982,
             "description": "starts up an instance of a particular module\n\n\tMOD.core.start( 'my-module' );",
             "params": [
                 {
@@ -1079,13 +1079,13 @@
             "name": "start",
             "access": "private",
             "tagname": "",
-            "class": "MOD.core.dom",
+            "class": "MOD.core",
             "module": "MOD",
-            "namespace": "MOD.core"
+            "namespace": "MOD"
         },
         {
             "file": "src/core.js",
-            "line": 999,
+            "line": 1008,
             "description": "starts up an instance of all modules\n\n\tMOD.core.start_all();",
             "return": {
                 "description": "true if all modules are successfully started, else false",
@@ -1095,13 +1095,13 @@
             "name": "start_all",
             "access": "private",
             "tagname": "",
-            "class": "MOD.core.dom",
+            "class": "MOD.core",
             "module": "MOD",
-            "namespace": "MOD.core"
+            "namespace": "MOD"
         },
         {
             "file": "src/core.js",
-            "line": 1025,
+            "line": 1034,
             "description": "stops an instance of a running module\n\n\tMOD.core.stop( 'my-module' );",
             "params": [
                 {
@@ -1118,13 +1118,13 @@
             "name": "stop",
             "access": "private",
             "tagname": "",
-            "class": "MOD.core.dom",
+            "class": "MOD.core",
             "module": "MOD",
-            "namespace": "MOD.core"
+            "namespace": "MOD"
         },
         {
             "file": "src/core.js",
-            "line": 1051,
+            "line": 1060,
             "description": "stops all instances of modules\n\n\tMOD.core.stop_all();",
             "return": {
                 "description": "true if all modules are successfully stopped, else false",
@@ -1134,13 +1134,13 @@
             "name": "stop_all",
             "access": "private",
             "tagname": "",
-            "class": "MOD.core.dom",
+            "class": "MOD.core",
             "module": "MOD",
-            "namespace": "MOD.core"
+            "namespace": "MOD"
         },
         {
             "file": "src/core.js",
-            "line": 1077,
+            "line": 1086,
             "description": "add events to our module, events allow for cross module communication\n\n\tvar evts = {\n\t\t'some-event' : function ( data ) {\n\t\t\t// do something with passed in event data\n\t\t},\n\n\t\t'some-other-event' : function ( data ) {\n\t\t\t// handle a different event\n\t\t}\n\t};\n\n\tMOD.core.register_events( evts, 'my-module' );",
             "params": [
                 {
@@ -1162,13 +1162,13 @@
             "name": "register_events",
             "access": "private",
             "tagname": "",
-            "class": "MOD.core.dom",
+            "class": "MOD.core",
             "module": "MOD",
-            "namespace": "MOD.core"
+            "namespace": "MOD"
         },
         {
             "file": "src/core.js",
-            "line": 1120,
+            "line": 1129,
             "description": "responsible for checking modules this event and then executing it if it is found\n\n\tvar evt = {\n\t\t'some-event' : data\n\t}\n\n\tMOD.core.trigger_event( evt );",
             "params": [
                 {
@@ -1183,13 +1183,13 @@
             },
             "access": "private",
             "tagname": "",
-            "class": "MOD.core.dom",
+            "class": "MOD.core",
             "module": "MOD",
-            "namespace": "MOD.core"
+            "namespace": "MOD"
         },
         {
             "file": "src/core.js",
-            "line": 1159,
+            "line": 1168,
             "description": "removes events from a specified module\n\n\tvar evts = [ 'some-event', 'some-other-event' ];\n\n\tMOD.core.remove_events( evts, 'my-module' );",
             "params": [
                 {
@@ -1211,9 +1211,9 @@
             "name": "remove_events",
             "access": "private",
             "tagname": "",
-            "class": "MOD.core.dom",
+            "class": "MOD.core",
             "module": "MOD",
-            "namespace": "MOD.core"
+            "namespace": "MOD"
         },
         {
             "file": "src/form.js",
@@ -2164,7 +2164,7 @@
     "warnings": [
         {
             "message": "Missing item type\nresponsible for checking modules this event and then executing it if it is found\n\n\tvar evt = {\n\t\t'some-event' : data\n\t}\n\n\tMOD.core.trigger_event( evt );",
-            "line": " src/core.js:1120"
+            "line": " src/core.js:1129"
         },
         {
             "message": "Missing item type\nAll modules for the application are stored in this file\nA module is a small piece of the application that is responsible for a minute\namount of tasks",
